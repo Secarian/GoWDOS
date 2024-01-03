@@ -58,8 +58,8 @@ web.tar.gz:
 	
 
 	@echo "Creating tarball for all required files"
-	-rm ./dist/app.tar.gz
-	-cd ./dist/ && tar -czf ./app.tar.gz system/ app/
+	-rm ./dist/web.tar.gz
+	-cd ./dist/ && tar -czf ./web.tar.gz system/ app/
 
 	@echo "Clearing up unzipped folder structures"
 	-rm -rf "./dist/app"
@@ -67,4 +67,4 @@ web.tar.gz:
 
 wdos_file_checksum.sha1:
 	@echo "Generating the checksum, if sha1sum installed"
-	-sha1sum ./dist/app.tar.gz > ./dist/wdos_file_checksum.sha1
+	-sha1sum ./dist/web.tar.gz > ./dist/wdos_file_checksum.sha1
