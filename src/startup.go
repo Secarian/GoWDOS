@@ -20,15 +20,15 @@ func RunStartup() {
 	systemWideLogger, _ = logger.NewLogger("system", "system/logs/system/", true)
 	//1. Initiate the main system database
 
-	//Check if system or web both not exists and web.tar.gz exists. Unzip it for the user
-	if (!fs.FileExists("system/") || !fs.FileExists("web/")) && fs.FileExists("./web.tar.gz") {
+	//Check if system or app both not exists and app.tar.gz exists. Unzip it for the user
+	if (!fs.FileExists("system/") || !fs.FileExists("app/")) && fs.FileExists("./web.tar.gz") {
 		log.Println("[Update] Unzipping system critical files from archive")
 		extErr := filesystem.ExtractTarGzipFile("./web.tar.gz", "./")
 		if extErr != nil {
 			//Extract failed
 			fmt.Println("▒▒ ERROR: UNABLE TO EXTRACT CRITICAL SYSTEM FOLDERS ▒▒")
 			fmt.Println(extErr)
-			panic("Unable to extract content from web.tar.gz to fix the missing system / web folder. Please unzip the web.tar.gz manually.")
+			panic("Unable to extract content from web.tar.gz to fix the missing system / app folder. Please unzip the web.tar.gz manually.")
 		}
 
 		//Extract success
@@ -43,9 +43,9 @@ func RunStartup() {
 		panic("This error occurs because the system folder is missing. Please follow the installation guide and don't just download a binary and run it.")
 	}
 
-	if !fs.FileExists("web/") {
+	if !fs.FileExists("app/") {
 		fmt.Println("▒▒ ERROR: WEB FOLDER NOT FOUND ▒▒")
-		panic("This error occurs because the web folder is missing. Please follow the installation guide and don't just download a binary and run it.")
+		panic("This error occurs because the app folder is missing. Please follow the installation guide and don't just download a binary and run it.")
 	}
 
 	dbconn, err := db.NewDatabase("system/ao.db", false)

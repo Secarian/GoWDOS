@@ -38,9 +38,9 @@
     "automount":false
   },
   {
-    "name":"web",
-    "uuid":"web",
-    "path":"web/",
+    "name":"app",
+    "uuid":"app",
+    "path":"app/",
     "access":"readwrite",
     "hierarchy":"public",
     "automount":false

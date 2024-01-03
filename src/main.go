@@ -108,7 +108,7 @@ func main() {
 	Run_Test()
 
 	//Initiate all the static files transfer
-	fs := http.FileServer(http.Dir("./web"))
+	fs := http.FileServer(http.Dir("./app"))
 	/*
 		if *enable_gzip {
 			//Gzip enabled. Always serve with gzip if header exists

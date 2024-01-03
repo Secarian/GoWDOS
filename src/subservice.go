@@ -19,7 +19,7 @@ import (
 var (
 	ssRouter     *subservice.SubServiceRouter
 	reservePaths = []string{
-		"web",
+		"app",
 		"system",
 		"SystemAO",
 		"img",

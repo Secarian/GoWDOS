@@ -58,7 +58,7 @@ func checkUserAccessToScript(thisuser *user.User, scriptFile string, scriptScope
 
 // validate the given path is a script from webroot
 func isValidAGIScript(scriptPath string) bool {
-	return utils.FileExists(filepath.Join("./web", scriptPath)) && (filepath.Ext(scriptPath) == ".js" || filepath.Ext(scriptPath) == ".agi")
+	return utils.FileExists(filepath.Join("./app", scriptPath)) && (filepath.Ext(scriptPath) == ".js" || filepath.Ext(scriptPath) == ".agi")
 }
 
 // Return the script root of the current executing script

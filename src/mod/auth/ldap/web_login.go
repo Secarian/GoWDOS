@@ -9,8 +9,8 @@ import (
 	"imuslab.com/wdos/mod/utils"
 )
 
-//LOGIN related function
-//functions basically same as wdos's original function
+// LOGIN related function
+// functions basically same as wdos's original function
 func (ldap *ldapHandler) HandleLoginPage(w http.ResponseWriter, r *http.Request) {
 	checkLDAPenabled := ldap.readSingleConfig("enabled")
 	if checkLDAPenabled == "false" {
@@ -21,19 +21,19 @@ func (ldap *ldapHandler) HandleLoginPage(w http.ResponseWriter, r *http.Request)
 	red, _ := utils.GetPara(r, "redirect")
 
 	//Append the redirection addr into the template
-	imgsrc := "./web/" + ldap.iconSystem
+	imgsrc := "./app/" + ldap.iconSystem
 	if !utils.FileExists(imgsrc) {
-		imgsrc = "./web/img/public/auth_icon.png"
+		imgsrc = "./app/img/public/auth_icon.png"
 	}
 	imageBase64, _ := utils.LoadImageAsBase64(imgsrc)
-	parsedPage, err := utils.Templateload("web/login.system", map[string]interface{}{
+	parsedPage, err := utils.Templateload("app/login.system", map[string]interface{}{
 		"redirection_addr": red,
 		"usercount":        strconv.Itoa(ldap.ag.GetUserCounts()),
 		"service_logo":     imageBase64,
 		"login_addr":       "system/auth/ldap/login",
 	})
 	if err != nil {
-		panic("Error. Unable to parse login page. Is web directory data exists?")
+		panic("Error. Unable to parse login page. Is app directory data exists?")
 	}
 	w.Header().Add("Content-Type", "text/html; charset=UTF-8")
 	w.Write([]byte(parsedPage))
@@ -61,10 +61,10 @@ func (ldap *ldapHandler) HandleNewPasswordPage(w http.ResponseWriter, r *http.Re
 		utils.SendErrorResponse(w, err.Error())
 		return
 	}
-	//init the web interface
-	imgsrc := "./web/" + ldap.iconSystem
+	//init the app interface
+	imgsrc := "./app/" + ldap.iconSystem
 	if !utils.FileExists(imgsrc) {
-		imgsrc = "./web/img/public/auth_icon.png"
+		imgsrc = "./app/img/public/auth_icon.png"
 	}
 	imageBase64, _ := utils.LoadImageAsBase64(imgsrc)
 	template, err := utils.Templateload("system/ldap/newPasswordTemplate.html", map[string]interface{}{
@@ -201,7 +201,7 @@ func (ldap *ldapHandler) HandleSetPassword(w http.ResponseWriter, r *http.Reques
 	}
 }
 
-//HandleCheckLDAP check if ldap is enabled
+// HandleCheckLDAP check if ldap is enabled
 func (ldap *ldapHandler) HandleCheckLDAP(w http.ResponseWriter, r *http.Request) {
 	enabledB := false
 	enabled := ldap.readSingleConfig("enabled")

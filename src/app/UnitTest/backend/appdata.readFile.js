@@ -9,7 +9,7 @@
 var succ = requirelib("appdata");
 
 function main(){
-    //Get a file from the UnitTest WebApp. This path is relative from the web root
+    //Get a file from the UnitTest WebApp. This path is relative from the app root
     var webAppDataFileContent = appdata.readFile("UnitTest/appdata.txt");
 
     //Check if there are any error for reading the file

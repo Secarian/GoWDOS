@@ -83,7 +83,7 @@
                 "sidebar/vroot/video": "影片",
                 "sidebar/vroot/trash": "回收箱",
                 "sidebar/vroot/download": "下載",
-                "sidebar/vroot/web": "網頁",
+                "sidebar/vroot/app": "網頁",
                 "sidebar/vroot/model": "模型",
                 "sidebar/vroot/appdata": "程序數據",
 
@@ -370,7 +370,7 @@
                 "sidebar/vroot/video": "影片",
                 "sidebar/vroot/trash": "回收箱",
                 "sidebar/vroot/download": "下載",
-                "sidebar/vroot/web": "網頁",
+                "sidebar/vroot/app": "網頁",
                 "sidebar/vroot/model": "模型",
                 "sidebar/vroot/appdata": "程序數據",
 
@@ -654,7 +654,7 @@
                 "sidebar/vroot/video": "影片",
                 "sidebar/vroot/trash": "垃圾箱",
                 "sidebar/vroot/download": "下载",
-                "sidebar/vroot/web": "网页",
+                "sidebar/vroot/app": "网页",
                 "sidebar/vroot/model": "模型",
                 "sidebar/vroot/appdata": "程序数据",
 
@@ -935,7 +935,7 @@
                 "sidebar/vroot/video": "Videos",
                 "sidebar/vroot/trash": "Trash",
                 "sidebar/vroot/download": "Downloads",
-                "sidebar/vroot/web": "Web",
+                "sidebar/vroot/app": "Web",
                 "sidebar/vroot/model": "Models",
                 "sidebar/vroot/appdata": "App Data",
 
@@ -995,10 +995,10 @@
                 "opr/share/ok": "Done",
 
                 "opr/openwith/title": "Open with...",
-                "opr/openwith/desc": "Select a web app to open this file",
+                "opr/openwith/desc": "Select a app app to open this file",
                 "opr/openwith/loading": "Loading...",
-                "opr/openwith/openWithWebApp": "Open the file with the selected web app",
-                "opr/openwith/openWithWebAppInNewWindow": "Open the file with the selected web app in a new window",
+                "opr/openwith/openWithWebApp": "Open the file with the selected app app",
+                "opr/openwith/openWithWebAppInNewWindow": "Open the file with the selected app app in a new window",
                 "opr/openwith/openInNewWindow": "Open the file directly in a new window",
                 "opr/openwith/cancel": "Cancel",
 
@@ -1217,7 +1217,7 @@
                 "sidebar/vroot/video": "ビデオ",
                 "sidebar/vroot/trash": "ごみ箱",
                 "sidebar/vroot/download": "ダウンロード",
-                "sidebar/vroot/web": "ウェブ",
+                "sidebar/vroot/app": "ウェブ",
                 "sidebar/vroot/model": "モデル",
                 "sidebar/vroot/appdata": "アプリケーションデータ",
 

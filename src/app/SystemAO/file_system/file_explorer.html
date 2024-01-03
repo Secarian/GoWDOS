@@ -850,9 +850,9 @@
                 }else if (foldername == "download"){
                     icon = "download"
                     name = applocale.getString("sidebar/vroot/download", name);
-                }else if (foldername == "www" || foldername == "web" || foldername == "mysite"){
+                }else if (foldername == "www" || foldername == "app" || foldername == "mysite"){
                     icon = "globe"
-                    name = applocale.getString("sidebar/vroot/web", name);
+                    name = applocale.getString("sidebar/vroot/app", name);
                 }else if (foldername == "model"){
                     icon = "cube"
                     name = applocale.getString("sidebar/vroot/model", name);
@@ -5354,7 +5354,7 @@
                     }else{
                         let previewSidebar = $("#propertiesView");
                         //Check the extension. If the extension is image supported 
-                        //by web browser, enable full resolution button
+                        //by app browser, enable full resolution button
                         let enableFullResButton = false;
                         if (!data.IsDirectory && data.Basename.indexOf(".") >= 0){
                             let ext = data.Basename.split(".").pop().toLowerCase();

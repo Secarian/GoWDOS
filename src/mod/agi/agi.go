@@ -137,7 +137,7 @@ func (g *Gateway) InitiateAllWebAppModules() {
 		vm := otto.New()
 
 		//Only allow non user based operations
-		g.injectStandardLibs(vm, script, "./web/")
+		g.injectStandardLibs(vm, script, "./app/")
 
 		_, err := vm.Run(scriptContent)
 		if err != nil {
@@ -153,7 +153,7 @@ func (g *Gateway) RunScript(script string) error {
 	vm := otto.New()
 
 	//Only allow non user based operations
-	g.injectStandardLibs(vm, "", "./web/")
+	g.injectStandardLibs(vm, "", "./app/")
 
 	_, err := vm.Run(script)
 	if err != nil {
@@ -225,7 +225,7 @@ func (g *Gateway) InterfaceHandler(w http.ResponseWriter, r *http.Request, thisu
 
 	//Check if the script path exists
 	scriptExists := false
-	scriptScope := "./web/"
+	scriptScope := "./app/"
 	for _, thisScope := range g.Option.ActivateScope {
 		thisScope = filepath.ToSlash(filepath.Clean(thisScope))
 		if utils.FileExists(thisScope + "/" + scriptFile) {

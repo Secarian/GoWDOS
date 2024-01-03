@@ -63,7 +63,7 @@ func SystemIDInit() {
 	})
 
 	//Register vendor information
-	if fs.FileExists("web/SystemAO/vendor/index.html") {
+	if fs.FileExists("app/SystemAO/vendor/index.html") {
 		registerSetting(settingModule{
 			Name:     "Vendor",
 			Desc:     "Vendor Notes",
@@ -128,7 +128,7 @@ func systemIdGetSystemUUID() string {
 }
 
 func systemHandleListLicense(w http.ResponseWriter, r *http.Request) {
-	licenses, _ := filepath.Glob("./web/SystemAO/info/license/*.txt")
+	licenses, _ := filepath.Glob("./app/SystemAO/info/license/*.txt")
 	results := [][]string{}
 	for _, file := range licenses {
 		fileName := filepath.Base(file)

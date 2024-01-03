@@ -31,11 +31,11 @@ func generateThumbnailForFolder(fsh *filesystem.FileSystemHandler, cacheFolder s
 	}
 
 	//Load the base template
-	if !fshAbs.FileExists("web/img/system/folder-preview.png") {
+	if !fshAbs.FileExists("app/img/system/folder-preview.png") {
 		//Missing system files. Skip rendering
 		return "", errors.New("Missing system template image file")
 	}
-	image1, err := fshAbs.Open("web/img/system/folder-preview.png")
+	image1, err := fshAbs.Open("app/img/system/folder-preview.png")
 	if err != nil {
 		return "", err
 	}

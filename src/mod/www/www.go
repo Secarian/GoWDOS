@@ -50,7 +50,7 @@ func (h *Handler) RouteRequest(w http.ResponseWriter, r *http.Request) {
 	//Check if it is reaching www root folder or any files directly under www.
 	if filepath.ToSlash(filepath.Clean(r.URL.Path)) == "/www" {
 		//Direct access of the root folder. Serve the homepage description.
-		http.ServeFile(w, r, "web/SystemAO/www/index.html")
+		http.ServeFile(w, r, "app/SystemAO/www/index.html")
 		return
 	} else if filepath.ToSlash(filepath.Dir(r.URL.Path)) == "/www" {
 		//Missing the last / at the end of the path

@@ -39,7 +39,7 @@ func (m *ModuleHandler) InstallViaZip(realpath string, gateway *agi.Gateway) err
 		return err
 	}
 
-	//Move the module(s) to the web root
+	//Move the module(s) to the app root
 	files, _ := filepath.Glob(unzipTmpFolder + "/*")
 	folders := []string{}
 	for _, file := range files {
@@ -53,7 +53,7 @@ func (m *ModuleHandler) InstallViaZip(realpath string, gateway *agi.Gateway) err
 			//Copy the module
 			//WIP
 
-					err = fs.CopyDir(folder, "./web/"+filepath.Base(folder))
+					err = fs.CopyDir(folder, "./app/"+filepath.Base(folder))
 					if err != nil {
 						log.Println(err)
 						continue
@@ -61,7 +61,7 @@ func (m *ModuleHandler) InstallViaZip(realpath string, gateway *agi.Gateway) err
 
 
 				//Activate the module
-				m.ActivateModuleByRoot("./web/"+filepath.Base(folder), gateway)
+				m.ActivateModuleByRoot("./app/"+filepath.Base(folder), gateway)
 				m.ModuleSortList()
 
 		}
@@ -107,7 +107,7 @@ func (m *ModuleHandler) InstallModuleViaGit(gitURL string, gateway *agi.Gateway)
 		return err
 	}
 
-	//Copy all folder within the download folder to the web root
+	//Copy all folder within the download folder to the app root
 	downloadedFiles, _ := filepath.Glob(downloadFolder + "/*")
 	copyPendingList := []string{}
 	for _, file := range downloadedFiles {
@@ -126,7 +126,7 @@ func (m *ModuleHandler) InstallModuleViaGit(gitURL string, gateway *agi.Gateway)
 	//WIP
 	/*
 		for _, src := range copyPendingList {
-			fs.FileCopy(src, "./web/", "skip", func(progress int, filename string) {
+			fs.FileCopy(src, "./app/", "skip", func(progress int, filename string) {
 				log.Println("Copying ", filename)
 			})
 		}
@@ -137,7 +137,7 @@ func (m *ModuleHandler) InstallModuleViaGit(gitURL string, gateway *agi.Gateway)
 
 	//Add the newly installed module to module list
 	for _, moduleFolder := range copyPendingList {
-		//This module folder has been moved to web successfully.
+		//This module folder has been moved to app successfully.
 		m.ActivateModuleByRoot(moduleFolder, gateway)
 	}
 
@@ -149,7 +149,7 @@ func (m *ModuleHandler) InstallModuleViaGit(gitURL string, gateway *agi.Gateway)
 
 func (m *ModuleHandler) ActivateModuleByRoot(moduleFolder string, gateway *agi.Gateway) error {
 	//Check if there is init.agi. If yes, load it as an module
-	thisModuleEstimataedRoot := filepath.Join("./web/", filepath.Base(moduleFolder))
+	thisModuleEstimataedRoot := filepath.Join("./app/", filepath.Base(moduleFolder))
 	if utils.FileExists(thisModuleEstimataedRoot) {
 		if utils.FileExists(filepath.Join(thisModuleEstimataedRoot, "init.agi")) {
 			//Load this as an module
@@ -194,12 +194,12 @@ func (m *ModuleHandler) HandleModuleInstallationListing(w http.ResponseWriter, r
 			//Only allow uninstalling of modules with start dir (aka installable)
 
 			//Check if WebApp or subservice
-			if utils.FileExists(filepath.Join("./web", mod.StartDir)) {
+			if utils.FileExists(filepath.Join("./app", mod.StartDir)) {
 				//This is a WebApp module
-				totalsize, _ := fs.GetDirctorySize(filepath.Join("./web", filepath.Dir(mod.StartDir)), false)
+				totalsize, _ := fs.GetDirctorySize(filepath.Join("./app", filepath.Dir(mod.StartDir)), false)
 
 				//Get mod time
-				mtime, err := fs.GetModTime(filepath.Join("./web", filepath.Dir(mod.StartDir)))
+				mtime, err := fs.GetModTime(filepath.Join("./app", filepath.Dir(mod.StartDir)))
 				if err != nil {
 					log.Println(err)
 				}
@@ -250,10 +250,10 @@ func (m *ModuleHandler) UninstallModule(moduleName string) error {
 	}
 
 	//Check if the module exists
-	if utils.FileExists(filepath.Join("./web", moduleName)) {
+	if utils.FileExists(filepath.Join("./app", moduleName)) {
 		//Remove the module
 		log.Println("Removing Module: ", moduleName)
-		os.RemoveAll(filepath.Join("./web", moduleName))
+		os.RemoveAll(filepath.Join("./app", moduleName))
 
 		//Unregister the module from loaded list
 		newLoadedModuleList := []*ModuleInfo{}

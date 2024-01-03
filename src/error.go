@@ -14,7 +14,7 @@ import (
 )
 
 func errorHandleNotFound(w http.ResponseWriter, r *http.Request) {
-	notFoundPage := "./web/SystemAO/notfound.html"
+	notFoundPage := "./app/SystemAO/notfound.html"
 	if fs.FileExists(notFoundPage) {
 
 		notFoundTemplateBytes, err := os.ReadFile(notFoundPage)
@@ -36,7 +36,7 @@ func errorHandleNotFound(w http.ResponseWriter, r *http.Request) {
 }
 
 func errorHandleInternalServerError(w http.ResponseWriter, r *http.Request) {
-	internalServerErrPage := "./web/SystemAO/internalServerError.html"
+	internalServerErrPage := "./app/SystemAO/internalServerError.html"
 	if fs.FileExists(internalServerErrPage) {
 
 		templateBytes, err := os.ReadFile(internalServerErrPage)
@@ -59,7 +59,7 @@ func errorHandleInternalServerError(w http.ResponseWriter, r *http.Request) {
 }
 
 func errorHandlePermissionDenied(w http.ResponseWriter, r *http.Request) {
-	unauthorizedPage := "./web/SystemAO/unauthorized.html"
+	unauthorizedPage := "./app/SystemAO/unauthorized.html"
 	if fs.FileExists(unauthorizedPage) {
 		notFoundTemplateBytes, err := os.ReadFile(unauthorizedPage)
 		notFoundTemplate := string(notFoundTemplateBytes)

@@ -20,7 +20,7 @@ func RegisterSystemInit() {
 	//Register the endpoints for public registration
 	imgsrc := filepath.Join(vendorResRoot, "vendor_icon.png")
 	if !fs.FileExists(imgsrc) {
-		imgsrc = "./web/img/public/vendor_icon.png"
+		imgsrc = "./app/img/public/vendor_icon.png"
 	}
 
 	rh := reg.NewRegisterHandler(sysdb, authAgent, permissionHandler, reg.RegisterOptions{

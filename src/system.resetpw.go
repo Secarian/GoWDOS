@@ -126,7 +126,7 @@ func system_resetpw_handlePasswordReset(w http.ResponseWriter, r *http.Request) 
 	//OK. Create the New Password Entering UI
 	vendorIconSrc := filepath.Join(vendorResRoot, "vendor_icon.png")
 	if !fs.FileExists(vendorIconSrc) {
-		vendorIconSrc = "./web/img/public/vendor_icon.png"
+		vendorIconSrc = "./app/img/public/vendor_icon.png"
 	}
 	imageBase64, _ := utils.LoadImageAsBase64(vendorIconSrc)
 	template, err := utils.Templateload("system/reset/resetPasswordTemplate.html", map[string]interface{}{
@@ -146,7 +146,7 @@ func system_resetpw_serveIdEnterInterface(w http.ResponseWriter, r *http.Request
 	//Reset Key or Username not found, Serve entering interface
 	imgsrc := filepath.Join(vendorResRoot, "vendor_icon.png")
 	if !fs.FileExists(imgsrc) {
-		imgsrc = "./web/img/public/vendor_icon.png"
+		imgsrc = "./app/img/public/vendor_icon.png"
 	}
 	imageBase64, _ := utils.LoadImageAsBase64(imgsrc)
 	template, err := utils.Templateload("system/reset/resetCodeTemplate.html", map[string]interface{}{

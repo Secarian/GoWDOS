@@ -7,13 +7,13 @@ In simple words, you can add function to your system with JavaScript :)
 
 ## Usages
 
-1. Put your js / agi file inside web/* (e.g. ./web/Dummy/backend/test.js)
+1. Put your js / agi file inside app/* (e.g. ./app/Dummy/backend/test.js)
 2. Load your script by calling / ajax request to ```/system/ajgi/interface?script={yourfile}.js```, (e.g. /system/ajgi/interface?script=Dummy/backend/test.js)
 3. Wait for the reponse from the script by calling sendResp in the script
 
 ## Module Init Script
 
-To initialize a module without a main.go function call, you can create a "init.agi" script in your module root under ./web/myModule where "myModule" is your module name.
+To initialize a module without a main.go function call, you can create a "init.agi" script in your module root under ./app/myModule where "myModule" is your module name.
 
 To register the module, you can call to the "registerModule" function with JSON stringify module launch info following the following example JavaScript Object.
 
@@ -48,17 +48,17 @@ newDBTableIfNotExists("myModule")
 
 ## Application Examples
 
-See web/UnitTest/backend/*.js for more information on how to use AGI in webapps.
+See app/UnitTest/backend/*.js for more information on how to use AGI in webapps.
 
 For subservice, see subservice/demo/agi/ for more examples.
 
 ### Access From Frontend
 
-To access server functions from front-end (e.g. You are building a serverless webapp on top of wdos), you can call to the ao_module.js function for running an agi script located under ```./web``` directory. You can find the ao_module.js wrapper under ```./web/script/```
+To access server functions from front-end (e.g. You are building a serverless webapp on top of wdos), you can call to the ao_module.js function for running an agi script located under ```./app``` directory. You can find the ao_module.js wrapper under ```./app/script/```
 
 Here is an example extracted from Music module for listing files nearby the openeing music file.
 
-./web/Music/embedded.html
+./app/Music/embedded.html
 
 ```
 ao_module_agirun("Music/functions/getMeta.js", {
@@ -71,7 +71,7 @@ ao_module_agirun("Music/functions/getMeta.js", {
 });
 ```
 
-./web/Music/functions/getMeta.js
+./app/Music/functions/getMeta.js
 
 ```
 //Define helper functions
@@ -569,7 +569,7 @@ var content = filelib.readFile("./untitled.md");
 
 ### appdata
 
-An API for access files inside the web folder. This API only provide read only functions. Include the appdata lib as follows.
+An API for access files inside the app folder. This API only provide read only functions. Include the appdata lib as follows.
 
 ```javascript
 requirelib("appdata");
@@ -656,7 +656,7 @@ Here is an example code for parsing the output, or you can also directly throw i
 
 ### http
 
-A basic http function group that allow GET / POST / HEAD / Download request to other web resources
+A basic http function group that allow GET / POST / HEAD / Download request to other app resources
 
 ```
 //Include the library
@@ -694,7 +694,7 @@ requirelib("websocket");
 ```
 websocket.upgrade(10); //Timeout value in integer, return false if failed
 var recv = websocket.read(); //Blocking websocket listen
-websocket.send("Hello World"); //Send websocket to client (web UI)
+websocket.send("Hello World"); //Send websocket to client (app UI)
 websocket.close(); //Close websocket connection
 ```
 

@@ -87,12 +87,12 @@ func (m *Manager) HandleIconLoad(w http.ResponseWriter, r *http.Request) {
 	targetDevice := m.GetDeviceByID(devid)
 	iconName := targetDevice.Handler.Icon(targetDevice)
 
-	iconFilePath := "./web/SystemAO/iot/hub/img/devices/" + iconName + ".png"
+	iconFilePath := "./app/SystemAO/iot/hub/img/devices/" + iconName + ".png"
 	//fmt.Println(iconFilePath)
 	if utils.FileExists(iconFilePath) {
 		http.ServeFile(w, r, iconFilePath)
 	} else {
-		http.ServeFile(w, r, "./web/SystemAO/iot/hub/img/devices/unknown.png")
+		http.ServeFile(w, r, "./app/SystemAO/iot/hub/img/devices/unknown.png")
 	}
 }
 

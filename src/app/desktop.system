@@ -6050,7 +6050,7 @@
                     if (filedata.ShortcutType == "folder"){
                         openPendingFolders.push(filedata.ShortcutPath);
                     }else if (filedata.ShortcutType == "module"){
-                        openPendingFolders.push("web:/" + filedata.ShortcutPath);
+                        openPendingFolders.push("app:/" + filedata.ShortcutPath);
                     }
                     
                 }

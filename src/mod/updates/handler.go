@@ -173,7 +173,7 @@ func HandleGetUpdatePlatformInfo(w http.ResponseWriter, r *http.Request) {
 
 // Handle check if there is a pending update
 func HandlePendingCheck(w http.ResponseWriter, r *http.Request) {
-	if utils.FileExists("./updates/") && utils.FileExists("./updates/web/") && utils.FileExists("./updates/system/") {
+	if utils.FileExists("./updates/") && utils.FileExists("./updates/app/") && utils.FileExists("./updates/system/") {
 		//Update is pending
 		utils.SendJSONResponse(w, "true")
 	} else {

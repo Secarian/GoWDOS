@@ -17,13 +17,13 @@ import (
 	AGI Appdata Access Library
 	Author: Secarian
 
-	This library allow agi script to access files located in the web root
+	This library allow agi script to access files located in the app root
 	*This library provide READ ONLY function*
-	You cannot write to web folder due to security reasons. If you need to read write
-	web root (which is not recommended), ask the user to mount it top web:/ manually
+	You cannot write to app folder due to security reasons. If you need to read write
+	app root (which is not recommended), ask the user to mount it top app:/ manually
 */
 
-var webRoot string = "./web" //The web folder root
+var webRoot string = "./app" //The app folder root
 
 func (g *Gateway) AppdataLibRegister() {
 	err := g.RegisterLib("appdata", g.injectAppdataLibFunctions)

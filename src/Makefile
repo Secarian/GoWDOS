@@ -31,7 +31,7 @@ web.tar.gz:
 	-mkdir ./dist/
 
 	@echo "Moving subfolders to build folder"
-	-cp -r ./web ./dist/web/
+	-cp -r ./app ./dist/app/
 	# cp -r ./subservice ./dist/subservice/
 	-cp -r ./system ./dist/system/
 
@@ -52,19 +52,19 @@ web.tar.gz:
 	-rm -rf "./dist/system/ip2country"
 
 	@ echo "Remove modules that should not go into the build folder"
-	-rm -rf "./dist/web/Cyinput"
-	-rm -rf "./dist/web/Label Maker"
-	-rm -rf "./dist/web/Dummy"
+	-rm -rf "./dist/app/Cyinput"
+	-rm -rf "./dist/app/Label Maker"
+	-rm -rf "./dist/app/Dummy"
 	
 
 	@echo "Creating tarball for all required files"
-	-rm ./dist/web.tar.gz
-	-cd ./dist/ && tar -czf ./web.tar.gz system/ web/
+	-rm ./dist/app.tar.gz
+	-cd ./dist/ && tar -czf ./app.tar.gz system/ app/
 
 	@echo "Clearing up unzipped folder structures"
-	-rm -rf "./dist/web"
+	-rm -rf "./dist/app"
 	-rm -rf "./dist/system"
 
 wdos_file_checksum.sha1:
 	@echo "Generating the checksum, if sha1sum installed"
-	-sha1sum ./dist/web.tar.gz > ./dist/wdos_file_checksum.sha1
+	-sha1sum ./dist/app.tar.gz > ./dist/wdos_file_checksum.sha1

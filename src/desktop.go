@@ -436,7 +436,7 @@ func desktop_handleUserInfo(w http.ResponseWriter, r *http.Request) {
 	utils.SendJSONResponse(w, string(jsonString))
 }
 
-// Icon handling function for web endpoint
+// Icon handling function for app endpoint
 func desktop_fileLocation_handler(w http.ResponseWriter, r *http.Request) {
 	get, _ := utils.PostPara(r, "get") //Check if there are get request for a given filepath
 	set, _ := utils.PostPara(r, "set") //Check if there are any set request for a given filepath
@@ -499,9 +499,9 @@ func desktop_theme_handler(w http.ResponseWriter, r *http.Request) {
 	loadUserTheme, _ := utils.GetPara(r, "load")
 	if targetTheme == "" && getUserTheme == "" && loadUserTheme == "" {
 		//List all the currnet themes in the list
-		themes, err := filepath.Glob("web/img/desktop/bg/*")
+		themes, err := filepath.Glob("app/img/desktop/bg/*")
 		if err != nil {
-			systemWideLogger.PrintAndLog("Desktop", "Unable to search bg from destkop image root. Are you sure the web data folder exists?", err)
+			systemWideLogger.PrintAndLog("Desktop", "Unable to search bg from destkop image root. Are you sure the app data folder exists?", err)
 			return
 		}
 		//Prase the results to json array

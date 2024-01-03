@@ -64,7 +64,7 @@ func SystemInfoInit() {
 	//Load the vendor icon
 	vendorIconSrc := filepath.Join(vendorResRoot, "vendor_icon.png")
 	if !fs.FileExists(vendorIconSrc) {
-		vendorIconSrc = "./web/img/public/vendor_icon.png"
+		vendorIconSrc = "./app/img/public/vendor_icon.png"
 	}
 	imageBase64, _ := utils.LoadImageAsBase64(vendorIconSrc)
 	if *allow_hardware_management {
@@ -135,7 +135,7 @@ func SystemInfoInit() {
 	http.HandleFunc("/system/info/wallpaper.jpg", func(w http.ResponseWriter, r *http.Request) {
 		imgsrc := filepath.Join(vendorResRoot, "auth_bg.jpg")
 		if !fs.FileExists(imgsrc) {
-			imgsrc = "./web/img/public/auth_bg.jpg"
+			imgsrc = "./app/img/public/auth_bg.jpg"
 		}
 		http.ServeFile(w, r, imgsrc)
 	})

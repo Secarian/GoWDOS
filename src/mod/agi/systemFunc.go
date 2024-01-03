@@ -76,7 +76,7 @@ func (g *Gateway) injectStandardLibs(vm *otto.Otto, scriptFile string, scriptSco
 	`)
 
 	vm.Set("addNightlyTask", func(call otto.FunctionCall) otto.Value {
-		scriptPath, _ := call.Argument(0).ToString() //From web directory
+		scriptPath, _ := call.Argument(0).ToString() //From app directory
 		if isValidAGIScript(scriptPath) {
 			g.NightlyScripts = append(g.NightlyScripts, scriptPath)
 		} else {

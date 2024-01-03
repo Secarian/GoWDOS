@@ -13,7 +13,7 @@ func ldapInit() {
 	//ldap
 	authIcon := filepath.Join(vendorResRoot, "auth_icon.png")
 	if !fs.FileExists(authIcon) {
-		authIcon = "./web/img/public/auth_icon.png"
+		authIcon = "./app/img/public/auth_icon.png"
 	}
 	ldapHandler := ldap.NewLdapHandler(authAgent, registerHandler, sysdb, permissionHandler, userHandler, nightlyManager, authIcon)
 

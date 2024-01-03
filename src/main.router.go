@@ -25,7 +25,7 @@ func mrouter(h http.Handler) http.Handler {
 		*/
 
 		if r.URL.Path == "/favicon.ico" || r.URL.Path == "/manifest.webmanifest" || r.URL.Path == "/robots.txt" || r.URL.Path == "/humans.txt" {
-			//Serving web specification files. Allow no auth access.
+			//Serving app specification files. Allow no auth access.
 			h.ServeHTTP(w, r)
 		} else if r.URL.Path == "/login.system" {
 			//Login page. Require special treatment for template.
@@ -35,17 +35,17 @@ func mrouter(h http.Handler) http.Handler {
 			//Append the redirection addr into the template
 			imgsrc := filepath.Join(vendorResRoot, "auth_icon.png")
 			if !fs.FileExists(imgsrc) {
-				imgsrc = "./web/img/public/auth_icon.png"
+				imgsrc = "./app/img/public/auth_icon.png"
 			}
 			imageBase64, _ := utils.LoadImageAsBase64(imgsrc)
-			parsedPage, err := utils.Templateload("web/login.system", map[string]interface{}{
+			parsedPage, err := utils.Templateload("app/login.system", map[string]interface{}{
 				"redirection_addr": red,
 				"usercount":        strconv.Itoa(authAgent.GetUserCounts()),
 				"service_logo":     imageBase64,
 				"login_addr":       "system/auth/login",
 			})
 			if err != nil {
-				panic("Error. Unable to parse login page. Is web directory data exists?")
+				panic("Error. Unable to parse login page. Is app directory data exists?")
 			}
 			w.Header().Add("Content-Type", "text/html; charset=UTF-8")
 			w.Write([]byte(parsedPage))
@@ -58,7 +58,7 @@ func mrouter(h http.Handler) http.Handler {
 
 		} else if (len(r.URL.Path) > 11 && r.URL.Path[:11] == "/img/public") || (len(r.URL.Path) > 7 && r.URL.Path[:7] == "/script") {
 			//Public image directory. Allow anyone to access resources inside this directory.
-			if filepath.Ext("web"+fs.DecodeURI(r.RequestURI)) == ".js" {
+			if filepath.Ext("app"+fs.DecodeURI(r.RequestURI)) == ".js" {
 				//Fixed serve js meme type invalid bug on Firefox
 				w.Header().Add("Content-Type", "application/javascript; charset=UTF-8")
 			}
@@ -133,7 +133,7 @@ func mrouter(h http.Handler) http.Handler {
 				//Do something if development build
 
 			}
-			if filepath.Ext("web"+fs.DecodeURI(r.RequestURI)) == ".js" {
+			if filepath.Ext("app"+fs.DecodeURI(r.RequestURI)) == ".js" {
 				//Fixed serve js meme type invalid bug on Firefox
 				w.Header().Add("Content-Type", "application/javascript; charset=UTF-8")
 			}
@@ -153,7 +153,7 @@ func mrouter(h http.Handler) http.Handler {
 			if !*enable_dir_listing {
 				if strings.HasSuffix(r.URL.Path, "/") {
 					//User trying to access a directory. Send NOT FOUND.
-					if fs.FileExists("web" + r.URL.Path + "index.html") {
+					if fs.FileExists("app" + r.URL.Path + "index.html") {
 						//Index exists. Allow passthrough
 
 					} else {
@@ -162,7 +162,7 @@ func mrouter(h http.Handler) http.Handler {
 					}
 				}
 			}
-			if !fs.FileExists("web" + r.URL.Path) {
+			if !fs.FileExists("app" + r.URL.Path) {
 				//File not found
 				errorHandleNotFound(w, r)
 				return
@@ -170,7 +170,7 @@ func mrouter(h http.Handler) http.Handler {
 			routerStaticContentServer(h, w, r)
 		} else {
 			//User not logged in. Check if the path end with public/. If yes, allow public access
-			if !fs.FileExists(filepath.Join("./web", r.URL.Path)) {
+			if !fs.FileExists(filepath.Join("./app", r.URL.Path)) {
 				//Requested file not exists on the server. Return not found
 				errorHandleNotFound(w, r)
 			} else if r.URL.Path[len(r.URL.Path)-1:] != "/" && filepath.Base(filepath.Dir(r.URL.Path)) == "public" {
