@@ -14,7 +14,7 @@ import (
 
 	"github.com/pkg/sftp"
 	"imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/filesystem/wdosfs"
+	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
 )
 
 // Root of the serving tree

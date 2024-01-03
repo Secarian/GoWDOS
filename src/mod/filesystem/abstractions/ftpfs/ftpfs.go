@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/jlaffaye/ftp"
-	"imuslab.com/wdos/mod/filesystem/wdosfs"
+	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
 )
 
 /*

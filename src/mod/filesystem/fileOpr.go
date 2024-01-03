@@ -26,8 +26,8 @@ import (
 	"strings"
 	"time"
 
+	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
 	"imuslab.com/wdos/mod/filesystem/hidden"
-	"imuslab.com/wdos/mod/filesystem/wdosfs"
 
 	archiver "github.com/mholt/archiver/v3"
 )

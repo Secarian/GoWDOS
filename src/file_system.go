@@ -27,6 +27,7 @@ import (
 
 	"imuslab.com/wdos/mod/compatibility"
 	"imuslab.com/wdos/mod/filesystem"
+	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
 	fsp "imuslab.com/wdos/mod/filesystem/fspermission"
 	"imuslab.com/wdos/mod/filesystem/fssort"
 	"imuslab.com/wdos/mod/filesystem/fuzzy"
@@ -34,7 +35,6 @@ import (
 	"imuslab.com/wdos/mod/filesystem/localversion"
 	metadata "imuslab.com/wdos/mod/filesystem/metadata"
 	"imuslab.com/wdos/mod/filesystem/shortcut"
-	"imuslab.com/wdos/mod/filesystem/wdosfs"
 	module "imuslab.com/wdos/mod/modules"
 	prout "imuslab.com/wdos/mod/prouter"
 	"imuslab.com/wdos/mod/share"

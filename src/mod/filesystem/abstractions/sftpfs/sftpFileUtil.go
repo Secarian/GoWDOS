@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/pkg/sftp"
-	"imuslab.com/wdos/mod/filesystem/wdosfs"
+	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
 )
 
 /*

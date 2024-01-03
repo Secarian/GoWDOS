@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"imuslab.com/wdos/mod/filesystem/wdosfs"
+	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
 	"imuslab.com/wdos/mod/utils"
 )
 

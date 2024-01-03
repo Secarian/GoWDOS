@@ -109,7 +109,7 @@ imuslab.com/wdos/mod/filesystem/abstractions/localfs,Unknown,Unknown
 imuslab.com/wdos/mod/filesystem/abstractions/sftpfs,Unknown,Unknown
 imuslab.com/wdos/mod/filesystem/abstractions/smbfs,Unknown,Unknown
 imuslab.com/wdos/mod/filesystem/abstractions/webdavfs,Unknown,Unknown
-imuslab.com/wdos/mod/filesystem/wdosfs,Unknown,Unknown
+imuslab.com/wdos/mod/filesystem/arozfs,Unknown,Unknown
 imuslab.com/wdos/mod/filesystem/fspermission,Unknown,Unknown
 imuslab.com/wdos/mod/filesystem/fssort,Unknown,Unknown
 imuslab.com/wdos/mod/filesystem/fuzzy,Unknown,Unknown

@@ -11,8 +11,8 @@ import (
 	"strings"
 
 	fs "imuslab.com/wdos/mod/filesystem"
+	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
 	"imuslab.com/wdos/mod/filesystem/shortcut"
-	"imuslab.com/wdos/mod/filesystem/wdosfs"
 	module "imuslab.com/wdos/mod/modules"
 	prout "imuslab.com/wdos/mod/prouter"
 	"imuslab.com/wdos/mod/utils"

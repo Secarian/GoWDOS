@@ -19,7 +19,7 @@ import (
 	"github.com/robertkrimen/otto"
 
 	"imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/filesystem/wdosfs"
+	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
 	"imuslab.com/wdos/mod/neuralnet"
 	user "imuslab.com/wdos/mod/user"
 	"imuslab.com/wdos/mod/utils"

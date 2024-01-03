@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 
 	"imuslab.com/wdos/mod/disk/diskcapacity/dftool"
-	"imuslab.com/wdos/mod/filesystem/wdosfs"
+	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
 	"imuslab.com/wdos/mod/user"
 	"imuslab.com/wdos/mod/utils"
 )
