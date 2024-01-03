@@ -313,28 +313,3 @@ Sie können die Autoren über [Telegram](https://t.me/ArOZBeta) erreichen! Wir f
 Verwenden Sie WDOS auf etwas anderem als Raspberry Pis? Zeigen Sie uns Ihre Serverkonfiguration und Hardware-Spezifikationen!
 
 https://github.com/Secarian/GoWDOS/issues/50
-
-### 📝 Verwandte Artikel
-
-Wenn Sie nach Tutorials suchen oder Hilfe bei der Fehlerbehebung von kleineren Problemen benötigen, schauen Sie sich diese von unseren Benutzern verfassten Artikel an. (Vielen Dank, dass Sie dieses Projekt geteilt haben :D )
-
-### Englisch
-
-- [Ich habe mein eigenes Web-Desktop-Betriebssystem 3 Jahre lang geschrieben und so sieht es jetzt aus](https://dev.to/tobychui/i-write-my-own-web-desktop-os-for-3-years-and-this-is-what-it-looks-like-now-2903)
-
-### Chinesisch
-
-- [WDOS + Raspberry Pi zum Bau eines tragbaren NAS (zur Vermeidung von Gruben)](https://blog.csdn.net/m0_37728676/article/details/113876815)
-- [WDOS + Raspberry Pi Mini NAS](http://www.huajia.online/2021/10/23/WDOS-%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B0%8F%E5%9E%8BNAS/)
-- [Raspberry Pi Arozos Nord](https://blog.pi-dal.com/%E9%80%82%E7%94%A8%E4%BA%8E%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E9%80%9A%E7%94%A8Web%E6%A1%8C%E9%9D%A2%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)
-- [Linux:WDOS-Installation und Erstellung des Boot-Selbststartdienstes](https://pvecli.xuan2host.com/linux-wdos-install-service/)
-
-### Portugiesisch
-
-- [DESKTOP WEB gebaut und entwickelt in der GO SPRACHE](https://www.youtube.com/watch?v=C42UdgOySY)
-
-Fühlen Sie sich frei, einen PR zu erstellen, wenn Sie einen Artikel über WDOS geschrieben haben!
-
-## Kauf mir einen Kaffee
-
-Ich arbeite an diesem Projekt als Hobby / Nebenprojekt und ich bin nicht wirklich daran interessiert, Spenden für dieses Projekt zu sammeln.
