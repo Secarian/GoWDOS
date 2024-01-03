@@ -30,7 +30,7 @@ import (
 	sftpfs "imuslab.com/wdos/mod/filesystem/abstractions/sftpfs"
 	"imuslab.com/wdos/mod/filesystem/abstractions/smbfs"
 	"imuslab.com/wdos/mod/filesystem/abstractions/webdavfs"
-	"imuslab.com/wdos/mod/filesystem/wdosfs"
+	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
 )
 
 //Options for creating new file system handler
