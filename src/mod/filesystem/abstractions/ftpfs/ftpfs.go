@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/jlaffaye/ftp"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 )
 
 /*
@@ -103,16 +103,16 @@ func (l FTPFSAbstraction) makeConn() (*ftp.ServerConn, error) {
 }
 
 func (l FTPFSAbstraction) Chmod(filename string, mode os.FileMode) error {
-	return arozfs.ErrOperationNotSupported
+	return wdosfs.ErrOperationNotSupported
 }
 func (l FTPFSAbstraction) Chown(filename string, uid int, gid int) error {
-	return arozfs.ErrOperationNotSupported
+	return wdosfs.ErrOperationNotSupported
 }
 func (l FTPFSAbstraction) Chtimes(filename string, atime time.Time, mtime time.Time) error {
-	return arozfs.ErrOperationNotSupported
+	return wdosfs.ErrOperationNotSupported
 }
-func (l FTPFSAbstraction) Create(filename string) (arozfs.File, error) {
-	return nil, arozfs.ErrOperationNotSupported
+func (l FTPFSAbstraction) Create(filename string) (wdosfs.File, error) {
+	return nil, wdosfs.ErrOperationNotSupported
 }
 func (l FTPFSAbstraction) Mkdir(filename string, mode os.FileMode) error {
 	c, err := l.makeConn()
@@ -135,11 +135,11 @@ func (l FTPFSAbstraction) MkdirAll(filename string, mode os.FileMode) error {
 func (l FTPFSAbstraction) Name() string {
 	return ""
 }
-func (l FTPFSAbstraction) Open(filename string) (arozfs.File, error) {
-	return nil, arozfs.ErrOperationNotSupported
+func (l FTPFSAbstraction) Open(filename string) (wdosfs.File, error) {
+	return nil, wdosfs.ErrOperationNotSupported
 }
-func (l FTPFSAbstraction) OpenFile(filename string, flag int, perm os.FileMode) (arozfs.File, error) {
-	return nil, arozfs.ErrOperationNotSupported
+func (l FTPFSAbstraction) OpenFile(filename string, flag int, perm os.FileMode) (wdosfs.File, error) {
+	return nil, wdosfs.ErrOperationNotSupported
 }
 func (l FTPFSAbstraction) Remove(filename string) error {
 	filename = filterFilepath(filename)
@@ -176,7 +176,7 @@ func (l FTPFSAbstraction) Rename(oldname, newname string) error {
 	return nil
 }
 func (l FTPFSAbstraction) Stat(filename string) (os.FileInfo, error) {
-	return nil, arozfs.ErrNullOperation
+	return nil, wdosfs.ErrNullOperation
 }
 func (l FTPFSAbstraction) Close() error {
 	time.Sleep(500 * time.Millisecond)
@@ -188,11 +188,11 @@ func (l FTPFSAbstraction) Close() error {
 */
 
 func (l FTPFSAbstraction) VirtualPathToRealPath(subpath string, username string) (string, error) {
-	return arozfs.GenericVirtualPathToRealPathTranslator(l.uuid, l.hierarchy, subpath, username)
+	return wdosfs.GenericVirtualPathToRealPathTranslator(l.uuid, l.hierarchy, subpath, username)
 }
 
 func (l FTPFSAbstraction) RealPathToVirtualPath(fullpath string, username string) (string, error) {
-	return arozfs.GenericRealPathToVirtualPathTranslator(l.uuid, l.hierarchy, fullpath, username)
+	return wdosfs.GenericRealPathToVirtualPathTranslator(l.uuid, l.hierarchy, fullpath, username)
 }
 
 func (l FTPFSAbstraction) FileExists(realpath string) bool {
@@ -222,7 +222,7 @@ func (l FTPFSAbstraction) IsDir(realpath string) bool {
 }
 
 func (l FTPFSAbstraction) Glob(realpathWildcard string) ([]string, error) {
-	return []string{}, arozfs.ErrOperationNotSupported
+	return []string{}, wdosfs.ErrOperationNotSupported
 }
 
 func (l FTPFSAbstraction) GetFileSize(realpath string) int64 {
@@ -295,7 +295,7 @@ func (l FTPFSAbstraction) ReadDir(filename string) ([]fs.DirEntry, error) {
 	}
 
 	for _, entry := range entries {
-		entryFilename := arozfs.ToSlash(filepath.Join(filename, entry.Name))
+		entryFilename := wdosfs.ToSlash(filepath.Join(filename, entry.Name))
 		//fmt.Println(entryFilename)
 		thisDirEntry := newDirEntryFromFTPEntry(entry, c, entryFilename)
 		results = append(results, thisDirEntry)
@@ -362,7 +362,7 @@ func (l FTPFSAbstraction) Heartbeat() error {
 
 // Utilities
 func filterFilepath(rawpath string) string {
-	rawpath = arozfs.ToSlash(filepath.Clean(strings.TrimSpace(rawpath)))
+	rawpath = wdosfs.ToSlash(filepath.Clean(strings.TrimSpace(rawpath)))
 	if strings.HasPrefix(rawpath, "./") {
 		return rawpath[1:]
 	} else if rawpath == "." || rawpath == "" {

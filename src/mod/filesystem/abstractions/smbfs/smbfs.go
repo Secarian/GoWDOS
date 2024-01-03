@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"github.com/hirochachacha/go-smb2"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 )
 
 /*
@@ -93,14 +93,14 @@ func (a ServerMessageBlockFileSystemAbstraction) Chmod(filename string, mode os.
 	return a.share.Chmod(filename, mode)
 }
 func (a ServerMessageBlockFileSystemAbstraction) Chown(filename string, uid int, gid int) error {
-	return arozfs.ErrOperationNotSupported
+	return wdosfs.ErrOperationNotSupported
 }
 func (a ServerMessageBlockFileSystemAbstraction) Chtimes(filename string, atime time.Time, mtime time.Time) error {
 	filename = filterFilepath(filename)
 	filename = toWinPath(filename)
 	return a.share.Chtimes(filename, atime, mtime)
 }
-func (a ServerMessageBlockFileSystemAbstraction) Create(filename string) (arozfs.File, error) {
+func (a ServerMessageBlockFileSystemAbstraction) Create(filename string) (wdosfs.File, error) {
 	filename = filterFilepath(filename)
 	f, err := a.share.Create(filename)
 	if err != nil {
@@ -122,7 +122,7 @@ func (a ServerMessageBlockFileSystemAbstraction) MkdirAll(filename string, mode 
 func (a ServerMessageBlockFileSystemAbstraction) Name() string {
 	return ""
 }
-func (a ServerMessageBlockFileSystemAbstraction) Open(filename string) (arozfs.File, error) {
+func (a ServerMessageBlockFileSystemAbstraction) Open(filename string) (wdosfs.File, error) {
 	filename = toWinPath(filterFilepath(filename))
 	f, err := a.share.Open(filename)
 	if err != nil {
@@ -131,7 +131,7 @@ func (a ServerMessageBlockFileSystemAbstraction) Open(filename string) (arozfs.F
 	af := NewSmbFsFile(f)
 	return af, nil
 }
-func (a ServerMessageBlockFileSystemAbstraction) OpenFile(filename string, flag int, perm os.FileMode) (arozfs.File, error) {
+func (a ServerMessageBlockFileSystemAbstraction) OpenFile(filename string, flag int, perm os.FileMode) (wdosfs.File, error) {
 	filename = toWinPath(filterFilepath(filename))
 	f, err := a.share.OpenFile(filename, flag, perm)
 	if err != nil {
@@ -194,7 +194,7 @@ func (a ServerMessageBlockFileSystemAbstraction) VirtualPathToRealPath(subpath s
 		return toWinPath(filepath.ToSlash(filepath.Clean(subpath))), nil
 	}
 
-	return "", arozfs.ErrVpathResolveFailed
+	return "", wdosfs.ErrVpathResolveFailed
 }
 
 func (a ServerMessageBlockFileSystemAbstraction) RealPathToVirtualPath(fullpath string, username string) (string, error) {

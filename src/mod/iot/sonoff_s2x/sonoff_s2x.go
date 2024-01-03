@@ -170,7 +170,7 @@ func (h *Handler) Stats() iot.Stats {
 		Desc:          "Tasmota firmware for Sonoff S2X devices",
 		Version:       "1.0",
 		ProtocolVer:   "1.0",
-		Author:        "tobychui",
+		Author:        "Secarian",
 		AuthorWebsite: "http://imuslab.com",
 		AuthorEmail:   "imuslab@gmail.com",
 		ReleaseDate:   1616944405,

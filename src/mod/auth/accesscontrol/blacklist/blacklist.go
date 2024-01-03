@@ -12,7 +12,7 @@ import (
 /*
 
 	WDOS Blacklist Module
-	Author: tobychui
+	Author: Secarian
 
 	This module record the IP blacklist of users trying to enter the
 	system without permission

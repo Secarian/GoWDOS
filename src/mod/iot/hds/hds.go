@@ -13,7 +13,7 @@ import (
 
 /*
 	Home Dynamic System
-	Author: tobychui
+	Author: Secarian
 
 	This is a compaitbility module for those who are still using HDSv1 protocol
 	If you are still using HDSv1, you should consider upgrading it to the latest
@@ -24,19 +24,19 @@ type Handler struct {
 	lastScanTime int64
 }
 
-//Create a new HDS Protocol Handler
+// Create a new HDS Protocol Handler
 func NewProtocolHandler() *Handler {
 	//Create a new MDNS Host
 	return &Handler{}
 }
 
-//Start the HDSv1 scanner, which no startup process is required
+// Start the HDSv1 scanner, which no startup process is required
 func (h *Handler) Start() error {
 	log.Println("[IoT] Home Dynamic System (Legacy) Loaded")
 	return nil
 }
 
-//Scan all the HDS devices in LAN using the legacy ip scanner methods
+// Scan all the HDS devices in LAN using the legacy ip scanner methods
 func (h *Handler) Scan() ([]*iot.Device, error) {
 	//Get the current local IP address
 	ip := getLocalIP()
@@ -147,22 +147,22 @@ func (h *Handler) Scan() ([]*iot.Device, error) {
 	return results, nil
 }
 
-//Home Dynamic system's devices no need to established conenction before executing anything
+// Home Dynamic system's devices no need to established conenction before executing anything
 func (h *Handler) Connect(device *iot.Device, authInfo *iot.AuthInfo) error {
 	return nil
 }
 
-//Same rules also apply to disconnect
+// Same rules also apply to disconnect
 func (h *Handler) Disconnect(device *iot.Device) error {
 	return nil
 }
 
-//Get the icon filename of the device, it is always switch for hdsv1
+// Get the icon filename of the device, it is always switch for hdsv1
 func (h *Handler) Icon(device *iot.Device) string {
 	return "switch"
 }
 
-//Get the status of the device
+// Get the status of the device
 func (h *Handler) Execute(device *iot.Device, endpoint *iot.Endpoint, payload interface{}) (interface{}, error) {
 	//GET request the target device endpoint
 	resp, err := tryGet("http://" + device.IPAddr + ":" + strconv.Itoa(device.Port) + "/" + endpoint.RelPath)
@@ -173,7 +173,7 @@ func (h *Handler) Execute(device *iot.Device, endpoint *iot.Endpoint, payload in
 	return resp, nil
 }
 
-//Get the status of the device
+// Get the status of the device
 func (h *Handler) Status(device *iot.Device) (map[string]interface{}, error) {
 	resp, err := tryGet("http://" + device.IPAddr + "/status")
 	if err != nil {
@@ -187,14 +187,14 @@ func (h *Handler) Status(device *iot.Device) (map[string]interface{}, error) {
 	return result, nil
 }
 
-//Return the specification of this protocol handler
+// Return the specification of this protocol handler
 func (h *Handler) Stats() iot.Stats {
 	return iot.Stats{
 		Name:          "Home Dynamic",
-		Desc:          "A basic IoT communication protocol for ESP8266 for ArOZ Online Beta",
+		Desc:          "A basic IoT communication protocol for ESP8266 for WDOS Online Beta",
 		Version:       "1.0",
 		ProtocolVer:   "1.0",
-		Author:        "tobychui",
+		Author:        "Secarian",
 		AuthorWebsite: "https://git.hkwtc.org/TC/HomeDynamic",
 		AuthorEmail:   "",
 		ReleaseDate:   1576094199,

@@ -22,7 +22,7 @@ import (
 	This is a library for allowing AGI script to make HTTP Request from the VM
 	Returning either the head or the body of the request
 
-	Author: tobychui
+	Author: Secarian
 */
 
 func (g *Gateway) HTTPLibRegister() {

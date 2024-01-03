@@ -7,13 +7,13 @@
 */
 
 var myObject = {
-    "name": "Aroz Zoraxy",
+    "name": "WDOS Zoraxy",
     "age": 17,
     "interests": ["cats", "programming"],
     "workexp": {
         "programmer": {
             "start": 2016,
-            "end": 2023
+            "end": 2024
         }
     }
 }

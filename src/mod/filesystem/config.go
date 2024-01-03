@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 )
 
 // FileSystem configuration. Append more lines if required.
@@ -46,12 +46,12 @@ func ValidateOption(options *FileSystemOption) error {
 		return errors.New("This File System Handler UUID is reserved by the system")
 	}
 
-	if !FileExists(options.Path) && !arozfs.IsNetworkDrive(options.Filesystem) {
+	if !FileExists(options.Path) && !wdosfs.IsNetworkDrive(options.Filesystem) {
 		return errors.New("Path not exists, given: " + options.Path)
 	}
 
 	//Check if access mode is supported
-	if !inSlice([]string{arozfs.FsReadOnly, arozfs.FsReadWrite}, options.Access) {
+	if !inSlice([]string{wdosfs.FsReadOnly, wdosfs.FsReadWrite}, options.Access) {
 		return errors.New("Not supported access mode: " + options.Access)
 	}
 
@@ -61,12 +61,12 @@ func ValidateOption(options *FileSystemOption) error {
 	}
 
 	//Check disk format is supported
-	if !inSlice(arozfs.GetSupportedFileSystemTypes(), options.Filesystem) {
+	if !inSlice(wdosfs.GetSupportedFileSystemTypes(), options.Filesystem) {
 		return errors.New("Not supported file system type: " + options.Filesystem)
 	}
 
 	//Check if mount point exists
-	if options.Automount && options.Mountpt == "" && !arozfs.IsNetworkDrive(options.Filesystem) {
+	if options.Automount && options.Mountpt == "" && !wdosfs.IsNetworkDrive(options.Filesystem) {
 		return errors.New("Mount point cannot be empty")
 	}
 

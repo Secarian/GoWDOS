@@ -2,7 +2,7 @@ package webdav
 
 /*
 	WebDAV File Server
-	author: tobychui
+	author: Secarian
 
 	This module handles file sharing via WebDAV protocol.
 	In theory, this should be compatible with Windows 10 and possibily
@@ -49,7 +49,7 @@ type WindowClientInfo struct {
 	ClientIP                string
 }
 
-//NewServer create a new WebDAV server object required by wdos
+// NewServer create a new WebDAV server object required by wdos
 func NewServer(hostname string, prefix string, tmpdir string, tlsMode bool, userHandler *user.UserHandler) *Server {
 	//Generate a default handler
 	os.MkdirAll(filepath.Join(tmpdir, "webdav"), 0777)
@@ -87,7 +87,7 @@ func (s *Server) HandleClearAllPending(w http.ResponseWriter, r *http.Request) {
 	sendOK(w)
 }
 
-//Handle allow and remove permission of a windows WebDAV Client
+// Handle allow and remove permission of a windows WebDAV Client
 func (s *Server) HandlePermissionEdit(w http.ResponseWriter, r *http.Request) {
 	opr, err := utils.PostPara(r, "opr")
 	if err != nil {
@@ -289,11 +289,11 @@ func (s *Server) HandleRequest(w http.ResponseWriter, r *http.Request) {
 }
 
 /*
-	Serve ReadOnly WebDAV Server
+Serve ReadOnly WebDAV Server
 
-	This section exists because Windows WebDAV Services require a
-	success connection in order to store the cookie. If nothing is served,
-	File Explorer will not cache the cookie in its cache
+This section exists because Windows WebDAV Services require a
+success connection in order to store the cookie. If nothing is served,
+File Explorer will not cache the cookie in its cache
 */
 func (s *Server) serveReadOnlyWebDav(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "PUT" || r.Method == "POST" || r.Method == "MKCOL" ||

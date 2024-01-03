@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 	"imuslab.com/wdos/mod/utils"
 )
 
@@ -44,7 +44,7 @@ func (v *Viewer) HandleListLog(w http.ResponseWriter, r *http.Request) {
 }
 
 // Read log of a given catergory and filename
-//Require GET varaible: file and catergory
+// Require GET varaible: file and catergory
 func (v *Viewer) HandleReadLog(w http.ResponseWriter, r *http.Request) {
 	filename, err := utils.GetPara(r, "file")
 	if err != nil {
@@ -82,7 +82,7 @@ func (v *Viewer) ListLogFiles(showFullpath bool) map[string][]*LogFile {
 				logList = []*LogFile{}
 			}
 
-			fullpath := arozfs.ToSlash(path)
+			fullpath := wdosfs.ToSlash(path)
 			if !showFullpath {
 				fullpath = ""
 			}

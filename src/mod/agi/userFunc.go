@@ -10,7 +10,7 @@ import (
 
 	"github.com/robertkrimen/otto"
 	"imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 	user "imuslab.com/wdos/mod/user"
 )
 
@@ -269,7 +269,7 @@ func (g *Gateway) injectUserFunctions(vm *otto.Otto, fsh *filesystem.FileSystemH
 		payload, _ := call.Argument(1).ToString()
 
 		//Check if the script file exists
-		targetScriptPath := arozfs.ToSlash(filepath.Join(filepath.Dir(scriptPath), scriptName))
+		targetScriptPath := wdosfs.ToSlash(filepath.Join(filepath.Dir(scriptPath), scriptName))
 		if fsh != nil {
 			if !fsh.FileSystemAbstraction.FileExists(targetScriptPath) {
 				g.raiseError(errors.New("[AGI] Target path not exists!"))

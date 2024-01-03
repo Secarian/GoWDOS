@@ -1,5 +1,5 @@
 /*
-    Aroz Photo
+    WDOS Photo
 
     Image Classification Script
     Generate classification for the given image path

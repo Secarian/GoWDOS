@@ -1,7 +1,7 @@
 /*
     Photo.js
 
-    Author: tobychui
+    Author: Secarian
     This is a complete rewrite of the legacy Photo module for WDOS
 
 */

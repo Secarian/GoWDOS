@@ -51,14 +51,14 @@ var systemWideLogger *logger.Logger                            //The sync map to
 var listen_port = flag.Int("port", 8080, "Listening port for HTTP server")
 var tls_listen_port = flag.Int("tls_port", 8443, "Listening port for HTTPS server")
 var show_version = flag.Bool("version", false, "Show system build version")
-var host_name = flag.String("hostname", "My ArOZ", "Default name for this host")
+var host_name = flag.String("hostname", "My WDOS", "Default name for this host")
 var system_uuid = flag.String("uuid", "", "System UUID for clustering and distributed computing. Only need to config once for first time startup. Leave empty for auto generation.")
 var disable_subservices = flag.Bool("disable_subservice", false, "Disable subservices completely")
 
 // Flags related to Networking
 var allow_upnp = flag.Bool("allow_upnp", false, "Enable uPNP service, recommended for host under NAT router")
 var allow_ssdp = flag.Bool("allow_ssdp", true, "Enable SSDP service, disable this if you do not want your device to be scanned by Windows's Network Neighborhood Page")
-var allow_mdns = flag.Bool("allow_mdns", true, "Enable MDNS service. Allow device to be scanned by nearby ArOZ Hosts")
+var allow_mdns = flag.Bool("allow_mdns", true, "Enable MDNS service. Allow device to be scanned by nearby WDOS Hosts")
 var force_mac = flag.String("force_mac", "", "Force MAC address to be used for discovery services. If not set, it will use the first NIC")
 var disable_ip_resolve_services = flag.Bool("disable_ip_resolver", false, "Disable IP resolving if the system is running under reverse proxy environment")
 var enable_gzip = flag.Bool("gzip", true, "Enable gzip compress on file server")
@@ -92,7 +92,7 @@ var bufferFileMaxSize = flag.Int("bufffile_size", 25, "Maxmium buffer file size 
 var enable_buffering = flag.Bool("enable_buffpool", true, "Enable buffer pool for buffer required file system abstractions")
 
 // Flags related to compatibility or testing
-var enable_beta_scanning_support = flag.Bool("beta_scan", false, "Allow compatibility to ArOZ Online Beta Clusters")
+var enable_beta_scanning_support = flag.Bool("beta_scan", false, "Allow compatibility to WDOS Online Beta Clusters")
 var enable_console = flag.Bool("console", false, "Enable the debugging console.")
 var enable_logging = flag.Bool("logging", true, "Enable logging to file for debug purpose")
 

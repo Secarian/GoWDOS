@@ -19,7 +19,7 @@ import (
 	"github.com/robertkrimen/otto"
 
 	"imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 	"imuslab.com/wdos/mod/neuralnet"
 	user "imuslab.com/wdos/mod/user"
 	"imuslab.com/wdos/mod/utils"
@@ -61,7 +61,7 @@ func (g *Gateway) injectImageLibFunctions(vm *otto.Otto, u *user.User, scriptFsh
 
 		openingPath := imagePath
 		var closerFunc func()
-		var file arozfs.File
+		var file wdosfs.File
 		if fsh.RequireBuffer {
 			bufferPath, cf := g.getUserSpecificTempFilePath(u, imagePath)
 			closerFunc = cf
@@ -152,8 +152,8 @@ func (g *Gateway) injectImageLibFunctions(vm *otto.Otto, u *user.User, scriptFsh
 
 		resizeOpeningFile := rsrc
 		resizeWritingFile := rdest
-		var srcFile arozfs.File
-		var destFile arozfs.File
+		var srcFile wdosfs.File
+		var destFile wdosfs.File
 		if srcfsh.RequireBuffer {
 			resizeOpeningFile, _, err = g.bufferRemoteResourcesToLocal(srcfsh, u, rsrc)
 			if err != nil {
@@ -299,7 +299,7 @@ func (g *Gateway) injectImageLibFunctions(vm *otto.Otto, u *user.User, scriptFsh
 		})
 
 		//Create the output file
-		var out arozfs.File
+		var out wdosfs.File
 		destWritePath := ""
 		if destFsh.RequireBuffer {
 			destWritePath, _ = g.getUserSpecificTempFilePath(u, rdest)

@@ -17,7 +17,7 @@ import (
 System Identification API
 
 This module handles cross cluster scanning, responses and more that related
-to functions that identifiy this as a ArOZ Online device
+to functions that identifiy this as a WDOS Online device
 */
 func SystemIDInit() {
 	//Initialize device UUID if not exists
@@ -35,7 +35,7 @@ func SystemIDInit() {
 	//Handle the about page
 	http.HandleFunc("/system/id/requestInfo", systemIdHandleRequest)
 
-	//Handle ArOZ Online Beta search methods
+	//Handle WDOS Online Beta search methods
 	if *enable_beta_scanning_support {
 		http.HandleFunc("/AOB/hb.php", systemIdResponseBetaScan)
 		http.HandleFunc("/AOB/", func(w http.ResponseWriter, r *http.Request) {

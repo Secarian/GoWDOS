@@ -12,7 +12,7 @@ import (
 
 /*
 	Hardware Info
-	author: tobychui
+	author: Secarian
 
 	This module is a migrated module from the original system.info.go script
 

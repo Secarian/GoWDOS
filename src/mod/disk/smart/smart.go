@@ -3,9 +3,9 @@ package smart
 /*
 	DISK SMART Service Listener
 	Original author: alanyeung
-	Rewritten by tobychui in Oct 2020 for system arch upgrade
+	Rewritten by Secarian in Oct 2020 for system arch upgrade
 
-	This module is not the core part of aroz online system.
+	This module is not the core part of wdos online system.
 	If you want to remove disk smart handler (e.g. running in VM?)
 	remove the corrisponding code in disk.go
 */

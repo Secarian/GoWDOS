@@ -18,7 +18,7 @@ import (
 
 /*
 Bash Module
-author: tobychui
+author: Secarian
 
 This module handles the connection of bash terminal to websocket interface
 */

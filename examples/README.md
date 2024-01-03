@@ -1,8 +1,8 @@
 # WebApp Developer Guide
 
-## ArOZ Gateway Interface (AGI)
+## WDOS Gateway Interface (AGI)
 
-This folder holds all the examples for the Aroz Gateway Interface (AGI) API calls. An AGI API call can be executed in following ways. A The AGI scripts have slightly different functions in different execution scopes. The role of the execution is listed in the brackets below.
+This folder holds all the examples for the WDOS Gateway Interface (AGI) API calls. An AGI API call can be executed in following ways. A The AGI scripts have slightly different functions in different execution scopes. The role of the execution is listed in the brackets below.
 
 1. Execute as WebApp initialization script (system)
 2. Execute as WebApp backend (system)
@@ -58,7 +58,7 @@ This is the full version of module launch info with all settings
 ```json
 {
     Name: "Music",
-	Desc: "The best music player in ArOZ Online",
+	Desc: "The best music player in WDOS Online",
 	Group: "Media",
 	IconPath: "Music/img/module_icon.png",
 	Version: "0.1.0",
@@ -135,7 +135,7 @@ index.html
         <script>
             function runLogic(){
     			ao_module_agirun("mywebapp/backend/logic.js", 
-                {name: "Aroz"}, 
+                {name: "WDOS"}, 
                 function(resp){
                     	alert("Resp: " + resp);
                 }, 
@@ -342,7 +342,7 @@ function ao_module_selectFiles(callback, fileType="file", accept="*", allowMulti
 
 ### Run Backend Files
 
-```ao_module_agirun``` can be used to execute backend files in .js or .agi extension. See "ArOZ Gateway Interface (AGI)" section for more information.
+```ao_module_agirun``` can be used to execute backend files in .js or .agi extension. See "WDOS Gateway Interface (AGI)" section for more information.
 
 ### Close Function Override
 

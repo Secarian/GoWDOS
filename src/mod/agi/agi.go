@@ -25,8 +25,8 @@ import (
 )
 
 /*
-	ArOZ Online Javascript Gateway Interface (AGI)
-	author: tobychui
+	WDOS Online Javascript Gateway Interface (AGI)
+	author: Secarian
 
 	This script load plugins written in Javascript and run them in VM inside golang
 	DO NOT CONFUSE PLUGIN WITH SUBSERVICE :))
@@ -338,9 +338,9 @@ func (g *Gateway) ExecuteAGIScript(scriptContent string, fsh *filesystem.FileSys
 }
 
 /*
-	Execute AGI script with given user information
-	scriptFile must be realpath resolved by fsa VirtualPathToRealPath function
-	Pass in http.Request pointer to enable serverless GET / POST request
+Execute AGI script with given user information
+scriptFile must be realpath resolved by fsa VirtualPathToRealPath function
+Pass in http.Request pointer to enable serverless GET / POST request
 */
 func (g *Gateway) ExecuteAGIScriptAsUser(fsh *filesystem.FileSystemHandler, scriptFile string, targetUser *user.User, w http.ResponseWriter, r *http.Request) (string, error) {
 	//Create a new vm for this request

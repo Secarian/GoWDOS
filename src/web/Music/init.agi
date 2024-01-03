@@ -5,7 +5,7 @@
 //Setup the module information
 var moduleLaunchInfo = {
     Name: "Music",
-	Desc: "The best music player in ArOZ Online",
+	Desc: "The best music player in WDOS Online",
 	Group: "Media",
 	IconPath: "Music/img/module_icon.png",
 	Version: "0.1.0",

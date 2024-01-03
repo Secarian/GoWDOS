@@ -137,7 +137,7 @@ func (m *MDNSHost) Scan(timeout int, domainFilter string) []*NetworkHost {
 	go func(results <-chan *zeroconf.ServiceEntry) {
 		for entry := range results {
 			if domainFilter == "" {
-				//This is a ArOZ Online Host
+				//This is a WDOS Online Host
 				//Split the required information out of the text element
 				TEXT := entry.Text
 				properties := map[string]string{}

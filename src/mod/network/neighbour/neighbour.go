@@ -39,7 +39,7 @@ type HostRecord struct {
 	LastOnline int64
 }
 
-// New Discoverer return a nearby Aroz Discover agent
+// New Discoverer return a nearby WDOS Discover agent
 func NewDiscoverer(MDNS *mdns.MDNSHost, Database *database.Database) Discoverer {
 	//Create a new table for neighbour records
 	Database.NewTable("neighbour")

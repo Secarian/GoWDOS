@@ -1,7 +1,7 @@
 package main
 
 /*
-	ArOZ Online Disk Service Endpoint Handler
+	WDOS Online Disk Service Endpoint Handler
 
 	This is a module to provide access to the disk services
 */

@@ -23,8 +23,8 @@ import (
 
 	This is a library for handling image related functionalities in agi scripts.
 
-	By Alanyueng 2020 <- This person write shitty code that need me to tidy up (by tobychui)
-	Complete rewrite by tobychui in Sept 2020
+	By Alanyueng 2020 <- This person write shitty code that need me to tidy up (by Secarian)
+	Complete rewrite by Secarian in Sept 2020
 */
 
 func (g *Gateway) FileLibRegister() {

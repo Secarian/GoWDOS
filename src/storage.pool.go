@@ -22,7 +22,7 @@ import (
 
 /*
 	Storage Pool Handler
-	author: tobychui
+	author: Secarian
 
 	This script handle the storage pool editing of different permission groups
 

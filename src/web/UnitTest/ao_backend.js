@@ -1,6 +1,6 @@
 /*
     ao_backend.js
-    Author: tobychui
+    Author: Secarian
 
     JavaScript wrapper for AGI Gateway script
     Designed for front-end WebApps 

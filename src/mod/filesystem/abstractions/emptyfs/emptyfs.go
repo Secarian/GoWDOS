@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 )
 
 /*
@@ -25,43 +25,43 @@ func NewEmptyFileSystemAbstraction() EmptyFileSystemAbstraction {
 }
 
 func (l EmptyFileSystemAbstraction) Chmod(filename string, mode os.FileMode) error {
-	return arozfs.ErrNullOperation
+	return wdosfs.ErrNullOperation
 }
 func (l EmptyFileSystemAbstraction) Chown(filename string, uid int, gid int) error {
-	return arozfs.ErrNullOperation
+	return wdosfs.ErrNullOperation
 }
 func (l EmptyFileSystemAbstraction) Chtimes(filename string, atime time.Time, mtime time.Time) error {
-	return arozfs.ErrNullOperation
+	return wdosfs.ErrNullOperation
 }
-func (l EmptyFileSystemAbstraction) Create(filename string) (arozfs.File, error) {
-	return nil, arozfs.ErrNullOperation
+func (l EmptyFileSystemAbstraction) Create(filename string) (wdosfs.File, error) {
+	return nil, wdosfs.ErrNullOperation
 }
 func (l EmptyFileSystemAbstraction) Mkdir(filename string, mode os.FileMode) error {
-	return arozfs.ErrNullOperation
+	return wdosfs.ErrNullOperation
 }
 func (l EmptyFileSystemAbstraction) MkdirAll(filename string, mode os.FileMode) error {
-	return arozfs.ErrNullOperation
+	return wdosfs.ErrNullOperation
 }
 func (l EmptyFileSystemAbstraction) Name() string {
 	return ""
 }
-func (l EmptyFileSystemAbstraction) Open(filename string) (arozfs.File, error) {
-	return nil, arozfs.ErrNullOperation
+func (l EmptyFileSystemAbstraction) Open(filename string) (wdosfs.File, error) {
+	return nil, wdosfs.ErrNullOperation
 }
-func (l EmptyFileSystemAbstraction) OpenFile(filename string, flag int, perm os.FileMode) (arozfs.File, error) {
-	return nil, arozfs.ErrNullOperation
+func (l EmptyFileSystemAbstraction) OpenFile(filename string, flag int, perm os.FileMode) (wdosfs.File, error) {
+	return nil, wdosfs.ErrNullOperation
 }
 func (l EmptyFileSystemAbstraction) Remove(filename string) error {
-	return arozfs.ErrNullOperation
+	return wdosfs.ErrNullOperation
 }
 func (l EmptyFileSystemAbstraction) RemoveAll(path string) error {
-	return arozfs.ErrNullOperation
+	return wdosfs.ErrNullOperation
 }
 func (l EmptyFileSystemAbstraction) Rename(oldname, newname string) error {
-	return arozfs.ErrNullOperation
+	return wdosfs.ErrNullOperation
 }
 func (l EmptyFileSystemAbstraction) Stat(filename string) (os.FileInfo, error) {
-	return nil, arozfs.ErrNullOperation
+	return nil, wdosfs.ErrNullOperation
 }
 func (l EmptyFileSystemAbstraction) Close() error {
 	return nil
@@ -72,11 +72,11 @@ func (l EmptyFileSystemAbstraction) Close() error {
 */
 
 func (l EmptyFileSystemAbstraction) VirtualPathToRealPath(subpath string, username string) (string, error) {
-	return "", arozfs.ErrVpathResolveFailed
+	return "", wdosfs.ErrVpathResolveFailed
 }
 
 func (l EmptyFileSystemAbstraction) RealPathToVirtualPath(fullpath string, username string) (string, error) {
-	return "", arozfs.ErrRpathResolveFailed
+	return "", wdosfs.ErrRpathResolveFailed
 }
 
 func (l EmptyFileSystemAbstraction) FileExists(realpath string) bool {
@@ -88,7 +88,7 @@ func (l EmptyFileSystemAbstraction) IsDir(realpath string) bool {
 }
 
 func (l EmptyFileSystemAbstraction) Glob(realpathWildcard string) ([]string, error) {
-	return []string{}, arozfs.ErrNullOperation
+	return []string{}, wdosfs.ErrNullOperation
 }
 
 func (l EmptyFileSystemAbstraction) GetFileSize(realpath string) int64 {
@@ -96,27 +96,27 @@ func (l EmptyFileSystemAbstraction) GetFileSize(realpath string) int64 {
 }
 
 func (l EmptyFileSystemAbstraction) GetModTime(realpath string) (int64, error) {
-	return 0, arozfs.ErrOperationNotSupported
+	return 0, wdosfs.ErrOperationNotSupported
 }
 
 func (l EmptyFileSystemAbstraction) WriteFile(filename string, content []byte, mode os.FileMode) error {
-	return arozfs.ErrNullOperation
+	return wdosfs.ErrNullOperation
 }
 func (l EmptyFileSystemAbstraction) ReadFile(filename string) ([]byte, error) {
-	return []byte(""), arozfs.ErrOperationNotSupported
+	return []byte(""), wdosfs.ErrOperationNotSupported
 }
 func (l EmptyFileSystemAbstraction) ReadDir(filename string) ([]fs.DirEntry, error) {
-	return []fs.DirEntry{}, arozfs.ErrOperationNotSupported
+	return []fs.DirEntry{}, wdosfs.ErrOperationNotSupported
 }
 func (l EmptyFileSystemAbstraction) WriteStream(filename string, stream io.Reader, mode os.FileMode) error {
-	return arozfs.ErrNullOperation
+	return wdosfs.ErrNullOperation
 }
 func (l EmptyFileSystemAbstraction) ReadStream(filename string) (io.ReadCloser, error) {
-	return nil, arozfs.ErrOperationNotSupported
+	return nil, wdosfs.ErrOperationNotSupported
 }
 
 func (l EmptyFileSystemAbstraction) Walk(root string, walkFn filepath.WalkFunc) error {
-	return arozfs.ErrOperationNotSupported
+	return wdosfs.ErrOperationNotSupported
 }
 
 func (l EmptyFileSystemAbstraction) Heartbeat() error {

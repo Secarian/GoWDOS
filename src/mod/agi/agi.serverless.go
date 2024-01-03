@@ -13,7 +13,7 @@ import (
 	AGI Serverless Request Handler
 
 	This script allow AGI script to access raw GET / POST parameters for serverless applications
-	Author: tobychui
+	Author: Secarian
 */
 
 func (g *Gateway) injectServerlessFunctions(vm *otto.Otto, scriptFile string, scriptScope string, u *user.User, r *http.Request) {

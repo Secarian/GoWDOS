@@ -1,5 +1,5 @@
 //FloatWindow.js
-//ArOZ Online Beta Project 
+//WDOS Online Beta Project 
 //This function is developed for launching a FloatWindow in Function Bar environment
 //[Variables Meaning]
 //src: The path in which the new window points to

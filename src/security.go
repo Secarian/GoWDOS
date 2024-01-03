@@ -11,7 +11,7 @@ import (
 
 /*
 	Security.go
-	Author: tobychui
+	Author: Secarian
 
 	This module handles the system security related functions.
 	If you are looking for authentication or login related features, see auth.go
@@ -23,7 +23,7 @@ var (
 	tokenCleaningTime int   = int(tokenExpireTime) * 12 //Tokens are cleared every 12 x tokenExpireTime
 )
 
-//Initiation function
+// Initiation function
 func security_init() {
 	//Create a default permission router accessable by everyone
 	router := prout.NewModuleRouter(prout.RouterOption{

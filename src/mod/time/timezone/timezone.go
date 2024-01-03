@@ -19,7 +19,7 @@ import (
 	(Add more helpful comments here)
 
 	Original author: alanyeung
-	Migrated to go module from main scope by tobychui
+	Migrated to go module from main scope by Secarian
 
 	TODO: timezone problems.
 */

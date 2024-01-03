@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/pkg/sftp"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 )
 
 /*
@@ -30,13 +30,13 @@ func newSftpFsFile(wrappingFile *sftp.File, isDir bool, dirEntries []fs.DirEntry
 }
 
 func (f *sftpFsFile) Chdir() error {
-	return arozfs.ErrOperationNotSupported
+	return wdosfs.ErrOperationNotSupported
 }
 func (f *sftpFsFile) Chmod(mode os.FileMode) error {
-	return arozfs.ErrOperationNotSupported
+	return wdosfs.ErrOperationNotSupported
 }
 func (f *sftpFsFile) Chown(uid, gid int) error {
-	return arozfs.ErrOperationNotSupported
+	return wdosfs.ErrOperationNotSupported
 }
 func (f *sftpFsFile) Close() error {
 	return f.file.Close()
@@ -95,10 +95,10 @@ func (f *sftpFsFile) WriteString(s string) (n int, err error) {
 }
 
 /*
-	SFTP DirEntry
+SFTP DirEntry
 
-	Converting the legacy os.FileInfo into wdos required
-	fs.DirEntry for sftp client readDir returned values
+Converting the legacy os.FileInfo into wdos required
+fs.DirEntry for sftp client readDir returned values
 */
 type SftpDirEntry struct {
 	finfo fs.FileInfo

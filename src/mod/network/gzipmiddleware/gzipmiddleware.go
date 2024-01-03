@@ -10,7 +10,7 @@ import (
 
 /*
 	This module handles web server related helpers and functions
-	author: tobychui
+	author: Secarian
 
 */
 

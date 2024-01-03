@@ -1,7 +1,7 @@
-package arozfs
+package wdosfs
 
 /*
-	arozfs.go
+	wdosfs.go
 
 	This package handle error related to file systems.
 	See comments below for usage.

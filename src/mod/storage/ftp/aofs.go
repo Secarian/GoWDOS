@@ -1,7 +1,7 @@
 package ftp
 
 //wdos virtual path translation handler
-//author: tobychui
+//author: Secarian
 
 import (
 	"errors"

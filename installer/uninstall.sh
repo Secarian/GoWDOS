@@ -10,7 +10,7 @@ cat << "EOF"
 EOF
 
 # Ask user to confirm uninstall
-read -p "Are you sure you want to uninstall Arozos? This will delete all data in the wdos directory. (y/n) " choice
+read -p "Are you sure you want to uninstall WDOS? This will delete all data in the wdos directory. (y/n) " choice
 case "$choice" in
   y|Y )
 	# Stop the WDOS service if it is running

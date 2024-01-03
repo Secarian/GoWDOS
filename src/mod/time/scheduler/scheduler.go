@@ -16,7 +16,7 @@ import (
 
 /*
 	WDOS System Scheduler
-	author: tobychui
+	author: Secarian
 
 	This module provide scheduling executable feature for WDOS
 	Some feature was migrated from the v1.113 aecron module
@@ -67,7 +67,7 @@ func NewScheduler(option *ScheudlerOption) (*Scheduler, error) {
 		return nil, err
 	}
 
-	//Create the ArOZ Emulated Crontask
+	//Create the WDOS Emulated Crontask
 	thisScheduler := Scheduler{
 		jobs:    jobs,
 		options: option,

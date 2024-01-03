@@ -15,7 +15,7 @@ import (
 	localversion.go
 
 	This is a local version management module for wdos files
-	Author: tobychui
+	Author: Secarian
 
 */
 
@@ -180,7 +180,7 @@ func CreateFileSnapshot(fsh *filesystem.FileSystemHandler, realFilepath string) 
 	return fshAbs.WriteStream(targetVersionFilepath, srcf, 0775)
 }
 
-//Clearn expired version backups that is older than maxReserveTime
+// Clearn expired version backups that is older than maxReserveTime
 func CleanExpiredVersionBackups(fsh *filesystem.FileSystemHandler, walkRoot string, maxReserveTime int64) {
 	fshAbs := fsh.FileSystemAbstraction
 	localVerFolders := []string{}

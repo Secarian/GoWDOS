@@ -9,7 +9,7 @@ import (
 	"os"
 
 	"imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 	"imuslab.com/wdos/mod/network/webdav"
 )
 
@@ -129,7 +129,7 @@ func (a *FshWebDAVAdapter) requestPathToRealPath(name string) (string, error) {
 		return "", err
 	}
 
-	realRequestPath = arozfs.ToSlash(realRequestPath)
+	realRequestPath = wdosfs.ToSlash(realRequestPath)
 	return realRequestPath, nil
 }
 

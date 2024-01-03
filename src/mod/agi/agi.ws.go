@@ -13,13 +13,13 @@ import (
 )
 
 /*
-	AJGI WebSocket Request Library
+AJGI WebSocket Request Library
 
-	This is a library for allowing AGI based connection upgrade to WebSocket
-	Different from other agi module, this do not use the register lib interface
-	deal to it special nature.
+This is a library for allowing AGI based connection upgrade to WebSocket
+Different from other agi module, this do not use the register lib interface
+deal to it special nature.
 
-	Author: tobychui
+Author: Secarian
 */
 var upgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
@@ -30,8 +30,8 @@ var upgrader = websocket.Upgrader{
 }
 var connections = sync.Map{}
 
-//This is a very special function to check if the connection has been updated or not
-//Return upgrade status (true for already upgraded) and connection uuid
+// This is a very special function to check if the connection has been updated or not
+// Return upgrade status (true for already upgraded) and connection uuid
 func checkWebSocketConnectionUpgradeStatus(vm *otto.Otto) (bool, string, *websocket.Conn) {
 	if value, err := vm.Get("_websocket_conn_id"); err == nil {
 		//Exists!

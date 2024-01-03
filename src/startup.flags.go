@@ -73,7 +73,7 @@ func handleBootFlagsFunction(w http.ResponseWriter, r *http.Request) {
 
 		//Try parse it
 		newConfig := bootFlags{
-			"My ArOZ",
+			"My WDOS",
 			8192,
 			25,
 			1024,

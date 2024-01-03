@@ -10,7 +10,7 @@ import (
 
 /*
 	Usage Info (CPU / RAM)
-	author: tobychui
+	author: Secarian
 
 	This module get the CPU information on different platform using
 	native terminal commands
@@ -22,7 +22,7 @@ const query_freemem_command_darwin = "ps -A -o %mem | awk '{mem += $1} END {prin
 const query_phymem_command = "sysctl hw.physmem | awk '{print $NF}'"
 const query_phymem_command_darwin = "sysctl hw.memsize | awk '{print $NF}'"
 
-//Get CPU Usage in percentage
+// Get CPU Usage in percentage
 func GetCPUUsage() float64 {
 	usage := float64(0)
 	if runtime.GOOS == "windows" {
@@ -95,7 +95,7 @@ func GetCPUUsage() float64 {
 	return usage
 }
 
-//Get RAM Usage in Numeric values
+// Get RAM Usage in Numeric values
 func GetNumericRAMUsage() (int64, int64) {
 	usedRam := int64(-1)
 	totalRam := int64(-1)
@@ -228,7 +228,7 @@ func GetNumericRAMUsage() (int64, int64) {
 	return -1, -1
 }
 
-//Get RAM usage, return used / total / used percentage
+// Get RAM usage, return used / total / used percentage
 func GetRAMUsage() (string, string, float64) {
 	usedRam := "Unknown"
 	totalRam := "Unknown"

@@ -8,7 +8,7 @@ package main
 */
 
 func DeviceServiceInit() {
-	//Register Device related settings. Compatible to ArOZ Online Beta
+	//Register Device related settings. Compatible to WDOS Online Beta
 	registerSetting(settingModule{
 		Name:     "Client Device",
 		Desc:     "Detail about the browser you are using",

@@ -55,7 +55,7 @@ else
 fi
 
 # Download the wdos binary
-echo "Downloading Arozos from ${download_url} ..."
+echo "Downloading WDOS from ${download_url} ..."
 wget -O wdos "${download_url}"
 chmod +x wdos
 
@@ -65,61 +65,61 @@ wget -O web.tar.gz "https://github.com/Secarian/GoWDOS/releases/latest/download/
 # Check if the platform is supported for the launcher
 if [[ "$arch" == "amd64" || "$arch" == "arm" || "$arch" == "arm64" ]]; then
   # Ask if the user wants to install the launcher
-  read -p "Do you want to install the Arozos launcher for OTA updates? [Y/n] " answer
+  read -p "Do you want to install the WDOS launcher for OTA updates? [Y/n] " answer
   case ${answer:0:1} in
       y|Y )
           # Download the appropriate binary
-          echo "Downloading Arozos launcher from https://github.com/aroz-online/launcher/releases/latest/ ..."
+          echo "Downloading WDOS launcher from https://github.com/wdos-online/launcher/releases/latest/ ..."
           case "$arch" in
               amd64)
-                  launcher_url="https://github.com/aroz-online/launcher/releases/latest/download/launcher_linux_amd64"
+                  launcher_url="https://github.com/wdos-online/launcher/releases/latest/download/launcher_linux_amd64"
                   ;;
               arm)
-                  launcher_url="https://github.com/aroz-online/launcher/releases/latest/download/launcher_linux_arm"
+                  launcher_url="https://github.com/wdos-online/launcher/releases/latest/download/launcher_linux_arm"
                   ;;
               arm64)
-                  launcher_url="https://github.com/aroz-online/launcher/releases/latest/download/launcher_linux_arm64"
+                  launcher_url="https://github.com/wdos-online/launcher/releases/latest/download/launcher_linux_arm64"
                   ;;
               *)
-                  echo "Unsupported architecture for Arozos launcher"
+                  echo "Unsupported architecture for WDOS launcher"
                   ;;
           esac
           if [[ -n "$launcher_url" ]]; then
               wget -O launcher "${launcher_url}"
               chmod +x launcher
-              echo "Arozos launcher has been installed successfully!"
+              echo "WDOS launcher has been installed successfully!"
           fi
           ;;
       * )
-          echo "Arozos launcher installation skipped"
+          echo "WDOS launcher installation skipped"
           ;;
   esac
 fi
 
 # Ask for setup name
-read -p "Enter setup name (default: aroz): " wdosname
-wdosname=${wdosname:-aroz}
+read -p "Enter setup name (default: wdos): " wdosname
+wdosname=${wdosname:-wdos}
 
 # Ask for preferred listening port
-read -p "Enter preferred listening port (default: 8080): " arozport
-arozport=${arozport:-8080}
+read -p "Enter preferred listening port (default: 8080): " wdosport
+wdosport=${wdosport:-8080}
 
 # Check if launcher exists
 if [[ -f "./launcher" ]]; then
   # Create start.sh with launcher command
   echo "#!/bin/bash" > start.sh
-  echo "sudo ./launcher -port=$arozport -hostname=\"$wdosname\"" >> start.sh
+  echo "sudo ./launcher -port=$wdosport -hostname=\"$wdosname\"" >> start.sh
 else
   # Create start.sh with wdos command
   echo "#!/bin/bash" > start.sh
-  echo "sudo wdos -port=$arozport -hostname=\"$wdosname\"" >> start.sh
+  echo "sudo wdos -port=$wdosport -hostname=\"$wdosname\"" >> start.sh
 fi
 
 # Make start.sh executable
 chmod +x start.sh
 
 echo "Setup name: $wdosname"
-echo "Preferred listening port: $arozport"
+echo "Preferred listening port: $wdosport"
 echo "start.sh created successfully!"
 
 # Ask if user wants to install WDOS to systemd
@@ -159,7 +159,7 @@ EOF
 		sudo systemctl start wdos.service
         echo "WDOS installation completed!"
 		ip_address=$(hostname -I | awk '{print $1}')
-		echo "Please continue the system setup at http://$ip_address:$arozport/"
+		echo "Please continue the system setup at http://$ip_address:$wdosport/"
     fi
 else
 	echo "WDOS installation completed! Execute start.sh to startup your WDOS system."

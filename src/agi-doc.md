@@ -2,7 +2,7 @@
 
 ## What is AJGI?
 
-AJGI is the shortform of ArOZ Javascript Gateway Interface.
+AJGI is the shortform of WDOS Javascript Gateway Interface.
 In simple words, you can add function to your system with JavaScript :)
 
 ## Usages
@@ -21,7 +21,7 @@ To register the module, you can call to the "registerModule" function with JSON 
 //Define the launchInfo for the module
 var moduleLaunchInfo = {
     Name: "NotepadA",
-    Desc: "The best code editor on ArOZ Online",
+    Desc: "The best code editor on WDOS Online",
     Group: "Office",
     IconPath: "NotepadA/img/module_icon.png",
     Version: "1.2",
@@ -125,15 +125,15 @@ if (requirelib("filelib") == true){
 ### Access from Subservice Backend
 
 It is also possible to access the AGI gateway from subservice backend.
-You can include aroz library from ```./subservice/demo/aroz``` . The following is an example extracted from demo subservice that request access to your desktop filelist.
+You can include wdos library from ```./subservice/demo/wdos``` . The following is an example extracted from demo subservice that request access to your desktop filelist.
 
 ```
 package main
 import (
-    aroz "your/package/name/aroz"
+    wdos "your/package/name/wdos"
 )
 
-var handler *aroz.ArozHandler
+var handler *wdos.WDOSHandler
 
 //...
 
@@ -141,9 +141,9 @@ func main(){
     //Put other flags here
 
     //Start subservice pipeline and flag parsing (This function call will also do flag.parse())
-    handler = aroz.HandleFlagParse(aroz.ServiceInfo{
+    handler = wdos.HandleFlagParse(wdos.ServiceInfo{
         Name: "Demo Subservice",
-        Desc: "A simple subservice code for showing how subservice works in ArOZ Online",            
+        Desc: "A simple subservice code for showing how subservice works in WDOS Online",            
         Group: "Development",
         IconPath: "demo/icon.png",
         Version: "0.0.1",
@@ -271,7 +271,7 @@ moduleInfo = {
 
 #### Print to STDOUT (console)
 
-To print something for debug, you can print text directly to ArOZ Online Core terminal using
+To print something for debug, you can print text directly to WDOS Online Core terminal using
 
 ```
 console.log("text");

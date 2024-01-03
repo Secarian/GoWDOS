@@ -1,6 +1,6 @@
 /*
     FileSaver.js
-    Author: tobychui
+    Author: Secarian
 
     This file save the notebook files to server side
     Required POST paramters:

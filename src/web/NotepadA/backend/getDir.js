@@ -1,7 +1,7 @@
 /*
     getDir.js
 
-    Author: tobychui
+    Author: Secarian
     An implementation in AGI script for getDir.php
 
 */

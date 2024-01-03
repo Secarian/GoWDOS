@@ -1,8 +1,8 @@
-# ArOZ Online System Utilities
+# WDOS Online System Utilities
 
 ## Introduction to License usage in system utilities
-In the ArOZ Online Beta implementation, only MIT, apache 2.0 and public domain licenses are allowed.
-In the ArOZ Online 1.0 version, GPL and AGPL libraries are allowed **IF AND ONLY IF** the library is not modified.
+In the WDOS Online Beta implementation, only MIT, apache 2.0 and public domain licenses are allowed.
+In the WDOS Online 1.0 version, GPL and AGPL libraries are allowed **IF AND ONLY IF** the library is not modified.
 
 ## Requirement of releasing source code to the public
 See more at : https://www.gnu.org/licenses/gpl-faq.en.html#GPLRequireSourcePostedPublic
@@ -18,8 +18,8 @@ But if you release the modified version to the public in some way, the GPL requi
 Thus, the GPL gives permission to release the modified program in certain ways, and not in other ways; but the decision of whether to release it is up to you.
 ```
 
-## Guide for using GPL / AGPL library in ArOZ Online System
-As ArOZ Online System are designed to be ALL RIGHT RESERVED by the imuslab, here are the guideline to help you make a clear cut of the area of open source vs close source:
+## Guide for using GPL / AGPL library in WDOS Online System
+As WDOS Online System are designed to be ALL RIGHT RESERVED by the imuslab, here are the guideline to help you make a clear cut of the area of open source vs close source:
 
 1. Download the library and unzip it **WITH ITS PARENT FOLDERNAME**
 2. Unzip the library only in ./script folders and include the license inside the library folder root

@@ -1,6 +1,6 @@
 /*
     Application Locale Module
-    author: tobychui
+    author: Secarian
 
     This module translate the current web application page 
     to the desired language specific by the browser.

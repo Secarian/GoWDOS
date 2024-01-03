@@ -20,7 +20,7 @@ import (
 
 func util_init() {
 	/*
-		ArOZ Video Player - The basic video player
+		WDOS Video Player - The basic video player
 	*/
 	//Open Documents Viewer
 	moduleHandler.RegisterModule(module.ModuleInfo{
@@ -37,7 +37,7 @@ func util_init() {
 	})
 
 	/*
-		ArOZ Audio Player - Basic Audio File Player
+		WDOS Audio Player - Basic Audio File Player
 	*/
 	moduleHandler.RegisterModule(module.ModuleInfo{
 		Name:         "Audio Player",
@@ -53,7 +53,7 @@ func util_init() {
 	})
 
 	/*
-		STL File Viewer - Plotted from ArOZ Online Beta
+		STL File Viewer - Plotted from WDOS Online Beta
 	*/
 	moduleHandler.RegisterModule(module.ModuleInfo{
 		Name:         "STL Viewer",
@@ -69,7 +69,7 @@ func util_init() {
 	})
 
 	/*
-		Gcode File Viewer - Plotted from ArOZ Online Beta
+		Gcode File Viewer - Plotted from WDOS Online Beta
 	*/
 	moduleHandler.RegisterModule(module.ModuleInfo{
 		Name:         "Gcode Viewer",
@@ -85,7 +85,7 @@ func util_init() {
 	})
 
 	/*
-		Gcode File Viewer - Plotted from ArOZ Online Beta
+		Gcode File Viewer - Plotted from WDOS Online Beta
 	*/
 	moduleHandler.RegisterModule(module.ModuleInfo{
 		Name:         "Image Paste",

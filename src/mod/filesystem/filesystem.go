@@ -1,8 +1,8 @@
 package filesystem
 
 /*
-	ArOZ Online File System Handler Wrappers
-	author: tobychui
+	WDOS Online File System Handler Wrappers
+	author: Secarian
 
 	This is a module design to do the followings
 	1. Mount / Create a fs when open
@@ -30,7 +30,7 @@ import (
 	sftpfs "imuslab.com/wdos/mod/filesystem/abstractions/sftpfs"
 	"imuslab.com/wdos/mod/filesystem/abstractions/smbfs"
 	"imuslab.com/wdos/mod/filesystem/abstractions/webdavfs"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 )
 
 //Options for creating new file system handler
@@ -49,9 +49,9 @@ type FileSystemOpeningOptions struct{
 */
 
 /*
-	An interface for storing data related to a specific hierarchy settings.
-	Example like the account information of network drive,
-	backup mode of backup drive etc
+An interface for storing data related to a specific hierarchy settings.
+Example like the account information of network drive,
+backup mode of backup drive etc
 */
 type HierarchySpecificConfig interface{}
 
@@ -60,12 +60,12 @@ type FileSystemAbstraction interface {
 	Chmod(string, os.FileMode) error
 	Chown(string, int, int) error
 	Chtimes(string, time.Time, time.Time) error
-	Create(string) (arozfs.File, error)
+	Create(string) (wdosfs.File, error)
 	Mkdir(string, os.FileMode) error
 	MkdirAll(string, os.FileMode) error
 	Name() string
-	Open(string) (arozfs.File, error)
-	OpenFile(string, int, os.FileMode) (arozfs.File, error)
+	Open(string) (wdosfs.File, error)
+	OpenFile(string, int, os.FileMode) (wdosfs.File, error)
 	Remove(string) error
 	RemoveAll(string) error
 	Rename(string, string) error
@@ -89,7 +89,7 @@ type FileSystemAbstraction interface {
 	Heartbeat() error
 }
 
-//System Handler for returing
+// System Handler for returing
 type FileSystemHandler struct {
 	Name                  string
 	UUID                  string
@@ -107,7 +107,7 @@ type FileSystemHandler struct {
 	Closed                bool
 }
 
-//Create a list of file system handler from the given json content
+// Create a list of file system handler from the given json content
 func NewFileSystemHandlersFromJSON(jsonContent []byte) ([]*FileSystemHandler, error) {
 	//Generate a list of handler option from json file
 	options, err := loadConfigFromJSON(jsonContent)
@@ -129,7 +129,7 @@ func NewFileSystemHandlersFromJSON(jsonContent []byte) ([]*FileSystemHandler, er
 	return resultingHandlers, nil
 }
 
-//Create a new file system handler with the given config
+// Create a new file system handler with the given config
 func NewFileSystemHandler(option FileSystemOption) (*FileSystemHandler, error) {
 	fstype := strings.ToLower(option.Filesystem)
 	if inSlice([]string{"ext4", "ext2", "ext3", "fat", "vfat", "ntfs"}, fstype) || fstype == "" {
@@ -156,9 +156,9 @@ func NewFileSystemHandler(option FileSystemOption) (*FileSystemHandler, error) {
 		var fsdb *db.Database = nil
 		dbp, err := db.NewDatabase(filepath.ToSlash(filepath.Join(filepath.Clean(option.Path), "aofs.db")), false)
 		if err != nil {
-			if option.Access != arozfs.FsReadOnly {
+			if option.Access != wdosfs.FsReadOnly {
 				log.Println("[File System] Invalid config: Trying to mount a read only path as read-write mount point. Changing " + option.Name + " mount point to READONLY.")
-				option.Access = arozfs.FsReadOnly
+				option.Access = wdosfs.FsReadOnly
 			}
 		} else {
 			fsdb = dbp
@@ -168,13 +168,13 @@ func NewFileSystemHandler(option FileSystemOption) (*FileSystemHandler, error) {
 			Name:                  option.Name,
 			UUID:                  option.Uuid,
 			Path:                  filepath.ToSlash(filepath.Clean(option.Path)) + "/",
-			ReadOnly:              option.Access == arozfs.FsReadOnly,
+			ReadOnly:              option.Access == wdosfs.FsReadOnly,
 			RequireBuffer:         false,
 			Hierarchy:             option.Hierarchy,
 			HierarchyConfig:       DefaultEmptyHierarchySpecificConfig,
 			InitiationTime:        time.Now().Unix(),
 			FilesystemDatabase:    fsdb,
-			FileSystemAbstraction: localfs.NewLocalFileSystemAbstraction(option.Uuid, rootpath, option.Hierarchy, option.Access == arozfs.FsReadOnly),
+			FileSystemAbstraction: localfs.NewLocalFileSystemAbstraction(option.Uuid, rootpath, option.Hierarchy, option.Access == wdosfs.FsReadOnly),
 			Filesystem:            fstype,
 			StartOptions:          option,
 			Closed:                false,
@@ -194,7 +194,7 @@ func NewFileSystemHandler(option FileSystemOption) (*FileSystemHandler, error) {
 			Name:                  option.Name,
 			UUID:                  option.Uuid,
 			Path:                  option.Path,
-			ReadOnly:              option.Access == arozfs.FsReadOnly,
+			ReadOnly:              option.Access == wdosfs.FsReadOnly,
 			RequireBuffer:         true,
 			Hierarchy:             option.Hierarchy,
 			HierarchyConfig:       nil,
@@ -231,7 +231,7 @@ func NewFileSystemHandler(option FileSystemOption) (*FileSystemHandler, error) {
 			Name:                  option.Name,
 			UUID:                  option.Uuid,
 			Path:                  option.Path,
-			ReadOnly:              option.Access == arozfs.FsReadOnly,
+			ReadOnly:              option.Access == wdosfs.FsReadOnly,
 			RequireBuffer:         false,
 			Hierarchy:             option.Hierarchy,
 			HierarchyConfig:       nil,
@@ -279,7 +279,7 @@ func NewFileSystemHandler(option FileSystemOption) (*FileSystemHandler, error) {
 			Name:                  option.Name,
 			UUID:                  option.Uuid,
 			Path:                  option.Path,
-			ReadOnly:              option.Access == arozfs.FsReadOnly,
+			ReadOnly:              option.Access == wdosfs.FsReadOnly,
 			RequireBuffer:         false,
 			Hierarchy:             option.Hierarchy,
 			HierarchyConfig:       nil,
@@ -302,7 +302,7 @@ func NewFileSystemHandler(option FileSystemOption) (*FileSystemHandler, error) {
 			Name:                  option.Name,
 			UUID:                  option.Uuid,
 			Path:                  option.Path,
-			ReadOnly:              option.Access == arozfs.FsReadOnly,
+			ReadOnly:              option.Access == wdosfs.FsReadOnly,
 			RequireBuffer:         true,
 			Hierarchy:             option.Hierarchy,
 			HierarchyConfig:       nil,
@@ -323,7 +323,7 @@ func NewFileSystemHandler(option FileSystemOption) (*FileSystemHandler, error) {
 }
 
 func (fsh *FileSystemHandler) IsNetworkDrive() bool {
-	return arozfs.IsNetworkDrive(fsh.Filesystem)
+	return wdosfs.IsNetworkDrive(fsh.Filesystem)
 }
 
 //Check if a fsh is virtual (e.g. Network or fs Abstractions that cannot be listed with normal fs API)
@@ -405,7 +405,7 @@ func (fsh *FileSystemHandler) GetDirctorySizeFromVpath(vpath string, username st
 	fsh database that keep track of which files is owned by whom
 */
 
-//Create a file ownership record
+// Create a file ownership record
 func (fsh *FileSystemHandler) CreateFileRecord(rpath string, owner string) error {
 	if fsh.FilesystemDatabase == nil {
 		//Not supported file system type
@@ -416,7 +416,7 @@ func (fsh *FileSystemHandler) CreateFileRecord(rpath string, owner string) error
 	return nil
 }
 
-//Read the owner of a file
+// Read the owner of a file
 func (fsh *FileSystemHandler) GetFileRecord(rpath string) (string, error) {
 	if fsh.FilesystemDatabase == nil {
 		//Not supported file system type
@@ -433,7 +433,7 @@ func (fsh *FileSystemHandler) GetFileRecord(rpath string) (string, error) {
 	}
 }
 
-//Delete a file ownership record
+// Delete a file ownership record
 func (fsh *FileSystemHandler) DeleteFileRecord(rpath string) error {
 	if fsh.FilesystemDatabase == nil {
 		//Not supported file system type
@@ -448,7 +448,7 @@ func (fsh *FileSystemHandler) DeleteFileRecord(rpath string) error {
 	return nil
 }
 
-//Reload the target file system abstraction
+// Reload the target file system abstraction
 func (fsh *FileSystemHandler) ReloadFileSystelAbstraction() error {
 	log.Println("[File System] Reloading File System Abstraction for " + fsh.Name)
 	//Load the start option for this fsh
@@ -473,7 +473,7 @@ func (fsh *FileSystemHandler) ReloadFileSystelAbstraction() error {
 	return nil
 }
 
-//Close an openeded File System
+// Close an openeded File System
 func (fsh *FileSystemHandler) Close() {
 	//Set the close flag to true so others function wont access it
 	fsh.Closed = true
@@ -490,7 +490,7 @@ func (fsh *FileSystemHandler) Close() {
 	}
 }
 
-//Helper function
+// Helper function
 func inSlice(slice []string, val string) bool {
 	for _, item := range slice {
 		if item == val {

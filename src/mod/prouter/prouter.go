@@ -1,10 +1,10 @@
 package prouter
 
 /*
-	ArOZ Online System Permission Router
-	author: tobychui
+	WDOS Online System Permission Router
+	author: Secarian
 
-	This request router implement the permission handling of aroz online
+	This request router implement the permission handling of wdos online
 	user authentication systems, permission system and user system
 	and is used as a wrapper to handle all http request within the system
 	(aka. the replacement for http.HandleFunc)

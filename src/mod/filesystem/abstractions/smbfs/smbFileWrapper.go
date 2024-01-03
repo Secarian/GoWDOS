@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/hirochachacha/go-smb2"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 )
 
 type smbfsFile struct {
@@ -20,13 +20,13 @@ func NewSmbFsFile(wrappingFile *smb2.File) *smbfsFile {
 }
 
 func (f *smbfsFile) Chdir() error {
-	return arozfs.ErrOperationNotSupported
+	return wdosfs.ErrOperationNotSupported
 }
 func (f *smbfsFile) Chmod(mode os.FileMode) error {
-	return arozfs.ErrOperationNotSupported
+	return wdosfs.ErrOperationNotSupported
 }
 func (f *smbfsFile) Chown(uid, gid int) error {
-	return arozfs.ErrOperationNotSupported
+	return wdosfs.ErrOperationNotSupported
 }
 func (f *smbfsFile) Close() error {
 	return f.file.Close()
@@ -41,7 +41,7 @@ func (f *smbfsFile) ReadAt(b []byte, off int64) (n int, err error) {
 	return f.file.ReadAt(b, off)
 }
 func (f *smbfsFile) ReadDir(n int) ([]fs.DirEntry, error) {
-	return []fs.DirEntry{}, arozfs.ErrOperationNotSupported
+	return []fs.DirEntry{}, wdosfs.ErrOperationNotSupported
 }
 func (f *smbfsFile) Readdirnames(n int) (names []string, err error) {
 	fi, err := f.file.Readdir(n)

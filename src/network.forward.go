@@ -11,7 +11,7 @@ import (
 
 /*
 	Network Forward Interface
-	author: tobychui
+	author: Secarian
 
 	This is an interface for providing a web UI for port forwarding to this host
 	on different ports. Useful if you need to forward alternative ports for your

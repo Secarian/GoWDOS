@@ -4,7 +4,7 @@
     This is a special test script and should not be mixed in with normal
     AGI module test scripts. Please test this seperately
 
-    Author: tobychui
+    Author: Secarian
 */
 
 function setup(){

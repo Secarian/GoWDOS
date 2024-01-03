@@ -11,8 +11,8 @@ import (
 	"strings"
 
 	fs "imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
 	"imuslab.com/wdos/mod/filesystem/shortcut"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 	module "imuslab.com/wdos/mod/modules"
 	prout "imuslab.com/wdos/mod/prouter"
 	"imuslab.com/wdos/mod/utils"
@@ -91,7 +91,7 @@ func desktop_initUserFolderStructure(username string) {
 			templateFiles, _ := filepath.Glob(templateFolder + "*")
 			for _, tfile := range templateFiles {
 				input, _ := os.ReadFile(tfile)
-				userFsa.WriteFile(arozfs.ToSlash(filepath.Join(userDesktopPath, filepath.Base(tfile))), input, 0755)
+				userFsa.WriteFile(wdosfs.ToSlash(filepath.Join(userDesktopPath, filepath.Base(tfile))), input, 0755)
 			}
 		}
 	}
@@ -608,7 +608,7 @@ func desktop_theme_handler(w http.ResponseWriter, r *http.Request) {
 		for _, file := range files {
 			ext := filepath.Ext(file.Name())
 			if utils.StringInArray([]string{".png", ".jpg", ".gif"}, ext) {
-				imageList = append(imageList, arozfs.ToSlash(filepath.Join(rpath, file.Name())))
+				imageList = append(imageList, wdosfs.ToSlash(filepath.Join(rpath, file.Name())))
 			}
 		}
 
@@ -731,7 +731,7 @@ func desktop_shortcutHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//Filter illegal characters in the shortcut filename
-	shortcutText = arozfs.FilterIllegalCharInFilename(shortcutText, " ")
+	shortcutText = wdosfs.FilterIllegalCharInFilename(shortcutText, " ")
 
 	//If dest not exists, create it
 	if !fshAbs.FileExists(shorcutRealDest) {

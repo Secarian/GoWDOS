@@ -10,7 +10,7 @@ newDBTableIfNotExists("Code Studio")
 //Define the launchInfo for the module
 var moduleLaunchInfo = {
     Name: "NotepadA",
-	Desc: "The legacy NotepadA from ArOZ Online Beta",
+	Desc: "The legacy NotepadA from WDOS Online Beta",
 	Group: "Office",
 	IconPath: "NotepadA/img/small_icon.png",
 	Version: "2.0",

@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 	"imuslab.com/wdos/mod/utils"
 )
 
@@ -44,7 +44,7 @@ func (l LocalFileSystemAbstraction) Chown(filename string, uid int, gid int) err
 func (l LocalFileSystemAbstraction) Chtimes(filename string, atime time.Time, mtime time.Time) error {
 	return os.Chtimes(filename, atime, mtime)
 }
-func (l LocalFileSystemAbstraction) Create(filename string) (arozfs.File, error) {
+func (l LocalFileSystemAbstraction) Create(filename string) (wdosfs.File, error) {
 	return os.Create(filename)
 }
 func (l LocalFileSystemAbstraction) Mkdir(filename string, mode os.FileMode) error {
@@ -56,10 +56,10 @@ func (l LocalFileSystemAbstraction) MkdirAll(filename string, mode os.FileMode) 
 func (l LocalFileSystemAbstraction) Name() string {
 	return ""
 }
-func (l LocalFileSystemAbstraction) Open(filename string) (arozfs.File, error) {
+func (l LocalFileSystemAbstraction) Open(filename string) (wdosfs.File, error) {
 	return os.Open(filename)
 }
-func (l LocalFileSystemAbstraction) OpenFile(filename string, flag int, perm os.FileMode) (arozfs.File, error) {
+func (l LocalFileSystemAbstraction) OpenFile(filename string, flag int, perm os.FileMode) (wdosfs.File, error) {
 	return os.OpenFile(filename, flag, perm)
 }
 func (l LocalFileSystemAbstraction) Remove(filename string) error {
@@ -83,7 +83,7 @@ func (l LocalFileSystemAbstraction) Close() error {
 */
 
 func (l LocalFileSystemAbstraction) VirtualPathToRealPath(subpath string, username string) (string, error) {
-	rpath, err := arozfs.GenericVirtualPathToRealPathTranslator(l.UUID, l.Hierarchy, subpath, username)
+	rpath, err := wdosfs.GenericVirtualPathToRealPathTranslator(l.UUID, l.Hierarchy, subpath, username)
 	if err != nil {
 		return "", err
 	}
@@ -97,13 +97,13 @@ func (l LocalFileSystemAbstraction) VirtualPathToRealPath(subpath string, userna
 
 func (l LocalFileSystemAbstraction) RealPathToVirtualPath(fullpath string, username string) (string, error) {
 	//Trim the absolute / relative path before passing into generic translator
-	fullpath = arozfs.ToSlash(fullpath)
-	if strings.HasPrefix(fullpath, arozfs.ToSlash(filepath.Clean(l.Rootpath))) {
-		fullpath = strings.TrimPrefix(fullpath, arozfs.ToSlash(filepath.Clean(l.Rootpath)))
+	fullpath = wdosfs.ToSlash(fullpath)
+	if strings.HasPrefix(fullpath, wdosfs.ToSlash(filepath.Clean(l.Rootpath))) {
+		fullpath = strings.TrimPrefix(fullpath, wdosfs.ToSlash(filepath.Clean(l.Rootpath)))
 	}
 
-	vpath, err := arozfs.GenericRealPathToVirtualPathTranslator(l.UUID, l.Hierarchy, arozfs.ToSlash(fullpath), username)
-	//fmt.Println("REAL TO VIRTUAL", arozfs.ToSlash(filepath.Clean(l.Rootpath)), fullpath, vpath)
+	vpath, err := wdosfs.GenericRealPathToVirtualPathTranslator(l.UUID, l.Hierarchy, wdosfs.ToSlash(fullpath), username)
+	//fmt.Println("REAL TO VIRTUAL", wdosfs.ToSlash(filepath.Clean(l.Rootpath)), fullpath, vpath)
 	return vpath, err
 }
 

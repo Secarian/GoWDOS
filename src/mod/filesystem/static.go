@@ -19,8 +19,8 @@ import (
 	"net/url"
 
 	mimetype "github.com/gabriel-vasile/mimetype"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
 	"imuslab.com/wdos/mod/filesystem/shortcut"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 )
 
 // Control Signals for background file operation tasks
@@ -42,7 +42,7 @@ type FileData struct {
 	Displaysize string
 	ModTime     int64
 	IsShared    bool
-	Shortcut    *arozfs.ShortcutData //This will return nil or undefined if it is not a shortcut file
+	Shortcut    *wdosfs.ShortcutData //This will return nil or undefined if it is not a shortcut file
 }
 
 type TrashedFile struct {
@@ -118,7 +118,7 @@ func GetFileDataFromPath(fsh *FileSystemHandler, vpath string, realpath string, 
 	displaySize := GetFileDisplaySize(fileSize, sizeRounding)
 	modtime, _ := fsh.FileSystemAbstraction.GetModTime(realpath)
 
-	var shortcutInfo *arozfs.ShortcutData = nil
+	var shortcutInfo *wdosfs.ShortcutData = nil
 	if filepath.Ext(realpath) == ".shortcut" {
 		shortcutContent, err := fsh.FileSystemAbstraction.ReadFile(realpath)
 		if err != nil {

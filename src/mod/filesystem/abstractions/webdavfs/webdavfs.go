@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/studio-b12/gowebdav"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 )
 
 /*
@@ -60,7 +60,7 @@ func (e WebDAVFileSystem) Chown(filename string, uid int, gid int) error {
 func (e WebDAVFileSystem) Chtimes(filename string, atime time.Time, mtime time.Time) error {
 	return errors.New("filesystem type not supported")
 }
-func (e WebDAVFileSystem) Create(filename string) (arozfs.File, error) {
+func (e WebDAVFileSystem) Create(filename string) (wdosfs.File, error) {
 	return nil, errors.New("filesystem type not supported")
 }
 func (e WebDAVFileSystem) Mkdir(filename string, mode os.FileMode) error {
@@ -74,10 +74,10 @@ func (e WebDAVFileSystem) MkdirAll(filename string, mode os.FileMode) error {
 func (e WebDAVFileSystem) Name() string {
 	return ""
 }
-func (e WebDAVFileSystem) Open(filename string) (arozfs.File, error) {
+func (e WebDAVFileSystem) Open(filename string) (wdosfs.File, error) {
 	return nil, errors.New("filesystem type not supported")
 }
-func (e WebDAVFileSystem) OpenFile(filename string, flag int, perm os.FileMode) (arozfs.File, error) {
+func (e WebDAVFileSystem) OpenFile(filename string, flag int, perm os.FileMode) (wdosfs.File, error) {
 	//Buffer the target file to memory
 	//To be implement: Wait for Golang's fs.File.Write function to be released
 	//f := bufffs.New(filename)

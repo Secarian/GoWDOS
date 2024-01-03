@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 	"imuslab.com/wdos/mod/permission"
 	"imuslab.com/wdos/mod/storage/bridge"
 
@@ -112,7 +112,7 @@ func LoadBaseStoragePool() error {
 	}
 
 	//Update the storage pool permission to readwrite
-	sp.OtherPermission = arozfs.FsReadWrite
+	sp.OtherPermission = wdosfs.FsReadWrite
 	baseStoragePool = sp
 
 	return nil
@@ -226,7 +226,7 @@ func LoadStoragePoolForGroup(pg *permission.PermissionGroup) error {
 		}
 
 		//Set other permission to denied by default
-		sp.OtherPermission = arozfs.FsDenied
+		sp.OtherPermission = wdosfs.FsDenied
 
 		//Assign storage pool to group
 		pg.StoragePool = sp
@@ -240,7 +240,7 @@ func LoadStoragePoolForGroup(pg *permission.PermissionGroup) error {
 			systemWideLogger.PrintAndLog("Storage", "Failed to create empty storage pool for group: "+pg.Name, err)
 		}
 		pg.StoragePool = sp
-		pg.StoragePool.OtherPermission = arozfs.FsDenied
+		pg.StoragePool.OtherPermission = wdosfs.FsDenied
 	}
 
 	return nil

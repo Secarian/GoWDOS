@@ -1,7 +1,7 @@
 /*
 
     Music Module Thumbnail Getter
-    author: tobychui
+    author: Secarian
 
     This script handle thumbnail loading from the local filesystem
 

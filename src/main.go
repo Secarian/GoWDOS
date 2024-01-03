@@ -17,7 +17,7 @@ import (
 
 /*
 	wdos
-	author: tobychui
+	author: Secarian
 
 	To edit startup flags, see main.flag.go
 	To edit main routing logic, see main.router.go
@@ -75,7 +75,7 @@ func main() {
 	//Handle version printing
 	if *show_version {
 		fmt.Println("WDOS " + build_version + " Revision " + internal_version)
-		fmt.Println("Developed by tobychui and other co-developers, Licensed to " + deviceVendor)
+		fmt.Println("Developed by Secarian and other co-developers, Licensed to " + deviceVendor)
 		//fmt.Println("THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.")
 		os.Exit(0)
 	}
@@ -98,7 +98,7 @@ func main() {
 	log.Println("WDOS " + build_version + " Revision " + internal_version)
 
 	/*
-		New Implementation of the ArOZ Online System, Sept 2020
+		New Implementation of the WDOS Online System, Sept 2020
 	*/
 	RunStartup()
 

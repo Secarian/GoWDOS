@@ -1,5 +1,5 @@
 /*
-    ArOZ Online Module Javascript Wrapper
+    WDOS Online Module Javascript Wrapper
 
     This is a wrapper for module developers to access system API easier and need not to dig through the source code.
     Basically: Write less do more (?)
@@ -771,7 +771,7 @@ class ao_module_codec{
 
 
 /**
-    ArOZ Online Module Utils for quick deploy of ArOZ Online WebApps
+    WDOS Online Module Utils for quick deploy of WDOS Online WebApps
 
     ao_module_utils.objectToAttr(object); //object to DOM attr
     ao_module_utils.attrToObject(attr); //DOM attr to Object

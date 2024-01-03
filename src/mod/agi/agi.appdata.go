@@ -15,7 +15,7 @@ import (
 
 /*
 	AGI Appdata Access Library
-	Author: tobychui
+	Author: Secarian
 
 	This library allow agi script to access files located in the web root
 	*This library provide READ ONLY function*

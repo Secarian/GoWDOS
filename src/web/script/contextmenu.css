@@ -4,7 +4,7 @@
     Design for Semantic UI and use with .ui.contextmenu
     Example Usage: 
 
-    <div id="contextmenu" class="aroz contextmenu" style="font-family: &quot;Microsoft JhengHei&quot;, &quot;SimHei&quot;, &quot;Apple LiGothic Medium&quot;, &quot;STHeiti&quot;; left: 497px; top: 248px;"><div class="item submenu" onclick="newitemmenu(this,event);" payload="">
+    <div id="contextmenu" class="wdos contextmenu" style="font-family: &quot;Microsoft JhengHei&quot;, &quot;SimHei&quot;, &quot;Apple LiGothic Medium&quot;, &quot;STHeiti&quot;; left: 497px; top: 248px;"><div class="item submenu" onclick="newitemmenu(this,event);" payload="">
             New Item
             <span class="description">
                 <i class="caret right icon"></i>
@@ -49,31 +49,31 @@
     </div>
 */
 
-.aroz.contextmenu{
+.wdos.contextmenu{
     position: fixed;
     box-sizing: border-box;
     letter-spacing: -.02em;
     z-index: 3000;
 }
 
-.aroz.contextmenu .item{
+.wdos.contextmenu .item{
     padding: 0.6em 1em !important;
 }
 
-.aroz.contextmenu .item:hover{
+.wdos.contextmenu .item:hover{
     background: rgb(247, 247, 247);
 }
 
-.aroz.contextmenu.visible, .ui.contextmenu.hidden.animating {
+.wdos.contextmenu.visible, .ui.contextmenu.hidden.animating {
     display: block;
 }
 
-.aroz.contextmenu .divider{
+.wdos.contextmenu .divider{
     margin-top: 0;
     margin-bottom: 0;    
 }
 
-.aroz.contextmenu{
+.wdos.contextmenu{
     cursor: auto;
     outline: none;
     min-width: 150px;
@@ -90,7 +90,7 @@
     will-change: transform, opacity;
 }
 
-.aroz.contextmenu > .item.item.item.item.item.item {
+.wdos.contextmenu > .item.item.item.item.item.item {
     position: relative;
     cursor: pointer;
     display: flex;
@@ -112,32 +112,32 @@
     -webkit-touch-callout: none;
 }
 
-.aroz.contextmenu > .item.item.item.item.item.item > i{
+.wdos.contextmenu > .item.item.item.item.item.item > i{
     font-size: 90%;
 }
 
-.aroz.contextmenu.visible > .item.item:hover {
+.wdos.contextmenu.visible > .item.item:hover {
     background: #fbfbfb !important;
     color: #5a5a5a !important;
     z-index: 11;
 }
 
-.aroz.contextmenu > *{
+.wdos.contextmenu > *{
     white-space: nowrap;
 }
 
-.aroz.contextmenu > .item{
+.wdos.contextmenu > .item{
     user-select: none;
 }
 
-.aroz.contextmenu > .item > .description {
+.wdos.contextmenu > .item > .description {
     margin: 0em 0em 0em 1em;
     flex: 1;
     text-align: right;
     color: #bfbfbf;
 }
 
-.aroz.contextmenu .header{
+.wdos.contextmenu .header{
 	padding: 0.4em;
 	background-color: rgba(30,30,30,0.05);
 }

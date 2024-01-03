@@ -140,7 +140,7 @@ func consoleCommandHandler(input string) string {
 				fmt.Println(host)
 			}
 			return "OK"
-		} else if matchSubfix(chunk, []string{"scan", "aroz"}, 2, "") || matchSubfix(chunk, []string{"scan", "wdos"}, 2, "") {
+		} else if matchSubfix(chunk, []string{"scan", "wdos"}, 2, "") || matchSubfix(chunk, []string{"scan", "wdos"}, 2, "") {
 			//scan all nearby wdos units
 			fmt.Println("Scanning nearybe WDOS Hosts (Should take around 10s)")
 			hosts := MDNS.Scan(10, "wdos.com")
@@ -204,7 +204,7 @@ func consoleCommandHandler(input string) string {
 		}
 	} else if len(chunk) == 1 && chunk[0] == "stop" {
 		//Stopping the server
-		fmt.Println("Shutting down aroz online system by terminal request")
+		fmt.Println("Shutting down wdos online system by terminal request")
 		executeShutdownSequence()
 	}
 

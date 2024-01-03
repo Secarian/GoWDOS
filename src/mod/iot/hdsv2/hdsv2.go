@@ -153,7 +153,7 @@ func (h *Handler) Stats() iot.Stats {
 		Desc:          "A basic IoT communication protocol for ESP8266 made by Makers",
 		Version:       "2.0",
 		ProtocolVer:   "2.0",
-		Author:        "tobychui",
+		Author:        "Secarian",
 		AuthorWebsite: "http://wdos.com",
 		AuthorEmail:   "hds@wdos.com",
 		ReleaseDate:   1614524498,

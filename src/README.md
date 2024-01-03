@@ -1,6 +1,6 @@
 # WDOS 2.0
 
-Dies ist die Go-Implementierung von WDOS (auch bekannt als ArOZ Online) Web-Desktop-Umgebung, die für Linux entwickelt wurde, aber irgendwie auch auf Windows und macOS funktioniert.
+Dies ist die Go-Implementierung von WDOS (auch bekannt als WDOS Online) Web-Desktop-Umgebung, die für Linux entwickelt wurde, aber irgendwie auch auf Windows und macOS funktioniert.
 
 Diese README-Datei ist nur für Entwickler gedacht. Wenn Sie ein normaler Benutzer sind, konsultieren Sie bitte die README-Datei außerhalb des /src-Ordners.
 
@@ -31,13 +31,13 @@ Das WDOS-System enthält sowohl die Virtualisierungsebene als auch die Abstrakti
 | --------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
 | {vroot_id}:/{subpath}                         | user:/Desktop/meinedatei.txt                       | Dateisystem-Virtualisierungsebene (höchste Ebene) |
 | fsh (*File System Handler) + subpath (string)  | fsh (localfs) + /dateien/benutzer/alan/Desktop/meinedatei.txt | Dateisystem-Abstraktionsebene                     |
-| {physical_location}/{subpath}                 | /home/aroz/wdos/dateien/benutzer/Desktop/meinedatei.txt | Physische (Festplatten-)Ebene                     |
+| {physical_location}/{subpath}                 | /home/wdos/wdos/dateien/benutzer/Desktop/meinedatei.txt | Physische (Festplatten-)Ebene                     |
 
 Seit WDOS v2.000 haben wir der (bereits komplexen) File System Handler (fsh) Infrastruktur eine Dateisystem-Abstraktion (fsa oder manchmal als fshAbs, Abkürzung für "File System Handler underlying File System Abstraction") hinzugefügt. Es gibt zwei Arten von fsh, die derzeit von der WDOS Dateisystem-Abstraktionsebene unterstützt werden.
 
-## ArOZ JavaScript Gateway Interface / Plugin Loader
+## WDOS JavaScript Gateway Interface / Plugin Loader
 
-Die ArOZ AJGI / AGI-Schnittstelle bietet eine JavaScript-programmierbare Schnittstelle für WDOS-Benutzer, um ein Plugin für das System zu erstellen. Um das Modul zu initialisieren, können Sie eine "init.agi"-Datei im Webverzeichnis des Moduls (auch Modulwurzel genannt) platzieren. Weitere Details finden Sie in der [AJGI-Dokumentation](AJGI Dokumentation.md).
+Die WDOS AJGI / AGI-Schnittstelle bietet eine JavaScript-programmierbare Schnittstelle für WDOS-Benutzer, um ein Plugin für das System zu erstellen. Um das Modul zu initialisieren, können Sie eine "init.agi"-Datei im Webverzeichnis des Moduls (auch Modulwurzel genannt) platzieren. Weitere Details finden Sie in der [AJGI-Dokumentation](AJGI Dokumentation.md).
 
 AGI-Skripte können mit verschiedenen Berechtigungen ausgeführt werden.
 
@@ -96,7 +96,7 @@ type serviecInfo struct{
 //Beispiel für die Verwendung beim Empfangen des -info-Flags
 infoObject := serviecInfo{
         Name: "Demo Subservice",
-        Desc: "Ein einfacher Subdienst-Code, um zu zeigen, wie Subdienste in ArOZ Online funktionieren",            
+        Desc: "Ein einfacher Subdienst-Code, um zu zeigen, wie Subdienste in WDOS Online funktionieren",            
         Group: "Entwicklung",
         IconPath: "demo/icon.png",
         Version: "0.0.1",
@@ -136,7 +136,7 @@ Standardmäßig wird die Subdienstroutine eine Reverse-Proxy-Verbindung mit inte
 .disabled        => Diesen Subdienst beim Start nicht laden. Der Benutzer kann ihn jedoch über die Einstellungsschnittstelle aktivieren
 ```
 
-Hier ist ein Beispiel für eine "start.bat"-Datei, die in die Integration von Syncthing in das ArOZ Online System mit einer ".startscript"-Datei integriert wird, die neben der syncthing.exe-Datei platziert wird.
+Hier ist ein Beispiel für eine "start.bat"-Datei, die in die Integration von Syncthing in das WDOS Online System mit einer ".startscript"-Datei integriert wird, die neben der syncthing.exe-Datei platziert wird.
 
 ```
 if not exist ".\config" mkdir ".\config"
@@ -145,14 +145,14 @@ syncthing.exe -home=".\config" -no-browser -gui-address=127.0.0.1%2
 
 ## Systemd-Unterstützung
 
-Um systemd in Ihrem Host zu aktivieren, der das Aroz Online System unterstützt, erstellen Sie ein Bash-Skript in Ihrem Aroz Online-Stammverzeichnis namens "start.sh" und füllen Sie es mit Ihren bevorzugten Startparametern. Das einfachste ist wie folgt:
+Um systemd in Ihrem Host zu aktivieren, der das WDOS Online System unterstützt, erstellen Sie ein Bash-Skript in Ihrem WDOS Online-Stammverzeichnis namens "start.sh" und füllen Sie es mit Ihren bevorzugten Startparametern. Das einfachste ist wie folgt:
 
 ```
 #/bin/bash
-sudo ./aroz_online_linux_amd64
+sudo ./wdos_online_linux_amd64
 ```
 
-Dann können Sie eine neue Datei namens "wdos.service" in /etc/systemd/system mit folgendem Inhalt erstellen (nehmen Sie an, dass Ihr Aroz Online-Stammverzeichnis bei /home/pi/wdos liegt):
+Dann können Sie eine neue Datei namens "wdos.service" in /etc/systemd/system mit folgendem Inhalt erstellen (nehmen Sie an, dass Ihr WDOS Online-Stammverzeichnis bei /home/pi/wdos liegt):
 
 ```
 [Unit]
@@ -183,5 +183,5 @@ sudo systemctl start wdos.service
 systemctl status wdos.service
 
 # Deaktivieren Sie den Dienst, wenn Sie ihn beim Start nicht mehr ausführen möchten
-sudo systemctl disable aroz-online.service
+sudo systemctl disable wdos-online.service
 ```

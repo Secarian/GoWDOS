@@ -23,10 +23,10 @@ import (
 )
 
 /*
-	ArOZ Online System - Dynamic Subsystem loading services
-	author: tobychui
+	WDOS Online System - Dynamic Subsystem loading services
+	author: Secarian
 
-	This module load in ArOZ Online Subservice using authorized reverse proxy channel.
+	This module load in WDOS Online Subservice using authorized reverse proxy channel.
 	Please see the demo subservice module for more information on implementing a subservice module.
 */
 
@@ -193,7 +193,7 @@ func (sr *SubServiceRouter) Launch(servicePath string, startupMode bool) error {
 
 	var thisSubService SubService
 	if fileExists(servicePath + "/.noproxy") {
-		//Adaptive mode. This is designed for modules that do not designed with ArOZ Online in mind.
+		//Adaptive mode. This is designed for modules that do not designed with WDOS Online in mind.
 		//Ignore proxy setup and startup the application
 		absolutePath, _ := filepath.Abs(servicePath + "/" + binaryExecPath)
 		if fileExists(servicePath + "/.startscript") {

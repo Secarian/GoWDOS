@@ -1,5 +1,5 @@
-# ArOZ Online Documentation Rendering Interface
-This is the documentation rendering script for ArOZ Online Documentation System.
+# WDOS Online Documentation Rendering Interface
+This is the documentation rendering script for WDOS Online Documentation System.
 The json files follow the following structure
 
 ## How it works
@@ -10,7 +10,7 @@ The first line is the meta tag in JSON string format and the rest of the documen
 For example:
 ```
 ["Hello World!"]
-# This is a document file for the ArOZ Online System
+# This is a document file for the WDOS Online System
 More lines here
 ```
 

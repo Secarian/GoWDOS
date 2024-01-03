@@ -14,7 +14,7 @@ import (
 
 /*
 	IoT Hub
-	Author: tobychui
+	Author: Secarian
 
 	This script handle the IoT service start up and mangement
 

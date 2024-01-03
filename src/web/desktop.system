@@ -1149,11 +1149,11 @@
 
     </div>
 
-    <div id="contextmenu" class="aroz contextmenu" style="display:none;">
+    <div id="contextmenu" class="wdos contextmenu" style="display:none;">
 
     </div>
 
-    <div id="subcontextmenu" class="aroz contextmenu" style="display:none;">
+    <div id="subcontextmenu" class="wdos contextmenu" style="display:none;">
 
     </div>
 
@@ -1268,10 +1268,10 @@
     <script>
 
         /*
-        ArOZ Online Desktop Interface
+        WDOS Online Desktop Interface
 
         This script maintain the usability of the desktop environment.
-        This is not identical to the previous Desktop environment used in ArOZ Online BETA.
+        This is not identical to the previous Desktop environment used in WDOS Online BETA.
         */
 
         //System environment variables

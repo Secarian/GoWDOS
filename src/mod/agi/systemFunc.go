@@ -15,7 +15,7 @@ import (
 	"imuslab.com/wdos/mod/utils"
 )
 
-// Inject aroz online custom functions into the virtual machine
+// Inject wdos online custom functions into the virtual machine
 func (g *Gateway) injectStandardLibs(vm *otto.Otto, scriptFile string, scriptScope string) {
 	//Define system core modules and definations
 	sysdb := g.Option.UserHandler.GetDatabase()

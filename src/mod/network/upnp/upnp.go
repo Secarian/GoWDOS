@@ -44,7 +44,7 @@ func NewUPNPClient(basePort int, hostname string) (*UPnPClient, error) {
 		RequiredPorts: []int{},
 	}
 
-	//Require the port that is running ArOZ Online Host
+	//Require the port that is running WDOS Online Host
 	err = newUPnPObject.ForwardPort(basePort, hostname)
 	if err != nil {
 		return &UPnPClient{}, err
@@ -105,7 +105,7 @@ func (u *UPnPClient) ClosePort(portNumber int) error {
 	return nil
 }
 
-//Renew forward rules, prevent router lease time from flushing the Upnp config
+// Renew forward rules, prevent router lease time from flushing the Upnp config
 func (u *UPnPClient) RenewForwardRules() {
 	portsToRenew := u.RequiredPorts
 	for _, thisPort := range portsToRenew {

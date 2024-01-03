@@ -13,7 +13,7 @@ import (
 
 	"github.com/pkg/sftp"
 	"golang.org/x/crypto/ssh"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 )
 
 /*
@@ -97,35 +97,35 @@ func NewSFTPFileSystemAbstraction(uuid string, hierarchy string, serverUrl strin
 	}, nil
 }
 func (s SFTPFileSystemAbstraction) Chmod(filename string, mode os.FileMode) error {
-	filename = arozfs.GenericPathFilter(filename)
+	filename = wdosfs.GenericPathFilter(filename)
 	return s.client.Chmod(filename, mode)
 }
 func (s SFTPFileSystemAbstraction) Chown(filename string, uid int, gid int) error {
-	filename = arozfs.GenericPathFilter(filename)
+	filename = wdosfs.GenericPathFilter(filename)
 	return s.client.Chown(filename, uid, gid)
 }
 func (s SFTPFileSystemAbstraction) Chtimes(filename string, atime time.Time, mtime time.Time) error {
-	filename = arozfs.GenericPathFilter(filename)
+	filename = wdosfs.GenericPathFilter(filename)
 	return s.client.Chtimes(filename, atime, mtime)
 }
-func (s SFTPFileSystemAbstraction) Create(filename string) (arozfs.File, error) {
-	filename = arozfs.GenericPathFilter(filename)
+func (s SFTPFileSystemAbstraction) Create(filename string) (wdosfs.File, error) {
+	filename = wdosfs.GenericPathFilter(filename)
 	//TODO: ADD FILE TYPE CONVERSION
-	return nil, arozfs.ErrNullOperation
+	return nil, wdosfs.ErrNullOperation
 }
 func (s SFTPFileSystemAbstraction) Mkdir(filename string, mode os.FileMode) error {
-	filename = arozfs.GenericPathFilter(filename)
+	filename = wdosfs.GenericPathFilter(filename)
 	return s.client.Mkdir(filename)
 }
 func (s SFTPFileSystemAbstraction) MkdirAll(filename string, mode os.FileMode) error {
-	filename = arozfs.GenericPathFilter(filename)
+	filename = wdosfs.GenericPathFilter(filename)
 	return s.client.MkdirAll(filename)
 }
 func (s SFTPFileSystemAbstraction) Name() string {
 	return ""
 }
-func (s SFTPFileSystemAbstraction) Open(filename string) (arozfs.File, error) {
-	filename = arozfs.GenericPathFilter(filename)
+func (s SFTPFileSystemAbstraction) Open(filename string) (wdosfs.File, error) {
+	filename = wdosfs.GenericPathFilter(filename)
 
 	f, err := s.client.Open(filename)
 	if err != nil {
@@ -150,8 +150,8 @@ func (s SFTPFileSystemAbstraction) Open(filename string) (arozfs.File, error) {
 	wf := newSftpFsFile(f, isDir, de)
 	return wf, nil
 }
-func (s SFTPFileSystemAbstraction) OpenFile(filename string, flag int, perm os.FileMode) (arozfs.File, error) {
-	filename = arozfs.GenericPathFilter(filename)
+func (s SFTPFileSystemAbstraction) OpenFile(filename string, flag int, perm os.FileMode) (wdosfs.File, error) {
+	filename = wdosfs.GenericPathFilter(filename)
 
 	f, err := s.client.OpenFile(filename, flag)
 	if err != nil {
@@ -177,11 +177,11 @@ func (s SFTPFileSystemAbstraction) OpenFile(filename string, flag int, perm os.F
 	return wf, nil
 }
 func (s SFTPFileSystemAbstraction) Remove(filename string) error {
-	filename = arozfs.GenericPathFilter(filename)
+	filename = wdosfs.GenericPathFilter(filename)
 	return s.client.Remove(filename)
 }
 func (s SFTPFileSystemAbstraction) RemoveAll(filename string) error {
-	filename = arozfs.GenericPathFilter(filename)
+	filename = wdosfs.GenericPathFilter(filename)
 	if s.IsDir(filename) {
 		return s.client.RemoveDirectory(filename)
 	}
@@ -189,12 +189,12 @@ func (s SFTPFileSystemAbstraction) RemoveAll(filename string) error {
 
 }
 func (s SFTPFileSystemAbstraction) Rename(oldname, newname string) error {
-	oldname = arozfs.GenericPathFilter(oldname)
-	newname = arozfs.GenericPathFilter(newname)
+	oldname = wdosfs.GenericPathFilter(oldname)
+	newname = wdosfs.GenericPathFilter(newname)
 	return s.client.Rename(oldname, newname)
 }
 func (s SFTPFileSystemAbstraction) Stat(filename string) (os.FileInfo, error) {
-	filename = arozfs.GenericPathFilter(filename)
+	filename = wdosfs.GenericPathFilter(filename)
 	return s.client.Stat(filename)
 }
 func (s SFTPFileSystemAbstraction) Close() error {
@@ -216,13 +216,13 @@ func (s SFTPFileSystemAbstraction) Close() error {
 */
 
 func (s SFTPFileSystemAbstraction) VirtualPathToRealPath(subpath string, username string) (string, error) {
-	rpath, err := arozfs.GenericVirtualPathToRealPathTranslator(s.uuid, s.hierarchy, subpath, username)
+	rpath, err := wdosfs.GenericVirtualPathToRealPathTranslator(s.uuid, s.hierarchy, subpath, username)
 	if err != nil {
 		return "", err
 	}
 	if !(len(rpath) >= len(s.mountFolder) && rpath[:len(s.mountFolder)] == s.mountFolder) {
 		//Prepend the mount folder (aka root folder) to the translated output from generic path translator
-		rpath = arozfs.ToSlash(filepath.Join(s.mountFolder, rpath))
+		rpath = wdosfs.ToSlash(filepath.Join(s.mountFolder, rpath))
 	}
 	return rpath, nil
 }
@@ -232,7 +232,7 @@ func (s SFTPFileSystemAbstraction) RealPathToVirtualPath(fullpath string, userna
 		//Trim out the mount folder path from the full path before passing into the generic path translator
 		fullpath = fullpath[len(s.mountFolder):]
 	}
-	return arozfs.GenericRealPathToVirtualPathTranslator(s.uuid, s.hierarchy, fullpath, username)
+	return wdosfs.GenericRealPathToVirtualPathTranslator(s.uuid, s.hierarchy, fullpath, username)
 }
 
 func (s SFTPFileSystemAbstraction) FileExists(realpath string) bool {
@@ -250,7 +250,7 @@ func (s SFTPFileSystemAbstraction) IsDir(realpath string) bool {
 }
 
 func (s SFTPFileSystemAbstraction) Glob(realpathWildcard string) ([]string, error) {
-	realpathWildcard = arozfs.GenericPathFilter(realpathWildcard)
+	realpathWildcard = wdosfs.GenericPathFilter(realpathWildcard)
 	return s.client.Glob(realpathWildcard)
 }
 
@@ -273,7 +273,7 @@ func (s SFTPFileSystemAbstraction) GetModTime(realpath string) (int64, error) {
 }
 
 func (s SFTPFileSystemAbstraction) WriteFile(filename string, content []byte, mode os.FileMode) error {
-	filename = arozfs.GenericPathFilter(filename)
+	filename = wdosfs.GenericPathFilter(filename)
 	f, err := s.client.OpenFile(filename, os.O_CREATE|os.O_WRONLY)
 	if err != nil {
 		return err
@@ -283,7 +283,7 @@ func (s SFTPFileSystemAbstraction) WriteFile(filename string, content []byte, mo
 	return err
 }
 func (s SFTPFileSystemAbstraction) ReadFile(filename string) ([]byte, error) {
-	filename = arozfs.GenericPathFilter(filename)
+	filename = wdosfs.GenericPathFilter(filename)
 	f, err := s.client.OpenFile(filename, os.O_RDONLY)
 	if err != nil {
 		return []byte(""), err
@@ -292,7 +292,7 @@ func (s SFTPFileSystemAbstraction) ReadFile(filename string) ([]byte, error) {
 	return io.ReadAll(f)
 }
 func (s SFTPFileSystemAbstraction) ReadDir(filename string) ([]fs.DirEntry, error) {
-	filename = arozfs.GenericPathFilter(filename)
+	filename = wdosfs.GenericPathFilter(filename)
 	result := []fs.DirEntry{}
 	infos, err := s.client.ReadDir(filename)
 	if err != nil {
@@ -307,7 +307,7 @@ func (s SFTPFileSystemAbstraction) ReadDir(filename string) ([]fs.DirEntry, erro
 	return result, nil
 }
 func (s SFTPFileSystemAbstraction) WriteStream(filename string, stream io.Reader, mode os.FileMode) error {
-	filename = arozfs.GenericPathFilter(filename)
+	filename = wdosfs.GenericPathFilter(filename)
 	f, err := s.client.OpenFile(filename, os.O_CREATE|os.O_WRONLY)
 	if err != nil {
 		return err
@@ -316,7 +316,7 @@ func (s SFTPFileSystemAbstraction) WriteStream(filename string, stream io.Reader
 	return err
 }
 func (s SFTPFileSystemAbstraction) ReadStream(filename string) (io.ReadCloser, error) {
-	filename = arozfs.GenericPathFilter(filename)
+	filename = wdosfs.GenericPathFilter(filename)
 	f, err := s.client.OpenFile(filename, os.O_RDONLY)
 	if err != nil {
 		return nil, err
@@ -325,7 +325,7 @@ func (s SFTPFileSystemAbstraction) ReadStream(filename string) (io.ReadCloser, e
 }
 
 func (s SFTPFileSystemAbstraction) Walk(root string, walkFn filepath.WalkFunc) error {
-	root = arozfs.GenericPathFilter(root)
+	root = wdosfs.GenericPathFilter(root)
 	walker := s.client.Walk(root)
 	for walker.Step() {
 		walkFn(walker.Path(), walker.Stat(), walker.Err())

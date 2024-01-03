@@ -1,8 +1,8 @@
 package main
 
 /*
-	System Startup Script for ArOZ Online System
-	author: tobychui
+	System Startup Script for WDOS Online System
+	author: Secarian
 */
 
 import (
@@ -82,7 +82,7 @@ func RunStartup() {
 	//StorageDaemonInit() //Start File System handler daemon (for backup and other sync process)
 
 	//8 Start AGI and Subservice modules (Must start after module)
-	AGIInit()        //ArOZ Javascript Gateway Interface, must start after fs
+	AGIInit()        //WDOS Javascript Gateway Interface, must start after fs
 	SchedulerInit()  //Start System Scheudler
 	SubserviceInit() //Subservice Handler
 
@@ -104,7 +104,7 @@ func RunStartup() {
 	WiFiInit()           //Inialize WiFi management module
 
 	//ARSM Moved to scheduler, remote support is rewrite pending
-	//ArsmInit() //Inialize ArOZ Remote Support & Management Framework
+	//ArsmInit() //Inialize WDOS Remote Support & Management Framework
 
 	//11. Other stuffs
 	util_init()

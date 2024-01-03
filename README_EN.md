@@ -56,7 +56,7 @@
 
 ## Build from Source
 
-Require GO 1.20 or above (See [Instllation tutorial](https://dev.to/tobychui/install-go-on-raspberry-pi-os-shortest-tutorial-4pb)) and ffmpeg (Optional: wpa_supplicant or nmcli)
+Require GO 1.20 or above (See [Instllation tutorial](https://dev.to/Secarian/install-go-on-raspberry-pi-os-shortest-tutorial-4pb)) and ffmpeg (Optional: wpa_supplicant or nmcli)
 
 Run the following the command to build the system
 
@@ -80,7 +80,7 @@ go build
 Install the latest version of Raspberry Pi OS / Armbian / Debian on an SD card / boot drive and boot it up. After setup and initialization is done, connect to it via SSH or use the Terminal App on your desktop to enter the following command
 
 ```bash
-wget -O install.sh https://raw.githubusercontent.com/tobychui/wdos/master/installer/install.sh && bash install.sh
+wget -O install.sh https://raw.githubusercontent.com/Secarian/wdos/master/installer/install.sh && bash install.sh
 ```
 
 and follow the on-screen instruction to setup your wdos system. 
@@ -172,7 +172,7 @@ The following startup parameters are supported (v2.016)
   -allow_iot
         Enable IoT related APIs and scanner. Require MDNS enabled (default true)
   -allow_mdns
-        Enable MDNS service. Allow device to be scanned by nearby ArOZ Hosts (default true)
+        Enable MDNS service. Allow device to be scanned by nearby WDOS Hosts (default true)
   -allow_pkg_install
         Allow the system to install package using Advanced Package Tool (aka apt or apt-get) (default true)
   -allow_ssdp
@@ -180,7 +180,7 @@ The following startup parameters are supported (v2.016)
   -allow_upnp
         Enable uPNP service, recommended for host under NAT router
   -beta_scan
-        Allow compatibility to ArOZ Online Beta Clusters
+        Allow compatibility to WDOS Online Beta Clusters
   -bufffile_size int
         Maxmium buffer file size (in MB) for buffer required file system abstractions (default 25)
   -buffpool_size int
@@ -212,7 +212,7 @@ The following startup parameters are supported (v2.016)
   -homepage
         Enable user homepage. Accessible via /www/{username}/ (default true)
   -hostname string
-        Default name for this host (default "My ArOZ")
+        Default name for this host (default "My WDOS")
   -iobuf int
         Amount of buffer memory for IO operations (default 1024)
   -key string
@@ -258,10 +258,10 @@ The following startup parameters are supported (v2.016)
 Example
 
 ```
-//Starting aroz online with standard web port
+//Starting wdos online with standard web port
 ./wdos -port 80
 
-//Start aroz online in demo mode
+//Start wdos online in demo mode
 ./wdos -demo_mode=true
 
 //Use https instead of http
@@ -280,7 +280,7 @@ See documentation for more examples.
 
 Launcher is required for performing OTA updates in wdos so you don't need to ssh into your host every time you need to update WDOS. You can install it via the installation script or install it manually. See more in the following repository. 
 
-https://github.com/aroz-online/launcher
+https://github.com/wdos-online/launcher
 
 ### Storage Configuration
 
@@ -332,7 +332,7 @@ See [examples](examples/) folder for more details.
 ## Other Resources
 
 If you are looking for other WebApps (Installed via System Setting) or subservices (Require SSH login to install, for OEM only), please take a look at our collections over here:
-https://github.com/aroz-online/WebApp-and-Subservice-Index
+https://github.com/wdos-online/WebApp-and-Subservice-Index
 
 ## Community / Q&A
 
@@ -352,13 +352,13 @@ If you are looking for tutorials or need help on debugging some minor issues, fe
 
 #### English
 
-- [I write my own web desktop OS for 3 years and this is what it looks like now ](https://dev.to/tobychui/i-write-my-own-web-desktop-os-for-3-years-and-this-is-what-it-looks-like-now-2903)
+- [I write my own web desktop OS for 3 years and this is what it looks like now ](https://dev.to/Secarian/i-write-my-own-web-desktop-os-for-3-years-and-this-is-what-it-looks-like-now-2903)
 
 #### Chinese
 
 - [WDOS+树莓派打造随身NAS（避坑专用）](https://blog.csdn.net/m0_37728676/article/details/113876815)
 - [WDOS+树莓派小型NAS](http://www.huajia.online/2021/10/23/WDOS-%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B0%8F%E5%9E%8BNAS/)
-- [树莓派 Arozos 指北](https://xlog.pi-dal.com/WDOS-RPI-Tutorial)
+- [树莓派 WDOS 指北](https://xlog.pi-dal.com/WDOS-RPI-Tutorial)
 - [Linux:WDOS 安裝與建立開機自啟動服務](https://pvecli.xuan2host.com/linux-wdos-install-service/)
 
 #### Japanese
@@ -375,7 +375,7 @@ Feel free to create a PR if you have written an article for WDOS!
 ### Source Code
 
 WDOS - General purpose cloud desktop platform
-Copyright (C) 2023  tobychui
+Copyright (C) 2024  Secarian
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation.
 
@@ -385,7 +385,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 ### Documentations
 
-Copyright (C)  2023 tobychui
+Copyright (C)  2024 Secarian
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
@@ -395,4 +395,4 @@ Free Documentation License".
 
 ### Artwork and Mascot Design
 
-Copyright (C)  2023 tobychui, All Right Reserved
+Copyright (C)  2024 Secarian, All Right Reserved

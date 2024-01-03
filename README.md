@@ -4,7 +4,7 @@
 
 ## WICHTIGE HINWEISE
 
-Der aktuelle Arozos befindet sich noch in intensiver Entwicklung. Die Systemstruktur kann jederzeit geändert werden. Bitte entwickeln Sie nur auf der aktuellen vorhandenen ArOZ Gateway Interface (AGI) JavaScript Interface oder Standard HTML Webapps mit ao_module.js Endpunkten.
+Der aktuelle WDOS befindet sich noch in intensiver Entwicklung. Die Systemstruktur kann jederzeit geändert werden. Bitte entwickeln Sie nur auf der aktuellen vorhandenen WDOS Gateway Interface (AGI) JavaScript Interface oder Standard HTML Webapps mit ao_module.js Endpunkten.
 
 ## Features
 
@@ -52,7 +52,7 @@ Der aktuelle Arozos befindet sich noch in intensiver Entwicklung. Die Systemstru
 
 ## Installation
 
-Erfordert GO 1.14 oder höher (siehe [Installationsanleitung](https://dev.to/tobychui/install-go-on-raspberry-pi-os-shortest-tutorial-4pb))
+Erfordert GO 1.14 oder höher (siehe [Installationsanleitung](https://dev.to/Secarian/install-go-on-raspberry-pi-os-shortest-tutorial-4pb))
 
 Führen Sie den folgenden Befehl aus, um das System zu erstellen
 
@@ -77,7 +77,7 @@ Wenn Sie Raspberry Pi als Ihren Host verwenden, können Sie eines der Images her
 | wdos-v1.120 | https://www.mediafire.com/file/rg3gkdt4asgk789/wdos_v1.120.7z/file | https://drive.google.com/file/d/1neTDxFpXxQQzsHvyqmCJOfAzjCPi8RzY/view?usp=sharing | |
 | wdos v1.119 | https://www.mediafire.com/file/4vx4f5boj8pfeu1/wdos_v1.119.7z/file | https://drive.google.com/file/d/1Gl_wYCvbio2lmW6YiFObIJHlejLzFrRu/view?usp=sharing | Aktualisiert auf Raspberry Pi OS 64-bit. Siehe kompatible Liste https://www.raspberrypi.com/news/raspberry-pi-os-64-bit/ |
 | wdos v1.118 (v2) | https://www.mediafire.com/file/f1i4xsp4rplwbko/wdos_v1.118_v2.7z/file | https://drive.google.com/file/d/1sgG-QOlaUmXhSiUJIB3DpnejElud1yvn/view?usp=sharing | Unterstützt Pi zero 2w |
-| wdos v1.115 (Stable) | https://www.mediafire.com/file/zbhieo59fq2sw80/wdos_v1.115.7z/file | | Bauen in https://github.com/aroz-online/WsTTY |
+| wdos v1.115 (Stable) | https://www.mediafire.com/file/zbhieo59fq2sw80/wdos_v1.115.7z/file | | Bauen in https://github.com/wdos-online/WsTTY |
 | wdos v1.114 | EOL | | Unstable, aktualisieren Sie auf 1.115, wenn Sie diese Version noch benutzen |
 | wdos v1.113 | https://www.mediafire.com/file/u42ha6ljfq6q0g9/wdos_v1.113.7z/file | |
 | wdos v1.112 (Stable) | https://www.mediafire.com/file/eonn1weu8jvfz29/wdos_v1.112.7z/file | | Fehlerbehebung und Patches für v1.111 |
@@ -99,7 +99,7 @@ Um die .img-Datei zu erhalten, können Sie das komprimierte Bild mit 7zip entpac
 Seit v1.119 wurde das vorinstallierte wdos-Images von Raspberry Pi OS 32-Bit auf 64-Bit verschoben, um die Systemressourcen besser zu nutzen. Für ältere Versionen von Pis können Sie wdos mit dem unten stehenden Befehl mit einer frischen Installation von Raspberry Pi OS installieren.
 
 ```
-curl -L <https://raw.githubusercontent.com/tobychui/wdos/master/installer/install_for_pi.sh> | bash
+curl -L <https://raw.githubusercontent.com/Secarian/wdos/master/installer/install_for_pi.sh> | bash
 
 ```
 
@@ -107,13 +107,13 @@ ohne curl
 
 ```
 cd ~/
-wget <https://raw.githubusercontent.com/tobychui/wdos/master/installer/install_for_pi.sh>
+wget <https://raw.githubusercontent.com/Secarian/wdos/master/installer/install_for_pi.sh>
 sudo chmod 775 ./install_for_pi.sh
 ./install_for_pi.sh
 
 ```
 
-Der Installer wird alle erforderlichen Abhängigkeiten einschließlich ffmpeg und go-Compiler installieren. Um die Installation erfolgreich zu bestätigen, überprüfen Sie den Ausführungsstatus von Arozos mit dem folgenden Befehl.
+Der Installer wird alle erforderlichen Abhängigkeiten einschließlich ffmpeg und go-Compiler installieren. Um die Installation erfolgreich zu bestätigen, überprüfen Sie den Ausführungsstatus von WDOS mit dem folgenden Befehl.
 
 ```
 sudo systemctl status wdos
@@ -154,7 +154,7 @@ wdos.exe
 ## Docker
 Danke an [Saren](https://github.com/Saren-Arterius) für das erstellen dieses großartigen DockerFile
 
-Sehen Sie sich sein Repo an [hier] (https://github.com/Saren-Arterius/aroz-dockerize)
+Sehen Sie sich sein Repo an [hier] (https://github.com/Saren-Arterius/wdos-dockerize)
 
 ## Screenshots
 ![Image](img/screenshots/1.png?raw=true)
@@ -178,7 +178,7 @@ Die folgenden Startparameter werden unterstützt (v1.113)
   -allow_iot
     	Ermöglicht IoT-bezogene APIs und Scanner. Erfordert die Aktivierung von MDNS (Standard true)
   -allow_mdns
-    	Aktiviert den MDNS-Dienst. Erlaubt, dass das Gerät von nahegelegenen ArOZ-Hosts gescannt wird (standardmäßig true)
+    	Aktiviert den MDNS-Dienst. Erlaubt, dass das Gerät von nahegelegenen WDOS-Hosts gescannt wird (standardmäßig true)
   -allow_pkg_install
     	Erlaubt dem System, Pakete mit dem Advanced Package Tool (auch bekannt als apt oder apt-get) zu installieren (Standardwert true)
   -allow_ssdp
@@ -186,7 +186,7 @@ Die folgenden Startparameter werden unterstützt (v1.113)
   -allow_upnp
     	Aktiviert den uPNP-Dienst, empfohlen für Hosts unter NAT-Routern
   -beta_scan
-    	Erlaubt Kompatibilität zu ArOZ Online Beta Clusters
+    	Erlaubt Kompatibilität zu WDOS Online Beta Clusters
   -cert Zeichenfolge
     	TLS-Zertifikatsdatei (.crt) (Standard "localhost.crt")
   -console
@@ -208,7 +208,7 @@ Die folgenden Startparameter werden unterstützt (v1.113)
   -homepage
     	Aktiviert die Benutzer-Homepage. Erreichbar über /www/{Benutzername}/ (Voreinstellung true)
   -hostname Zeichenfolge
-    	Standardname für diesen Host (standardmäßig "Mein ArOZ")
+    	Standardname für diesen Host (standardmäßig "Mein WDOS")
   -iobuf int
     	Menge des Pufferspeichers für IO-Operationen (Standardwert 1024)
   -key string
@@ -252,10 +252,10 @@ Die folgenden Startparameter werden unterstützt (v1.113)
 Beispiel:
 
 ```
-//Start von aroz online mit Standard-Webport
+//Start von wdos online mit Standard-Webport
 ./wdos -port 80
 
-//Start von aroz online im Demo-Modus
+//Start von wdos online im Demo-Modus
 ./wdos -demo_mode=true
 
 //https anstelle von http verwenden
@@ -272,7 +272,7 @@ Siehe Dokumentation für weitere Beispiele.
 
 ### WDOS Launcher (erforderlich für OTA-Update-Unterstützung)
 
-Siehe [https://github.com/aroz-online/launcher](https://github.com/aroz-online/launcher)
+Siehe [https://github.com/wdos-online/launcher](https://github.com/wdos-online/launcher)
 
 ### Speicherkonfiguration
 
@@ -293,16 +293,16 @@ src/system/storage.json.example
 
 Benennen Sie die storage.json.example in storage.json um und starten Sie wdos. Die erforderlichen virtuellen Speicherlaufwerke werden entsprechend eingehängt.
 
-## ArOZ JavaScript Gateway Interface (AGI) / Plugin Loader
+## WDOS JavaScript Gateway Interface (AGI) / Plugin Loader
 
-Das ArOZ AJGI / AGI-Interface bietet eine javascript-programmierbare Schnittstelle für ArOZ Online-Benutzer, um Plugins für das System zu erstellen. Um das Modul zu initiieren, können Sie eine "init.agi"-Datei im Webverzeichnis des Moduls (auch als Modulwurzel bezeichnet) ablegen. Weitere Details finden Sie in der![AJGI Dokumenation](https://github.com/Secarian/GoWDOS/blob/master/src/AGI%20Documentation.md).
+Das WDOS AJGI / AGI-Interface bietet eine javascript-programmierbare Schnittstelle für WDOS Online-Benutzer, um Plugins für das System zu erstellen. Um das Modul zu initiieren, können Sie eine "init.agi"-Datei im Webverzeichnis des Moduls (auch als Modulwurzel bezeichnet) ablegen. Weitere Details finden Sie in der![AJGI Dokumenation](https://github.com/Secarian/GoWDOS/blob/master/src/AGI%20Documentation.md).
 
 ## WDOS OTA Update Launcher
-Seit Version 1.119 kann WDOS mit Hilfe des [WDOS Launchers](https://github.com/aroz-online/launcher) ein OTA-Update durchführen. Weitere Informationen zur Installation finden Sie im Github-Repository des Launchers.
+Seit Version 1.119 kann WDOS mit Hilfe des [WDOS Launchers](https://github.com/wdos-online/launcher) ein OTA-Update durchführen. Weitere Informationen zur Installation finden Sie im Github-Repository des Launchers.
 
 ## Weitere Ressourcen
 Wenn Sie nach anderen WebApps (über die Systemeinstellungen installiert) oder Subservices (erfordern eine SSH-Anmeldung zur Installation, nur für OEM) suchen, schauen Sie sich bitte unsere Sammlung hier an:
-https://github.com/aroz-online/WebApp-and-Subservice-Index
+https://github.com/wdos-online/WebApp-and-Subservice-Index
 
 ### 💬 Direkter Kontakt
 
@@ -320,13 +320,13 @@ Wenn Sie nach Tutorials suchen oder Hilfe bei der Fehlerbehebung von kleineren P
 
 ### Englisch
 
-- [Ich habe mein eigenes Web-Desktop-Betriebssystem 3 Jahre lang geschrieben und so sieht es jetzt aus](https://dev.to/tobychui/i-write-my-own-web-desktop-os-for-3-years-and-this-is-what-it-looks-like-now-2903)
+- [Ich habe mein eigenes Web-Desktop-Betriebssystem 3 Jahre lang geschrieben und so sieht es jetzt aus](https://dev.to/Secarian/i-write-my-own-web-desktop-os-for-3-years-and-this-is-what-it-looks-like-now-2903)
 
 ### Chinesisch
 
 - [WDOS + Raspberry Pi zum Bau eines tragbaren NAS (zur Vermeidung von Gruben)](https://blog.csdn.net/m0_37728676/article/details/113876815)
 - [WDOS + Raspberry Pi Mini NAS](http://www.huajia.online/2021/10/23/WDOS-%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B0%8F%E5%9E%8BNAS/)
-- [Raspberry Pi Arozos Nord](https://blog.pi-dal.com/%E9%80%82%E7%94%A8%E4%BA%8E%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E9%80%9A%E7%94%A8Web%E6%A1%8C%E9%9D%A2%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)
+- [Raspberry Pi WDOS Nord](https://blog.pi-dal.com/%E9%80%82%E7%94%A8%E4%BA%8E%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E9%80%9A%E7%94%A8Web%E6%A1%8C%E9%9D%A2%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)
 - [Linux:WDOS-Installation und Erstellung des Boot-Selbststartdienstes](https://pvecli.xuan2host.com/linux-wdos-install-service/)
 
 ### Portugiesisch

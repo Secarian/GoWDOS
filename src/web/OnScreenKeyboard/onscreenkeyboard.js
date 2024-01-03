@@ -5,7 +5,7 @@
     (Yes, just in case I need to run WDOS on embedded linux with browser
         this will be helpful in those rare cases)
 
-    author: tobychui
+    author: Secarian
 */
 
 //Handle WDOS key event passthrough

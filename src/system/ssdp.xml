@@ -12,17 +12,17 @@
 		<modelDescription>{{modeldesc}}</modelDescription>
 		<modelName>{{modelname}}</modelName>
 		<modelNumber>{{modelname}}</modelNumber>
-		<modelURL>http://imuslab.com/aroz-online/model/{{modelname}}</modelURL>
-		<modelType>ArOZ Online</modelType>
+		<modelURL>http://imuslab.com/wdos-online/model/{{modelname}}</modelURL>
+		<modelType>WDOS Online</modelType>
 		<serialNumber>{{serial}}</serialNumber>
 		<UDN>uuid:{{uuid}}</UDN>
 		<serviceList>
 			<service>
 				<URLBase>{{urlbase}}</URLBase>
-				<serviceType>urn:schemas-test-com:service:Aroz:1</serviceType>
-				<serviceId>urn:aroz-com:serviceId:aroz1</serviceId>
-				<controlURL>/aroz</controlURL>
-				<eventSubURL>/aroz</eventSubURL>
+				<serviceType>urn:schemas-test-com:service:WDOS:1</serviceType>
+				<serviceId>urn:wdos-com:serviceId:wdos1</serviceId>
+				<controlURL>/wdos</controlURL>
+				<eventSubURL>/wdos</eventSubURL>
 				<SCPDURL>/dummy.xml</SCPDURL>
 			</service>
 		</serviceList>

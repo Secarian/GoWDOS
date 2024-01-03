@@ -27,7 +27,6 @@ import (
 
 	"imuslab.com/wdos/mod/compatibility"
 	"imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
 	fsp "imuslab.com/wdos/mod/filesystem/fspermission"
 	"imuslab.com/wdos/mod/filesystem/fssort"
 	"imuslab.com/wdos/mod/filesystem/fuzzy"
@@ -35,6 +34,7 @@ import (
 	"imuslab.com/wdos/mod/filesystem/localversion"
 	metadata "imuslab.com/wdos/mod/filesystem/metadata"
 	"imuslab.com/wdos/mod/filesystem/shortcut"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 	module "imuslab.com/wdos/mod/modules"
 	prout "imuslab.com/wdos/mod/prouter"
 	"imuslab.com/wdos/mod/share"
@@ -443,7 +443,7 @@ func system_fs_handleLowMemoryUpload(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//Create destination folder if not exists
-	targetUploadLocation := arozfs.ToSlash(filepath.Join(realUploadPath, filename))
+	targetUploadLocation := wdosfs.ToSlash(filepath.Join(realUploadPath, filename))
 	if !fshAbs.FileExists(realUploadPath) {
 		fshAbs.MkdirAll(realUploadPath, 0755)
 	}
@@ -608,7 +608,7 @@ func system_fs_handleLowMemoryUpload(w http.ResponseWriter, r *http.Request) {
 
 	//Merge the file. Merge file location must be on local machine
 	mergeFileLocation := decodedUploadLocation
-	var out arozfs.File
+	var out wdosfs.File
 	if fsh.RequireBuffer {
 		//The merge file location must be local buffer
 		mergeFileLocation = getFsBufferFilepath(decodedUploadLocation, false)
@@ -629,7 +629,7 @@ func system_fs_handleLowMemoryUpload(w http.ResponseWriter, r *http.Request) {
 	}
 
 	for counter, filesrc := range chunkName {
-		var srcChunkReader arozfs.File
+		var srcChunkReader wdosfs.File
 		if isHugeFile {
 			srcChunkReader, err = fshAbs.Open(filesrc)
 		} else {
@@ -818,7 +818,7 @@ func system_fs_handleUpload(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	destFilepath := arozfs.ToSlash(filepath.Join(realUploadPath, storeFilename))
+	destFilepath := wdosfs.ToSlash(filepath.Join(realUploadPath, storeFilename))
 	//fmt.Println(destFilepath, realUploadPath, storeFilename)
 	if !targetFs.FileExists(filepath.Dir(destFilepath)) {
 		targetFs.MkdirAll(filepath.Dir(destFilepath), 0775)
@@ -826,10 +826,10 @@ func system_fs_handleUpload(w http.ResponseWriter, r *http.Request) {
 
 	//Check if the upload target is read only.
 	accmode := userinfo.GetPathAccessPermission(uploadTarget)
-	if accmode == arozfs.FsReadOnly {
+	if accmode == wdosfs.FsReadOnly {
 		utils.SendErrorResponse(w, "The upload target is Read Only.")
 		return
-	} else if accmode == arozfs.FsDenied {
+	} else if accmode == wdosfs.FsDenied {
 		utils.SendErrorResponse(w, "Access Denied")
 		return
 	}
@@ -1272,10 +1272,10 @@ func system_fs_handleNewObjects(w http.ResponseWriter, r *http.Request) {
 
 		//Check if directory is readonly
 		accmode := userinfo.GetPathAccessPermission(vsrc)
-		if accmode == arozfs.FsReadOnly {
+		if accmode == wdosfs.FsReadOnly {
 			utils.SendErrorResponse(w, "This directory is Read Only")
 			return
-		} else if accmode == arozfs.FsDenied {
+		} else if accmode == wdosfs.FsDenied {
 			utils.SendErrorResponse(w, "Access Denied")
 			return
 		}
@@ -1415,10 +1415,10 @@ func system_fs_handleWebSocketOpr(w http.ResponseWriter, r *http.Request) {
 	thisFileOperationTask := fileOperationTask{
 		ID:         oprId,
 		Owner:      userinfo.Username,
-		Src:        arozfs.ToSlash(filepath.Dir(sourceFiles[0])),
-		Dest:       arozfs.ToSlash(vdestFile),
+		Src:        wdosfs.ToSlash(filepath.Dir(sourceFiles[0])),
+		Dest:       wdosfs.ToSlash(vdestFile),
 		Progress:   0.0,
-		LatestFile: arozfs.ToSlash(filepath.Base(sourceFiles[0])),
+		LatestFile: wdosfs.ToSlash(filepath.Base(sourceFiles[0])),
 	}
 	wsConnectionStore.Store(oprId, &thisFileOperationTask)
 
@@ -1488,7 +1488,7 @@ func system_fs_handleWebSocketOpr(w http.ResponseWriter, r *http.Request) {
 		}
 
 		//Create the zip file
-		err = filesystem.ArozZipFileWithProgress(sourceFileFsh, realSourceFiles, zipDestFsh, zipDestPath, false, func(currentFilename string, _ int, _ int, progress float64) int {
+		err = filesystem.WDOSZipFileWithProgress(sourceFileFsh, realSourceFiles, zipDestFsh, zipDestPath, false, func(currentFilename string, _ int, _ int, progress float64) int {
 			sig, _ := UpdateOngoingFileOperation(oprId, currentFilename, math.Ceil(progress))
 			currentStatus := ProgressUpdate{
 				LatestFile: currentFilename,
@@ -1602,7 +1602,7 @@ func system_fs_handleWebSocketOpr(w http.ResponseWriter, r *http.Request) {
 		}
 
 		//Unzip the files
-		filesystem.ArozUnzipFileWithProgress(realSourceFiles, unzipDest, func(currentFile string, filecount int, totalfile int, progress float64) int {
+		filesystem.WDOSUnzipFileWithProgress(realSourceFiles, unzipDest, func(currentFile string, filecount int, totalfile int, progress float64) int {
 			//Generate the status update struct
 			sig, _ := UpdateOngoingFileOperation(oprId, filepath.Base(currentFile), math.Ceil(progress))
 			currentStatus := ProgressUpdate{
@@ -1862,7 +1862,7 @@ func system_fs_handleOpr(w http.ResponseWriter, r *http.Request) {
 		}
 
 		//Create a zip file at target location
-		err = filesystem.ArozZipFile(srcFshs, rsrcFiles, zipDestFsh, zipFileTargetLocation, false)
+		err = filesystem.WDOSZipFile(srcFshs, rsrcFiles, zipDestFsh, zipFileTargetLocation, false)
 		if err != nil {
 			os.Remove(zipFileTargetLocation)
 			utils.SendErrorResponse(w, err.Error())
@@ -1920,10 +1920,10 @@ func system_fs_handleOpr(w http.ResponseWriter, r *http.Request) {
 
 				//Check if the target dir is not readonly
 				accmode := userinfo.GetPathAccessPermission(string(vsrcFile))
-				if accmode == arozfs.FsReadOnly {
+				if accmode == wdosfs.FsReadOnly {
 					utils.SendErrorResponse(w, "This directory is Read Only")
 					return
-				} else if accmode == arozfs.FsDenied {
+				} else if accmode == wdosfs.FsDenied {
 					utils.SendErrorResponse(w, "Access Denied")
 					return
 				}
@@ -1972,10 +1972,10 @@ func system_fs_handleOpr(w http.ResponseWriter, r *http.Request) {
 
 				//Check if the source file is read only.
 				accmode := userinfo.GetPathAccessPermission(string(vsrcFile))
-				if accmode == arozfs.FsReadOnly {
+				if accmode == wdosfs.FsReadOnly {
 					utils.SendErrorResponse(w, "This source file is Read Only")
 					return
-				} else if accmode == arozfs.FsDenied {
+				} else if accmode == wdosfs.FsDenied {
 					utils.SendErrorResponse(w, "Access Denied")
 					return
 				}
@@ -2601,10 +2601,10 @@ func system_fs_handleList(w http.ResponseWriter, r *http.Request) {
 		}
 
 		//Check if it is shortcut file. If yes, render a shortcut data struct
-		var shortCutInfo *arozfs.ShortcutData = nil
+		var shortCutInfo *wdosfs.ShortcutData = nil
 		if filepath.Ext(f.Name()) == ".shortcut" {
 			//This is a shortcut file
-			fcontent, err := fshAbs.ReadFile(arozfs.ToSlash(filepath.Join(realpath, f.Name())))
+			fcontent, err := fshAbs.ReadFile(wdosfs.ToSlash(filepath.Join(realpath, f.Name())))
 			if err != nil {
 				shortCutInfo = nil
 			} else {
@@ -2816,7 +2816,7 @@ func system_fs_zipHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		//OK. Create the zip at the desired location
-		err := filesystem.ArozZipFile(sourceFshs, realSourcePaths, zipDestFsh, zipOutput, false)
+		err := filesystem.WDOSZipFile(sourceFshs, realSourcePaths, zipDestFsh, zipOutput, false)
 		if err != nil {
 			utils.SendErrorResponse(w, err.Error())
 			return
@@ -2825,7 +2825,7 @@ func system_fs_zipHandler(w http.ResponseWriter, r *http.Request) {
 		utils.SendOK(w)
 	} else if opr == "tmpzip" {
 		//Zip to tmp folder
-		err := filesystem.ArozZipFile(sourceFshs, realSourcePaths, zipDestFsh, zipOutput, false)
+		err := filesystem.WDOSZipFile(sourceFshs, realSourcePaths, zipDestFsh, zipOutput, false)
 		if err != nil {
 			utils.SendErrorResponse(w, err.Error())
 			return

@@ -9,7 +9,7 @@ import (
 
 /*
 	Functions related to WDOS clusters
-	Author: tobychui
+	Author: Secarian
 
 	This is a section of the wdos core that handle cluster
 	related function endpoints
@@ -37,7 +37,7 @@ func ClusterInit() {
 		//Register the settings
 		registerSetting(settingModule{
 			Name:         "Neighbourhood",
-			Desc:         "Nearby ArOZ Host for Clustering",
+			Desc:         "Nearby WDOS Host for Clustering",
 			IconPath:     "SystemAO/cluster/img/small_icon.png",
 			Group:        "Cluster",
 			StartDir:     "SystemAO/cluster/neighbour.html",

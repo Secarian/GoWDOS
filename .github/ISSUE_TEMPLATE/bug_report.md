@@ -26,7 +26,7 @@ If applicable, add screenshots to help explain your problem.
 **Host Information(please complete the following information):**
  - OS: [e.g. Debian Buster]
  - Go version (if you build it yourself) [e.g. 1.15.0]
- - Arozos version (e.g. 1.100)
+ - WDOS version (e.g. 1.100)
 
 **Client Information(please complete the following information):**
  - OS: [e.g. Windows 7 SP2]

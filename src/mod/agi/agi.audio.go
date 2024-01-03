@@ -14,7 +14,7 @@ import (
 	This is a library for allowing audio playback from AGI script
 	Powered by Go Beep and the usage might be a bit tricky
 
-	Author: tobychui
+	Author: Secarian
 
 */
 

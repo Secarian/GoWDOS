@@ -1,8 +1,8 @@
 package storage
 
 /*
-	ArOZ Online Storage Handler Module
-	author: tobychui
+	WDOS Online Storage Handler Module
+	author: Secarian
 
 	This is a system for allowing generic interfacing to the filesystems
 	To add more supports for different type of file system, add more storage handlers.
@@ -15,7 +15,7 @@ import (
 
 	"imuslab.com/wdos/mod/filesystem"
 	fs "imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 )
 
 type StoragePool struct {
@@ -48,7 +48,7 @@ func NewStoragePool(fsHandlers []*fs.FileSystemHandler, owner string) (*StorageP
 
 	return &StoragePool{
 		Owner:           owner,
-		OtherPermission: arozfs.FsReadOnly,
+		OtherPermission: wdosfs.FsReadOnly,
 		Storages:        storageHandlers,
 	}, nil
 }
@@ -66,9 +66,9 @@ func (s *StoragePool) ContainDiskID(diskID string) bool {
 
 // Use to compare two StoragePool permissions leve
 func (s *StoragePool) HasHigherOrEqualPermissionThan(a *StoragePool) bool {
-	if s.OtherPermission == arozfs.FsReadOnly && a.OtherPermission == arozfs.FsReadWrite {
+	if s.OtherPermission == wdosfs.FsReadOnly && a.OtherPermission == wdosfs.FsReadWrite {
 		return false
-	} else if s.OtherPermission == arozfs.FsDenied && a.OtherPermission != arozfs.FsDenied {
+	} else if s.OtherPermission == wdosfs.FsDenied && a.OtherPermission != wdosfs.FsDenied {
 		return false
 	}
 	return true
@@ -101,7 +101,7 @@ func (s *StoragePool) GetFsHandlerByUUID(uuid string) (*fs.FileSystemHandler, er
 		}
 	}
 
-	return nil, arozfs.ErrFSHNotFOund
+	return nil, wdosfs.ErrFSHNotFOund
 }
 
 // Attach a file system handler to this pool

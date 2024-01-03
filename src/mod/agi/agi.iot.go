@@ -16,7 +16,7 @@ import (
 	This is a library for allowing AGI script to control / send commands to IoT devices
 	Use with caution and prepare to handle errors. IoT devices are not always online / connectabe.
 
-	Author: tobychui
+	Author: Secarian
 */
 
 func (g *Gateway) IoTLibRegister() {

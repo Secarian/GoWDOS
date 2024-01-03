@@ -4,7 +4,7 @@ import "time"
 
 /*
 	Nightly.go
-	Author: tobychui
+	Author: Secarian
 
 	This module handles tasks that have to be done every night
 	like updating all user storage capacity and clean trash etc

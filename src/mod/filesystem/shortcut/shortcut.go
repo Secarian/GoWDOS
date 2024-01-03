@@ -5,17 +5,17 @@ import (
 	"path/filepath"
 	"strings"
 
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 	"imuslab.com/wdos/mod/utils"
 )
 
 /*
 	A simple package to better handle shortcuts in WDOS
 
-	Author: tobychui
+	Author: Secarian
 */
 
-func ReadShortcut(shortcutContent []byte) (*arozfs.ShortcutData, error) {
+func ReadShortcut(shortcutContent []byte) (*wdosfs.ShortcutData, error) {
 	//Split the content of the shortcut files into lines
 	fileContent := strings.ReplaceAll(strings.TrimSpace(string(shortcutContent)), "\r\n", "\n")
 	lines := strings.Split(fileContent, "\n")
@@ -29,7 +29,7 @@ func ReadShortcut(shortcutContent []byte) (*arozfs.ShortcutData, error) {
 	}
 
 	//Render it as shortcut data
-	result := arozfs.ShortcutData{
+	result := wdosfs.ShortcutData{
 		Type: lines[0],
 		Name: lines[1],
 		Path: lines[2],
@@ -42,11 +42,11 @@ func ReadShortcut(shortcutContent []byte) (*arozfs.ShortcutData, error) {
 // Generate the content of a shortcut base the the four important field of shortcut information
 func GenerateShortcutBytes(shortcutTarget string, shortcutType string, shortcutText string, shortcutIcon string) []byte {
 	//Check if there are desktop icon. If yes, override icon on module
-	if shortcutType == "module" && utils.FileExists(arozfs.ToSlash(filepath.Join("./web/", filepath.Dir(shortcutIcon), "/desktop_icon.png"))) {
-		shortcutIcon = arozfs.ToSlash(filepath.Join(filepath.Dir(shortcutIcon), "/desktop_icon.png"))
+	if shortcutType == "module" && utils.FileExists(wdosfs.ToSlash(filepath.Join("./web/", filepath.Dir(shortcutIcon), "/desktop_icon.png"))) {
+		shortcutIcon = wdosfs.ToSlash(filepath.Join(filepath.Dir(shortcutIcon), "/desktop_icon.png"))
 	}
 
 	//Clean the shortcut text
-	shortcutText = arozfs.FilterIllegalCharInFilename(shortcutText, " ")
+	shortcutText = wdosfs.FilterIllegalCharInFilename(shortcutText, " ")
 	return []byte(shortcutType + "\n" + shortcutText + "\n" + shortcutTarget + "\n" + shortcutIcon)
 }

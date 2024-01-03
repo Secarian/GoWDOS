@@ -1,7 +1,7 @@
 <?php
 include_once '../auth.php';
 if (isset($_GET['directory']) && strpos($_GET['directory'],"../") === false){
-    //If the given directory is within the ArOZ Online root and do not contain ../ (back outside the aor) then allow list dir
+    //If the given directory is within the WDOS Online root and do not contain ../ (back outside the aor) then allow list dir
     $targetDir = "../" . $_GET['directory'];
     if (file_exists($targetDir)){
         $folders = glob($targetDir . "*");

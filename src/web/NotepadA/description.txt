@@ -1,1 +1,1 @@
-Notepad / Script editor for ArOZ Online in-System modification.
+Notepad / Script editor for WDOS Online in-System modification.

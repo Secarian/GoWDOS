@@ -128,7 +128,7 @@ func SystemInfoInit() {
 	//Register endpoints that do not involve hardware management
 	authRouter.HandleFunc("/system/info/getRuntimeInfo", InfoHandleGetRuntimeInfo)
 
-	//ArOZ Info do not need permission router
+	//WDOS Info do not need permission router
 	http.HandleFunc("/system/info/getArOZInfo", infoServer.GetArOZInfo)
 
 	//Router to handle login background image loading

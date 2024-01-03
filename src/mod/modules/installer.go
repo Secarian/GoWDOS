@@ -19,7 +19,7 @@ import (
 
 /*
 	Module Installer
-	author: tobychui
+	author: Secarian
 
 	This script handle the installation of modules in the wdos system
 

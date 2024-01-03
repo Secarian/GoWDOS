@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 
 	"imuslab.com/wdos/mod/disk/diskcapacity/dftool"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 	"imuslab.com/wdos/mod/user"
 	"imuslab.com/wdos/mod/utils"
 )
@@ -16,7 +16,7 @@ import (
 	This is a simple module to check how many storage space is remaining
 	on a given directory in accessiable file system paths
 
-	Author: tobychui
+	Author: Secarian
 */
 
 type Resolver struct {
@@ -106,7 +106,7 @@ func (cr *Resolver) ResolveCapacityInfo(username string, vpath string) (*Capacit
 
 	realpath = filepath.ToSlash(filepath.Clean(realpath))
 
-	if utils.FileExists(realpath) && !arozfs.IsNetworkDrive(fsh.Filesystem) {
+	if utils.FileExists(realpath) && !wdosfs.IsNetworkDrive(fsh.Filesystem) {
 		//This is a local disk
 		capinfo, err := dftool.GetCapacityInfoFromPath(realpath)
 		if err != nil {

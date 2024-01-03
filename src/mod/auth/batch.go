@@ -2,7 +2,7 @@ package auth
 
 /*
 	Auth batch operation handler
-	author: tobychui
+	author: Secarian
 
 	This handler handles batch operations related to authentications
 	Allowing easy management of the user lists
@@ -19,11 +19,11 @@ import (
 )
 
 /*
-	CreateUserAccountsFromCSV
+CreateUserAccountsFromCSV
 
-	This function allow mass import of user accounts for organization purpses.
-	Must be in the format of:{ username, default password, default group } format.
-	Each user occupied one new line
+This function allow mass import of user accounts for organization purpses.
+Must be in the format of:{ username, default password, default group } format.
+Each user occupied one new line
 */
 func (a *AuthAgent) HandleCreateUserAccountsFromCSV(w http.ResponseWriter, r *http.Request) {
 	csvContent, err := utils.PostPara(r, "csv")
@@ -62,12 +62,12 @@ func (a *AuthAgent) HandleCreateUserAccountsFromCSV(w http.ResponseWriter, r *ht
 }
 
 /*
-	HandleUserDeleteByGroup handles user batch delete request by group name
-	Set exact = true will only delete users which the user is
-	1. inside the given group and
-	2. that group is his / her only group
+HandleUserDeleteByGroup handles user batch delete request by group name
+Set exact = true will only delete users which the user is
+1. inside the given group and
+2. that group is his / her only group
 
-	Require paramter: group, exact
+Require paramter: group, exact
 */
 func (a *AuthAgent) HandleUserDeleteByGroup(w http.ResponseWriter, r *http.Request) {
 	group, err := utils.PostPara(r, "group")
@@ -113,8 +113,8 @@ func (a *AuthAgent) HandleUserDeleteByGroup(w http.ResponseWriter, r *http.Reque
 }
 
 /*
-	Export all the users into a csv file. Should only be usable via command line as a form of db backup.
-	DO NOT EXPOSE THIS TO HTTP SERVER
+Export all the users into a csv file. Should only be usable via command line as a form of db backup.
+DO NOT EXPOSE THIS TO HTTP SERVER
 */
 func (a *AuthAgent) ExportUserListAsCSV() string {
 	entries, _ := a.Database.ListTable("auth")

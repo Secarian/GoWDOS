@@ -48,7 +48,7 @@ func SystemSettingInit() {
 	})
 }
 
-//Setting group defination. Your setting module defination must match the group in-order to be shown
+// Setting group defination. Your setting module defination must match the group in-order to be shown
 func system_setting_getSettingGroups() []settingGroup {
 	return []settingGroup{
 		{
@@ -106,10 +106,10 @@ func system_setting_getSettingGroups() []settingGroup {
 			Desc:     "Advance configs for developers",
 		},
 		{
-			Name:     "About ArOZ",
+			Name:     "About WDOS",
 			Group:    "About",
 			IconPath: "SystemAO/system_setting/img/info.svg",
-			Desc:     "Information of the current running ArOZ Online System",
+			Desc:     "Information of the current running WDOS Online System",
 		},
 	}
 }
@@ -118,7 +118,7 @@ func registerSetting(thismodule settingModule) {
 	settingModules = append(settingModules, thismodule)
 }
 
-//List all the setting modules and output it as JSON
+// List all the setting modules and output it as JSON
 func system_setting_handleListing(w http.ResponseWriter, r *http.Request) {
 	userinfo, err := userHandler.GetUserInfoFromRequest(w, r)
 	if err != nil {

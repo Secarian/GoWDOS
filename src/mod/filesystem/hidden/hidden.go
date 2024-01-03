@@ -6,20 +6,20 @@ import (
 )
 
 /*
-	Arozos hidden module
-	author: tobychui
+	WDOS hidden module
+	author: Secarian
 
 	No, the name didn't mean you can't find this module
 	Yes, this is actually a module that use to hide files
 
 */
 
-//Hide a given folder
+// Hide a given folder
 func HideFile(folderpath string) error {
 	return hide(folderpath)
 }
 
-//Check if a given file is hidden. Set recursive to true if you want to check if the file located inside a hidden folder
+// Check if a given file is hidden. Set recursive to true if you want to check if the file located inside a hidden folder
 func IsHidden(filename string, recursive bool) (bool, error) {
 	if recursive {
 		filename = filepath.ToSlash(filename)

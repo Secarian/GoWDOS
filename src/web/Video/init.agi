@@ -5,7 +5,7 @@
 //Setup the module information
 var moduleLaunchInfo = {
     Name: "Video",
-	Desc: "The basic video player for ArOZ Online",
+	Desc: "The basic video player for WDOS Online",
 	Group: "Media",
 	IconPath: "Video/img/module_icon.png",
 	Version: "0.0.6",

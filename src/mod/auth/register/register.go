@@ -2,7 +2,7 @@ package register
 
 /*
 	Register Module
-	author: tobychui
+	author: Secarian
 
 	Register interface handler
 */

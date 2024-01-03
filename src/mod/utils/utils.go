@@ -43,7 +43,7 @@ func SendOK(w http.ResponseWriter) {
 /*
 	The paramter move function (mv)
 
-	You can find similar things in the PHP version of ArOZ Online Beta. You need to pass in
+	You can find similar things in the PHP version of WDOS Online Beta. You need to pass in
 	r (HTTP Request Object)
 	getParamter (string, aka $_GET['This string])
 

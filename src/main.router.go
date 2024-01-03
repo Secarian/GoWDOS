@@ -1,7 +1,7 @@
 package main
 
 /*
-	ArOZ Online System Main Request Router
+	WDOS Online System Main Request Router
 
 	This is used to check authentication before actually serving file to the target client
 	This function also handle the special page (login.system and user.system) delivery

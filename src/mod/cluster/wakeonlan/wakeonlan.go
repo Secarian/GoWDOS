@@ -8,7 +8,7 @@ import (
 
 /*
 	Wake On Lan
-	Author: tobychui
+	Author: Secarian
 
 	This module send wake on LAN signal to a given MAC address
 	and do nothing else

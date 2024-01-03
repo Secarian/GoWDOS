@@ -1,8 +1,8 @@
 package share
 
 /*
-	Arozos File Share Manager
-	author: tobychui
+	WDOS File Share Manager
+	author: Secarian
 
 	This module handle file share request and other stuffs
 */
@@ -36,8 +36,8 @@ import (
 
 	"imuslab.com/wdos/mod/auth"
 	filesystem "imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
 	"imuslab.com/wdos/mod/filesystem/metadata"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 	"imuslab.com/wdos/mod/share/shareEntry"
 	"imuslab.com/wdos/mod/user"
 	"imuslab.com/wdos/mod/utils"
@@ -117,7 +117,7 @@ func (s *Manager) HandleOPGServing(w http.ResponseWriter, r *http.Request, share
 	ctx.SetSrc(image.NewUniform(color.RGBA{255, 255, 255, 255}))
 
 	//Check if we need to split the filename into two lines
-	filename := arozfs.Base(shareEntry.FileRealPath)
+	filename := wdosfs.Base(shareEntry.FileRealPath)
 	filenameOnly := strings.TrimSuffix(filename, filepath.Ext(filename))
 
 	//Get the file information from target fsh
@@ -539,7 +539,7 @@ func (s *Manager) HandleShareAccess(w http.ResponseWriter, r *http.Request) {
 					//Validate the absolute path to prevent path escape
 					reqPath := filepath.ToSlash(filepath.Clean(targetFilepath))
 					rootPath, _ := targetFshAbs.VirtualPathToRealPath(shareOption.FileVirtualPath, shareOption.Owner)
-					if !strings.HasPrefix(arozfs.ToSlash(reqPath), arozfs.ToSlash(rootPath)) {
+					if !strings.HasPrefix(wdosfs.ToSlash(reqPath), wdosfs.ToSlash(rootPath)) {
 						//Directory escape detected
 						w.WriteHeader(http.StatusBadRequest)
 						w.Write([]byte("400 - Bad Request: Invalid relative path"))
@@ -547,7 +547,7 @@ func (s *Manager) HandleShareAccess(w http.ResponseWriter, r *http.Request) {
 					}
 
 					//Serve the target file
-					w.Header().Set("Content-Disposition", "attachment; filename*=UTF-8''"+strings.ReplaceAll(url.QueryEscape(arozfs.Base(targetFilepath)), "+", "%20"))
+					w.Header().Set("Content-Disposition", "attachment; filename*=UTF-8''"+strings.ReplaceAll(url.QueryEscape(wdosfs.Base(targetFilepath)), "+", "%20"))
 					w.Header().Set("Content-Type", r.Header.Get("Content-Type"))
 					//http.ServeFile(w, r, targetFilepath)
 
@@ -569,16 +569,16 @@ func (s *Manager) HandleShareAccess(w http.ResponseWriter, r *http.Request) {
 						}
 						defer f.Close()
 						fi, _ := f.Stat()
-						http.ServeContent(w, r, arozfs.Base(targetFilepath), fi.ModTime(), f)
+						http.ServeContent(w, r, wdosfs.Base(targetFilepath), fi.ModTime(), f)
 					}
 
 				} else {
 					//Download this folder as zip
-					//Create a zip using ArOZ Zipper, tmp zip files are located under tmp/share-cache/*.zip
+					//Create a zip using WDOS Zipper, tmp zip files are located under tmp/share-cache/*.zip
 					tmpFolder := s.options.TmpFolder
 					tmpFolder = filepath.Join(tmpFolder, "share-cache")
 					os.MkdirAll(tmpFolder, 0755)
-					targetZipFilename := filepath.Join(tmpFolder, arozfs.Base(fileRuntimeAbsPath)) + ".zip"
+					targetZipFilename := filepath.Join(tmpFolder, wdosfs.Base(fileRuntimeAbsPath)) + ".zip"
 
 					//Check if the target fs require buffer
 					zippingSource := shareOption.FileRealPath
@@ -586,7 +586,7 @@ func (s *Manager) HandleShareAccess(w http.ResponseWriter, r *http.Request) {
 					zippingSourceFsh := targetFsh
 					if targetFsh.RequireBuffer {
 						//Buffer all the required files for zipping
-						localBuff = filepath.Join(tmpFolder, uuid.NewV4().String(), arozfs.Base(fileRuntimeAbsPath))
+						localBuff = filepath.Join(tmpFolder, uuid.NewV4().String(), wdosfs.Base(fileRuntimeAbsPath))
 						os.MkdirAll(localBuff, 0755)
 
 						//Buffer all files into tmp folder
@@ -620,7 +620,7 @@ func (s *Manager) HandleShareAccess(w http.ResponseWriter, r *http.Request) {
 					}
 
 					//Build a filelist
-					err := filesystem.ArozZipFile([]*filesystem.FileSystemHandler{zippingSourceFsh}, []string{zippingSource}, nil, targetZipFilename, false)
+					err := filesystem.WDOSZipFile([]*filesystem.FileSystemHandler{zippingSourceFsh}, []string{zippingSource}, nil, targetZipFilename, false)
 					if err != nil {
 						//Failed to create zip file
 						w.WriteHeader(http.StatusInternalServerError)
@@ -630,7 +630,7 @@ func (s *Manager) HandleShareAccess(w http.ResponseWriter, r *http.Request) {
 					}
 
 					//Serve thje zip file
-					w.Header().Set("Content-Disposition", "attachment; filename*=UTF-8''"+strings.ReplaceAll(url.QueryEscape(arozfs.Base(shareOption.FileRealPath)), "+", "%20")+".zip")
+					w.Header().Set("Content-Disposition", "attachment; filename*=UTF-8''"+strings.ReplaceAll(url.QueryEscape(wdosfs.Base(shareOption.FileRealPath)), "+", "%20")+".zip")
 					w.Header().Set("Content-Type", r.Header.Get("Content-Type"))
 					http.ServeFile(w, r, targetZipFilename)
 
@@ -663,7 +663,7 @@ func (s *Manager) HandleShareAccess(w http.ResponseWriter, r *http.Request) {
 						//If error skip this
 						return nil
 					}
-					if arozfs.Base(file)[:1] != "." {
+					if wdosfs.Base(file)[:1] != "." {
 						fileSize := targetFshAbs.GetFileSize(file)
 						if targetFshAbs.IsDir(file) {
 							fileSize, _ = targetFsh.GetDirctorySizeFromRealPath(file, false)
@@ -681,7 +681,7 @@ func (s *Manager) HandleShareAccess(w http.ResponseWriter, r *http.Request) {
 						}
 
 						treeList[relDir] = append(treeList[relDir], File{
-							Filename: arozfs.Base(file),
+							Filename: wdosfs.Base(file),
 							RelPath:  filepath.ToSlash(relPath),
 							Filesize: filesystem.GetFileDisplaySize(fileSize, 2),
 							IsDir:    targetFshAbs.IsDir(file),
@@ -712,7 +712,7 @@ func (s *Manager) HandleShareAccess(w http.ResponseWriter, r *http.Request) {
 					"filecount":    strconv.Itoa(fcount),
 					"modtime":      timeString,
 					"downloadurl":  "../../share/download/" + id,
-					"filename":     arozfs.Base(fileRuntimeAbsPath),
+					"filename":     wdosfs.Base(fileRuntimeAbsPath),
 					"reqtime":      strconv.Itoa(int(time.Now().Unix())),
 					"requri":       "//" + r.Host + r.URL.Path,
 					"opg_image":    "/share/opg/" + strconv.Itoa(int(time.Now().Unix())) + "/" + id,
@@ -729,7 +729,7 @@ func (s *Manager) HandleShareAccess(w http.ResponseWriter, r *http.Request) {
 			contentType := mime.TypeByExtension(filepath.Ext(fileRuntimeAbsPath))
 			if directDownload {
 				//Serve the file directly
-				w.Header().Set("Content-Disposition", "attachment; filename=\""+arozfs.Base(shareOption.FileVirtualPath)+"\"")
+				w.Header().Set("Content-Disposition", "attachment; filename=\""+wdosfs.Base(shareOption.FileVirtualPath)+"\"")
 				w.Header().Set("Content-Type", contentType)
 				w.Header().Set("Content-Length", strconv.Itoa(int(targetFshAbs.GetFileSize(fileRuntimeAbsPath))))
 
@@ -755,7 +755,7 @@ func (s *Manager) HandleShareAccess(w http.ResponseWriter, r *http.Request) {
 						}
 						defer f.Close()
 						fi, _ := f.Stat()
-						http.ServeContent(w, r, arozfs.Base(fileRuntimeAbsPath), fi.ModTime(), f)
+						http.ServeContent(w, r, wdosfs.Base(fileRuntimeAbsPath), fi.ModTime(), f)
 					}
 				}
 			} else if directServe {
@@ -780,7 +780,7 @@ func (s *Manager) HandleShareAccess(w http.ResponseWriter, r *http.Request) {
 					}
 					defer f.Close()
 					fi, _ := f.Stat()
-					http.ServeContent(w, r, arozfs.Base(fileRuntimeAbsPath), fi.ModTime(), f)
+					http.ServeContent(w, r, wdosfs.Base(fileRuntimeAbsPath), fi.ModTime(), f)
 				}
 			} else {
 				//Serve the download page
@@ -842,9 +842,9 @@ func (s *Manager) HandleShareAccess(w http.ResponseWriter, r *http.Request) {
 					"ext":         displayExt,
 					"size":        filesystem.GetFileDisplaySize(fsize, 2),
 					"modtime":     timeString,
-					"downloadurl": "/share/download/" + id + "/" + arozfs.Base(fileRuntimeAbsPath),
+					"downloadurl": "/share/download/" + id + "/" + wdosfs.Base(fileRuntimeAbsPath),
 					"preview_url": "/share/preview/" + id + "/",
-					"filename":    arozfs.Base(fileRuntimeAbsPath),
+					"filename":    wdosfs.Base(fileRuntimeAbsPath),
 					"opg_image":   "/share/opg/" + strconv.Itoa(int(time.Now().Unix())) + "/" + id,
 					"reqtime":     strconv.Itoa(int(time.Now().Unix())),
 				})

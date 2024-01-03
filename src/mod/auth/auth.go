@@ -1,8 +1,8 @@
 package auth
 
 /*
-	ArOZ Online Authentication Module
-	author: tobychui
+	WDOS Online Authentication Module
+	author: Secarian
 
 	This system make use of sessions (similar to PHP SESSION) to remember the user login.
 	See https://gowebexamples.com/sessions/ for detail.

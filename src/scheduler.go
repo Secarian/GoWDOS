@@ -12,7 +12,7 @@ import (
 
 /*
 	Nightly.go
-	author: tobychui
+	author: Secarian
 
 	This is a handle for putting everything that is required to run everynight.
 	Default: Run once every day 3am in the morning.
@@ -65,7 +65,7 @@ func SchedulerInit() {
 		SupportEmb:  false,
 	})
 
-	//Startup the ArOZ Emulated Crontab Service
+	//Startup the WDOS Emulated Crontab Service
 	newScheduler, err := scheduler.NewScheduler(&scheduler.ScheudlerOption{
 		UserHandler: userHandler,
 		Gateway:     AGIGateway,
@@ -73,7 +73,7 @@ func SchedulerInit() {
 		CronFile:    "system/cron.json",
 	})
 	if err != nil {
-		systemWideLogger.PrintAndLog("Cron", "ArOZ Emulated Cron Startup Failed. Stopping all scheduled tasks.", err)
+		systemWideLogger.PrintAndLog("Cron", "WDOS Emulated Cron Startup Failed. Stopping all scheduled tasks.", err)
 	}
 
 	systemScheduler = newScheduler

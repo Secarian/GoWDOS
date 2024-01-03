@@ -7,13 +7,13 @@ import (
 
 	"github.com/robertkrimen/otto"
 	"imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 	user "imuslab.com/wdos/mod/user"
 	"imuslab.com/wdos/mod/utils"
 )
 
-//Get the full vpath if the passing value is a relative path
-//Return the original vpath if any error occured
+// Get the full vpath if the passing value is a relative path
+// Return the original vpath if any error occured
 func relativeVpathRewrite(fsh *filesystem.FileSystemHandler, vpath string, vm *otto.Otto, u *user.User) string {
 	//Check if the vpath contain a UUID
 	if strings.Contains(vpath, ":/") || (len(vpath) > 0 && vpath[len(vpath)-1:] == ":") {
@@ -44,10 +44,10 @@ func relativeVpathRewrite(fsh *filesystem.FileSystemHandler, vpath string, vm *o
 	}
 
 	rootScriptDir := filepath.Dir(rootVpath)
-	return arozfs.ToSlash(filepath.Clean(filepath.Join(rootScriptDir, vpath)))
+	return wdosfs.ToSlash(filepath.Clean(filepath.Join(rootScriptDir, vpath)))
 }
 
-//Check if the user can access this script file
+// Check if the user can access this script file
 func checkUserAccessToScript(thisuser *user.User, scriptFile string, scriptScope string) bool {
 	moduleName := getScriptRoot(scriptFile, scriptScope)
 	if !thisuser.GetModuleAccessPermission(moduleName) {
@@ -56,12 +56,12 @@ func checkUserAccessToScript(thisuser *user.User, scriptFile string, scriptScope
 	return true
 }
 
-//validate the given path is a script from webroot
+// validate the given path is a script from webroot
 func isValidAGIScript(scriptPath string) bool {
 	return utils.FileExists(filepath.Join("./web", scriptPath)) && (filepath.Ext(scriptPath) == ".js" || filepath.Ext(scriptPath) == ".agi")
 }
 
-//Return the script root of the current executing script
+// Return the script root of the current executing script
 func getScriptRoot(scriptFile string, scriptScope string) string {
 	//Get the script root from the script path
 	webRootAbs, _ := filepath.Abs(scriptScope)
@@ -73,7 +73,7 @@ func getScriptRoot(scriptFile string, scriptScope string) string {
 	return scriptRoot
 }
 
-//For handling special url decode in the request
+// For handling special url decode in the request
 func specialURIDecode(inputPath string) string {
 	inputPath = strings.ReplaceAll(inputPath, "+", "{{plus_sign}}")
 	inputPath, _ = url.QueryUnescape(inputPath)
@@ -81,7 +81,7 @@ func specialURIDecode(inputPath string) string {
 	return inputPath
 }
 
-//Check if the target path is escaping the rootpath, accept relative and absolute path
+// Check if the target path is escaping the rootpath, accept relative and absolute path
 func checkRootEscape(rootPath string, targetPath string) (bool, error) {
 	rootAbs, err := filepath.Abs(rootPath)
 	if err != nil {

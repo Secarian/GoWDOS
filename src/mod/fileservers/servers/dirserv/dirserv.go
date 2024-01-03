@@ -10,7 +10,7 @@ import (
 
 	"imuslab.com/wdos/mod/database"
 	"imuslab.com/wdos/mod/fileservers"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 	"imuslab.com/wdos/mod/user"
 )
 
@@ -33,7 +33,7 @@ type Manager struct {
 	option  *Option
 }
 
-//Create a new web directory server
+// Create a new web directory server
 func NewDirectoryServer(option *Option) *Manager {
 	//Create a table to store which user enabled dirlisting on their own root
 	option.Sysdb.NewTable("dirserv")
@@ -102,7 +102,7 @@ func (m *Manager) ServerWebFileRequest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	requestPath := arozfs.ToSlash(filepath.Clean(r.RequestURI))
+	requestPath := wdosfs.ToSlash(filepath.Clean(r.RequestURI))
 	requestPath = requestPath[1:]                     //Trim away the first "/"
 	pathChunks := strings.Split(requestPath, "/")[1:] //Trim away the fileview prefix
 
@@ -112,7 +112,7 @@ func (m *Manager) ServerWebFileRequest(w http.ResponseWriter, r *http.Request) {
 		html += getPageHeader("/")
 		fshs := userinfo.GetAllFileSystemHandler()
 		for _, fsh := range fshs {
-			html += getItemHTML(fsh.Name, arozfs.ToSlash(filepath.Join(r.RequestURI, fsh.UUID)), true, "-", "-")
+			html += getItemHTML(fsh.Name, wdosfs.ToSlash(filepath.Join(r.RequestURI, fsh.UUID)), true, "-", "-")
 		}
 		html += getPageFooter()
 		w.Write([]byte(html))
@@ -155,7 +155,7 @@ func (m *Manager) ServerWebFileRequest(w http.ResponseWriter, r *http.Request) {
 				if err != nil {
 					continue
 				}
-				html += getItemHTML(entry.Name(), arozfs.ToSlash(filepath.Join(r.RequestURI, entry.Name())), entry.IsDir(), finfo.ModTime().Format("2006-01-02 15:04:05"), byteCountIEC(finfo.Size()))
+				html += getItemHTML(entry.Name(), wdosfs.ToSlash(filepath.Join(r.RequestURI, entry.Name())), entry.IsDir(), finfo.ModTime().Format("2006-01-02 15:04:05"), byteCountIEC(finfo.Size()))
 			}
 
 			html += getPageFooter()

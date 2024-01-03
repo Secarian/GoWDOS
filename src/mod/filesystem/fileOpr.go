@@ -2,10 +2,10 @@ package filesystem
 
 /*
 	File Operation Wrapper
-	author: tobychui
+	author: Secarian
 
-	This is a module seperated from the aroz online file system script
-	that allows cleaner code in the main logic handler of the aroz online system.
+	This is a module seperated from the wdos online file system script
+	that allows cleaner code in the main logic handler of the wdos online system.
 
 	WARNING! ALL FILE OPERATION USING THIS WRAPPER SHOULD PASS IN REALPATH
 	DO NOT USE VIRTUAL PATH FOR ANY OPERATIONS WITH THIS WRAPPER
@@ -26,8 +26,8 @@ import (
 	"strings"
 	"time"
 
-	"imuslab.com/wdos/mod/filesystem/arozfs"
 	"imuslab.com/wdos/mod/filesystem/hidden"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 
 	archiver "github.com/mholt/archiver/v3"
 )
@@ -88,8 +88,8 @@ func Unzip(source, destination string) error {
 	return nil
 }
 
-// Aroz Unzip File with progress update function  (current filename / current file count / total file count / progress in percentage)
-func ArozUnzipFileWithProgress(filelist []string, outputfile string, progressHandler func(string, int, int, float64) int) error {
+// WDOS Unzip File with progress update function  (current filename / current file count / total file count / progress in percentage)
+func WDOSUnzipFileWithProgress(filelist []string, outputfile string, progressHandler func(string, int, int, float64) int) error {
 	//Gether the total number of files in all zip files
 	totalFileCounts := 0
 	unzippedFileCount := 0
@@ -181,11 +181,11 @@ func ArozUnzipFileWithProgress(filelist []string, outputfile string, progressHan
 }
 
 /*
-Aroz Zip File with progress update function
+WDOS Zip File with progress update function
 Returns the following progress: (current filename / current file count / total file count / progress in percentage)
 if output is local path that is out of the scope of any fsh, leave outputFsh as nil
 */
-func ArozZipFileWithProgress(targetFshs []*FileSystemHandler, filelist []string, outputFsh *FileSystemHandler, outputfile string, includeTopLevelFolder bool, progressHandler func(string, int, int, float64) int) error {
+func WDOSZipFileWithProgress(targetFshs []*FileSystemHandler, filelist []string, outputFsh *FileSystemHandler, outputfile string, includeTopLevelFolder bool, progressHandler func(string, int, int, float64) int) error {
 	//fmt.Println("WEBSOCKET ZIPPING", targetFshs, filelist)
 	//Get the file count from the filelist
 	totalFileCount := 0
@@ -206,7 +206,7 @@ func ArozZipFileWithProgress(targetFshs []*FileSystemHandler, filelist []string,
 	}
 
 	//Create the target zip file
-	var file arozfs.File
+	var file wdosfs.File
 	var err error
 	if outputFsh != nil {
 		file, err = outputFsh.FileSystemAbstraction.Create(outputfile)
@@ -229,7 +229,7 @@ func ArozZipFileWithProgress(targetFshs []*FileSystemHandler, filelist []string,
 		//Local File System
 		if fshAbs.IsDir(srcpath) {
 			//This is a directory
-			topLevelFolderName := filepath.ToSlash(arozfs.Base(filepath.Dir(srcpath)) + "/" + arozfs.Base(srcpath))
+			topLevelFolderName := filepath.ToSlash(wdosfs.Base(filepath.Dir(srcpath)) + "/" + wdosfs.Base(srcpath))
 			err = fshAbs.Walk(srcpath, func(path string, info os.FileInfo, err error) error {
 				if err != nil {
 					return err
@@ -253,7 +253,7 @@ func ArozZipFileWithProgress(targetFshs []*FileSystemHandler, filelist []string,
 				if includeTopLevelFolder {
 					relativePath = topLevelFolderName + "/" + relativePath
 				} else {
-					relativePath = arozfs.Base(srcpath) + "/" + relativePath
+					relativePath = wdosfs.Base(srcpath) + "/" + relativePath
 				}
 
 				f, err := writer.Create(relativePath)
@@ -268,11 +268,11 @@ func ArozZipFileWithProgress(targetFshs []*FileSystemHandler, filelist []string,
 
 				//Update the zip progress
 				currentFileCount++
-				statusCode := progressHandler(arozfs.Base(srcpath), currentFileCount, totalFileCount, (float64(currentFileCount)/float64(totalFileCount))*float64(100))
+				statusCode := progressHandler(wdosfs.Base(srcpath), currentFileCount, totalFileCount, (float64(currentFileCount)/float64(totalFileCount))*float64(100))
 				for statusCode == 1 {
 					//Wait for the task to be resumed
 					time.Sleep(1 * time.Second)
-					statusCode = progressHandler(arozfs.Base(srcpath), currentFileCount, totalFileCount, (float64(currentFileCount)/float64(totalFileCount))*float64(100))
+					statusCode = progressHandler(wdosfs.Base(srcpath), currentFileCount, totalFileCount, (float64(currentFileCount)/float64(totalFileCount))*float64(100))
 				}
 				if statusCode == 2 {
 					//Cancel
@@ -286,13 +286,13 @@ func ArozZipFileWithProgress(targetFshs []*FileSystemHandler, filelist []string,
 			}
 		} else {
 			//This is a file
-			topLevelFolderName := arozfs.Base(filepath.Dir(srcpath))
+			topLevelFolderName := wdosfs.Base(filepath.Dir(srcpath))
 			thisFile, err := fshAbs.ReadStream(srcpath)
 			if err != nil {
 				return err
 			}
 			defer thisFile.Close()
-			relativePath := arozfs.Base(srcpath)
+			relativePath := wdosfs.Base(srcpath)
 			if includeTopLevelFolder {
 				relativePath = topLevelFolderName + "/" + relativePath
 			}
@@ -309,11 +309,11 @@ func ArozZipFileWithProgress(targetFshs []*FileSystemHandler, filelist []string,
 
 			//Update the zip progress
 			currentFileCount++
-			statusCode := progressHandler(arozfs.Base(srcpath), currentFileCount, totalFileCount, (float64(currentFileCount)/float64(totalFileCount))*float64(100))
+			statusCode := progressHandler(wdosfs.Base(srcpath), currentFileCount, totalFileCount, (float64(currentFileCount)/float64(totalFileCount))*float64(100))
 			for statusCode == 1 {
 				//Wait for the task to be resumed
 				time.Sleep(1 * time.Second)
-				statusCode = progressHandler(arozfs.Base(srcpath), currentFileCount, totalFileCount, (float64(currentFileCount)/float64(totalFileCount))*float64(100))
+				statusCode = progressHandler(wdosfs.Base(srcpath), currentFileCount, totalFileCount, (float64(currentFileCount)/float64(totalFileCount))*float64(100))
 			}
 			if statusCode == 2 {
 				//Cancel
@@ -326,14 +326,14 @@ func ArozZipFileWithProgress(targetFshs []*FileSystemHandler, filelist []string,
 }
 
 /*
-ArozZipFile
+WDOSZipFile
 Zip file without progress update, support local file system or buffer space
 To use it with local file system, pass in nil in fsh for each item in filelist, e.g.
-filesystem.ArozZipFile([]*filesystem.FileSystemHandler{nil}, []string{zippingSource}, nil, targetZipFilename, false)
+filesystem.WDOSZipFile([]*filesystem.FileSystemHandler{nil}, []string{zippingSource}, nil, targetZipFilename, false)
 */
-func ArozZipFile(sourceFshs []*FileSystemHandler, filelist []string, outputFsh *FileSystemHandler, outputfile string, includeTopLevelFolder bool) error {
+func WDOSZipFile(sourceFshs []*FileSystemHandler, filelist []string, outputFsh *FileSystemHandler, outputfile string, includeTopLevelFolder bool) error {
 	//Create the target zip file
-	var file arozfs.File
+	var file wdosfs.File
 	var err error
 	if outputFsh != nil {
 		file, err = outputFsh.FileSystemAbstraction.Create(outputfile)
@@ -356,7 +356,7 @@ func ArozZipFile(sourceFshs []*FileSystemHandler, filelist []string, outputFsh *
 			//Use local fs functions
 			if IsDir(srcpath) {
 				//This is a directory
-				topLevelFolderName := filepath.ToSlash(arozfs.Base(filepath.Dir(srcpath)) + "/" + arozfs.Base(srcpath))
+				topLevelFolderName := filepath.ToSlash(wdosfs.Base(filepath.Dir(srcpath)) + "/" + wdosfs.Base(srcpath))
 				err = filepath.Walk(srcpath, func(path string, info os.FileInfo, err error) error {
 					if err != nil {
 						return err
@@ -379,7 +379,7 @@ func ArozZipFile(sourceFshs []*FileSystemHandler, filelist []string, outputFsh *
 					if includeTopLevelFolder {
 						relativePath = topLevelFolderName + "/" + relativePath
 					} else {
-						relativePath = arozfs.Base(srcpath) + "/" + relativePath
+						relativePath = wdosfs.Base(srcpath) + "/" + relativePath
 					}
 
 					f, err := writer.Create(relativePath)
@@ -400,13 +400,13 @@ func ArozZipFile(sourceFshs []*FileSystemHandler, filelist []string, outputFsh *
 				}
 			} else {
 				//This is a file
-				topLevelFolderName := arozfs.Base(filepath.Dir(srcpath))
+				topLevelFolderName := wdosfs.Base(filepath.Dir(srcpath))
 				thisFile, err := os.Open(srcpath)
 				if err != nil {
 					return err
 				}
 				defer thisFile.Close()
-				relativePath := arozfs.Base(srcpath)
+				relativePath := wdosfs.Base(srcpath)
 				if includeTopLevelFolder {
 					relativePath = topLevelFolderName + "/" + relativePath
 				}
@@ -426,7 +426,7 @@ func ArozZipFile(sourceFshs []*FileSystemHandler, filelist []string, outputFsh *
 			fshAbs = thisFsh.FileSystemAbstraction
 			if fshAbs.IsDir(srcpath) {
 				//This is a directory
-				topLevelFolderName := filepath.ToSlash(arozfs.Base(filepath.Dir(srcpath)) + "/" + arozfs.Base(srcpath))
+				topLevelFolderName := filepath.ToSlash(wdosfs.Base(filepath.Dir(srcpath)) + "/" + wdosfs.Base(srcpath))
 				err = fshAbs.Walk(srcpath, func(path string, info os.FileInfo, err error) error {
 					if err != nil {
 						return err
@@ -452,7 +452,7 @@ func ArozZipFile(sourceFshs []*FileSystemHandler, filelist []string, outputFsh *
 					if includeTopLevelFolder {
 						relativePath = topLevelFolderName + "/" + relativePath
 					} else {
-						relativePath = arozfs.Base(srcpath) + "/" + relativePath
+						relativePath = wdosfs.Base(srcpath) + "/" + relativePath
 					}
 
 					f, err := writer.Create(relativePath)
@@ -473,13 +473,13 @@ func ArozZipFile(sourceFshs []*FileSystemHandler, filelist []string, outputFsh *
 				}
 			} else {
 				//This is a file
-				topLevelFolderName := arozfs.Base(filepath.Dir(srcpath))
+				topLevelFolderName := wdosfs.Base(filepath.Dir(srcpath))
 				thisFile, err := fshAbs.ReadStream(srcpath)
 				if err != nil {
 					return err
 				}
 				defer thisFile.Close()
-				relativePath := arozfs.Base(srcpath)
+				relativePath := wdosfs.Base(srcpath)
 				if includeTopLevelFolder {
 					relativePath = topLevelFolderName + "/" + relativePath
 				}
@@ -529,9 +529,9 @@ func FileCopy(srcFsh *FileSystemHandler, src string, destFsh *FileSystemHandler,
 	}
 
 	//Check if the copy destination file already have an identical file
-	copiedFilename := arozfs.Base(src)
+	copiedFilename := wdosfs.Base(src)
 
-	if destFshAbs.FileExists(filepath.Join(dest, arozfs.Base(src))) {
+	if destFshAbs.FileExists(filepath.Join(dest, wdosfs.Base(src))) {
 		if mode == "" {
 			//Do not specific file exists principle
 			return errors.New("Destination file already exists.")
@@ -542,7 +542,7 @@ func FileCopy(srcFsh *FileSystemHandler, src string, destFsh *FileSystemHandler,
 		} else if mode == "overwrite" {
 			//Continue with the following code
 			//Check if the copy and paste dest are identical
-			if filepath.ToSlash(filepath.Clean(src)) == filepath.ToSlash(filepath.Clean(filepath.Join(dest, arozfs.Base(src)))) {
+			if filepath.ToSlash(filepath.Clean(src)) == filepath.ToSlash(filepath.Clean(filepath.Join(dest, wdosfs.Base(src)))) {
 				//Source and target identical. Cannot overwrite.
 				return errors.New("Source and destination paths are identical.")
 
@@ -550,12 +550,12 @@ func FileCopy(srcFsh *FileSystemHandler, src string, destFsh *FileSystemHandler,
 
 		} else if mode == "keep" {
 			//Keep the file but saved with 'Copy' suffix
-			newFilename := strings.TrimSuffix(arozfs.Base(src), filepath.Ext(src)) + " - Copy" + filepath.Ext(src)
+			newFilename := strings.TrimSuffix(wdosfs.Base(src), filepath.Ext(src)) + " - Copy" + filepath.Ext(src)
 			//Check if the newFilename already exists. If yes, continue adding suffix
 			duplicateCounter := 0
 			for destFshAbs.FileExists(filepath.Join(dest, newFilename)) {
 				duplicateCounter++
-				newFilename = strings.TrimSuffix(arozfs.Base(src), filepath.Ext(src)) + " - Copy(" + strconv.Itoa(duplicateCounter) + ")" + filepath.Ext(src)
+				newFilename = strings.TrimSuffix(wdosfs.Base(src), filepath.Ext(src)) + " - Copy(" + strconv.Itoa(duplicateCounter) + ")" + filepath.Ext(src)
 				if duplicateCounter > 1024 {
 					//Maxmium loop encountered. For thread safty, terminate here
 					return errors.New("Too many copies of identical files.")
@@ -595,11 +595,11 @@ func FileCopy(srcFsh *FileSystemHandler, src string, destFsh *FileSystemHandler,
 
 		if progressUpdate != nil {
 			//Set progress to 100, leave it to upper level abstraction to handle
-			statusCode := progressUpdate(100, arozfs.Base(realDest))
+			statusCode := progressUpdate(100, wdosfs.Base(realDest))
 			for statusCode == 1 {
 				//Wait for the task to be resumed
 				time.Sleep(1 * time.Second)
-				statusCode = progressUpdate(100, arozfs.Base(realDest))
+				statusCode = progressUpdate(100, wdosfs.Base(realDest))
 			}
 			if statusCode == 2 {
 				//Cancel
@@ -630,8 +630,8 @@ func FileMove(srcFsh *FileSystemHandler, src string, destFsh *FileSystemHandler,
 	}
 
 	//Check if the target file already exists.
-	movedFilename := arozfs.Base(src)
-	if destAbst.FileExists(filepath.Join(dest, arozfs.Base(src))) {
+	movedFilename := wdosfs.Base(src)
+	if destAbst.FileExists(filepath.Join(dest, wdosfs.Base(src))) {
 		//Handle cases where file already exists
 		if mode == "" {
 			//Do not specific file exists principle
@@ -642,19 +642,19 @@ func FileMove(srcFsh *FileSystemHandler, src string, destFsh *FileSystemHandler,
 		} else if mode == "overwrite" {
 			//Continue with the following code
 			//Check if the copy and paste dest are identical
-			if filepath.ToSlash(filepath.Clean(src)) == filepath.ToSlash(filepath.Clean(filepath.Join(dest, arozfs.Base(src)))) {
+			if filepath.ToSlash(filepath.Clean(src)) == filepath.ToSlash(filepath.Clean(filepath.Join(dest, wdosfs.Base(src)))) {
 				//Source and target identical. Cannot overwrite.
 				return errors.New("Source and destination paths are identical.")
 			}
 
 		} else if mode == "keep" {
 			//Keep the file but saved with 'Copy' suffix
-			newFilename := strings.TrimSuffix(arozfs.Base(src), filepath.Ext(src)) + " - Copy" + filepath.Ext(src)
+			newFilename := strings.TrimSuffix(wdosfs.Base(src), filepath.Ext(src)) + " - Copy" + filepath.Ext(src)
 			//Check if the newFilename already exists. If yes, continue adding suffix
 			duplicateCounter := 0
 			for destAbst.FileExists(filepath.Join(dest, newFilename)) {
 				duplicateCounter++
-				newFilename = strings.TrimSuffix(arozfs.Base(src), filepath.Ext(src)) + " - Copy(" + strconv.Itoa(duplicateCounter) + ")" + filepath.Ext(src)
+				newFilename = strings.TrimSuffix(wdosfs.Base(src), filepath.Ext(src)) + " - Copy(" + strconv.Itoa(duplicateCounter) + ")" + filepath.Ext(src)
 				if duplicateCounter > 1024 {
 					//Maxmium loop encountered. For thread safty, terminate here
 					return errors.New("Too many copies of identical files.")
@@ -704,11 +704,11 @@ func FileMove(srcFsh *FileSystemHandler, src string, destFsh *FileSystemHandler,
 
 		//Update the progress
 		if progressUpdate != nil {
-			statusCode := progressUpdate(100, arozfs.Base(src))
+			statusCode := progressUpdate(100, wdosfs.Base(src))
 			for statusCode == 1 {
 				//Wait for the task to be resumed
 				time.Sleep(1 * time.Second)
-				statusCode = progressUpdate(100, arozfs.Base(realDest))
+				statusCode = progressUpdate(100, wdosfs.Base(realDest))
 			}
 			if statusCode == 2 {
 				//Cancel
@@ -795,11 +795,11 @@ func dirCopy(srcFsh *FileSystemHandler, src string, destFsh *FileSystemHandler, 
 
 			//Update move progress
 			if progressUpdate != nil {
-				statusCode := progressUpdate(int(float64(fileCounter)/float64(totalFileCounts)*100), arozfs.Base(fileSrc))
+				statusCode := progressUpdate(int(float64(fileCounter)/float64(totalFileCounts)*100), wdosfs.Base(fileSrc))
 				for statusCode == 1 {
 					//Wait for the task to be resumed
 					time.Sleep(1 * time.Second)
-					statusCode = progressUpdate(int(float64(fileCounter)/float64(totalFileCounts)*100), arozfs.Base(fileSrc))
+					statusCode = progressUpdate(int(float64(fileCounter)/float64(totalFileCounts)*100), wdosfs.Base(fileSrc))
 				}
 				if statusCode == 2 {
 					//Cancel

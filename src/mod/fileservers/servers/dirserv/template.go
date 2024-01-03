@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"imuslab.com/wdos/mod/filesystem/arozfs"
 	"imuslab.com/wdos/mod/filesystem/hidden"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 )
 
 func getPageHeader(pathname string) string {
@@ -106,7 +106,7 @@ func getItemHTML(displayText string, link string, isDir bool, modTime string, si
 }
 
 func getBackButton(currentPath string) string {
-	backPath := arozfs.ToSlash(filepath.Dir(currentPath))
+	backPath := wdosfs.ToSlash(filepath.Dir(currentPath))
 	return `<tr>
 		<td class="fx">←</td>
 		<td colspan="3"><a href="` + backPath + `">Back</a></td>	

@@ -1,9 +1,11 @@
+//go:build windows
 // +build windows
+
 package wifi
 
 /*
 	WiFi connection module for Windows
-	author: tobychui
+	author: Secarian
 
 */
 
@@ -15,7 +17,7 @@ import (
 	"strings"
 )
 
-//Toggle WiFi On Off. Only allow on sudo mode
+// Toggle WiFi On Off. Only allow on sudo mode
 func (w *WiFiManager) SetInterfacePower(wlanInterface string, on bool) error {
 	return errors.New("Windows WiFi function is currently readonly")
 }
@@ -156,7 +158,7 @@ func (w *WiFiManager) ConnectWiFi(ssid string, password string, connType string,
 	return &WiFiConnectionResult{}, errors.New("Windows WiFi function is currently readonly")
 }
 
-//Get connected wifi ssid, interface name and error if any
+// Get connected wifi ssid, interface name and error if any
 func (w *WiFiManager) GetConnectedWiFi() (string, string, error) {
 	cmd := exec.Command("cmd", "/c", "chcp 65001 && netsh WLAN show interface")
 	out, err := cmd.CombinedOutput()

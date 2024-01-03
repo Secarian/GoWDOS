@@ -8,7 +8,7 @@ import (
 	"strconv"
 
 	"imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 )
 
 /*
@@ -82,7 +82,7 @@ func SetFilePermisson(fsh *filesystem.FileSystemHandler, file string, permission
 			return err
 		}
 	} else {
-		return arozfs.ErrOperationNotSupported
+		return wdosfs.ErrOperationNotSupported
 	}
 	return nil
 }

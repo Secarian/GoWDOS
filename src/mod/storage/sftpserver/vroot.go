@@ -14,7 +14,7 @@ import (
 
 	"github.com/pkg/sftp"
 	"imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/wdosfs"
 )
 
 // Root of the serving tree
@@ -73,20 +73,20 @@ type sftpFileInterface interface {
 	WriteAt([]byte, int64) (int, error)
 }
 
-// Wrapper for the arozfs File to provide missing functions
-type wrappedArozFile struct {
-	file arozfs.File
+// Wrapper for the wdosfs File to provide missing functions
+type wrappedWDOSFile struct {
+	file wdosfs.File
 }
 
-func newArozFileWrapper(arozfile arozfs.File) *wrappedArozFile {
-	return &wrappedArozFile{file: arozfile}
+func newWDOSFileWrapper(wdosfile wdosfs.File) *wrappedWDOSFile {
+	return &wrappedWDOSFile{file: wdosfile}
 }
 
-func (f *wrappedArozFile) Name() string {
+func (f *wrappedWDOSFile) Name() string {
 	return f.file.Name()
 }
 
-func (f *wrappedArozFile) Size() int64 {
+func (f *wrappedWDOSFile) Size() int64 {
 	stat, err := f.file.Stat()
 	if err != nil {
 		return 0
@@ -94,7 +94,7 @@ func (f *wrappedArozFile) Size() int64 {
 
 	return stat.Size()
 }
-func (f *wrappedArozFile) Mode() os.FileMode {
+func (f *wrappedWDOSFile) Mode() os.FileMode {
 	stat, err := f.file.Stat()
 	if err != nil {
 		return 0
@@ -102,7 +102,7 @@ func (f *wrappedArozFile) Mode() os.FileMode {
 
 	return stat.Mode()
 }
-func (f *wrappedArozFile) ModTime() time.Time {
+func (f *wrappedWDOSFile) ModTime() time.Time {
 	stat, err := f.file.Stat()
 	if err != nil {
 		return time.Time{}
@@ -110,7 +110,7 @@ func (f *wrappedArozFile) ModTime() time.Time {
 
 	return stat.ModTime()
 }
-func (f *wrappedArozFile) IsDir() bool {
+func (f *wrappedWDOSFile) IsDir() bool {
 	stat, err := f.file.Stat()
 	if err != nil {
 		return false
@@ -118,15 +118,15 @@ func (f *wrappedArozFile) IsDir() bool {
 
 	return stat.IsDir()
 }
-func (f *wrappedArozFile) Sys() interface{} {
+func (f *wrappedWDOSFile) Sys() interface{} {
 	return nil
 }
 
-func (f *wrappedArozFile) ReadAt(b []byte, off int64) (int, error) {
+func (f *wrappedWDOSFile) ReadAt(b []byte, off int64) (int, error) {
 	return f.file.ReadAt(b, off)
 }
 
-func (f *wrappedArozFile) WriteAt(b []byte, off int64) (int, error) {
+func (f *wrappedWDOSFile) WriteAt(b []byte, off int64) (int, error) {
 	return f.file.WriteAt(b, off)
 }
 
@@ -161,7 +161,7 @@ func (fs *root) Fileread(r *sftp.Request) (io.ReaderAt, error) {
 }
 
 func (fs *root) Filewrite(r *sftp.Request) (io.WriterAt, error) {
-	if arozfs.ToSlash(filepath.Dir(r.Filepath)) == "/" {
+	if wdosfs.ToSlash(filepath.Dir(r.Filepath)) == "/" {
 		//Uploading to virtual root folder. Return error
 		return nil, errors.New("WDOS SFTP root is read only")
 	}
@@ -474,7 +474,7 @@ func (fs *root) lfetch(path string) (sftpFileInterface, error) {
 		return nil, err
 	}
 
-	f2 := newArozFileWrapper(f)
+	f2 := newWDOSFileWrapper(f)
 	return f2, nil
 }
 

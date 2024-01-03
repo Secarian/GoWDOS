@@ -37,7 +37,7 @@ var (
 )
 
 func NetworkServiceInit() {
-	systemWideLogger.PrintAndLog("Network", "Starting ArOZ Network Services", nil)
+	systemWideLogger.PrintAndLog("Network", "Starting WDOS Network Services", nil)
 
 	//Create a router that allow users with System Setting access to access these api endpoints
 	router := prout.NewModuleRouter(prout.RouterOption{
