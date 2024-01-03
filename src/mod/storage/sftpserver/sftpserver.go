@@ -11,7 +11,7 @@ import (
 	"github.com/pkg/sftp"
 	uuid "github.com/satori/go.uuid"
 	"golang.org/x/crypto/ssh"
-	user "imuslab.com/arozos/mod/user"
+	user "imuslab.com/wdos/mod/user"
 )
 
 type SFTPConfig struct {

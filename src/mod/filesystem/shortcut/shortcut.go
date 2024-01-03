@@ -5,12 +5,12 @@ import (
 	"path/filepath"
 	"strings"
 
-	"imuslab.com/arozos/mod/filesystem/arozfs"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*
-	A simple package to better handle shortcuts in ArozOS
+	A simple package to better handle shortcuts in WDOS
 
 	Author: tobychui
 */
@@ -39,7 +39,7 @@ func ReadShortcut(shortcutContent []byte) (*arozfs.ShortcutData, error) {
 	return &result, nil
 }
 
-//Generate the content of a shortcut base the the four important field of shortcut information
+// Generate the content of a shortcut base the the four important field of shortcut information
 func GenerateShortcutBytes(shortcutTarget string, shortcutType string, shortcutText string, shortcutIcon string) []byte {
 	//Check if there are desktop icon. If yes, override icon on module
 	if shortcutType == "module" && utils.FileExists(arozfs.ToSlash(filepath.Join("./web/", filepath.Dir(shortcutIcon), "/desktop_icon.png"))) {

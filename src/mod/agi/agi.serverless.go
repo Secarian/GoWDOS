@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"github.com/robertkrimen/otto"
-	user "imuslab.com/arozos/mod/user"
-	"imuslab.com/arozos/mod/utils"
+	user "imuslab.com/wdos/mod/user"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*

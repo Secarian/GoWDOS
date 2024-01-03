@@ -54,7 +54,7 @@ For subservice, see subservice/demo/agi/ for more examples.
 
 ### Access From Frontend
 
-To access server functions from front-end (e.g. You are building a serverless webapp on top of arozos), you can call to the ao_module.js function for running an agi script located under ```./web``` directory. You can find the ao_module.js wrapper under ```./web/script/```
+To access server functions from front-end (e.g. You are building a serverless webapp on top of wdos), you can call to the ao_module.js function for running an agi script located under ```./web``` directory. You can find the ao_module.js wrapper under ```./web/script/```
 
 Here is an example extracted from Music module for listing files nearby the openeing music file.
 
@@ -371,7 +371,7 @@ USER_MODULES //Might return ["*"] for admin permission
 
 ```
 decodeVirtualPath("user:/Desktop"); //Convert virtual path (e.g. user:/Desktop) to real path (e.g. ./files/user/username/Desktop)
-decodeAbsoluteVirtualPath("user:/Desktop"); //Same as decodeVirtualPath but return in absolute path instead of relative path from the arozos binary root
+decodeAbsoluteVirtualPath("user:/Desktop"); //Same as decodeVirtualPath but return in absolute path instead of relative path from the wdos binary root
 encodeRealPath("files/users/User/Desktop"); //Convert realpath into virtual path
 ```
 
@@ -511,7 +511,7 @@ To use the user default option which user has set in File Manager WebApp, pass i
 filelib.aglob("user:/Desktop/*.jpg", "user");
 ```
 
-##### Return type of filelib.readdir (Since ArozOS v2.002 / AGI 2.1)
+##### Return type of filelib.readdir (Since WDOS v2.002 / AGI 2.1)
 
 For filelib.readdir, it will return an array with the following object structure
 
@@ -557,7 +557,7 @@ Example return value (in JSON object, not stringify JSON string)
 ]
 ```
 
-### Relative path support when execute in personal page (Since ArozOS v2.005 / AGI 2.2)
+### Relative path support when execute in personal page (Since WDOS v2.005 / AGI 2.2)
 
 AGI 2.2 filelib support execution of file operations as relative path when the file is executed via personal page link. For example:
 
@@ -620,7 +620,7 @@ return true if success, false if failed
 
 #### AI Classifier Options (since v1.119)
 
-**ImageLib AI Classifier requires darknet to operate normally. If your ArozOS is a trim down version or using a host architecture that ArozOS did not ship with a valid darknet binary executable in ```system/neuralnet/``` folder, this will always return```false```.**
+**ImageLib AI Classifier requires darknet to operate normally. If your WDOS is a trim down version or using a host architecture that WDOS did not ship with a valid darknet binary executable in ```system/neuralnet/``` folder, this will always return```false```.**
 
 ```
 Classify allow the following classifier options
@@ -873,7 +873,7 @@ For detailed example for other functions, see the js file located at ```UnitTest
 
 ### Share
 
-The share API allow access to the ArozOS share interface and generate UUID based on the shared file.
+The share API allow access to the WDOS share interface and generate UUID based on the shared file.
 
 ```
 requirelib("share");
@@ -894,4 +894,4 @@ share.removeShare(shareUUID);
 
 For ```shareFile``` timeout value, **if set to 0 or unset, it will default to "forever"**. Hence, the share will not be automatically removed after timeout 
 
-Please also note that the share timeout is done by the AGI gateway system runtime. Hence, if you have shutdown / reset your ArozOS within the set period of time, your share **will not get automatically removed after the system startup again**.
+Please also note that the share timeout is done by the AGI gateway system runtime. Hence, if you have shutdown / reset your WDOS within the set period of time, your share **will not get automatically removed after the system startup again**.

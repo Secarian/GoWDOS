@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"imuslab.com/arozos/mod/network/websocketproxy"
+	"imuslab.com/wdos/mod/network/websocketproxy"
 )
 
 func (router *Router) getTargetProxyEndpointFromRequestURI(requestURI string) *ProxyEndpoint {

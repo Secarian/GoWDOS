@@ -8,16 +8,16 @@ import (
 	"path/filepath"
 	"strings"
 
-	"imuslab.com/arozos/mod/agi"
-	"imuslab.com/arozos/mod/database"
-	"imuslab.com/arozos/mod/user"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/agi"
+	"imuslab.com/wdos/mod/database"
+	"imuslab.com/wdos/mod/user"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*
 	www package
 
-	This package is the replacement handler for global homepage function in ArozOS.
+	This package is the replacement handler for global homepage function in WDOS.
 	This allow users to host and create their website using any folder within the user
 	access file system.
 

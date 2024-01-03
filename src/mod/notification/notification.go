@@ -16,7 +16,7 @@ type NotificationPayload struct {
 	ID            string   //Notification ID, generate by producer
 	Title         string   //Title of the notification
 	Message       string   //Message of the notification
-	Receiver      []string //Receiver, username in arozos system
+	Receiver      []string //Receiver, username in wdos system
 	Sender        string   //Sender, the sender or module of the notification
 	ReciverAgents []string //Agent name that have access to this notification
 }
@@ -27,10 +27,10 @@ type Agent interface {
 	//Defination of the agent
 	Name() string                                    //The name of the notification agent, must be unique
 	Desc() string                                    //Basic description of the agent
-	IsConsumer() bool                                //Can receive notification can arozos core
-	IsProducer() bool                                //Can produce notification to arozos core
-	ConsumerNotification(*NotificationPayload) error //Endpoint for arozos -> this agent
-	ProduceNotification(*AgentProducerFunction)      //Endpoint for this agent -> arozos
+	IsConsumer() bool                                //Can receive notification can wdos core
+	IsProducer() bool                                //Can produce notification to wdos core
+	ConsumerNotification(*NotificationPayload) error //Endpoint for wdos -> this agent
+	ProduceNotification(*AgentProducerFunction)      //Endpoint for this agent -> wdos
 }
 
 type NotificationQueue struct {

@@ -4,7 +4,7 @@ import (
 	"errors"
 
 	"golang.org/x/oauth2"
-	db "imuslab.com/arozos/mod/database"
+	db "imuslab.com/wdos/mod/database"
 )
 
 //getScope use to select the correct scope

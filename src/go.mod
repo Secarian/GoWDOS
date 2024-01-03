@@ -1,4 +1,4 @@
-module imuslab.com/arozos
+module imuslab.com/wdos
 
 go 1.20
 

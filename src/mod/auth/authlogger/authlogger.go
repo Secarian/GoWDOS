@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"imuslab.com/arozos/mod/database"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/database"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*

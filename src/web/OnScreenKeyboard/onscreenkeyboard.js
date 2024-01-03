@@ -2,16 +2,16 @@
     On Screen Keyboard
 
     A simple on screen keyboard for touch devices that run linux
-    (Yes, just in case I need to run ArozOS on embedded linux with browser
+    (Yes, just in case I need to run WDOS on embedded linux with browser
         this will be helpful in those rare cases)
 
     author: tobychui
 */
 
-//Handle ArozOS key event passthrough
+//Handle WDOS key event passthrough
 if (ao_module_virtualDesktop){
 	if (!parent.window.ime){
-		alert("Unsupported viewing mode or version of ArozOS too old!")
+		alert("Unsupported viewing mode or version of WDOS too old!")
 	}else{
 		parent.window.ime.handler = handleKeydownInput;
 	}

@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"os"
 
-	module "imuslab.com/arozos/mod/modules"
-	prout "imuslab.com/arozos/mod/prouter"
-	"imuslab.com/arozos/mod/utils"
+	module "imuslab.com/wdos/mod/modules"
+	prout "imuslab.com/wdos/mod/prouter"
+	"imuslab.com/wdos/mod/utils"
 )
 
 var (

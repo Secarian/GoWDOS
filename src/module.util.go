@@ -1,7 +1,7 @@
 package main
 
 import (
-	module "imuslab.com/arozos/mod/modules"
+	module "imuslab.com/wdos/mod/modules"
 )
 
 /*

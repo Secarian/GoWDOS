@@ -10,11 +10,11 @@ import (
 	"time"
 
 	"golang.org/x/oauth2"
-	auth "imuslab.com/arozos/mod/auth"
-	syncdb "imuslab.com/arozos/mod/auth/oauth2/syncdb"
-	reg "imuslab.com/arozos/mod/auth/register"
-	db "imuslab.com/arozos/mod/database"
-	"imuslab.com/arozos/mod/utils"
+	auth "imuslab.com/wdos/mod/auth"
+	syncdb "imuslab.com/wdos/mod/auth/oauth2/syncdb"
+	reg "imuslab.com/wdos/mod/auth/register"
+	db "imuslab.com/wdos/mod/database"
+	"imuslab.com/wdos/mod/utils"
 )
 
 type OauthHandler struct {

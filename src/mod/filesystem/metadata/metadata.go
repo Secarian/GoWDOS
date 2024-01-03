@@ -14,10 +14,10 @@ import (
 
 	"github.com/gorilla/websocket"
 
-	"imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/filesystem/fssort"
-	hidden "imuslab.com/arozos/mod/filesystem/hidden"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/filesystem/fssort"
+	hidden "imuslab.com/wdos/mod/filesystem/hidden"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*

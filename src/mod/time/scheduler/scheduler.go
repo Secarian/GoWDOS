@@ -8,17 +8,17 @@ import (
 	"path/filepath"
 	"time"
 
-	"imuslab.com/arozos/mod/agi"
-	"imuslab.com/arozos/mod/info/logger"
-	"imuslab.com/arozos/mod/user"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/agi"
+	"imuslab.com/wdos/mod/info/logger"
+	"imuslab.com/wdos/mod/user"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*
-	ArozOS System Scheduler
+	WDOS System Scheduler
 	author: tobychui
 
-	This module provide scheduling executable feature for ArozOS
+	This module provide scheduling executable feature for WDOS
 	Some feature was migrated from the v1.113 aecron module
 */
 
@@ -83,7 +83,7 @@ func NewScheduler(option *ScheudlerOption) (*Scheduler, error) {
 		}
 		stopChannel := thisScheduler.createTicker(1 * time.Minute)
 		thisScheduler.ticker = stopChannel
-		option.Logger.PrintAndLog("Scheduler", "ArozOS System Scheduler Started", nil)
+		option.Logger.PrintAndLog("Scheduler", "WDOS System Scheduler Started", nil)
 	}()
 
 	//Return the crontask

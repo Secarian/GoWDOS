@@ -6,11 +6,11 @@ import (
 	"net/http"
 	"strconv"
 
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/utils"
 )
 
 //LOGIN related function
-//functions basically same as arozos's original function
+//functions basically same as wdos's original function
 func (ldap *ldapHandler) HandleLoginPage(w http.ResponseWriter, r *http.Request) {
 	checkLDAPenabled := ldap.readSingleConfig("enabled")
 	if checkLDAPenabled == "false" {
@@ -181,7 +181,7 @@ func (ldap *ldapHandler) HandleSetPassword(w http.ResponseWriter, r *http.Reques
 				utils.SendErrorResponse(w, err.Error())
 				return
 			}
-			//convert the ldap usergroup to arozos usergroup
+			//convert the ldap usergroup to wdos usergroup
 			convertedInfo := ldap.convertGroup(ldapUser)
 			//create user account and login
 			ldap.ag.CreateUserAccount(username, password, convertedInfo.EquivGroup)

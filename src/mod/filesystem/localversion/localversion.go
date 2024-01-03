@@ -8,13 +8,13 @@ import (
 	"strings"
 	"time"
 
-	"imuslab.com/arozos/mod/filesystem"
+	"imuslab.com/wdos/mod/filesystem"
 )
 
 /*
 	localversion.go
 
-	This is a local version management module for arozos files
+	This is a local version management module for wdos files
 	Author: tobychui
 
 */

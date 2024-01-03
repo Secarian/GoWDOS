@@ -5,13 +5,13 @@ import (
 	"os"
 	"time"
 
-	apt "imuslab.com/arozos/mod/apt"
-	auth "imuslab.com/arozos/mod/auth"
-	db "imuslab.com/arozos/mod/database"
-	"imuslab.com/arozos/mod/info/logger"
-	permission "imuslab.com/arozos/mod/permission"
-	user "imuslab.com/arozos/mod/user"
-	"imuslab.com/arozos/mod/www"
+	apt "imuslab.com/wdos/mod/apt"
+	auth "imuslab.com/wdos/mod/auth"
+	db "imuslab.com/wdos/mod/database"
+	"imuslab.com/wdos/mod/info/logger"
+	permission "imuslab.com/wdos/mod/permission"
+	user "imuslab.com/wdos/mod/user"
+	"imuslab.com/wdos/mod/www"
 )
 
 /*
@@ -43,7 +43,7 @@ var vendorResRoot = "./vendor-res/"                    //Root folder for vendor 
 // =========== RUNTTIME RELATED ================
 var max_upload_size int64 = 8192 << 20                         //Maxmium upload size, default 8GB
 var sudo_mode bool = (os.Geteuid() == 0 || os.Geteuid() == -1) //Check if the program is launched as sudo mode or -1 on windows
-var startupTime int64 = time.Now().Unix()                      //The startup time of the ArozOS Core
+var startupTime int64 = time.Now().Unix()                      //The startup time of the WDOS Core
 var systemWideLogger *logger.Logger                            //The sync map to store all system wide loggers
 
 // =========== SYSTEM FLAGS ==============
@@ -107,6 +107,6 @@ var allow_homepage = flag.Bool("homepage", true, "Enable user homepage. Accessib
 var nightlyTaskRunTime = flag.Int("ntt", 3, "Nightly tasks execution time. Default 3 = 3 am in the morning")
 var maxTempFileKeepTime = flag.Int("tmp_time", 86400, "Time before tmp file will be deleted in seconds. Default 86400 seconds = 24 hours")
 
-// Flags related to ArozOS Cluster services
+// Flags related to WDOS Cluster services
 var allow_clustering = flag.Bool("allow_cluster", true, "Enable cluster operations within LAN. Require allow_mdns=true flag")
 var allow_iot = flag.Bool("allow_iot", true, "Enable IoT related APIs and scanner. Require MDNS enabled")

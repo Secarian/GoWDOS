@@ -12,10 +12,10 @@ import (
 	"path/filepath"
 
 	"github.com/robertkrimen/otto"
-	"imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/filesystem/fssort"
-	"imuslab.com/arozos/mod/filesystem/hidden"
-	user "imuslab.com/arozos/mod/user"
+	"imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/filesystem/fssort"
+	"imuslab.com/wdos/mod/filesystem/hidden"
+	user "imuslab.com/wdos/mod/user"
 )
 
 /*
@@ -784,7 +784,7 @@ func (g *Gateway) injectFileLibFunctions(vm *otto.Otto, u *user.User, scriptFsh 
 		}
 	})
 
-	//ArozOS v2.0 New features
+	//WDOS v2.0 New features
 	//Reading or writing from hex to target virtual filepath
 
 	//Write binary from hex string

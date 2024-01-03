@@ -7,8 +7,8 @@ import (
 	"os"
 	"strconv"
 
-	"imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/filesystem/arozfs"
 )
 
 /*

@@ -1,14 +1,14 @@
 /*
 	Memo Apps
 
-	A simple memo marking app for ArozOS
+	A simple memo marking app for WDOS
 */
 
 
 //Define the launchInfo for the module
 var moduleLaunchInfo = {
     Name: "Memo",
-	Desc: "A simple Memo App for ArozOS",
+	Desc: "A simple Memo App for WDOS",
 	Group: "Office",
 	IconPath: "Memo/img/small_icon.png",
 	Version: "0.1.0",

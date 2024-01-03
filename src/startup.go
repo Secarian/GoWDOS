@@ -10,10 +10,10 @@ import (
 	"log"
 	"os"
 
-	db "imuslab.com/arozos/mod/database"
-	"imuslab.com/arozos/mod/filesystem"
-	fs "imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/info/logger"
+	db "imuslab.com/wdos/mod/database"
+	"imuslab.com/wdos/mod/filesystem"
+	fs "imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/info/logger"
 )
 
 func RunStartup() {
@@ -116,12 +116,12 @@ func RunStartup() {
 	ldapInit()         //LDAP system init
 	notificationInit() //Notification system init
 
-	//Start High Level Services that requires full arozos architectures
+	//Start High Level Services that requires full wdos architectures
 	FileServerInit()
 	//FTPServerInit() //Start FTP Server Endpoints
 	//WebDAVInit()    //Start WebDAV Endpoint
 	ClusterInit() //Start Cluster Services
-	IoTHubInit()  //Inialize ArozOS IoT Hub module
+	IoTHubInit()  //Inialize WDOS IoT Hub module
 
 	ModuleInstallerInit() //Start Module Installer
 

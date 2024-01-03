@@ -1,6 +1,6 @@
-# ArozOS 2.0
+# WDOS 2.0
 
-Dies ist die Go-Implementierung von ArozOS (auch bekannt als ArOZ Online) Web-Desktop-Umgebung, die für Linux entwickelt wurde, aber irgendwie auch auf Windows und macOS funktioniert.
+Dies ist die Go-Implementierung von WDOS (auch bekannt als ArOZ Online) Web-Desktop-Umgebung, die für Linux entwickelt wurde, aber irgendwie auch auf Windows und macOS funktioniert.
 
 Diese README-Datei ist nur für Entwickler gedacht. Wenn Sie ein normaler Benutzer sind, konsultieren Sie bitte die README-Datei außerhalb des /src-Ordners.
 
@@ -13,7 +13,7 @@ Diese README-Datei ist nur für Entwickler gedacht. Wenn Sie ein normaler Benutz
 
 ## Überschreiben von Vendor-Ressourcen
 
-Wenn Sie Vendor-bezogene Ressourcen in ArozOS 2.012 oder höher überschreiben möchten, erstellen Sie einen Ordner im Systemstammverzeichnis mit dem Namen ```vendor-res``` und legen Sie die Ersatzdateien hier ab. Hier ist eine Liste der unterstützten Ersatzressourcendateien:
+Wenn Sie Vendor-bezogene Ressourcen in WDOS 2.012 oder höher überschreiben möchten, erstellen Sie einen Ordner im Systemstammverzeichnis mit dem Namen ```vendor-res``` und legen Sie die Ersatzdateien hier ab. Hier ist eine Liste der unterstützten Ersatzressourcendateien:
 
 | Dateiname       | Empfohlenes Format | Verwendung                 |
 | --------------- | ------------------ | -------------------------- |
@@ -25,19 +25,19 @@ Wenn Sie Vendor-bezogene Ressourcen in ArozOS 2.012 oder höher überschreiben m
 
 ## Dateisystem-Virtualisierung und Abstraktionsebenen
 
-Das ArozOS-System enthält sowohl die Virtualisierungsebene als auch die Abstraktionsebene. Der einfachste Weg, um zu überprüfen, ob Ihr Pfad unter welcher Ebene liegt, besteht darin, den Startverzeichnisnamen zu betrachten.
+Das WDOS-System enthält sowohl die Virtualisierungsebene als auch die Abstraktionsebene. Der einfachste Weg, um zu überprüfen, ob Ihr Pfad unter welcher Ebene liegt, besteht darin, den Startverzeichnisnamen zu betrachten.
 
 | Pfadstruktur                                  | Beispiel-Pfad                                     | Ebene                                            |
 | --------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
 | {vroot_id}:/{subpath}                         | user:/Desktop/meinedatei.txt                       | Dateisystem-Virtualisierungsebene (höchste Ebene) |
 | fsh (*File System Handler) + subpath (string)  | fsh (localfs) + /dateien/benutzer/alan/Desktop/meinedatei.txt | Dateisystem-Abstraktionsebene                     |
-| {physical_location}/{subpath}                 | /home/aroz/arozos/dateien/benutzer/Desktop/meinedatei.txt | Physische (Festplatten-)Ebene                     |
+| {physical_location}/{subpath}                 | /home/aroz/wdos/dateien/benutzer/Desktop/meinedatei.txt | Physische (Festplatten-)Ebene                     |
 
-Seit ArozOS v2.000 haben wir der (bereits komplexen) File System Handler (fsh) Infrastruktur eine Dateisystem-Abstraktion (fsa oder manchmal als fshAbs, Abkürzung für "File System Handler underlying File System Abstraction") hinzugefügt. Es gibt zwei Arten von fsh, die derzeit von der ArozOS Dateisystem-Abstraktionsebene unterstützt werden.
+Seit WDOS v2.000 haben wir der (bereits komplexen) File System Handler (fsh) Infrastruktur eine Dateisystem-Abstraktion (fsa oder manchmal als fshAbs, Abkürzung für "File System Handler underlying File System Abstraction") hinzugefügt. Es gibt zwei Arten von fsh, die derzeit von der WDOS Dateisystem-Abstraktionsebene unterstützt werden.
 
 ## ArOZ JavaScript Gateway Interface / Plugin Loader
 
-Die ArOZ AJGI / AGI-Schnittstelle bietet eine JavaScript-programmierbare Schnittstelle für ArozOS-Benutzer, um ein Plugin für das System zu erstellen. Um das Modul zu initialisieren, können Sie eine "init.agi"-Datei im Webverzeichnis des Moduls (auch Modulwurzel genannt) platzieren. Weitere Details finden Sie in der [AJGI-Dokumentation](AJGI Dokumentation.md).
+Die ArOZ AJGI / AGI-Schnittstelle bietet eine JavaScript-programmierbare Schnittstelle für WDOS-Benutzer, um ein Plugin für das System zu erstellen. Um das Modul zu initialisieren, können Sie eine "init.agi"-Datei im Webverzeichnis des Moduls (auch Modulwurzel genannt) platzieren. Weitere Details finden Sie in der [AJGI-Dokumentation](AJGI Dokumentation.md).
 
 AGI-Skripte können mit verschiedenen Berechtigungen ausgeführt werden.
 
@@ -152,16 +152,16 @@ Um systemd in Ihrem Host zu aktivieren, der das Aroz Online System unterstützt,
 sudo ./aroz_online_linux_amd64
 ```
 
-Dann können Sie eine neue Datei namens "arozos.service" in /etc/systemd/system mit folgendem Inhalt erstellen (nehmen Sie an, dass Ihr Aroz Online-Stammverzeichnis bei /home/pi/arozos liegt):
+Dann können Sie eine neue Datei namens "wdos.service" in /etc/systemd/system mit folgendem Inhalt erstellen (nehmen Sie an, dass Ihr Aroz Online-Stammverzeichnis bei /home/pi/wdos liegt):
 
 ```
 [Unit]
-Description=ArozOS Cloud Desktop Service.
+Description=WDOS Cloud Desktop Service.
 
 [Service]
 Type=simple
-WorkingDirectory=/home/pi/arozos/
-ExecStart=/bin/bash /home/pi/arozos/start.sh
+WorkingDirectory=/home/pi/wdos/
+ExecStart=/bin/bash /home/pi/wdos/start.sh
 
 Restart=always
 RestartSec=10
@@ -174,13 +174,13 @@ Schließlich verwenden Sie die folgenden systemd-Befehle, um den Dienst zu aktiv
 
 ```
 # Aktivieren Sie das Skript während des Startvorgangs
-sudo systemctl enable arozos.service
+sudo systemctl enable wdos.service
 
 # Starten Sie den Dienst jetzt
-sudo systemctl start arozos.service
+sudo systemctl start wdos.service
 
 # Den Status des Dienstes anzeigen
-systemctl status arozos.service
+systemctl status wdos.service
 
 # Deaktivieren Sie den Dienst, wenn Sie ihn beim Start nicht mehr ausführen möchten
 sudo systemctl disable aroz-online.service

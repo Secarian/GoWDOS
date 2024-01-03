@@ -1,8 +1,8 @@
 package user
 
 import (
-	fs "imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/utils"
+	fs "imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*

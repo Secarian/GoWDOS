@@ -3,8 +3,8 @@ package main
 import (
 	"errors"
 
-	fs "imuslab.com/arozos/mod/filesystem"
-	storage "imuslab.com/arozos/mod/storage"
+	fs "imuslab.com/wdos/mod/filesystem"
+	storage "imuslab.com/wdos/mod/storage"
 )
 
 /*

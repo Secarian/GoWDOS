@@ -5,7 +5,7 @@ import (
 	"net"
 
 	nfs "github.com/willscott/go-nfs"
-	"imuslab.com/arozos/mod/permission"
+	"imuslab.com/wdos/mod/permission"
 )
 
 type Option struct {

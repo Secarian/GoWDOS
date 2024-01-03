@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"strings"
 
-	"imuslab.com/arozos/mod/storage/ftp"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/storage/ftp"
+	"imuslab.com/wdos/mod/utils"
 )
 
 //Start the FTP Server by request

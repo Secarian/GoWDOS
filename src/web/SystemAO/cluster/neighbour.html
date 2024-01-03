@@ -43,7 +43,7 @@
         <div class="ui divider"></div>
         <h4 class="ui header">
             Nearby Hosts
-            <div class="sub header">The ArozOS broadcast receiver from the Local Area Network.</div>
+            <div class="sub header">The WDOS broadcast receiver from the Local Area Network.</div>
         </h4>
         <div class="ui basic segment" id="nearybylist">
             
@@ -133,7 +133,7 @@
                             var ipDOM = iplinks.join(" / ");
                             var macDOM = host.MacAddr.join(" / ");
                             if (host.MacAddr.length == 0){
-                                //Old version of ArozOS, do not support MAC addr broadcast
+                                //Old version of WDOS, do not support MAC addr broadcast
                                 macDOM = "Version Not Supported";
                             }
                             $("#nearybylist").append(`<div class="ui icon teal message">

@@ -13,11 +13,11 @@ import (
 	"strings"
 	"time"
 
-	"imuslab.com/arozos/mod/compatibility"
-	"imuslab.com/arozos/mod/filesystem"
-	fs "imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/network/gzipmiddleware"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/compatibility"
+	"imuslab.com/wdos/mod/filesystem"
+	fs "imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/network/gzipmiddleware"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*

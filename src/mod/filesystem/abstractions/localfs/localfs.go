@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"imuslab.com/arozos/mod/filesystem/arozfs"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*

@@ -4,9 +4,9 @@ import (
 	"strconv"
 	"time"
 
-	fs "imuslab.com/arozos/mod/filesystem"
-	notification "imuslab.com/arozos/mod/notification"
-	"imuslab.com/arozos/mod/notification/agents/smtpn"
+	fs "imuslab.com/wdos/mod/filesystem"
+	notification "imuslab.com/wdos/mod/notification"
+	"imuslab.com/wdos/mod/notification/agents/smtpn"
 )
 
 var notificationQueue *notification.NotificationQueue

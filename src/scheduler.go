@@ -3,11 +3,11 @@ package main
 import (
 	"net/http"
 
-	module "imuslab.com/arozos/mod/modules"
-	prout "imuslab.com/arozos/mod/prouter"
-	"imuslab.com/arozos/mod/time/nightly"
-	"imuslab.com/arozos/mod/time/scheduler"
-	"imuslab.com/arozos/mod/utils"
+	module "imuslab.com/wdos/mod/modules"
+	prout "imuslab.com/wdos/mod/prouter"
+	"imuslab.com/wdos/mod/time/nightly"
+	"imuslab.com/wdos/mod/time/scheduler"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*
@@ -39,7 +39,7 @@ func SchedulerInit() {
 	/*
 		System Scheudler
 
-		The internal scheudler for arozos
+		The internal scheudler for wdos
 	*/
 	//Create an user router and its module
 

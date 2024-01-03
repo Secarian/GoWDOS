@@ -8,11 +8,11 @@ import (
 	"sync"
 
 	ftp "github.com/fclairamb/ftpserverlib"
-	"imuslab.com/arozos/mod/database"
-	"imuslab.com/arozos/mod/user"
+	"imuslab.com/wdos/mod/database"
+	"imuslab.com/wdos/mod/user"
 )
 
-//Handler is the handler for the FTP server defined in arozos
+//Handler is the handler for the FTP server defined in wdos
 type Handler struct {
 	ServerName    string
 	Port          int

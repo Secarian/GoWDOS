@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>ArozOS Mobile</title>
+        <title>WDOS Mobile</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="manifest" href="manifest.webmanifest">
@@ -470,7 +470,7 @@
                 
             </div>
             <div class="clock">
-                ArozOS Desktop
+                WDOS Desktop
             </div>
             <div id="windowWrapper">
                 
@@ -558,7 +558,7 @@
                     applocale.translate();
                 });
             }else{
-                //Applocale not found. Is this a trim down version of ArozOS?
+                //Applocale not found. Is this a trim down version of WDOS?
                 var applocale = {
                     getString: function(key, original){
                         return original;

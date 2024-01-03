@@ -10,9 +10,9 @@ import (
 )
 
 /*
-	ArozOS System Logger
+	WDOS System Logger
 
-	This script is designed to make a managed log for the ArozOS system
+	This script is designed to make a managed log for the WDOS system
 	and replace the ton of log.Println in the system core
 */
 
@@ -51,7 +51,7 @@ func (l *Logger) getLogFilepath() string {
 	return filepath.Join(l.LogFolder, l.Prefix+"_"+strconv.Itoa(year)+"-"+strconv.Itoa(int(month))+".log")
 }
 
-//PrintAndLog will log the message to file and print the log to STDOUT
+// PrintAndLog will log the message to file and print the log to STDOUT
 func (l *Logger) PrintAndLog(title string, message string, originalError error) {
 	go func() {
 		l.Log(title, message, originalError)
@@ -71,7 +71,7 @@ func (l *Logger) Log(title string, errorMessage string, originalError error) {
 
 }
 
-//Validate if the logging target is still valid (detect any months change)
+// Validate if the logging target is still valid (detect any months change)
 func (l *Logger) ValidateAndUpdateLogFilepath() {
 	expectedCurrentLogFilepath := l.getLogFilepath()
 	if l.CurrentLogFile != expectedCurrentLogFilepath {

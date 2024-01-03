@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	uuid "github.com/satori/go.uuid"
-	fs "imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/utils"
+	fs "imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*
@@ -25,7 +25,7 @@ func SystemIDInit() {
 
 	//Register as a system setting
 	registerSetting(settingModule{
-		Name:     "ArozOS",
+		Name:     "WDOS",
 		Desc:     "System Information",
 		IconPath: "SystemAO/info/img/small_icon.png",
 		Group:    "About",
@@ -56,7 +56,7 @@ func SystemIDInit() {
 
 	registerSetting(settingModule{
 		Name:     "License",
-		Desc:     "License of ArozOS",
+		Desc:     "License of WDOS",
 		IconPath: "SystemAO/info/img/small_icon.png",
 		Group:    "About",
 		StartDir: "SystemAO/info/srcLicense.html",

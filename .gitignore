@@ -3,9 +3,9 @@
 */._*
 
 # Files that should not go into the main branch
-src/arozos.exe
-src/arozos_*
-src/arozos
+src/wdos.exe
+src/wdos_*
+src/wdos
 src/localhost.crt
 src/localhost.key
 src/system/dev.uuid

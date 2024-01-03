@@ -3,15 +3,15 @@ package main
 import (
 	"net/http"
 
-	"imuslab.com/arozos/mod/network/neighbour"
-	prout "imuslab.com/arozos/mod/prouter"
+	"imuslab.com/wdos/mod/network/neighbour"
+	prout "imuslab.com/wdos/mod/prouter"
 )
 
 /*
-	Functions related to ArozOS clusters
+	Functions related to WDOS clusters
 	Author: tobychui
 
-	This is a section of the arozos core that handle cluster
+	This is a section of the wdos core that handle cluster
 	related function endpoints
 
 */

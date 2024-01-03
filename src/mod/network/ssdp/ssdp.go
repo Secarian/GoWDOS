@@ -57,7 +57,7 @@ func NewSSDPHost(outboundIP string, port int, templateFile string, option SSDPOp
 		"upnp:rootdevice",   // send as "ST"
 		"uuid:"+option.UUID, // send as "USN"
 		"http://"+outboundIP+":"+strconv.Itoa(port)+"/ssdp.xml", // send as "LOCATION"
-		"arozos/"+outboundIP, // send as "SERVER"
+		"wdos/"+outboundIP, // send as "SERVER"
 		30)                   // send as "maxAge" in "CACHE-CONTROL"
 	if err != nil {
 		return &SSDPHost{}, err

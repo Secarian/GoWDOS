@@ -10,8 +10,8 @@ import (
 	"strconv"
 	"strings"
 
-	"imuslab.com/arozos/mod/iot"
-	"imuslab.com/arozos/mod/network/mdns"
+	"imuslab.com/wdos/mod/iot"
+	"imuslab.com/wdos/mod/network/mdns"
 )
 
 /*
@@ -44,7 +44,7 @@ func (h *Handler) Start() error {
 // Scan the devices within the LAN
 func (h *Handler) Scan() ([]*iot.Device, error) {
 	foundDevices := []*iot.Device{}
-	hosts := h.scanner.Scan(3, "hds.arozos.com")
+	hosts := h.scanner.Scan(3, "hds.wdos.com")
 	for _, host := range hosts {
 		//Decode the URL and escape characters
 		decodedURL, err := url.QueryUnescape(host.HostName)
@@ -154,8 +154,8 @@ func (h *Handler) Stats() iot.Stats {
 		Version:       "2.0",
 		ProtocolVer:   "2.0",
 		Author:        "tobychui",
-		AuthorWebsite: "http://arozos.com",
-		AuthorEmail:   "hds@arozos.com",
+		AuthorWebsite: "http://wdos.com",
+		AuthorEmail:   "hds@wdos.com",
 		ReleaseDate:   1614524498,
 	}
 }

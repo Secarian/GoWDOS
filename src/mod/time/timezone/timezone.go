@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*

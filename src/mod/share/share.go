@@ -34,13 +34,13 @@ import (
 	uuid "github.com/satori/go.uuid"
 	"github.com/valyala/fasttemplate"
 
-	"imuslab.com/arozos/mod/auth"
-	filesystem "imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/filesystem/arozfs"
-	"imuslab.com/arozos/mod/filesystem/metadata"
-	"imuslab.com/arozos/mod/share/shareEntry"
-	"imuslab.com/arozos/mod/user"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/auth"
+	filesystem "imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/metadata"
+	"imuslab.com/wdos/mod/share/shareEntry"
+	"imuslab.com/wdos/mod/user"
+	"imuslab.com/wdos/mod/utils"
 )
 
 type Options struct {

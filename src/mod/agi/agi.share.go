@@ -5,8 +5,8 @@ import (
 	"time"
 
 	"github.com/robertkrimen/otto"
-	"imuslab.com/arozos/mod/filesystem"
-	user "imuslab.com/arozos/mod/user"
+	"imuslab.com/wdos/mod/filesystem"
+	user "imuslab.com/wdos/mod/user"
 )
 
 func (g *Gateway) ShareLibRegister() {

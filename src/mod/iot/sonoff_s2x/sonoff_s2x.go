@@ -5,8 +5,8 @@ import (
 	"regexp"
 	"strings"
 
-	"imuslab.com/arozos/mod/iot"
-	"imuslab.com/arozos/mod/network/mdns"
+	"imuslab.com/wdos/mod/iot"
+	"imuslab.com/wdos/mod/network/mdns"
 )
 
 /*

@@ -1,7 +1,7 @@
 package iot
 
 /*
-	ArozOS IoT Handler
+	WDOS IoT Handler
 
 	This handler provide adaptive functions to different protocol based IoT devices
 	(aka this is just a wrapper class. See independent IoT module for more information)

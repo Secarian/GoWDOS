@@ -57,11 +57,11 @@ Erfordert GO 1.14 oder höher (siehe [Installationsanleitung](https://dev.to/tob
 Führen Sie den folgenden Befehl aus, um das System zu erstellen
 
 ```
-git clone <https://github.com/tobychui/arozos>
-cd ./arozos/src/
+git clone <https://github.com/Secarian/GoWDOS>
+cd ./wdos/src/
 Build starten
-./arozos
-#sudo ./arozos zur Aktivierung der Hardware- und WiFi-Verwaltungsfunktionen
+./wdos
+#sudo ./wdos zur Aktivierung der Hardware- und WiFi-Verwaltungsfunktionen
 ```
 
 Ja, es ist so einfach.
@@ -70,23 +70,23 @@ Ja, es ist so einfach.
 
 ### Für Raspberry Pi (Für Raspberry Pi 4B+)
 
-Wenn Sie Raspberry Pi als Ihren Host verwenden, können Sie eines der Images herunterladen und das Image auf Ihre SD-Karte flashen. Sie finden ein neues Netzwerkgerät mit dem Namen "ArozOS (ARxxx)" in Ihrem "Netzwerkumfeld". Doppelklicken Sie auf das Symbol und Sie werden auf die System-Websetup-Schnittstelle umgeleitet. Wenn Sie das neue Gerät nicht in Ihrem Netzwerk finden können, können Sie sich auch direkt über `http://{raspberry_pi_ip_address}:8080/` mit ArozOS verbinden.
+Wenn Sie Raspberry Pi als Ihren Host verwenden, können Sie eines der Images herunterladen und das Image auf Ihre SD-Karte flashen. Sie finden ein neues Netzwerkgerät mit dem Namen "WDOS (ARxxx)" in Ihrem "Netzwerkumfeld". Doppelklicken Sie auf das Symbol und Sie werden auf die System-Websetup-Schnittstelle umgeleitet. Wenn Sie das neue Gerät nicht in Ihrem Netzwerk finden können, können Sie sich auch direkt über `http://{raspberry_pi_ip_address}:8080/` mit WDOS verbinden.
 
 | Version | Download | Kopie | Kommentar |
 | --- | --- | --- | --- |
-| arozos-v1.120 | https://www.mediafire.com/file/rg3gkdt4asgk789/arozos_v1.120.7z/file | https://drive.google.com/file/d/1neTDxFpXxQQzsHvyqmCJOfAzjCPi8RzY/view?usp=sharing | |
-| arozos v1.119 | https://www.mediafire.com/file/4vx4f5boj8pfeu1/arozos_v1.119.7z/file | https://drive.google.com/file/d/1Gl_wYCvbio2lmW6YiFObIJHlejLzFrRu/view?usp=sharing | Aktualisiert auf Raspberry Pi OS 64-bit. Siehe kompatible Liste https://www.raspberrypi.com/news/raspberry-pi-os-64-bit/ |
-| arozos v1.118 (v2) | https://www.mediafire.com/file/f1i4xsp4rplwbko/arozos_v1.118_v2.7z/file | https://drive.google.com/file/d/1sgG-QOlaUmXhSiUJIB3DpnejElud1yvn/view?usp=sharing | Unterstützt Pi zero 2w |
-| arozos v1.115 (Stable) | https://www.mediafire.com/file/zbhieo59fq2sw80/arozos_v1.115.7z/file | | Bauen in https://github.com/aroz-online/WsTTY |
-| arozos v1.114 | EOL | | Unstable, aktualisieren Sie auf 1.115, wenn Sie diese Version noch benutzen |
-| arozos v1.113 | https://www.mediafire.com/file/u42ha6ljfq6q0g9/arozos_v1.113.7z/file | |
-| arozos v1.112 (Stable) | https://www.mediafire.com/file/eonn1weu8jvfz29/arozos_v1.112.7z/file | | Fehlerbehebung und Patches für v1.111 |
-| arozos v1.111 (Stable) | https://www.mediafire.com/file/cusm5jwsuey6b4k/arozos_v1.111.7z/file | | IoT Hub hinzugefügt |
-| arozos v1.110 (Stable) | http://www.mediafire.com/file/r7l40jv727covej/arozos_v1.110.7z/file | | arozos v1.110 (Stable) | http://www.mediafire.com/file/r7l40jv727covej/arozos_v1.110.7z/file
-| arozos v1.109 | https://www.mediafire.com/file/mmjyv77ei9fwab5/arozos_v1.109.7z/file | |
-| arozos v1.108 | https://www.mediafire.com/file/aa8176setz3ljtv/arozos_v1.108.7z/file | | WebDAV-Unterstützung hinzugefügt |
-| arozos v1.107 | | https://drive.google.com/file/d/1klI6fVaSLHFr213kI35W6a6hYyBUSIrI/view?usp=sharing | Samba-Unterstützung hinzugefügt |
-| arozos v1.106 | | https://drive.google.com/file/d/1ysZxeIQ5dBu7x5eEyCDwHtMJmJoMp9El/view?usp=sharing | |
+| wdos-v1.120 | https://www.mediafire.com/file/rg3gkdt4asgk789/wdos_v1.120.7z/file | https://drive.google.com/file/d/1neTDxFpXxQQzsHvyqmCJOfAzjCPi8RzY/view?usp=sharing | |
+| wdos v1.119 | https://www.mediafire.com/file/4vx4f5boj8pfeu1/wdos_v1.119.7z/file | https://drive.google.com/file/d/1Gl_wYCvbio2lmW6YiFObIJHlejLzFrRu/view?usp=sharing | Aktualisiert auf Raspberry Pi OS 64-bit. Siehe kompatible Liste https://www.raspberrypi.com/news/raspberry-pi-os-64-bit/ |
+| wdos v1.118 (v2) | https://www.mediafire.com/file/f1i4xsp4rplwbko/wdos_v1.118_v2.7z/file | https://drive.google.com/file/d/1sgG-QOlaUmXhSiUJIB3DpnejElud1yvn/view?usp=sharing | Unterstützt Pi zero 2w |
+| wdos v1.115 (Stable) | https://www.mediafire.com/file/zbhieo59fq2sw80/wdos_v1.115.7z/file | | Bauen in https://github.com/aroz-online/WsTTY |
+| wdos v1.114 | EOL | | Unstable, aktualisieren Sie auf 1.115, wenn Sie diese Version noch benutzen |
+| wdos v1.113 | https://www.mediafire.com/file/u42ha6ljfq6q0g9/wdos_v1.113.7z/file | |
+| wdos v1.112 (Stable) | https://www.mediafire.com/file/eonn1weu8jvfz29/wdos_v1.112.7z/file | | Fehlerbehebung und Patches für v1.111 |
+| wdos v1.111 (Stable) | https://www.mediafire.com/file/cusm5jwsuey6b4k/wdos_v1.111.7z/file | | IoT Hub hinzugefügt |
+| wdos v1.110 (Stable) | http://www.mediafire.com/file/r7l40jv727covej/wdos_v1.110.7z/file | | wdos v1.110 (Stable) | http://www.mediafire.com/file/r7l40jv727covej/wdos_v1.110.7z/file
+| wdos v1.109 | https://www.mediafire.com/file/mmjyv77ei9fwab5/wdos_v1.109.7z/file | |
+| wdos v1.108 | https://www.mediafire.com/file/aa8176setz3ljtv/wdos_v1.108.7z/file | | WebDAV-Unterstützung hinzugefügt |
+| wdos v1.107 | | https://drive.google.com/file/d/1klI6fVaSLHFr213kI35W6a6hYyBUSIrI/view?usp=sharing | Samba-Unterstützung hinzugefügt |
+| wdos v1.106 | | https://drive.google.com/file/d/1ysZxeIQ5dBu7x5eEyCDwHtMJmJoMp9El/view?usp=sharing | |
 
 Alle oben aufgelisteten Imges erfordern eine microSD-Karte mit 8 GB oder mehr.
 
@@ -96,10 +96,10 @@ Um die .img-Datei zu erhalten, können Sie das komprimierte Bild mit 7zip entpac
 
 ### Erstellen Sie mit dem Installationsskript aus dem Quellcode (Empfohlen)
 
-Seit v1.119 wurde das vorinstallierte arozos-Images von Raspberry Pi OS 32-Bit auf 64-Bit verschoben, um die Systemressourcen besser zu nutzen. Für ältere Versionen von Pis können Sie arozos mit dem unten stehenden Befehl mit einer frischen Installation von Raspberry Pi OS installieren.
+Seit v1.119 wurde das vorinstallierte wdos-Images von Raspberry Pi OS 32-Bit auf 64-Bit verschoben, um die Systemressourcen besser zu nutzen. Für ältere Versionen von Pis können Sie wdos mit dem unten stehenden Befehl mit einer frischen Installation von Raspberry Pi OS installieren.
 
 ```
-curl -L <https://raw.githubusercontent.com/tobychui/arozos/master/installer/install_for_pi.sh> | bash
+curl -L <https://raw.githubusercontent.com/tobychui/wdos/master/installer/install_for_pi.sh> | bash
 
 ```
 
@@ -107,7 +107,7 @@ ohne curl
 
 ```
 cd ~/
-wget <https://raw.githubusercontent.com/tobychui/arozos/master/installer/install_for_pi.sh>
+wget <https://raw.githubusercontent.com/tobychui/wdos/master/installer/install_for_pi.sh>
 sudo chmod 775 ./install_for_pi.sh
 ./install_for_pi.sh
 
@@ -116,13 +116,13 @@ sudo chmod 775 ./install_for_pi.sh
 Der Installer wird alle erforderlichen Abhängigkeiten einschließlich ffmpeg und go-Compiler installieren. Um die Installation erfolgreich zu bestätigen, überprüfen Sie den Ausführungsstatus von Arozos mit dem folgenden Befehl.
 
 ```
-sudo systemctl status arozos
+sudo systemctl status wdos
 
 ```
 
 ### Verwenden eines vorgefertigten Binärpakets
 
-Siehe Installationsschritte für andere ARM SBC (verwenden Sie jedoch das Binärpaket `arozos_linux_arm` anstelle von `arozos_linux_arm64`).
+Siehe Installationsschritte für andere ARM SBC (verwenden Sie jedoch das Binärpaket `wdos_linux_arm` anstelle von `wdos_linux_arm64`).
 
 ### Für andere ARM SBC (z.B. Orange Pi / Banana Pi / Friendly ARM's Pis)
 
@@ -130,11 +130,11 @@ Laden Sie das korrekte Architekturbinärpaket aus dem Tab "release" herunter und
 
 ```
 $ ls
-arozos_linux_arm64  web  system
+wdos_linux_arm64  web  system
 
 ```
 
-Starten Sie das Binärprogramm, indem Sie `sudo ./arozos_linux_arm64` aufrufen (oder ohne sudo, wenn Sie keine Hardwareverwaltung bevorzugen).
+Starten Sie das Binärprogramm, indem Sie `sudo ./wdos_linux_arm64` aufrufen (oder ohne sudo, wenn Sie keine Hardwareverwaltung bevorzugen).
 
 ### Windows
 
@@ -144,9 +144,9 @@ Dieses System kann mit den folgenden Build-Anweisungen auf Windows-Hosts erstell
 
 ```
 # Laden Sie das gesamte Repo als zip herunter und installieren Sie es mit cd
-cd .\\arozos\\src\\
+cd .\\wdos\\src\\
 Build starten
-arozos.exe
+wdos.exe
 ```
 
 **Allerdings sind nicht alle Funktionen für Windows verfügbar**.
@@ -164,7 +164,7 @@ Sehen Sie sich sein Repo an [hier] (https://github.com/Saren-Arterius/aroz-docke
 ![Image](img/screenshots/5.png?raw=true)
 ![Image](img/screenshots/6.png?raw=true)
 
-## Starten Sie die ArozOS-Plattform
+## Starten Sie die WDOS-Plattform
 
 ### Unterstützte Startparameter
 
@@ -253,24 +253,24 @@ Beispiel:
 
 ```
 //Start von aroz online mit Standard-Webport
-./arozos -port 80
+./wdos -port 80
 
 //Start von aroz online im Demo-Modus
-./arozos -demo_mode=true
+./wdos -demo_mode=true
 
 //https anstelle von http verwenden
-./arozos -tls=true -tls_port 443 -key mykey.key -cert mycert.crt -disable_http=true
+./wdos -tls=true -tls_port 443 -key mykey.key -cert mycert.crt -disable_http=true
 
 //Starten Sie sowohl den HTTPS- als auch den HTTP-Server auf zwei verschiedenen Ports
-./arozos -port 80 -tls=true -key mykey.key -cert mycert.crt -tls_port 443
+./wdos -port 80 -tls=true -key mykey.key -cert mycert.crt -tls_port 443
 
 //Ändern Sie die maximale Upload-Größe auf 25MB
-./arozos -max_upload_size 25
+./wdos -max_upload_size 25
 ```
 
 Siehe Dokumentation für weitere Beispiele.
 
-### ArozOS Launcher (erforderlich für OTA-Update-Unterstützung)
+### WDOS Launcher (erforderlich für OTA-Update-Unterstützung)
 
 Siehe [https://github.com/aroz-online/launcher](https://github.com/aroz-online/launcher)
 
@@ -291,14 +291,14 @@ src/system/storage.json.example
 
 ```
 
-Benennen Sie die storage.json.example in storage.json um und starten Sie arozos. Die erforderlichen virtuellen Speicherlaufwerke werden entsprechend eingehängt.
+Benennen Sie die storage.json.example in storage.json um und starten Sie wdos. Die erforderlichen virtuellen Speicherlaufwerke werden entsprechend eingehängt.
 
 ## ArOZ JavaScript Gateway Interface (AGI) / Plugin Loader
 
-Das ArOZ AJGI / AGI-Interface bietet eine javascript-programmierbare Schnittstelle für ArOZ Online-Benutzer, um Plugins für das System zu erstellen. Um das Modul zu initiieren, können Sie eine "init.agi"-Datei im Webverzeichnis des Moduls (auch als Modulwurzel bezeichnet) ablegen. Weitere Details finden Sie in der![AJGI Dokumenation](https://github.com/tobychui/arozos/blob/master/src/AGI%20Documentation.md).
+Das ArOZ AJGI / AGI-Interface bietet eine javascript-programmierbare Schnittstelle für ArOZ Online-Benutzer, um Plugins für das System zu erstellen. Um das Modul zu initiieren, können Sie eine "init.agi"-Datei im Webverzeichnis des Moduls (auch als Modulwurzel bezeichnet) ablegen. Weitere Details finden Sie in der![AJGI Dokumenation](https://github.com/Secarian/GoWDOS/blob/master/src/AGI%20Documentation.md).
 
-## ArozOS OTA Update Launcher
-Seit Version 1.119 kann ArozOS mit Hilfe des [ArozOS Launchers](https://github.com/aroz-online/launcher) ein OTA-Update durchführen. Weitere Informationen zur Installation finden Sie im Github-Repository des Launchers.
+## WDOS OTA Update Launcher
+Seit Version 1.119 kann WDOS mit Hilfe des [WDOS Launchers](https://github.com/aroz-online/launcher) ein OTA-Update durchführen. Weitere Informationen zur Installation finden Sie im Github-Repository des Launchers.
 
 ## Weitere Ressourcen
 Wenn Sie nach anderen WebApps (über die Systemeinstellungen installiert) oder Subservices (erfordern eine SSH-Anmeldung zur Installation, nur für OEM) suchen, schauen Sie sich bitte unsere Sammlung hier an:
@@ -310,9 +310,9 @@ Sie können die Autoren über [Telegram](https://t.me/ArOZBeta) erreichen! Wir f
 
 ### 🖥️ Hardware Kompatibilität
 
-Verwenden Sie ArozOS auf etwas anderem als Raspberry Pis? Zeigen Sie uns Ihre Serverkonfiguration und Hardware-Spezifikationen!
+Verwenden Sie WDOS auf etwas anderem als Raspberry Pis? Zeigen Sie uns Ihre Serverkonfiguration und Hardware-Spezifikationen!
 
-https://github.com/tobychui/arozos/issues/50
+https://github.com/Secarian/GoWDOS/issues/50
 
 ### 📝 Verwandte Artikel
 
@@ -324,16 +324,16 @@ Wenn Sie nach Tutorials suchen oder Hilfe bei der Fehlerbehebung von kleineren P
 
 ### Chinesisch
 
-- [ArozOS + Raspberry Pi zum Bau eines tragbaren NAS (zur Vermeidung von Gruben)](https://blog.csdn.net/m0_37728676/article/details/113876815)
-- [ArozOS + Raspberry Pi Mini NAS](http://www.huajia.online/2021/10/23/ArozOS-%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B0%8F%E5%9E%8BNAS/)
+- [WDOS + Raspberry Pi zum Bau eines tragbaren NAS (zur Vermeidung von Gruben)](https://blog.csdn.net/m0_37728676/article/details/113876815)
+- [WDOS + Raspberry Pi Mini NAS](http://www.huajia.online/2021/10/23/WDOS-%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B0%8F%E5%9E%8BNAS/)
 - [Raspberry Pi Arozos Nord](https://blog.pi-dal.com/%E9%80%82%E7%94%A8%E4%BA%8E%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E9%80%9A%E7%94%A8Web%E6%A1%8C%E9%9D%A2%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)
-- [Linux:ArozOS-Installation und Erstellung des Boot-Selbststartdienstes](https://pvecli.xuan2host.com/linux-arozos-install-service/)
+- [Linux:WDOS-Installation und Erstellung des Boot-Selbststartdienstes](https://pvecli.xuan2host.com/linux-wdos-install-service/)
 
 ### Portugiesisch
 
 - [DESKTOP WEB gebaut und entwickelt in der GO SPRACHE](https://www.youtube.com/watch?v=C42UdgOySY)
 
-Fühlen Sie sich frei, einen PR zu erstellen, wenn Sie einen Artikel über ArozOS geschrieben haben!
+Fühlen Sie sich frei, einen PR zu erstellen, wenn Sie einen Artikel über WDOS geschrieben haben!
 
 ## Kauf mir einen Kaffee
 

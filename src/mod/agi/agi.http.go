@@ -12,8 +12,8 @@ import (
 	"path/filepath"
 
 	"github.com/robertkrimen/otto"
-	"imuslab.com/arozos/mod/filesystem"
-	user "imuslab.com/arozos/mod/user"
+	"imuslab.com/wdos/mod/filesystem"
+	user "imuslab.com/wdos/mod/user"
 )
 
 /*
@@ -83,7 +83,7 @@ func (g *Gateway) injectHTTPFunctions(vm *otto.Otto, u *user.User, scriptFsh *fi
 		}
 
 		req.Header.Set("Content-Type", "application/json")
-		req.Header.Set("User-Agent", "arozos-http-client/1.1")
+		req.Header.Set("User-Agent", "wdos-http-client/1.1")
 
 		//Send the request
 		client := &http.Client{}

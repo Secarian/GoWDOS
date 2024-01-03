@@ -4,25 +4,25 @@ temp = $(subst /, ,$@)
 os = $(word 1, $(temp))
 arch = $(word 2, $(temp))
 
-all:  web.tar.gz $(PLATFORMS) fixwindows arozos_file_checksum.sha1
+all:  web.tar.gz $(PLATFORMS) fixwindows wdos_file_checksum.sha1
 
 binary: $(PLATFORMS)
 
-hash: arozos_file_checksum.sha1
+hash: wdos_file_checksum.sha1
 
 web: web.tar.gz
 
 clean: 
-	rm -f arozos_*_*
+	rm -f wdos_*_*
 	rm -f web.tar.gz
 
 $(PLATFORMS):
 	@echo "Building $(os)/$(arch)"
-	GOROOT_FINAL=Git/ GOOS=$(os) GOARCH=$(arch) GOARM=6 go build -o './dist/arozos_$(os)_$(arch)'  -ldflags "-s -w" -trimpath
+	GOROOT_FINAL=Git/ GOOS=$(os) GOARCH=$(arch) GOARM=6 go build -o './dist/wdos_$(os)_$(arch)'  -ldflags "-s -w" -trimpath
 
 fixwindows:
-	-mv ./dist/arozos_windows_amd64 ./dist/arozos_windows_amd64.exe
-	-mv ./dist/arozos_windows_arm64 ./dist/arozos_windows_arm64.exe
+	-mv ./dist/wdos_windows_amd64 ./dist/wdos_windows_amd64.exe
+	-mv ./dist/wdos_windows_arm64 ./dist/wdos_windows_arm64.exe
 
 web.tar.gz:
 	
@@ -65,6 +65,6 @@ web.tar.gz:
 	-rm -rf "./dist/web"
 	-rm -rf "./dist/system"
 
-arozos_file_checksum.sha1:
+wdos_file_checksum.sha1:
 	@echo "Generating the checksum, if sha1sum installed"
-	-sha1sum ./dist/web.tar.gz > ./dist/arozos_file_checksum.sha1
+	-sha1sum ./dist/web.tar.gz > ./dist/wdos_file_checksum.sha1

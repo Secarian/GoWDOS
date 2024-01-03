@@ -116,7 +116,7 @@ func (t *Terminal) HandleOpen(w http.ResponseWriter, r *http.Request) {
 
 			} else if runtime.GOOS == "linux" {
 				//Linux. Check if this is an internal test command.
-				if len(respstring) > 12 && respstring[:12] == "<arozos_pwd>" {
+				if len(respstring) > 12 && respstring[:12] == "<wdos_pwd>" {
 					//This is an internal pwd update command
 					t.cwd = strings.TrimSpace(respstring[12:])
 					log.Println("Updating cwd: ", t.cwd)
@@ -143,7 +143,7 @@ func (t *Terminal) HandleOpen(w http.ResponseWriter, r *http.Request) {
 		//Send message of the day
 		content, err := os.ReadFile("/etc/motd")
 		if err != nil {
-			//Unable to read the motd, use the arozos default one
+			//Unable to read the motd, use the wdos default one
 			c.WriteMessage(1, []byte("Terminal Connected. Start type something!"))
 		} else {
 			c.WriteMessage(1, content)
@@ -202,13 +202,13 @@ func (t *Terminal) HandleOpen(w http.ResponseWriter, r *http.Request) {
 				//Reply what user has typed in on linux
 				hostname, err := os.Hostname()
 				if err != nil {
-					hostname = "arozos"
+					hostname = "wdos"
 				}
 
 				if len(string(message)) > 2 && string(message)[:2] == "cd" {
 					//Request an update to the pwd
 					time.Sleep(300 * time.Millisecond)
-					io.WriteString(stdin, `echo "<arozos_pwd>$PWD"`+"\n")
+					io.WriteString(stdin, `echo "<wdos_pwd>$PWD"`+"\n")
 					time.Sleep(300 * time.Millisecond)
 				}
 

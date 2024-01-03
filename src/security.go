@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"time"
 
-	prout "imuslab.com/arozos/mod/prouter"
-	"imuslab.com/arozos/mod/security/csrf"
-	"imuslab.com/arozos/mod/utils"
+	prout "imuslab.com/wdos/mod/prouter"
+	"imuslab.com/wdos/mod/security/csrf"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*

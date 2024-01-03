@@ -29,7 +29,7 @@
                     event.preventDefault();
                     saveText();
                 }else if (event.target.tagName == "TEXTAREA"){
-                    //Some wierd hack to make SimpleMDE to work with ArozOS IME API
+                    //Some wierd hack to make SimpleMDE to work with WDOS IME API
                     if (parent.window.ime){
                         parent.window.ime.focus = event.target;
                         if (parent.window.ime.handler != null){

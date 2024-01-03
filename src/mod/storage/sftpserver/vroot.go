@@ -13,11 +13,11 @@ import (
 	"time"
 
 	"github.com/pkg/sftp"
-	"imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/filesystem/arozfs"
 )
 
-//Root of the serving tree
+// Root of the serving tree
 type root struct {
 	username       string
 	rootFile       *rootFolder
@@ -32,7 +32,7 @@ type rootFolder struct {
 	content []byte
 }
 
-//Fake folders in root for vroot redirections
+// Fake folders in root for vroot redirections
 type rootEntry struct {
 	thisFsh *filesystem.FileSystemHandler
 }
@@ -73,7 +73,7 @@ type sftpFileInterface interface {
 	WriteAt([]byte, int64) (int, error)
 }
 
-//Wrapper for the arozfs File to provide missing functions
+// Wrapper for the arozfs File to provide missing functions
 type wrappedArozFile struct {
 	file arozfs.File
 }
@@ -163,7 +163,7 @@ func (fs *root) Fileread(r *sftp.Request) (io.ReaderAt, error) {
 func (fs *root) Filewrite(r *sftp.Request) (io.WriterAt, error) {
 	if arozfs.ToSlash(filepath.Dir(r.Filepath)) == "/" {
 		//Uploading to virtual root folder. Return error
-		return nil, errors.New("ArozOS SFTP root is read only")
+		return nil, errors.New("WDOS SFTP root is read only")
 	}
 
 	fsh, _, rpath, err := fs.getFshAndSubpathFromSFTPPathname(r.Filepath)
@@ -414,7 +414,7 @@ func (fs *root) Realpath(p string) string {
 	return cleanPathWithBase(fs.startDirectory, p)
 }
 
-//Convert sftp raw path into fsh, subpath and realpath. return err if any
+// Convert sftp raw path into fsh, subpath and realpath. return err if any
 func (fs *root) getFshAndSubpathFromSFTPPathname(pathname string) (*filesystem.FileSystemHandler, string, string, error) {
 	pathname = strings.TrimSpace(pathname)
 	if pathname[0:1] != "/" {

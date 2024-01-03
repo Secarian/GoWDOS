@@ -8,8 +8,8 @@ import (
 	"sync"
 
 	uuid "github.com/satori/go.uuid"
-	"imuslab.com/arozos/mod/database"
-	"imuslab.com/arozos/mod/filesystem"
+	"imuslab.com/wdos/mod/database"
+	"imuslab.com/wdos/mod/filesystem"
 )
 
 /*

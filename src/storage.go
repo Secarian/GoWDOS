@@ -10,13 +10,13 @@ import (
 	"strings"
 	"time"
 
-	"imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/filesystem/arozfs"
-	"imuslab.com/arozos/mod/permission"
-	"imuslab.com/arozos/mod/storage/bridge"
+	"imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/permission"
+	"imuslab.com/wdos/mod/storage/bridge"
 
-	fs "imuslab.com/arozos/mod/filesystem"
-	storage "imuslab.com/arozos/mod/storage"
+	fs "imuslab.com/wdos/mod/filesystem"
+	storage "imuslab.com/wdos/mod/storage"
 )
 
 var (

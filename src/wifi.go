@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strings"
 
-	wifi "imuslab.com/arozos/mod/network/wifi"
-	prout "imuslab.com/arozos/mod/prouter"
-	"imuslab.com/arozos/mod/utils"
+	wifi "imuslab.com/wdos/mod/network/wifi"
+	prout "imuslab.com/wdos/mod/prouter"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*

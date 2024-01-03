@@ -5,14 +5,14 @@ import (
 	"regexp"
 
 	"github.com/go-ldap/ldap"
-	auth "imuslab.com/arozos/mod/auth"
-	"imuslab.com/arozos/mod/auth/ldap/ldapreader"
-	"imuslab.com/arozos/mod/auth/oauth2/syncdb"
-	reg "imuslab.com/arozos/mod/auth/register"
-	db "imuslab.com/arozos/mod/database"
-	permission "imuslab.com/arozos/mod/permission"
-	"imuslab.com/arozos/mod/time/nightly"
-	"imuslab.com/arozos/mod/user"
+	auth "imuslab.com/wdos/mod/auth"
+	"imuslab.com/wdos/mod/auth/ldap/ldapreader"
+	"imuslab.com/wdos/mod/auth/oauth2/syncdb"
+	reg "imuslab.com/wdos/mod/auth/register"
+	db "imuslab.com/wdos/mod/database"
+	permission "imuslab.com/wdos/mod/permission"
+	"imuslab.com/wdos/mod/time/nightly"
+	"imuslab.com/wdos/mod/user"
 )
 
 type ldapHandler struct {

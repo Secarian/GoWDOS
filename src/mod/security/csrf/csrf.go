@@ -12,7 +12,7 @@ import (
 	"time"
 
 	uuid "github.com/satori/go.uuid"
-	"imuslab.com/arozos/mod/user"
+	"imuslab.com/wdos/mod/user"
 )
 
 type TokenManager struct {

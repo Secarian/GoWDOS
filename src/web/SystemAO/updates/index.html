@@ -18,7 +18,7 @@
                 <i class="sync icon"></i>
                 <div class="content">
                     System Update
-                    <div class="sub header">Update the ArozOS System to the latest version</div>
+                    <div class="sub header">Update the WDOS System to the latest version</div>
                 </div>
             </h3>
             <div class="ui divider"></div>
@@ -78,7 +78,7 @@
                     <div class="header" id="downloadStatusText">
                         Update Download Succeed
                     </div>
-                    <p>Restart ArozOS using the launcher or apply manual update files overwrite to finish the update process.</p>
+                    <p>Restart WDOS using the launcher or apply manual update files overwrite to finish the update process.</p>
                 </div>
             </div>
             <div id="pending" class="ui icon green message" style="display:none;">
@@ -87,7 +87,7 @@
                     <div class="header" id="downloadStatusText">
                         Update Pending
                     </div>
-                    <p>Restart ArozOS using the launcher or apply manual update files overwrite to finish the update process.</p>
+                    <p>Restart WDOS using the launcher or apply manual update files overwrite to finish the update process.</p>
                 </div>
             </div>
             <div id="failed" class="ui icon red message" style="display:none;">
@@ -103,9 +103,9 @@
                 <div class="header">
                     Launcher Detected: <span id="launcherName">N/A</span>
                 </div>
-                <p>You will need to restart ArozOS in order to apply the updates.</p>
-                <p>Warning! Make sure you have physical access to this ArozOS Host before pressing the restart button.<br> Update failure might require a manual restart of the ArozOS system host and its launcher.</p>
-                <button class="ui red button" onclick="restartArozOS();">RESTART NOW</button>
+                <p>You will need to restart WDOS in order to apply the updates.</p>
+                <p>Warning! Make sure you have physical access to this WDOS Host before pressing the restart button.<br> Update failure might require a manual restart of the WDOS system host and its launcher.</p>
+                <button class="ui red button" onclick="restartWDOS();">RESTART NOW</button>
                 <button class="ui button" onclick="restartLater();">Restart Later</button>
             </div>
             <!-- End of Status Messages -->
@@ -120,7 +120,7 @@
             <div class="ui fluid input">
                 <input id="burl" type="text" placeholder="Binary Download URL">
             </div>
-            <small>Usually with pattern like: arozos_{platform}_{cpu_arch}</small>
+            <small>Usually with pattern like: wdos_{platform}_{cpu_arch}</small>
             <br><br>
             <p>Webpack Download URL</p>
             <div class="ui fluid input">
@@ -135,39 +135,39 @@
 
             <div class="ui message">
                 <h4><i class="info circle icon"></i>Update Instruction</h4>
-                <p>To update your ArozOS system, you will need two files: A compiled binary of the newer version of ArozOS and the webpack compress file in .tar.gz format. You can get the two files on Github, private distribution servers or from cluster
+                <p>To update your WDOS system, you will need two files: A compiled binary of the newer version of WDOS and the webpack compress file in .tar.gz format. You can get the two files on Github, private distribution servers or from cluster
                     nodes. Please choose one of the update method below and press "Update" to start the update process.</p>
-                <p>Notes that updates only work if ArozOS is started by the launcher. If not, you might need to manually update the system using system commands.</p>
+                <p>Notes that updates only work if WDOS is started by the launcher. If not, you might need to manually update the system using system commands.</p>
                 <div class="ui accordion">
                     <div class="title">
                         <i class="dropdown icon"></i> How to update manually?
                     </div>
                     <div class="content">
-                        <p>If your system is not started by any launcher (versions before v1.120), you might want to manually update the ArozOS following the steps below.</p>
+                        <p>If your system is not started by any launcher (versions before v1.120), you might want to manually update the WDOS following the steps below.</p>
                         <h5><i class="linux icon"></i> Linux (Debian)</h5>
                         <div class="ui ordered list">
-                            <div class="item">Download the update of the latest ArozOS using one of the above methods</div>
-                            <div class="item">SSH into your host, cd into the ArozOS root (Usually located at ~/arozos/src/)</div>
-                            <div class="item">Check if the "updates" folder exists. If yes, check if the new ArozOS binary and "system" and "web" folder exists</div>
+                            <div class="item">Download the update of the latest WDOS using one of the above methods</div>
+                            <div class="item">SSH into your host, cd into the WDOS root (Usually located at ~/wdos/src/)</div>
+                            <div class="item">Check if the "updates" folder exists. If yes, check if the new WDOS binary and "system" and "web" folder exists</div>
                             <div class="item">Backup any important files or config if needed</div>
-                            <div class="item">Stop the arozos service using <code>sudo systemctl stop arozos</code></code>
+                            <div class="item">Stop the wdos service using <code>sudo systemctl stop wdos</code></code>
                             </div>
-                            <div class="item">Copy the updates to the arozos root using <code>cp -r ./updates/* ./</code></div>
+                            <div class="item">Copy the updates to the wdos root using <code>cp -r ./updates/* ./</code></div>
                             <div class="item">Restore the files or config</div>
-                            <div class="item">Start the arozos service using <code>sydo systemctl start arozos</code></div>
-                            <div class="item">The new ArozOS should be updated and ready.</div>
+                            <div class="item">Start the wdos service using <code>sydo systemctl start wdos</code></div>
+                            <div class="item">The new WDOS should be updated and ready.</div>
                         </div>
 
                         <h5><i class="windows icon"></i> Windows</h5>
                         <div class="ui ordered list">
-                            <div class="item">Download the update of the latest ArozOS using one of the above methods</div>
-                            <div class="item">Locate the cmd / powershell window that is running ArozOS</div>
-                            <div class="item">Press <code>Ctrl + C</code> to gracefully stop ArozOS</div>
-                            <div class="item">Open ArozOS root and check if "updates" folder exists. If yes, check if the new ArozOS binary and "system" and "web" folder exists</div>
+                            <div class="item">Download the update of the latest WDOS using one of the above methods</div>
+                            <div class="item">Locate the cmd / powershell window that is running WDOS</div>
+                            <div class="item">Press <code>Ctrl + C</code> to gracefully stop WDOS</div>
+                            <div class="item">Open WDOS root and check if "updates" folder exists. If yes, check if the new WDOS binary and "system" and "web" folder exists</div>
                             <div class="item">Backup any important files or config if needed</div>
-                            <div class="item">Copy all the file from the "updates" folder and overwrite the one in ArozOS root (.\arozos\src\)</div>
+                            <div class="item">Copy all the file from the "updates" folder and overwrite the one in WDOS root (.\wdos\src\)</div>
                             <div class="item">Restore the files or config</div>
-                            <div class="item">Start the new ArozOS binary (exe) by double clicking it OR starting the start.bat file</div>
+                            <div class="item">Start the new WDOS binary (exe) by double clicking it OR starting the start.bat file</div>
                         </div>
                     </div>
                 </div>
@@ -373,7 +373,7 @@
 
         }
 
-        function restartArozOS() {
+        function restartWDOS() {
             if (confirm("CONFIRM RESTART?")) {
                 window.top.location.href = "../updates/updating.html";
             }

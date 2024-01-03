@@ -4,11 +4,11 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"imuslab.com/arozos/mod/database"
-	"imuslab.com/arozos/mod/fileservers"
-	awebdav "imuslab.com/arozos/mod/storage/webdav"
-	"imuslab.com/arozos/mod/user"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/database"
+	"imuslab.com/wdos/mod/fileservers"
+	awebdav "imuslab.com/wdos/mod/storage/webdav"
+	"imuslab.com/wdos/mod/user"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*

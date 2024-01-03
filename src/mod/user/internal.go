@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	fs "imuslab.com/arozos/mod/filesystem"
+	fs "imuslab.com/wdos/mod/filesystem"
 )
 
 /*

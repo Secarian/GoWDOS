@@ -8,12 +8,12 @@ import (
 
 	"golang.org/x/sync/syncmap"
 
-	auth "imuslab.com/arozos/mod/auth"
-	db "imuslab.com/arozos/mod/database"
-	permission "imuslab.com/arozos/mod/permission"
-	quota "imuslab.com/arozos/mod/quota"
-	"imuslab.com/arozos/mod/share/shareEntry"
-	storage "imuslab.com/arozos/mod/storage"
+	auth "imuslab.com/wdos/mod/auth"
+	db "imuslab.com/wdos/mod/database"
+	permission "imuslab.com/wdos/mod/permission"
+	quota "imuslab.com/wdos/mod/quota"
+	"imuslab.com/wdos/mod/share/shareEntry"
+	storage "imuslab.com/wdos/mod/storage"
 )
 
 var (

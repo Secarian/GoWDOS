@@ -20,10 +20,10 @@ import (
 	"strings"
 
 	"github.com/valyala/fasttemplate"
-	auth "imuslab.com/arozos/mod/auth"
-	db "imuslab.com/arozos/mod/database"
-	permission "imuslab.com/arozos/mod/permission"
-	"imuslab.com/arozos/mod/utils"
+	auth "imuslab.com/wdos/mod/auth"
+	db "imuslab.com/wdos/mod/database"
+	permission "imuslab.com/wdos/mod/permission"
+	"imuslab.com/wdos/mod/utils"
 )
 
 type RegisterOptions struct {

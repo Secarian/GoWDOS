@@ -6,20 +6,20 @@ import (
 	"strconv"
 	"strings"
 
-	"imuslab.com/arozos/mod/fileservers"
-	"imuslab.com/arozos/mod/fileservers/servers/dirserv"
-	"imuslab.com/arozos/mod/fileservers/servers/ftpserv"
-	"imuslab.com/arozos/mod/fileservers/servers/sftpserv"
-	"imuslab.com/arozos/mod/fileservers/servers/webdavserv"
-	network "imuslab.com/arozos/mod/network"
-	mdns "imuslab.com/arozos/mod/network/mdns"
-	"imuslab.com/arozos/mod/network/netstat"
-	ssdp "imuslab.com/arozos/mod/network/ssdp"
-	upnp "imuslab.com/arozos/mod/network/upnp"
-	"imuslab.com/arozos/mod/network/websocket"
-	prout "imuslab.com/arozos/mod/prouter"
-	"imuslab.com/arozos/mod/utils"
-	"imuslab.com/arozos/mod/www"
+	"imuslab.com/wdos/mod/fileservers"
+	"imuslab.com/wdos/mod/fileservers/servers/dirserv"
+	"imuslab.com/wdos/mod/fileservers/servers/ftpserv"
+	"imuslab.com/wdos/mod/fileservers/servers/sftpserv"
+	"imuslab.com/wdos/mod/fileservers/servers/webdavserv"
+	network "imuslab.com/wdos/mod/network"
+	mdns "imuslab.com/wdos/mod/network/mdns"
+	"imuslab.com/wdos/mod/network/netstat"
+	ssdp "imuslab.com/wdos/mod/network/ssdp"
+	upnp "imuslab.com/wdos/mod/network/upnp"
+	"imuslab.com/wdos/mod/network/websocket"
+	prout "imuslab.com/wdos/mod/prouter"
+	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/wdos/mod/www"
 )
 
 var (
@@ -121,7 +121,7 @@ func StartNetworkServices() {
 		m, err := mdns.NewMDNS(mdns.NetworkHost{
 			HostName:     *host_name + "_" + deviceUUID, //To handle more than one identical model within the same network, this must be unique
 			Port:         *listen_port,
-			Domain:       "arozos.com",
+			Domain:       "wdos.com",
 			Model:        deviceModel,
 			UUID:         deviceUUID,
 			Vendor:       deviceVendor,

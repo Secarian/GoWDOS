@@ -3,9 +3,9 @@ package main
 import (
 	"net/http"
 
-	autologin "imuslab.com/arozos/mod/auth/autologin"
-	prout "imuslab.com/arozos/mod/prouter"
-	"imuslab.com/arozos/mod/utils"
+	autologin "imuslab.com/wdos/mod/auth/autologin"
+	prout "imuslab.com/wdos/mod/prouter"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*

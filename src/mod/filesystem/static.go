@@ -19,8 +19,8 @@ import (
 	"net/url"
 
 	mimetype "github.com/gabriel-vasile/mimetype"
-	"imuslab.com/arozos/mod/filesystem/arozfs"
-	"imuslab.com/arozos/mod/filesystem/shortcut"
+	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/shortcut"
 )
 
 // Control Signals for background file operation tasks

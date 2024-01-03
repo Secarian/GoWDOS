@@ -5,13 +5,13 @@ import (
 	"log"
 	"time"
 
-	"imuslab.com/arozos/mod/cluster/wakeonlan"
-	"imuslab.com/arozos/mod/database"
-	"imuslab.com/arozos/mod/network/mdns"
+	"imuslab.com/wdos/mod/cluster/wakeonlan"
+	"imuslab.com/wdos/mod/database"
+	"imuslab.com/wdos/mod/network/mdns"
 )
 
 /*
-	This is a module for discovering nearby arozos systems.
+	This is a module for discovering nearby wdos systems.
 
 	Require MDNS Service
 */
@@ -64,7 +64,7 @@ func (d *Discoverer) GetNearbyHosts() []*mdns.NetworkHost {
 
 // Start Scanning, interval and scan Duration in seconds
 func (d *Discoverer) StartScanning(interval int, scanDuration int) {
-	log.Println("ArozOS Neighbour Scanning Started")
+	log.Println("WDOS Neighbour Scanning Started")
 	if d.ScannerRunning() {
 		//Another scanner already running. Terminate it
 		d.StopScanning()
@@ -89,7 +89,7 @@ func (d *Discoverer) StartScanning(interval int, scanDuration int) {
 	go func() {
 		//Run initial scanning
 		d.UpdateScan(scanDuration)
-		log.Println("ArozOS Neighbour Scanning Completed, ", len(d.NearbyHosts), " neighbours found!")
+		log.Println("WDOS Neighbour Scanning Completed, ", len(d.NearbyHosts), " neighbours found!")
 	}()
 
 	//Update the Discoverer settings
@@ -181,5 +181,5 @@ func (d *Discoverer) StopScanning() {
 		d.d = nil
 		d.t = nil
 	}
-	log.Println("ArozOS Neighbour Scanning Stopped")
+	log.Println("WDOS Neighbour Scanning Stopped")
 }

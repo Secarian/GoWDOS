@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/robertkrimen/otto"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/utils"
 )
 
 // Inject aroz online custom functions into the virtual machine

@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 
 	"github.com/nfnt/resize"
-	"imuslab.com/arozos/mod/filesystem"
+	"imuslab.com/wdos/mod/filesystem"
 )
 
 /*

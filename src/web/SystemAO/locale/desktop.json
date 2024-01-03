@@ -6,7 +6,7 @@
             "fontFamily":"\"Microsoft JhengHei\",\"SimHei\", \"Apple LiGothic Medium\", \"STHeiti\"",
             "strings":{
                 "topbar/welcome":"歡迎回來",
-                "topbar/arozos":"ArozOS 網頁桌面模式",
+                "topbar/wdos":"WDOS 網頁桌面模式",
 
                 "notification/clear": "全部清除",
                 "notification/nonotification":"沒有通知",
@@ -116,7 +116,7 @@
             "fontFamily":"\"Microsoft JhengHei\",\"SimHei\", \"Apple LiGothic Medium\", \"STHeiti\"",
             "strings":{
                 "topbar/welcome":"歡迎回來",
-                "topbar/arozos":"ArozOS 網頁桌面模式",
+                "topbar/wdos":"WDOS 網頁桌面模式",
 
                 "notification/clear": "全部清除",
                 "notification/nonotification":"無通知",
@@ -223,7 +223,7 @@
             "fontFamily":"\"Microsoft YaHei\",\"SimHei\", \"PingFangSC-Medium\", \"STHeiti\"",
             "strings":{
                 "topbar/welcome":"欢迎回来",
-                "topbar/arozos":"ArozOS 网页桌面模式",
+                "topbar/wdos":"WDOS 网页桌面模式",
 
                 "notification/clear": "全部清除",
                 "notification/nonotification":"没有通知",
@@ -331,7 +331,7 @@
             "fontFamily":"",
             "strings":{
                 "topbar/welcome":"Welcome back",
-                "topbar/arozos":"ArozOS Web Desktop Mode",
+                "topbar/wdos":"WDOS Web Desktop Mode",
                 "notification/clear": "Clear all",
                 "notification/nonotification":"No notification",
             
@@ -439,7 +439,7 @@
             "fontFamily":"\"Meiryo UI\", \"Arial Unicode MS\", \"Hiragino Kaku Gothic Pro\"",
             "strings":{
                 "topbar/welcome":"お帰りなさい",
-                "topbar/arozos":"ArozOS Web デスクトップ モード",
+                "topbar/wdos":"WDOS Web デスクトップ モード",
                 "notification/clear": "すべてクリア",
                 "notification/nonotification":"通知なし",
 

@@ -13,13 +13,13 @@ import (
 	"time"
 
 	"github.com/hirochachacha/go-smb2"
-	"imuslab.com/arozos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/arozfs"
 )
 
 /*
 	Server Message Block.go
 
-	This is a file abstraction that mount SMB folders onto ArozOS as virtual drive
+	This is a file abstraction that mount SMB folders onto WDOS as virtual drive
 
 */
 
@@ -312,7 +312,7 @@ func (a ServerMessageBlockFileSystemAbstraction) ReadStream(filename string) (io
 	return f, nil
 }
 
-//Note that walk on SMB is super slow. Avoid using this if possible.
+// Note that walk on SMB is super slow. Avoid using this if possible.
 func (a ServerMessageBlockFileSystemAbstraction) Walk(root string, walkFn filepath.WalkFunc) error {
 	root = toWinPath(filterFilepath(root))
 	err := fs.WalkDir(a.share.DirFS(root), ".", func(path string, d fs.DirEntry, err error) error {

@@ -21,7 +21,7 @@ import (
 
 //Handle request from Windows File Explorer
 func (s *Server) HandleWindowClientAccess(w http.ResponseWriter, r *http.Request, vroot string) {
-	coookieName := "arozosWebdavToken"
+	coookieName := "wdosWebdavToken"
 	cookie, err := r.Cookie(coookieName)
 	if err != nil {
 		//New Client! Record its uuid and IP address
@@ -66,7 +66,7 @@ func (s *Server) HandleWindowClientAccess(w http.ResponseWriter, r *http.Request
 			//Not logged in. Check if this is first connection
 			cinfo, ok := s.windowsClientNotLoggedIn.Load(clientUUID)
 			if !ok {
-				//This is where the arozos data is loss about this client. Rebuild its cookie
+				//This is where the wdos data is loss about this client. Rebuild its cookie
 				//Generate a new UUID for this client
 				thisWebDAVClientID := uuid.NewV4().String()
 

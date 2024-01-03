@@ -9,9 +9,9 @@ import (
 	"path/filepath"
 
 	"github.com/robertkrimen/otto"
-	"imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/filesystem/arozfs"
-	user "imuslab.com/arozos/mod/user"
+	"imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/filesystem/arozfs"
+	user "imuslab.com/wdos/mod/user"
 )
 
 // Define path translation function

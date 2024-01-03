@@ -13,9 +13,9 @@ import (
 	"strconv"
 	"strings"
 
-	fs "imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/network/gzipmiddleware"
-	"imuslab.com/arozos/mod/utils"
+	fs "imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/network/gzipmiddleware"
+	"imuslab.com/wdos/mod/utils"
 )
 
 func mrouter(h http.Handler) http.Handler {

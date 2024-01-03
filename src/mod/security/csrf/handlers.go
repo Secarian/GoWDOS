@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/utils"
 )
 
 func (m *TokenManager) HandleNewToken(w http.ResponseWriter, r *http.Request) {

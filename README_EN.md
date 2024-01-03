@@ -61,12 +61,12 @@ Require GO 1.20 or above (See [Instllation tutorial](https://dev.to/tobychui/ins
 Run the following the command to build the system
 
 ```bash
-git clone https://github.com/tobychui/arozos
-cd ./arozos/src/
+git clone https://github.com/Secarian/GoWDOS
+cd ./wdos/src/
 go mod tidy
 go build
-./arozos 
-#sudo ./arozos for enabling hardware and WiFi management features
+./wdos 
+#sudo ./wdos for enabling hardware and WiFi management features
 ```
 
 (Yes, it is that simple)
@@ -80,27 +80,27 @@ go build
 Install the latest version of Raspberry Pi OS / Armbian / Debian on an SD card / boot drive and boot it up. After setup and initialization is done, connect to it via SSH or use the Terminal App on your desktop to enter the following command
 
 ```bash
-wget -O install.sh https://raw.githubusercontent.com/tobychui/arozos/master/installer/install.sh && bash install.sh
+wget -O install.sh https://raw.githubusercontent.com/tobychui/wdos/master/installer/install.sh && bash install.sh
 ```
 
-and follow the on-screen instruction to setup your arozos system. 
+and follow the on-screen instruction to setup your wdos system. 
 
 If you selected install to systemd service, you can check the status of the service using 
 
 ```
-sudo systemctl status arozos
+sudo systemctl status wdos
 ```
 
-Otherwise, you will need to manually start the arozos using the following command
+Otherwise, you will need to manually start the wdos using the following command
 
 ```
-cd ~/arozos
-sudo ./arozos
+cd ~/wdos
+sudo ./wdos
 # or if you have launcher installed
 sudo ./launcher
 ```
 
-After installation, depending on the processing power and disk speed of your host, it will take some time for arozos to unzip the required files. Wait around 3 - 5 minutes and visit the following link to continue root admin account setups.
+After installation, depending on the processing power and disk speed of your host, it will take some time for wdos to unzip the required files. Wait around 3 - 5 minutes and visit the following link to continue root admin account setups.
 
 ```
 http://{ip_address_of_your_host}:8080/
@@ -110,7 +110,7 @@ Note: If you are using some browsers that hides your user agents, you can manual
 - Mobile: http://localhost:8080/mobile.system
 - Desktop: http://localhost:8080/desktop.system
     
-To uninstall your ArozOS in case you screw something up, use the uninstall script in the installer folder.
+To uninstall your WDOS in case you screw something up, use the uninstall script in the installer folder.
 
 ### Windows (amd64)
 
@@ -121,13 +121,13 @@ Visit https://www.ffmpeg.org/ to download the precompiled binary to C:\ffmpeg\. 
 
 Go to "System Properties" > "Environment Variables" > "System Variables" > "Edit" and add "C:\ffmpeg\bin\" into the environment variable list. Save and Exit the tool windows and restart your PC to apply the new settings.
 
-#### Installing ArozOS
+#### Installing WDOS
 1. Create a folder a name that has no space and ASCII only
-2. Download the arozos_windows_amd64.exe from the [Release Page](https://github.com/tobychui/arozos/releases) 
+2. Download the wdos_windows_amd64.exe from the [Release Page](https://github.com/Secarian/GoWDOS/releases) 
 3. Download the web.tar.gz from the Release Page
 4. Put both files into the same folder you created in step 1
-5. Double click the exe file to start ArozOS
-6. Click on "Allow Access" if your Windows Firewall blocked ArozOS from accessing your network
+5. Double click the exe file to start WDOS
+6. Click on "Allow Access" if your Windows Firewall blocked WDOS from accessing your network
 7. Visit ```http://localhost:8080/``` in your web browser to continue root admin account setups.
 
 **Some features are not available for Windows build**
@@ -139,10 +139,10 @@ Go to "System Properties" > "Environment Variables" > "System Variables" > "Edit
 OpenWRT build and Linux RSICV64 is experimental and might contains weird bugs. If you are interested to test or maintain these builds, please contact me directly.
 
 ```
-wget -O arozos {binary_path_from_release}
+wget -O wdos {binary_path_from_release}
 wget -O web.tar.gz {web.tar.gz_path_from_release}
-chmod -x ./arozos
-sudo ./arozos
+chmod -x ./wdos
+sudo ./wdos
 ```
 
 ### Docker
@@ -158,7 +158,7 @@ Not exists yet
 ![Image](img/screenshots/5.png?raw=true)
 ![Image](img/screenshots/6.png?raw=true)
 
-## Start the ArozOS Platform
+## Start the WDOS Platform
 
 ### Supported Startup Parameters
 
@@ -259,26 +259,26 @@ Example
 
 ```
 //Starting aroz online with standard web port
-./arozos -port 80
+./wdos -port 80
 
 //Start aroz online in demo mode
-./arozos -demo_mode=true
+./wdos -demo_mode=true
 
 //Use https instead of http
-./arozos -tls=true -tls_port 443 -key mykey.key -cert mycert.crt -disable_http=true
+./wdos -tls=true -tls_port 443 -key mykey.key -cert mycert.crt -disable_http=true
 
 //Start both HTTPS and HTTP server on two different port
-./arozos -port 80 -tls=true -key mykey.key -cert mycert.crt -tls_port 443
+./wdos -port 80 -tls=true -key mykey.key -cert mycert.crt -tls_port 443
 
 //Change max upload size to 25MB
-./arozos -max_upload_size 25
+./wdos -max_upload_size 25
 ```
 
 See documentation for more examples.
 
-### ArozOS Launcher
+### WDOS Launcher
 
-Launcher is required for performing OTA updates in arozos so you don't need to ssh into your host every time you need to update ArozOS. You can install it via the installation script or install it manually. See more in the following repository. 
+Launcher is required for performing OTA updates in wdos so you don't need to ssh into your host every time you need to update WDOS. You can install it via the installation script or install it manually. See more in the following repository. 
 
 https://github.com/aroz-online/launcher
 
@@ -288,8 +288,8 @@ Visit System Settings > Disk & Storage > Storage Pools and follow on screen inst
 
 ![](img/screenshots/sp.png)
 
-- Name: Name of this virtual disk in ArozOS system, (e.g. Movie Storage)
-- UUID: UUID of this virtual disk in ArozOS system, **must be unique, ascii only and no space** (e.g. movie)
+- Name: Name of this virtual disk in WDOS system, (e.g. Movie Storage)
+- UUID: UUID of this virtual disk in WDOS system, **must be unique, ascii only and no space** (e.g. movie)
 - Path: The mounting path of the disk **in Host OS** or **Protocol Specific IP Address / URLs**. Here are some examples
   - Local disk (ntfs / ext4 etc): /media/storage1
   - WebDAV: https://example.com.com/webdav/storage
@@ -306,8 +306,8 @@ Here are some local disk only options. You can leave them out if you have alread
 
 - Mount Device: The physical disk location on your host (e.g. /dev/sda1)
 - Mount Point: The target path to mount the disk to. (e.g. /media/storage)
-- Automount: Check this if you want ArozOS to mount the disk for you
-  *Notes: You cannot auto-mount a disk required by ArozOS -root options. Use /etc/fstab for it if that is your use case. This function is designed for delay start and reduce the power spike during system startup & disk spinups.*  
+- Automount: Check this if you want WDOS to mount the disk for you
+  *Notes: You cannot auto-mount a disk required by WDOS -root options. Use /etc/fstab for it if that is your use case. This function is designed for delay start and reduce the power spike during system startup & disk spinups.*  
 
 Here are some network disk only options
 
@@ -318,12 +318,12 @@ Credentials of your account on the remote server that you are trying to mount re
 
 ### File Servers
 
-If you want to share files from ArozOS, there are many ways you can do it. 
+If you want to share files from WDOS, there are many ways you can do it. 
 
 - Share API: Right click a file in File Manager and click Share. 
 - User Accounts: Create user account for a user who want to access your file and limit the scope of file access with permission group storage pool settings
 - Network File Servers: Create a single shared user in a permission group with limited access settings and enable network file server in System Settings > Networks & Connections > File Servers > WebDAV / SFTP / FTP. Follow the on-screen guide to setup the access mode.
-- Legacy Browser Server: Share files to legacy devices via basic HTTP and Basic Auth. You can enable it in System Settings > Networks & Connections > File Servers > Directory Server. You can login with your current ArozOS user credentials.
+- Legacy Browser Server: Share files to legacy devices via basic HTTP and Basic Auth. You can enable it in System Settings > Networks & Connections > File Servers > Directory Server. You can login with your current WDOS user credentials.
 
 ## WebApp Development
 
@@ -342,9 +342,9 @@ You can reach the authors using [Telegram](https://t.me/ArOZBeta)! We welcome al
 
 ### 🖥️ Device Compatibility Showcase
 
-Using ArozOS on something other than Raspberry Pis? Show us your server configuration & hardware specs!
+Using WDOS on something other than Raspberry Pis? Show us your server configuration & hardware specs!
 
-https://github.com/tobychui/arozos/issues/50
+https://github.com/Secarian/GoWDOS/issues/50
 
 ### 📝 Related Articles
 
@@ -356,25 +356,25 @@ If you are looking for tutorials or need help on debugging some minor issues, fe
 
 #### Chinese
 
-- [ArozOS+树莓派打造随身NAS（避坑专用）](https://blog.csdn.net/m0_37728676/article/details/113876815)
-- [ArozOS+树莓派小型NAS](http://www.huajia.online/2021/10/23/ArozOS-%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B0%8F%E5%9E%8BNAS/)
-- [树莓派 Arozos 指北](https://xlog.pi-dal.com/ArozOS-RPI-Tutorial)
-- [Linux:ArozOS 安裝與建立開機自啟動服務](https://pvecli.xuan2host.com/linux-arozos-install-service/)
+- [WDOS+树莓派打造随身NAS（避坑专用）](https://blog.csdn.net/m0_37728676/article/details/113876815)
+- [WDOS+树莓派小型NAS](http://www.huajia.online/2021/10/23/WDOS-%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B0%8F%E5%9E%8BNAS/)
+- [树莓派 Arozos 指北](https://xlog.pi-dal.com/WDOS-RPI-Tutorial)
+- [Linux:WDOS 安裝與建立開機自啟動服務](https://pvecli.xuan2host.com/linux-wdos-install-service/)
 
 #### Japanese
-- [ラズパイで動く、高機能WebGUI付きNAS「ArozOS」で遊ぶ](https://www.my-hacks.info/2023/02/08/post-2165/)
+- [ラズパイで動く、高機能WebGUI付きNAS「WDOS」で遊ぶ](https://www.my-hacks.info/2023/02/08/post-2165/)
   
 #### Portuguese
 
 - [DESKTOP WEB construído e desenvolvido na LINGUAGEM GO](https://www.youtube.com/watch?v=C42UdgOySY)
 
-Feel free to create a PR if you have written an article for ArozOS!
+Feel free to create a PR if you have written an article for WDOS!
 
 ## License
 
 ### Source Code
 
-ArozOS - General purpose cloud desktop platform
+WDOS - General purpose cloud desktop platform
 Copyright (C) 2023  tobychui
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation.

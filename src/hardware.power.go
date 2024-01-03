@@ -6,7 +6,7 @@ import (
 	"os/exec"
 	"runtime"
 
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/utils"
 )
 
 func HardwarePowerInit() {

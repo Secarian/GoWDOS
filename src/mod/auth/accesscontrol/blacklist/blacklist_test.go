@@ -3,7 +3,7 @@ package blacklist
 import (
 	"testing"
 
-	"imuslab.com/arozos/mod/auth/accesscontrol"
+	"imuslab.com/wdos/mod/auth/accesscontrol"
 )
 
 func TestIpRangeBreakdown(t *testing.T) {

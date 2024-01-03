@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"imuslab.com/arozos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/arozfs"
 )
 
 /*

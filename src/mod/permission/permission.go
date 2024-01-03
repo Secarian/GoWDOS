@@ -6,10 +6,10 @@ import (
 	"log"
 	"strings"
 
-	db "imuslab.com/arozos/mod/database"
-	fs "imuslab.com/arozos/mod/filesystem"
-	storage "imuslab.com/arozos/mod/storage"
-	"imuslab.com/arozos/mod/utils"
+	db "imuslab.com/wdos/mod/database"
+	fs "imuslab.com/wdos/mod/filesystem"
+	storage "imuslab.com/wdos/mod/storage"
+	"imuslab.com/wdos/mod/utils"
 )
 
 type PermissionGroup struct {

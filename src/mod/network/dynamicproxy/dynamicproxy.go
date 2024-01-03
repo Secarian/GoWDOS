@@ -11,8 +11,8 @@ import (
 	"sync"
 	"time"
 
-	"imuslab.com/arozos/mod/network/dynamicproxy/dpcore"
-	"imuslab.com/arozos/mod/network/reverseproxy"
+	"imuslab.com/wdos/mod/network/dynamicproxy/dpcore"
+	"imuslab.com/wdos/mod/network/reverseproxy"
 )
 
 /*

@@ -242,7 +242,7 @@ var OptionKind = {
 exports.OptionKind = OptionKind;
 
 /*
-  Code added for extracting file information from the header of ArozOS dataurl
+  Code added for extracting file information from the header of WDOS dataurl
 */
 
 var inputFiles = ao_module_loadInputFiles();

@@ -9,9 +9,9 @@ import (
 	"path/filepath"
 
 	"github.com/oliamb/cutter"
-	"imuslab.com/arozos/mod/apt"
-	"imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/apt"
+	"imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/utils"
 )
 
 func generateThumbnailForVideo(fsh *filesystem.FileSystemHandler, cacheFolder string, file string, generateOnly bool) (string, error) {

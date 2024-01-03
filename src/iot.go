@@ -3,13 +3,13 @@ package main
 import (
 	"net/http"
 
-	"imuslab.com/arozos/mod/iot"
-	"imuslab.com/arozos/mod/iot/hds"
-	"imuslab.com/arozos/mod/iot/hdsv2"
-	"imuslab.com/arozos/mod/iot/sonoff_s2x"
-	module "imuslab.com/arozos/mod/modules"
-	prout "imuslab.com/arozos/mod/prouter"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/iot"
+	"imuslab.com/wdos/mod/iot/hds"
+	"imuslab.com/wdos/mod/iot/hdsv2"
+	"imuslab.com/wdos/mod/iot/sonoff_s2x"
+	module "imuslab.com/wdos/mod/modules"
+	prout "imuslab.com/wdos/mod/prouter"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*

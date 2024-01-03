@@ -35,7 +35,7 @@ In the WebApp examples below, we will be discussing a self written module with t
 
 ### As WebApp Initialization Script
 
-Your WebApp will not be loaded by ArozOS unless an init.agi file is found at its root. Here is an example of the most basic ```init.agi``` script
+Your WebApp will not be loaded by WDOS unless an init.agi file is found at its root. Here is an example of the most basic ```init.agi``` script
 
 ```javascript
 //Define the launchInfo for the module
@@ -184,7 +184,7 @@ If you want to schedule the task to run in a fixed interval, you can use the AGI
 
 ## Floating Windows API
 
-When your app is launched using float window systems on ArozOS desktop, you can adjust the current windows of your WebApp with some of the following APIs included in the ao_module.js wrapper. You can find the wrapper library that ship with ArozOS in each version in ```./web/script/ao_module.js```.
+When your app is launched using float window systems on WDOS desktop, you can adjust the current windows of your WebApp with some of the following APIs included in the ao_module.js wrapper. You can find the wrapper library that ship with WDOS in each version in ```./web/script/ao_module.js```.
 
 To include it, add this into your html head section
 
@@ -245,7 +245,7 @@ ao_module_newfw({
 
 ### Handling Embedded Mode Input File / File Open
 
-You can check if ArozOS File Manager is passing in any file for you to open using ```ao_module_loadInputFiles``` function. This function will return null if there are no files being passed in or return an array if there are any.
+You can check if WDOS File Manager is passing in any file for you to open using ```ao_module_loadInputFiles``` function. This function will return null if there are no files being passed in or return an array if there are any.
 
 Here is an example to get and load the files.
 
@@ -290,7 +290,7 @@ However, if the upload is large or involve complex checking logic, please use RE
 
 #### Open File Selector
 
-```ao_module_openFileSelector``` allow user to pick a file from the current ArozOS Host. The function definition is as follows.
+```ao_module_openFileSelector``` allow user to pick a file from the current WDOS Host. The function definition is as follows.
 
 ```function ao_module_openFileSelector(callback,root="user:/", type="file",allowMultiple=false, options=undefined)```
 

@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/utils"
 )
 
 // Handle console command from the console module
@@ -133,17 +133,17 @@ func consoleCommandHandler(input string) string {
 		}
 	} else if len(chunk) > 0 && chunk[0] == "scan" {
 		if matchSubfix(chunk, []string{"scan", "all"}, 2, "") {
-			//scan all nearby arozos units
+			//scan all nearby wdos units
 			fmt.Println("Scanning (Should take around 10s)")
 			hosts := MDNS.Scan(10, "")
 			for _, host := range hosts {
 				fmt.Println(host)
 			}
 			return "OK"
-		} else if matchSubfix(chunk, []string{"scan", "aroz"}, 2, "") || matchSubfix(chunk, []string{"scan", "arozos"}, 2, "") {
-			//scan all nearby arozos units
-			fmt.Println("Scanning nearybe ArozOS Hosts (Should take around 10s)")
-			hosts := MDNS.Scan(10, "arozos.com")
+		} else if matchSubfix(chunk, []string{"scan", "aroz"}, 2, "") || matchSubfix(chunk, []string{"scan", "wdos"}, 2, "") {
+			//scan all nearby wdos units
+			fmt.Println("Scanning nearybe WDOS Hosts (Should take around 10s)")
+			hosts := MDNS.Scan(10, "wdos.com")
 			for _, host := range hosts {
 				fmt.Println(host)
 			}

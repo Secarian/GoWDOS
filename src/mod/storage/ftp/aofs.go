@@ -1,6 +1,6 @@
 package ftp
 
-//arozos virtual path translation handler
+//wdos virtual path translation handler
 //author: tobychui
 
 import (
@@ -11,8 +11,8 @@ import (
 	"time"
 
 	"github.com/spf13/afero"
-	"imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/user"
+	"imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/user"
 )
 
 var (
@@ -182,7 +182,7 @@ func (a aofs) Rename(oldname, newname string) error {
 }
 
 func (a aofs) Name() string {
-	return "arozos virtualFS"
+	return "wdos virtualFS"
 }
 
 func (a aofs) Chmod(name string, mode os.FileMode) error {
@@ -207,7 +207,7 @@ func (a aofs) Chtimes(name string, atime time.Time, mtime time.Time) error {
 	return fsh.FileSystemAbstraction.Chtimes(rewritePath, atime, mtime)
 }
 
-// arozos adaptive functions
+// wdos adaptive functions
 // This function rewrite the path from ftp representation to real filepath on disk
 func (a aofs) pathRewrite(path string) (*filesystem.FileSystemHandler, string, error) {
 	path = filepath.ToSlash(filepath.Clean(path))

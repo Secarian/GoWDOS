@@ -8,7 +8,7 @@ import (
 	"sort"
 	"time"
 
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/utils"
 )
 
 type summaryDate []string

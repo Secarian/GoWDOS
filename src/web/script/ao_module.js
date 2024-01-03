@@ -14,7 +14,7 @@ var ao_module_virtualDesktop = false;
 try{
     ao_module_virtualDesktop = !(!parent.isDesktopMode);
 }catch(ex){
-    //Running ArozOS inside iframe for some reason
+    //Running WDOS inside iframe for some reason
     console.log("CORS Access Error. Entering compatibility mode with virtual desktop mode disabled.");
 }
 
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
     Startup Section Script
     
     These functions handle the startup of an ao_module and adapt them into the
-    standard arozos desktop eco-system api
+    standard wdos desktop eco-system api
 */
 
 //Function handle to bind custom IME events

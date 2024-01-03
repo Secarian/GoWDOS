@@ -9,7 +9,7 @@ import (
 	"github.com/gorilla/websocket"
 	"github.com/robertkrimen/otto"
 	uuid "github.com/satori/go.uuid"
-	user "imuslab.com/arozos/mod/user"
+	user "imuslab.com/wdos/mod/user"
 )
 
 /*

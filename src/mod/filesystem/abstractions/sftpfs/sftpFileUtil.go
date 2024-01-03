@@ -6,13 +6,13 @@ import (
 	"os"
 
 	"github.com/pkg/sftp"
-	"imuslab.com/arozos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/arozfs"
 )
 
 /*
 	SFTP File
 
-	Converting the *sftp.File into arozos.File compatible types
+	Converting the *sftp.File into wdos.File compatible types
 */
 
 type sftpFsFile struct {
@@ -97,7 +97,7 @@ func (f *sftpFsFile) WriteString(s string) (n int, err error) {
 /*
 	SFTP DirEntry
 
-	Converting the legacy os.FileInfo into arozos required
+	Converting the legacy os.FileInfo into wdos required
 	fs.DirEntry for sftp client readDir returned values
 */
 type SftpDirEntry struct {

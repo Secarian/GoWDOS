@@ -2,7 +2,7 @@
     Photo.js
 
     Author: tobychui
-    This is a complete rewrite of the legacy Photo module for ArozOS
+    This is a complete rewrite of the legacy Photo module for WDOS
 
 */
 

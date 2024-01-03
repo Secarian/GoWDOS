@@ -7,13 +7,13 @@ import (
 	"runtime"
 	"time"
 
-	fs "imuslab.com/arozos/mod/filesystem"
-	info "imuslab.com/arozos/mod/info/hardwareinfo"
-	"imuslab.com/arozos/mod/info/logviewer"
-	usage "imuslab.com/arozos/mod/info/usageinfo"
-	prout "imuslab.com/arozos/mod/prouter"
-	"imuslab.com/arozos/mod/updates"
-	"imuslab.com/arozos/mod/utils"
+	fs "imuslab.com/wdos/mod/filesystem"
+	info "imuslab.com/wdos/mod/info/hardwareinfo"
+	"imuslab.com/wdos/mod/info/logviewer"
+	usage "imuslab.com/wdos/mod/info/usageinfo"
+	prout "imuslab.com/wdos/mod/prouter"
+	"imuslab.com/wdos/mod/updates"
+	"imuslab.com/wdos/mod/utils"
 )
 
 // InitShowSysInformation xxx
@@ -145,7 +145,7 @@ func SystemInfoInit() {
 			//Launcher port is responsive. Assume launcher exists
 			registerSetting(settingModule{
 				Name:         "Updates",
-				Desc:         "Perform ArozOS Updates",
+				Desc:         "Perform WDOS Updates",
 				IconPath:     "SystemAO/updates/img/update.png",
 				Group:        "Info",
 				StartDir:     "SystemAO/updates/index.html",
@@ -184,7 +184,7 @@ func SystemInfoInit() {
 		}
 	}()
 
-	//Log Viewer, so developers can debug inside arozos
+	//Log Viewer, so developers can debug inside wdos
 	logViewer := logviewer.NewLogViewer(&logviewer.ViewerOption{
 		RootFolder: "system/logs/",
 		Extension:  ".log",
@@ -195,7 +195,7 @@ func SystemInfoInit() {
 
 	registerSetting(settingModule{
 		Name:         "System Log",
-		Desc:         "View ArozOS System Log",
+		Desc:         "View WDOS System Log",
 		IconPath:     "SystemAO/updates/img/update.png",
 		Group:        "Advance",
 		StartDir:     "SystemAO/advance/logview.html",

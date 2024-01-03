@@ -15,7 +15,7 @@ import (
 	"net/http"
 	"strings"
 
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*

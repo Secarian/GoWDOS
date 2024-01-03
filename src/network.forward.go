@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strconv"
 
-	prout "imuslab.com/arozos/mod/prouter"
-	"imuslab.com/arozos/mod/utils"
+	prout "imuslab.com/wdos/mod/prouter"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*

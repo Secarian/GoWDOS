@@ -18,11 +18,11 @@ import (
 	"github.com/oliamb/cutter"
 	"github.com/robertkrimen/otto"
 
-	"imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/filesystem/arozfs"
-	"imuslab.com/arozos/mod/neuralnet"
-	user "imuslab.com/arozos/mod/user"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/neuralnet"
+	user "imuslab.com/wdos/mod/user"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*

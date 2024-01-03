@@ -25,22 +25,22 @@ import (
 	"github.com/gorilla/websocket"
 	uuid "github.com/satori/go.uuid"
 
-	"imuslab.com/arozos/mod/compatibility"
-	"imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/filesystem/arozfs"
-	fsp "imuslab.com/arozos/mod/filesystem/fspermission"
-	"imuslab.com/arozos/mod/filesystem/fssort"
-	"imuslab.com/arozos/mod/filesystem/fuzzy"
-	hidden "imuslab.com/arozos/mod/filesystem/hidden"
-	"imuslab.com/arozos/mod/filesystem/localversion"
-	metadata "imuslab.com/arozos/mod/filesystem/metadata"
-	"imuslab.com/arozos/mod/filesystem/shortcut"
-	module "imuslab.com/arozos/mod/modules"
-	prout "imuslab.com/arozos/mod/prouter"
-	"imuslab.com/arozos/mod/share"
-	"imuslab.com/arozos/mod/share/shareEntry"
-	storage "imuslab.com/arozos/mod/storage"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/compatibility"
+	"imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/filesystem/arozfs"
+	fsp "imuslab.com/wdos/mod/filesystem/fspermission"
+	"imuslab.com/wdos/mod/filesystem/fssort"
+	"imuslab.com/wdos/mod/filesystem/fuzzy"
+	hidden "imuslab.com/wdos/mod/filesystem/hidden"
+	"imuslab.com/wdos/mod/filesystem/localversion"
+	metadata "imuslab.com/wdos/mod/filesystem/metadata"
+	"imuslab.com/wdos/mod/filesystem/shortcut"
+	module "imuslab.com/wdos/mod/modules"
+	prout "imuslab.com/wdos/mod/prouter"
+	"imuslab.com/wdos/mod/share"
+	"imuslab.com/wdos/mod/share/shareEntry"
+	storage "imuslab.com/wdos/mod/storage"
+	"imuslab.com/wdos/mod/utils"
 )
 
 var (
@@ -183,7 +183,7 @@ func FileSystemInit() {
 		Share Related Registering
 
 		This section of functions create and register the file share service
-		for the arozos
+		for the wdos
 
 	*/
 	//Create a share manager to handle user file sharae
@@ -218,7 +218,7 @@ func FileSystemInit() {
 		Nighly Tasks
 
 		These functions allow file system to clear and maintain
-		the arozos file system when no one is using the system
+		the wdos file system when no one is using the system
 	*/
 
 	//Clear tmp folder if files is placed here too long

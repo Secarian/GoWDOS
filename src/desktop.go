@@ -10,12 +10,12 @@ import (
 	"strconv"
 	"strings"
 
-	fs "imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/filesystem/arozfs"
-	"imuslab.com/arozos/mod/filesystem/shortcut"
-	module "imuslab.com/arozos/mod/modules"
-	prout "imuslab.com/arozos/mod/prouter"
-	"imuslab.com/arozos/mod/utils"
+	fs "imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/shortcut"
+	module "imuslab.com/wdos/mod/modules"
+	prout "imuslab.com/wdos/mod/prouter"
+	"imuslab.com/wdos/mod/utils"
 )
 
 // Desktop script initiation

@@ -26,8 +26,8 @@ import (
 	"strings"
 	"time"
 
-	"imuslab.com/arozos/mod/filesystem/arozfs"
-	"imuslab.com/arozos/mod/filesystem/hidden"
+	"imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/hidden"
 
 	archiver "github.com/mholt/archiver/v3"
 )
@@ -854,7 +854,7 @@ func BasicFileCopy(src string, dst string) error {
 }
 
 //Use for copying large file using buffering method. Allowing copying large file with little RAM
-//Deprecated Since ArozOS v2.000
+//Deprecated Since WDOS v2.000
 /*
 func BufferedLargeFileCopy(src string, dst string, BUFFERSIZE int64) error {
 	sourceFileStat, err := os.Stat(src)

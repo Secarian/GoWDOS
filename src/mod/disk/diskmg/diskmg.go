@@ -12,9 +12,9 @@ import (
 	"strings"
 	"time"
 
-	db "imuslab.com/arozos/mod/database"
-	fs "imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/utils"
+	db "imuslab.com/wdos/mod/database"
+	fs "imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/utils"
 )
 
 type Lsblk struct {

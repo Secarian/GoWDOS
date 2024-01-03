@@ -1,7 +1,7 @@
 README.txt
 
 This file is the default readme file for all ftp accessed user.
-Here are some tips for you when using the arozos FTP services
+Here are some tips for you when using the wdos FTP services
 
 1. DO NOT UPLOAD FILE TO THE ROOT DIRECTORY (aka "\" or "/")
 2. Files uploaded into FTP will also calculate towards your user quota

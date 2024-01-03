@@ -5,13 +5,13 @@ import (
 	"log"
 	"strings"
 
-	"imuslab.com/arozos/mod/auth/accesscontrol"
-	db "imuslab.com/arozos/mod/database"
+	"imuslab.com/wdos/mod/auth/accesscontrol"
+	db "imuslab.com/wdos/mod/database"
 )
 
 /*
 
-	ArozOS Blacklist Module
+	WDOS Blacklist Module
 	Author: tobychui
 
 	This module record the IP blacklist of users trying to enter the
@@ -41,7 +41,7 @@ func NewBlacklistManager(sysdb *db.Database) *BlackList {
 	}
 }
 
-//Check if a given IP is banned
+// Check if a given IP is banned
 func (bl *BlackList) IsBanned(ip string) bool {
 	if bl.Enabled == false {
 		return false
@@ -77,7 +77,7 @@ func (bl *BlackList) ListBannedIpRanges() []string {
 	return results
 }
 
-//Set the ban state of a ip or ip range
+// Set the ban state of a ip or ip range
 func (bl *BlackList) Ban(ipRange string) error {
 	//Check if the IP range is correct
 	err := accesscontrol.ValidateIpRange(ipRange)
@@ -91,7 +91,7 @@ func (bl *BlackList) Ban(ipRange string) error {
 	return bl.database.Write("ipblacklist", ipRange, true)
 }
 
-//Unban an IP or IP range
+// Unban an IP or IP range
 func (bl *BlackList) UnBan(ipRange string) error {
 	//Check if the IP range is correct
 	err := accesscontrol.ValidateIpRange(ipRange)

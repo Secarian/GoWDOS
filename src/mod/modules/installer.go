@@ -12,16 +12,16 @@ import (
 
 	"github.com/go-git/go-git/v5"
 	uuid "github.com/satori/go.uuid"
-	agi "imuslab.com/arozos/mod/agi"
-	fs "imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/utils"
+	agi "imuslab.com/wdos/mod/agi"
+	fs "imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/utils"
 )
 
 /*
 	Module Installer
 	author: tobychui
 
-	This script handle the installation of modules in the arozos system
+	This script handle the installation of modules in the wdos system
 
 */
 

@@ -30,7 +30,7 @@
             <p>The updates might take a few minutes depending on your disk IO and CPU speed. This page will refresh itself after the update completes.</p>
             <p>Last Ping: <span id="pingTime"></span></p>
             <div class="ui divider"></div>
-            <p><i class="info icon"></i> Do you know you can write your own launcher / updater for ArozOS by using some simple code of your own?</p>
+            <p><i class="info icon"></i> Do you know you can write your own launcher / updater for WDOS by using some simple code of your own?</p>
         </div>
         <div id="succ" class="ui green message" style="min-width: 30vw; display:none;">
             <div class="header">
@@ -43,10 +43,10 @@
         //Delay 1 sec and start update process
         setTimeout(function(){
             $("#pingTime").text("READY!");
-            UpdateRestartArozOS();
+            UpdateRestartWDOS();
         }, 1000)
         
-        function UpdateRestartArozOS(){
+        function UpdateRestartWDOS(){
             $.ajax({
                 url: "/system/update/restart",
                 method: "POST",

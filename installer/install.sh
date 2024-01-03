@@ -5,7 +5,7 @@ cat << "EOF"
   / _ \| '_/ _ \_ / (_) \__ \  / / | () |
  /_/ \_\_| \___/__|\___/|___/ /___(_)__/ 
                                          
-	----- ArozOS 2.0 Installer -----	
+	----- WDOS 2.0 Installer -----	
 	
 EOF
 
@@ -15,14 +15,14 @@ echo ""
 read -p "Do you agree to the terms of the GPLv3 license? (y/n) " agree
 
 if [[ $agree != "y" ]]; then
-  echo "You must agree to the GPLv3 license to use ArozOS."
+  echo "You must agree to the GPLv3 license to use WDOS."
   exit 1
 fi
 
 # Create the required folder structure to hold the installation
 cd ~/ || exit
-mkdir arozos
-cd arozos || exit
+mkdir wdos
+cd wdos || exit
 
 # Run apt-updates
 sudo apt-get update
@@ -41,26 +41,26 @@ fi
 
 # Download the corresponding executable from Github
 if [[ $arch == "amd64" ]]; then
-  download_url="https://github.com/tobychui/arozos/releases/latest/download/arozos_linux_amd64"
+  download_url="https://github.com/Secarian/GoWDOS/releases/latest/download/wdos_linux_amd64"
 elif [[ $arch == "arm64" ]]; then
-  download_url="https://github.com/tobychui/arozos/releases/latest/download/arozos_linux_arm64"
+  download_url="https://github.com/Secarian/GoWDOS/releases/latest/download/wdos_linux_arm64"
 elif [[ $arch == "arm" ]]; then
-  download_url="https://github.com/tobychui/arozos/releases/latest/download/arozos_linux_arm"
+  download_url="https://github.com/Secarian/GoWDOS/releases/latest/download/wdos_linux_arm"
 elif [[ $arch == "windows_amd64" ]]; then
-  download_url="https://github.com/tobychui/arozos/releases/latest/download/arozos_windows_amd64.exe"
+  download_url="https://github.com/Secarian/GoWDOS/releases/latest/download/wdos_windows_amd64.exe"
 elif [[ $arch == "windows_arm64" ]]; then
-  download_url="https://github.com/tobychui/arozos/releases/latest/download/arozos_windows_arm64.exe"
+  download_url="https://github.com/Secarian/GoWDOS/releases/latest/download/wdos_windows_arm64.exe"
 else
-  download_url="https://github.com/tobychui/arozos/releases/latest/download/arozos_${arch}"
+  download_url="https://github.com/Secarian/GoWDOS/releases/latest/download/wdos_${arch}"
 fi
 
-# Download the arozos binary
+# Download the wdos binary
 echo "Downloading Arozos from ${download_url} ..."
-wget -O arozos "${download_url}"
-chmod +x arozos
+wget -O wdos "${download_url}"
+chmod +x wdos
 
 # Download the webpack
-wget -O web.tar.gz "https://github.com/tobychui/arozos/releases/latest/download/web.tar.gz"
+wget -O web.tar.gz "https://github.com/Secarian/GoWDOS/releases/latest/download/web.tar.gz"
 
 # Check if the platform is supported for the launcher
 if [[ "$arch" == "amd64" || "$arch" == "arm" || "$arch" == "arm64" ]]; then
@@ -97,8 +97,8 @@ if [[ "$arch" == "amd64" || "$arch" == "arm" || "$arch" == "arm64" ]]; then
 fi
 
 # Ask for setup name
-read -p "Enter setup name (default: aroz): " arozosname
-arozosname=${arozosname:-aroz}
+read -p "Enter setup name (default: aroz): " wdosname
+wdosname=${wdosname:-aroz}
 
 # Ask for preferred listening port
 read -p "Enter preferred listening port (default: 8080): " arozport
@@ -108,42 +108,42 @@ arozport=${arozport:-8080}
 if [[ -f "./launcher" ]]; then
   # Create start.sh with launcher command
   echo "#!/bin/bash" > start.sh
-  echo "sudo ./launcher -port=$arozport -hostname=\"$arozosname\"" >> start.sh
+  echo "sudo ./launcher -port=$arozport -hostname=\"$wdosname\"" >> start.sh
 else
-  # Create start.sh with arozos command
+  # Create start.sh with wdos command
   echo "#!/bin/bash" > start.sh
-  echo "sudo arozos -port=$arozport -hostname=\"$arozosname\"" >> start.sh
+  echo "sudo wdos -port=$arozport -hostname=\"$wdosname\"" >> start.sh
 fi
 
 # Make start.sh executable
 chmod +x start.sh
 
-echo "Setup name: $arozosname"
+echo "Setup name: $wdosname"
 echo "Preferred listening port: $arozport"
 echo "start.sh created successfully!"
 
-# Ask if user wants to install ArozOS to systemd
+# Ask if user wants to install WDOS to systemd
 if [[ $(uname) == "Linux" ]]; then
-    read -p "Do you want to install ArozOS to systemd service? (y/n)" -n 1 -r
+    read -p "Do you want to install WDOS to systemd service? (y/n)" -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         # Get current user
         CURRENT_USER=$(whoami)
 		
-		sudo touch /etc/systemd/system/arozos.service
-		sudo chmod 777 /etc/systemd/system/arozos.service
+		sudo touch /etc/systemd/system/wdos.service
+		sudo chmod 777 /etc/systemd/system/wdos.service
         # Create systemd service file
-        cat <<EOF > /etc/systemd/system/arozos.service
+        cat <<EOF > /etc/systemd/system/wdos.service
 [Unit]
-Description=ArozOS Cloud Service
+Description=WDOS Cloud Service
 After=systemd-networkd-wait-online.service
 Wants=systemd-networkd-wait-online.service
 
 [Service]
 Type=simple
 ExecStartPre=/bin/sleep 10
-WorkingDirectory=/home/${CURRENT_USER}/arozos/
-ExecStart=/bin/bash /home/${CURRENT_USER}/arozos/start.sh
+WorkingDirectory=/home/${CURRENT_USER}/wdos/
+ExecStart=/bin/bash /home/${CURRENT_USER}/wdos/start.sh
 
 Restart=always
 RestartSec=10
@@ -151,18 +151,18 @@ RestartSec=10
 [Install]
 WantedBy=multi-user.target
 EOF
-		sudo chmod 644 /etc/systemd/system/arozos.service
+		sudo chmod 644 /etc/systemd/system/wdos.service
 		
         # Reload systemd daemon and enable service
         sudo systemctl daemon-reload
-        sudo systemctl enable arozos.service
-		sudo systemctl start arozos.service
-        echo "ArozOS installation completed!"
+        sudo systemctl enable wdos.service
+		sudo systemctl start wdos.service
+        echo "WDOS installation completed!"
 		ip_address=$(hostname -I | awk '{print $1}')
 		echo "Please continue the system setup at http://$ip_address:$arozport/"
     fi
 else
-	echo "ArozOS installation completed! Execute start.sh to startup your ArozOS system."
+	echo "WDOS installation completed! Execute start.sh to startup your WDOS system."
 fi
 
 

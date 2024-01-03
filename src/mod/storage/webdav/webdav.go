@@ -19,12 +19,12 @@ import (
 	"sync"
 	"time"
 
-	"imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/filesystem/hidden"
-	"imuslab.com/arozos/mod/filesystem/metadata"
-	"imuslab.com/arozos/mod/network/webdav"
-	"imuslab.com/arozos/mod/user"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/filesystem/hidden"
+	"imuslab.com/wdos/mod/filesystem/metadata"
+	"imuslab.com/wdos/mod/network/webdav"
+	"imuslab.com/wdos/mod/user"
+	"imuslab.com/wdos/mod/utils"
 )
 
 type Server struct {
@@ -49,7 +49,7 @@ type WindowClientInfo struct {
 	ClientIP                string
 }
 
-//NewServer create a new WebDAV server object required by arozos
+//NewServer create a new WebDAV server object required by wdos
 func NewServer(hostname string, prefix string, tmpdir string, tlsMode bool, userHandler *user.UserHandler) *Server {
 	//Generate a default handler
 	os.MkdirAll(filepath.Join(tmpdir, "webdav"), 0777)

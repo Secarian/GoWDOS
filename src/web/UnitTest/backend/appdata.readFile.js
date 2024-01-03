@@ -25,7 +25,7 @@ function main(){
 
 if (!succ){
     //Library include failed.
-    sendResp("Include Appdata lib failed. Is your ArozOS version too old?")
+    sendResp("Include Appdata lib failed. Is your WDOS version too old?")
 }else{
     //Library include succeed. Start reading from webroot
     main();

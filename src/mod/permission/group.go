@@ -1,6 +1,6 @@
 package permission
 
-import "imuslab.com/arozos/mod/utils"
+import "imuslab.com/wdos/mod/utils"
 
 func (gp *PermissionGroup) AddModule(modulename string) {
 	if !utils.StringInArray(gp.AccessibleModules, modulename) {

@@ -10,14 +10,14 @@ import (
 	"strings"
 	"time"
 
-	"imuslab.com/arozos/mod/database"
-	"imuslab.com/arozos/mod/permission"
-	"imuslab.com/arozos/mod/storage/bridge"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/database"
+	"imuslab.com/wdos/mod/permission"
+	"imuslab.com/wdos/mod/storage/bridge"
+	"imuslab.com/wdos/mod/utils"
 
-	fs "imuslab.com/arozos/mod/filesystem"
-	prout "imuslab.com/arozos/mod/prouter"
-	storage "imuslab.com/arozos/mod/storage"
+	fs "imuslab.com/wdos/mod/filesystem"
+	prout "imuslab.com/wdos/mod/prouter"
+	storage "imuslab.com/wdos/mod/storage"
 )
 
 /*

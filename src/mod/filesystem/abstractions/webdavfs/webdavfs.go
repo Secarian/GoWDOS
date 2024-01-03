@@ -12,14 +12,14 @@ import (
 	"time"
 
 	"github.com/studio-b12/gowebdav"
-	"imuslab.com/arozos/mod/filesystem/arozfs"
+	"imuslab.com/wdos/mod/filesystem/arozfs"
 )
 
 /*
 	WebDAV Client
 
 	This script is design as a wrapper of the studio-b12/gowebdav module
-	that allow access to webdav network drive in ArozOS and allow arozos
+	that allow access to webdav network drive in WDOS and allow wdos
 	cross-mounting each others
 
 */

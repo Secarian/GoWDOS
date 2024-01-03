@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/utils"
 )
 
 // Handle AGI Exectuion Request with token, design for letting other web scripting language like php to interface with AGI

@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"time"
 
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/utils"
 )
 
 //List all the jobs related to the given user

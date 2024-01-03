@@ -15,7 +15,7 @@ import (
 /*
 	Common
 
-	Some commonly used functions in ArozOS
+	Some commonly used functions in WDOS
 
 */
 

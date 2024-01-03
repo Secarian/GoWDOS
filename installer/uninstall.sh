@@ -5,38 +5,38 @@ cat << "EOF"
   / _ \| '_/ _ \_ / (_) \__ \  / / | () |
  /_/ \_\_| \___/__|\___/|___/ /___(_)__/ 
                                          
-	----- ArozOS 2.0 Uninstall -----	
+	----- WDOS 2.0 Uninstall -----	
 	
 EOF
 
 # Ask user to confirm uninstall
-read -p "Are you sure you want to uninstall Arozos? This will delete all data in the arozos directory. (y/n) " choice
+read -p "Are you sure you want to uninstall Arozos? This will delete all data in the wdos directory. (y/n) " choice
 case "$choice" in
   y|Y )
-	# Stop the ArozOS service if it is running
+	# Stop the WDOS service if it is running
 	if [[ $(uname) == "Linux" ]]; then
-		if systemctl status arozos >/dev/null 2>&1; then
-			sudo systemctl stop arozos
-			echo "Stopped ArozOS service."
+		if systemctl status wdos >/dev/null 2>&1; then
+			sudo systemctl stop wdos
+			echo "Stopped WDOS service."
 		fi
 	fi
 
-	# Remove the ArozOS folder
+	# Remove the WDOS folder
 	cd ~/ || exit
-	if [[ -d "arozos" ]]; then
-		sudo rm -rf arozos
-		echo "Removed ArozOS folder."
+	if [[ -d "wdos" ]]; then
+		sudo rm -rf wdos
+		echo "Removed WDOS folder."
 	fi
 
-	# Remove the ArozOS service file
+	# Remove the WDOS service file
 	if [[ $(uname) == "Linux" ]]; then
-		if [[ -f "/etc/systemd/system/arozos.service" ]]; then
-			sudo rm /etc/systemd/system/arozos.service
-			echo "Removed ArozOS systemd service file."
+		if [[ -f "/etc/systemd/system/wdos.service" ]]; then
+			sudo rm /etc/systemd/system/wdos.service
+			echo "Removed WDOS systemd service file."
 		fi
 	fi
 	sudo systemctl daemon-reload
-	echo "ArozOS has been uninstalled successfully!"
+	echo "WDOS has been uninstalled successfully!"
 	;;
   n|N ) 
     echo "Uninstall cancelled"

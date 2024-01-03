@@ -1,4 +1,4 @@
-# ArozOS robots.txt
+# WDOS robots.txt
 # Notice: This robots.txt is here so as to prevent robot scanning of your cloud system.
 # If you want SEO on your cloud system, remove this file from the web root.
 

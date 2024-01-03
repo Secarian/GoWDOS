@@ -4,11 +4,11 @@ package wifi
 	WiFi Manager
 	author: tobychui
 
-	This is the wifi management interface for the arozos system
+	This is the wifi management interface for the wdos system
 */
 
 import (
-	db "imuslab.com/arozos/mod/database"
+	db "imuslab.com/wdos/mod/database"
 )
 
 type WiFiManager struct {

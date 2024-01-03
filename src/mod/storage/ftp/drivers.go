@@ -17,7 +17,7 @@ func (m mainDriver) GetSettings() (*ftp.Settings, error) {
 func (m mainDriver) ClientConnected(cc ftp.ClientContext) (string, error) {
 	//log.Println("Client Connected: ", cc.ID(), cc.RemoteAddr())
 	m.connectedUserList.Store(cc.ID(), "")
-	return "arozos FTP Endpoint", nil
+	return "wdos FTP Endpoint", nil
 }
 
 func (m mainDriver) ClientDisconnected(cc ftp.ClientContext) {
@@ -44,7 +44,7 @@ func (m mainDriver) ClientDisconnected(cc ftp.ClientContext) {
 
 }
 
-//Authenicate user using arozos authAgent
+//Authenicate user using wdos authAgent
 func (m mainDriver) AuthUser(cc ftp.ClientContext, user string, pass string) (ftp.ClientDriver, error) {
 	authAgent := m.userHandler.GetAuthAgent()
 	if authAgent.ValidateUsernameAndPassword(user, pass) {

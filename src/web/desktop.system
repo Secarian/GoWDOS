@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>ArozOS Desktop</title>
+    <title>WDOS Desktop</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./script/semantic/semantic.min.css">
@@ -1057,7 +1057,7 @@
             Welcome
         </div>
         <div class="clock statusbarpadding" onclick="toggleNotification();" ontouchstart="toggleNotification();">
-            ArozOS Desktop
+            WDOS Desktop
         </div>
         <div class="quicktools statusbarpadding">
             <div id="backgroundtaskBtn" class="qtwrapper backgroundtask" onclick="showBackgroundTaskPanel()" ontouchstart="showBackgroundTaskPanel();">
@@ -1358,7 +1358,7 @@
                 initDesktop();
             });
         }else{
-            //Applocale not found. Is this a trim down version of ArozOS?
+            //Applocale not found. Is this a trim down version of WDOS?
             var applocale = {
                 getString: function(key, original){
                     return original;
@@ -5637,7 +5637,7 @@
             var fileData = $(selectedFileObjects).parent().attr("filedata");
             fileData = JSON.parse(decodeURIComponent(fileData));
             
-            //Convert the desktop file data to ArozOS generic filedata
+            //Convert the desktop file data to WDOS generic filedata
             var afd = {
                 "filename": fileData.Filename,
                 "filepath": fileData.Filepath,
@@ -6325,7 +6325,7 @@
             localStorage.setItem("global_volume", clickRel / width);
         }
 
-        //Update screen brightness, for those who use ArozOS on their TV
+        //Update screen brightness, for those who use WDOS on their TV
         function updateBrightness(object, event){
             var width = $(object).width();
             var left = $(object).offset().left;
@@ -6563,7 +6563,7 @@
                 api: "/system/power/restart",
                 data: {},
                 title: applocale.getString("power/restart/text", "Password Required"),
-                desc: applocale.getString("power/restart/instruction", "for restarting the ArozOS Host"),
+                desc: applocale.getString("power/restart/instruction", "for restarting the WDOS Host"),
                 thisuser: true, //This username as default, set to false for entering other user
                 method: "GET"
             }

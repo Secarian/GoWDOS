@@ -10,7 +10,7 @@ import (
 	"strings"
 
 	"gitlab.com/NebulousLabs/go-upnp"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/utils"
 )
 
 type NICS struct {

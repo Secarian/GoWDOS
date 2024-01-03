@@ -5,8 +5,8 @@ import (
 	"image/jpeg"
 	"path/filepath"
 
-	"imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/filesystem/renderer"
+	"imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/filesystem/renderer"
 )
 
 func generateThumbnailForModel(fsh *filesystem.FileSystemHandler, cacheFolder string, file string, generateOnly bool) (string, error) {

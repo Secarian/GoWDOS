@@ -3,8 +3,8 @@ package main
 import (
 	"net/http"
 
-	oauth "imuslab.com/arozos/mod/auth/oauth2"
-	prout "imuslab.com/arozos/mod/prouter"
+	oauth "imuslab.com/wdos/mod/auth/oauth2"
+	prout "imuslab.com/wdos/mod/prouter"
 )
 
 func OAuthInit() {

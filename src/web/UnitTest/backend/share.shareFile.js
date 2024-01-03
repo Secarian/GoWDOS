@@ -1,5 +1,5 @@
 //File Share API
-//This script demonstrate how to share a file on ArozOS using AGI script
+//This script demonstrate how to share a file on WDOS using AGI script
 
 //Require the share lib
 requirelib("share");

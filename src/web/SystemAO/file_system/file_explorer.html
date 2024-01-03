@@ -608,7 +608,7 @@
                         initWindowSizes(false);
                     });
                 }else{
-                    //Applocale not found. Is this a trim down version of ArozOS?
+                    //Applocale not found. Is this a trim down version of WDOS?
                     applocale = {
                         getString: function(key, original){
                             return original;
@@ -1164,7 +1164,7 @@
                         var textclass = "normal object";
                         var displayName = filename;
                         try{
-                            //Try to decode it using ArozOS Beta naming scheme
+                            //Try to decode it using WDOS Beta naming scheme
                             if (enableBetaFilename && ao_module_codec.decodeHexFoldername(displayName) != displayName){
                                 displayName = ao_module_codec.decodeHexFoldername(displayName, false);
                                 textclass = "hex foldername";
@@ -1182,7 +1182,7 @@
                         var displayName = JSON.parse(JSON.stringify(filename));
                         var textclass = "normal object";
                          try{
-                             //Try to decode it using ArozOS Beta naming scheme
+                             //Try to decode it using WDOS Beta naming scheme
                             if (enableBetaFilename && ao_module_codec.decodeHexFoldername(displayName) != displayName){
                                 displayName = ao_module_codec.decodeHexFoldername(displayName, false);
                                 textclass = "hex foldername";

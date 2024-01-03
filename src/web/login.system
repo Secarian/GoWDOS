@@ -5,7 +5,7 @@
     <meta name="robots" content="noindex" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="author" href="humans.txt"/>
-    <title>ArozOS - Login</title>
+    <title>WDOS - Login</title>
     <link rel="stylesheet" href="script/semantic/semantic.min.css">
     <link rel="stylesheet" href="script/ao.css">
     <script type="application/javascript" src="script/jquery.min.js"></script>
@@ -124,7 +124,7 @@
             <img class="ui medium image" src="data:image/png;base64, {{service_logo}}">
 
             <div class="ui borderless basic segment">
-                <p><i class="key icon"></i> Sign in <span class="hostname">ArozOS</span> with your username and password</p>
+                <p><i class="key icon"></i> Sign in <span class="hostname">WDOS</span> with your username and password</p>
                 
                
                 
@@ -176,7 +176,7 @@
             </div>
            
             <div class="bottombar">
-                © <a href="https://arozos.com">ArozOS</a> 2017 - <span class="thisyear"></span><br>
+                © <a href="https://wdos.com">WDOS</a> 2017 - <span class="thisyear"></span><br>
                 <small style="font-size: 80%">Request Time: <span id="requestTime"></span></small>
             </div>
         </div>

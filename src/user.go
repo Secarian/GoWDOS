@@ -14,11 +14,11 @@ import (
 
 	uuid "github.com/satori/go.uuid"
 
-	auth "imuslab.com/arozos/mod/auth"
-	module "imuslab.com/arozos/mod/modules"
-	prout "imuslab.com/arozos/mod/prouter"
-	user "imuslab.com/arozos/mod/user"
-	"imuslab.com/arozos/mod/utils"
+	auth "imuslab.com/wdos/mod/auth"
+	module "imuslab.com/wdos/mod/modules"
+	prout "imuslab.com/wdos/mod/prouter"
+	user "imuslab.com/wdos/mod/user"
+	"imuslab.com/wdos/mod/utils"
 )
 
 func UserSystemInit() {

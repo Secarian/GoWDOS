@@ -6,8 +6,8 @@ import (
 	"sort"
 	"strings"
 
-	"imuslab.com/arozos/mod/user"
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/user"
+	"imuslab.com/wdos/mod/utils"
 )
 
 type ModuleInfo struct {

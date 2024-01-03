@@ -16,7 +16,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"imuslab.com/arozos/mod/utils"
+	"imuslab.com/wdos/mod/utils"
 )
 
 //Handle group editing operations

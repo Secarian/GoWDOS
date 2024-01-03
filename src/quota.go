@@ -9,9 +9,9 @@ import (
 	"strconv"
 	"strings"
 
-	fs "imuslab.com/arozos/mod/filesystem"
-	"imuslab.com/arozos/mod/utils"
-	//user "imuslab.com/arozos/mod/user"
+	fs "imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/wdos/mod/utils"
+	//user "imuslab.com/wdos/mod/user"
 )
 
 func DiskQuotaInit() {

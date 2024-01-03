@@ -9,7 +9,7 @@ import (
 	"github.com/dhowden/tag"
 	"github.com/nfnt/resize"
 	"github.com/oliamb/cutter"
-	"imuslab.com/arozos/mod/filesystem"
+	"imuslab.com/wdos/mod/filesystem"
 )
 
 func generateThumbnailForAudio(fsh *filesystem.FileSystemHandler, cacheFolder string, file string, generateOnly bool) (string, error) {

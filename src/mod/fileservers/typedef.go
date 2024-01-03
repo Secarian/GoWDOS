@@ -4,7 +4,7 @@ package fileservers
 	Type defination of fileserver Manager
 */
 
-import user "imuslab.com/arozos/mod/user"
+import user "imuslab.com/wdos/mod/user"
 
 type Endpoint struct {
 	ProtocolName string //Protocol name of the endpoint, e.g. ftp

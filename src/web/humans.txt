@@ -9,10 +9,10 @@
 .AMA.   .AMMA..JMML.   `Ybmd9'  AMMmmmM   `"bmmd"'   P"Ybmmd"  
                                                                
                                                                
-Congratulation! You find the magic file hidden in the ArozOS system.
+Congratulation! You find the magic file hidden in the WDOS system.
 
-ArozOS is a web desktop online system that provide native desktop like experience through 
+WDOS is a web desktop online system that provide native desktop like experience through 
 the latest web technology. Protecting your privacy while reducing your dependencies over 
 large company's cloud service. 
 
-If you'd like to help us out on this open souce project, see github.com/tobychui/arozos.
+If you'd like to help us out on this open souce project, see github.com/Secarian/GoWDOS.

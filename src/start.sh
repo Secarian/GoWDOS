@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo ./arozos -port 8080 -tls=true -tls_port 8443
+sudo ./wdos -port 8080 -tls=true -tls_port 8443

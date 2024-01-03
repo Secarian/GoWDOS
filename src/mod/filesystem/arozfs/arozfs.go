@@ -85,7 +85,7 @@ func IsNetworkDrive(fstype string) bool {
 	return false
 }
 
-// Get a list of supported file system types for mounting via arozos
+// Get a list of supported file system types for mounting via wdos
 func GetSupportedFileSystemTypes() []string {
 	return []string{"ext4", "ext2", "ext3", "fat", "vfat", "ntfs", "webdav", "ftp", "smb", "sftp"}
 }

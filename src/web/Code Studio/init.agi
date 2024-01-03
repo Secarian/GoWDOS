@@ -10,7 +10,7 @@ newDBTableIfNotExists("Code Studio")
 //Define the launchInfo for the module
 var moduleLaunchInfo = {
     Name: "Code Studio",
-	Desc: "The best code editor on ArozOS",
+	Desc: "The best code editor on WDOS",
 	Group: "Office",
 	IconPath: "Code Studio/img/module_icon.png",
 	Version: "1.3",
