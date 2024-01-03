@@ -1,71 +1,59 @@
 # ArozOS 2.0
 
-This is the go implementation of ArozOS (aka ArOZ Online) Web Desktop environment,designed to run on linux, but somehow still works on Windows and Mac OS
+Dies ist die Go-Implementierung von ArozOS (auch bekannt als ArOZ Online) Web-Desktop-Umgebung, die für Linux entwickelt wurde, aber irgendwie auch auf Windows und macOS funktioniert.
 
-This README file is intended for developer only. If you are normal users, please refer to the README file outside of the /src folder. 
+Diese README-Datei ist nur für Entwickler gedacht. Wenn Sie ein normaler Benutzer sind, konsultieren Sie bitte die README-Datei außerhalb des /src-Ordners.
 
-## Development Notes
+## Entwicklerhinweise
 
-- Start each module with {ModuleName}Init() function, e.g. ```WiFiInit()```
-- Put your function in mod (if possible) and call it in the main program
-- Do not change the sequence in the startup() function unless necessary
-- When in doubt, add startup flags (and use startup flag to disable experimental functions on startup)
+- Beginnen Sie jedes Modul mit der Funktion {ModuleName}Init(), z. B. ```WiFiInit()```
+- Platzieren Sie Ihre Funktion im Modul (falls möglich) und rufen Sie sie im Hauptprogramm auf
+- Ändern Sie die Reihenfolge in der startup() Funktion nicht, es sei denn, es ist notwendig
+- Bei Unsicherheit fügen Sie Startflags hinzu (und verwenden Sie Startflags, um experimentelle Funktionen beim Start zu deaktivieren)
 
+## Überschreiben von Vendor-Ressourcen
 
+Wenn Sie Vendor-bezogene Ressourcen in ArozOS 2.012 oder höher überschreiben möchten, erstellen Sie einen Ordner im Systemstammverzeichnis mit dem Namen ```vendor-res``` und legen Sie die Ersatzdateien hier ab. Hier ist eine Liste der unterstützten Ersatzressourcendateien:
 
-## Vendor Resources Overwrite
+| Dateiname       | Empfohlenes Format | Verwendung                 |
+| --------------- | ------------------ | -------------------------- |
+| auth_bg.jpg     | 2938 x 1653 px     | Login-Hintergrund          |
+| auth_icon.png   | 5900 x 1180 px     | Logo auf der Authentifizierungsseite |
+| vendor_icon.png | 1560 x 600 px      | Marken-Symbol des Anbieters |
 
-If you want to overwrite vendor related resources in ArozOS 2.012 or above, create a folder in the system root named ```vendor-res``` and put the replacement files inside here. Here is a list of supported replacement resources files
+(Zum Ausbau)
 
-| Filename        | Recommended Format | Usage                    |
-| --------------- | ------------------ | ------------------------ |
-| auth_bg.jpg     | 2938 x 1653 px     | Login Wallpaper          |
-| auth_icon.png   | 5900 x 1180 px     | Authentication Page Logo |
-| vendor_icon.png | 1560 x 600 px      | Vendor Brand Icon        |
+## Dateisystem-Virtualisierung und Abstraktionsebenen
 
-(To be expanded)
+Das ArozOS-System enthält sowohl die Virtualisierungsebene als auch die Abstraktionsebene. Der einfachste Weg, um zu überprüfen, ob Ihr Pfad unter welcher Ebene liegt, besteht darin, den Startverzeichnisnamen zu betrachten.
 
-## File System Virtualization and File System Abstractions Layers
+| Pfadstruktur                                  | Beispiel-Pfad                                     | Ebene                                            |
+| --------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| {vroot_id}:/{subpath}                         | user:/Desktop/meinedatei.txt                       | Dateisystem-Virtualisierungsebene (höchste Ebene) |
+| fsh (*File System Handler) + subpath (string)  | fsh (localfs) + /dateien/benutzer/alan/Desktop/meinedatei.txt | Dateisystem-Abstraktionsebene                     |
+| {physical_location}/{subpath}                 | /home/aroz/arozos/dateien/benutzer/Desktop/meinedatei.txt | Physische (Festplatten-)Ebene                     |
 
-The ArozOS system contains both the virtualization layer and abstraction layer. The easiest way to check if your path is under which layer is by looking at their starting dir name.
-
-| Path Structure                                | Example Path                                         | Layer                                            |
-| --------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------ |
-| {vroot_id}:/{subpath}                         | user:/Desktop/myfile.txt                             | File System Virtualization Layer (Highest Layer) |
-| fsh (*File System Handler) + subpath (string) | fsh (localfs) + /files/users/alan/Desktop/myfile.txt | File System Abstraction                          |
-| {physical_location}/{subpath}                 | /home/aroz/arozos/files/users/Desktop/myfile.txt     | Physical (Disk) Layer                            |
-
-Since ArozOS v2.000, we added File System Abstraction (fsa, or sometime as seen as fshAbs, abbr for "File System Handler underlaying File System Abstraction) to the (already complex) File System Handler (fsh) infrastruture.  There are two type of fsh that are currently supported by ArozOS File System Abstraction layer.
+Seit ArozOS v2.000 haben wir der (bereits komplexen) File System Handler (fsh) Infrastruktur eine Dateisystem-Abstraktion (fsa oder manchmal als fshAbs, Abkürzung für "File System Handler underlying File System Abstraction") hinzugefügt. Es gibt zwei Arten von fsh, die derzeit von der ArozOS Dateisystem-Abstraktionsebene unterstützt werden.
 
 ## ArOZ JavaScript Gateway Interface / Plugin Loader
 
-The ArOZ AJGI / AGI interface provide a JavaScript programmable interface for ArozOS users to create 
-plugin for the system. To initiate the module, you can place a "init.agi" file in the web directory of the module
-(also named the module root). See more details in the [AJGI Documentation](AJGI Documentation.md).
+Die ArOZ AJGI / AGI-Schnittstelle bietet eine JavaScript-programmierbare Schnittstelle für ArozOS-Benutzer, um ein Plugin für das System zu erstellen. Um das Modul zu initialisieren, können Sie eine "init.agi"-Datei im Webverzeichnis des Moduls (auch Modulwurzel genannt) platzieren. Weitere Details finden Sie in der [AJGI-Dokumentation](AJGI Dokumentation.md).
 
-AGI script can be run as different scope and permissions. 
+AGI-Skripte können mit verschiedenen Berechtigungen ausgeführt werden.
 
-| Scope                                      | Usable Functions                                                                    |
-| ------------------------------------------ | ----------------------------------------------------------------------------------- |
-| WebApp startup script (init.agi)           | System Functions and Registrations                                                  |
-| WebApp contained scripts                   | System Functions and User Functions                                                 |
-| Others (Web Root / Serverless / Scheduler) | System Functions, User Functions ( with script register owner scope) and serverless |
+| Bereich                                      | Verwendbare Funktionen                                       |
+| -------------------------------------------- | ------------------------------------------------------------ |
+| WebApp-Startskript (init.agi)                | Systemfunktionen und Registrierungen                          |
+| In WebApp enthaltene Skripte                 | Systemfunktionen und Benutzerfunktionen                       |
+| Andere (Web-Root / Serverless / Scheduler)    | Systemfunktionen, Benutzerfunktionen (mit Script-Registrierungseigentümerbereich) und serverlos |
 
-## Subservice Logics and Configuration
+## Unterlogiken und Konfiguration von Subdiensten
 
-To intergrate other binary based web server to the subservice interface,
-you can create a folder inside the "./subservice/your_service" where your binary
-executable should be named identically with the containing directory.
-For example, you have a module that provides web ui named "demo.exe",
-then your should put the demo.exe into "./subservice/demo/demo.exe".
+Um andere binär basierte Webserver in die Subdienstschnittstelle zu integrieren, können Sie einen Ordner im "./subservice/your_service" erstellen, in dem Ihre binäre Ausführung den gleichen Namen wie das enthaltende Verzeichnis haben sollte. Wenn Sie z.B. ein Modul haben, das eine Web-Benutzeroberfläche namens "demo.exe" bereitstellt, sollten Sie die demo.exe in "./subservice/demo/demo.exe" platzieren.
 
-In the case of Linux environment, the subservice routine will first if the 
-module is installed via apt-get by checking with the "which" program. (If you got busybox, it should be built in)
-If the package is not found in the apt list, the binary of the program will be searched
-under the subservice directory.
+Im Fall einer Linux-Umgebung wird die Subdienstroutine zuerst überprüfen, ob das Modul über apt-get installiert ist, indem sie das Programm "which" verwendet. (Wenn Sie busybox haben, sollte es integriert sein.) Wenn das Paket nicht in der apt-Liste gefunden wird, wird die binäre Datei des Programms im Subservice-Verzeichnis gesucht.
 
-Please follow the naming convention given in the build.sh template.
-For example, the corresponding platform will search for the corresponding binary excitable filename:
+Bitte beachten Sie die Namenskonvention in der build.sh-Vorlage. Zum Beispiel wird die entsprechende Plattform nach dem entsprechenden ausführbaren Binärdateinamen suchen:
 
 ```
 demo_linux_amd64    => Linux AMD64
@@ -74,44 +62,44 @@ demo_linux_arm64    => Linux ARM64
 demo_macOS_amd64    => MacOS AMD64 
 ```
 
-### Startup Flags
+### Startflags
 
-During the startup of the subservice, two types of parameter will be passed in. Here are the examples
+Während des Starts des Subdienstes werden zwei Arten von Parametern übergeben. Hier sind Beispiele:
 
 ```
 demo.exe -info
 demo.exe -port 12810 -rpt "http://localhost:8080/api/ajgi/interface"
 ```
 
-In the case of receiving the "info" flag, the program should print the JSON string with correct module information
-as stated in the struct below.
+Im Falle des Empfangs des "info"-Flags sollte das Programm die JSON-Zeichenfolge mit den korrekten Modulinformationen ausgeben, wie unten beschrieben.
 
 ```
-//Struct for storing module information
+//Struktur zur Speicherung von Modulinformationen
 type serviecInfo struct{
-    Name string                //Name of this module. e.g. "Audio"
-    Desc string                //Description for this module
-    Group string            //Group of the module, e.g. "system" / "media" etc
-    IconPath string            //Module icon image path e.g. "Audio/img/function_icon.png"
-    Version string            //Version of the module. Format: [0-9]*.[0-9][0-9].[0-9]
-    StartDir string         //Default starting dir, e.g. "Audio/index.html"
-    SupportFW bool             //Support floatWindow. If yes, floatWindow dir will be loaded
-    LaunchFWDir string         //This link will be launched instead of 'StartDir' if fw mode
-    SupportEmb bool            //Support embedded mode
-    LaunchEmb string         //This link will be launched instead of StartDir / Fw if a file is opened with this module
-    InitFWSize []int         //Floatwindow init size. [0] => Width, [1] => Height
-    InitEmbSize []int        //Embedded mode init size. [0] => Width, [1] => Height
-    SupportedExt []string     //Supported File Extensions. e.g. ".mp3", ".flac", ".wav"
+    Name string                //Name dieses Moduls, z. B. "Audio"
+    Desc string                //Beschreibung für dieses Modul
+    Group string            //Gruppe des Moduls, z. B. "system" / "media" etc.
+    IconPath string            //Pfad zum Modul-Symbolbild, z. B. "Audio/img/function_icon.png"
+    Version string            //Version des Moduls. Format: [0-9]*.[0-9][0-9].[0-9]
+   
+
+ StartDir string         //Standardstartverzeichnis, z. B. "Audio/index.html"
+    SupportFW bool             //Unterstützung von FloatWindow. Wenn ja, wird das FloatWindow-Verzeichnis geladen
+    LaunchFWDir string         //Dieser Link wird anstelle von 'StartDir' im fw-Modus gestartet
+    SupportEmb bool            //Eingebetteter Modus unterstützen
+    LaunchEmb string         //Dieser Link wird gestartet, wenn eine Datei mit diesem Modul geöffnet wird
+    InitFWSize []int         //Floatwindow-Startgröße. [0] => Breite, [1] => Höhe
+    InitEmbSize []int        //Größe für den eingebetteten Modus. [0] => Breite, [1] => Höhe
+    SupportedExt []string     //Unterstützte Dateierweiterungen, z. B. ".mp3", ".flac", ".wav"
 }
 
-//Example Usage when reciving the -info flag
+//Beispiel für die Verwendung beim Empfangen des -info-Flags
 infoObject := serviecInfo{
         Name: "Demo Subservice",
-        Desc: "A simple subservice code for showing how subservice works in ArOZ Online",            
-        Group: "Development",
+        Desc: "Ein einfacher Subdienst-Code, um zu zeigen, wie Subdienste in ArOZ Online funktionieren",            
+        Group: "Entwicklung",
         IconPath: "demo/icon.png",
         Version: "0.0.1",
-        //You can define any path before the actualy html file. This directory (in this case demo/ ) will be the reverse proxy endpoint for this module
         StartDir: "demo/home.html",            
         SupportFW: true, 
         LaunchFWDir: "demo/home.html",
@@ -127,11 +115,10 @@ fmt.Println(string(infoObject))
 os.Exit(0);
 ```
 
-When receiving the port flag, the program should start the web ui at the given port. The following is an example for 
-the implementation of such functionality.
+Wenn das Port-Flag empfangen wird, sollte das Programm die Web-Benutzeroberfläche am angegebenen Port starten. Im Folgenden finden Sie ein Beispiel für die Implementierung einer solchen Funktionalität.
 
 ```
-var port = flag.String("port", ":80", "The default listening endpoint for this subservice")
+var port = flag.String("port", ":80", "Der Standardendpunkt zum Zuhören für diesen Subdienst")
 flag.Parse()
 err := http.ListenAndServe(*port, nil)
 if err != nil {
@@ -139,37 +126,33 @@ if err != nil {
 }
 ```
 
-### Subservice Exec Settings
+### Subdienst-Ausführungseinstellungen
 
-In default, subservice routine will create a reverse proxy with URL rewrite build in that serve your web ui launched
-from the binary executable. If you do not need a reverse proxy connection, want a custom launch script or else, you can 
-use the following setting files.
+Standardmäßig wird die Subdienstroutine eine Reverse-Proxy-Verbindung mit integriertem URL-Umschreiben erstellen, die Ihre Web-Benutzeroberfläche bedient, die von der ausführbaren Binärdatei gestartet wurde. Wenn Sie keine Reverse-Proxy-Verbindung benötigen, ein benutzerdefiniertes Startskript oder etwas anderes wünschen, können Sie die folgenden Einstellungsdateien verwenden.
 
 ```
-.noproxy        => Do not start a proxy to the given port
-.startscript    => Send the launch parameter to the "start.bat" or "start.sh" file instead of the binary executable
-.disabled        => Do not load this subservice during startup. But the user can enable it via the setting interface
+.noproxy        => Kein Proxy zum angegebenen Port starten
+.startscript    => Die Startparameter an die Datei "start.bat" oder "start.sh" senden, anstatt die ausführbare Binärdatei zu verwenden
+.disabled        => Diesen Subdienst beim Start nicht laden. Der Benutzer kann ihn jedoch über die Einstellungsschnittstelle aktivieren
 ```
 
-Here is an example "start.bat" used in integrating Syncthing into ArOZ Online System with ".startscript" file placed next
-to the syncthing.exe file.
+Hier ist ein Beispiel für eine "start.bat"-Datei, die in die Integration von Syncthing in das ArOZ Online System mit einer ".startscript"-Datei integriert wird, die neben der syncthing.exe-Datei platziert wird.
 
 ```
 if not exist ".\config" mkdir ".\config"
 syncthing.exe -home=".\config" -no-browser -gui-address=127.0.0.1%2
 ```
 
-## Systemd support
+## Systemd-Unterstützung
 
-To enable systemd in your host that support aroz online system, create a bash script at your aroz online root named "start.sh"
-and fill it up with your prefered startup paratmers. The most basic one is as follow:
+Um systemd in Ihrem Host zu aktivieren, der das Aroz Online System unterstützt, erstellen Sie ein Bash-Skript in Ihrem Aroz Online-Stammverzeichnis namens "start.sh" und füllen Sie es mit Ihren bevorzugten Startparametern. Das einfachste ist wie folgt:
 
 ```
 #/bin/bash
 sudo ./aroz_online_linux_amd64
 ```
 
-And then you can create a new file called "arozos.service" in /etc/systemd/system with the following contents (Assume your aroz online root is at /home/pi/arozos)
+Dann können Sie eine neue Datei namens "arozos.service" in /etc/systemd/system mit folgendem Inhalt erstellen (nehmen Sie an, dass Ihr Aroz Online-Stammverzeichnis bei /home/pi/arozos liegt):
 
 ```
 [Unit]
@@ -187,19 +170,18 @@ RestartSec=10
 WantedBy=multi-user.target
 ```
 
-Finally to enable the service, use the following systemd commands
+Schließlich verwenden Sie die folgenden systemd-Befehle, um den Dienst zu aktivieren, zu starten, den Status anzuzeigen und den Dienst zu deaktivieren:
 
 ```
-#Enable the script during the startup process
+# Aktivieren Sie das Skript während des Startvorgangs
 sudo systemctl enable arozos.service
 
-#Start the service now
+# Starten Sie den Dienst jetzt
 sudo systemctl start arozos.service
 
-#Show the status of the service
+# Den Status des Dienstes anzeigen
 systemctl status arozos.service
 
-
-#Disable the service if you no longer want it to start during boot
+# Deaktivieren Sie den Dienst, wenn Sie ihn beim Start nicht mehr ausführen möchten
 sudo systemctl disable aroz-online.service
 ```
