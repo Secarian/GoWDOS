@@ -8,10 +8,10 @@ import (
 	"path/filepath"
 	"time"
 
-	"imuslab.com/wdos/mod/agi"
-	"imuslab.com/wdos/mod/info/logger"
-	"imuslab.com/wdos/mod/user"
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/agi"
+	"imuslab.com/arozos/mod/info/logger"
+	"imuslab.com/arozos/mod/user"
+	"imuslab.com/arozos/mod/utils"
 )
 
 /*

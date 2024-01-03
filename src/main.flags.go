@@ -5,13 +5,13 @@ import (
 	"os"
 	"time"
 
-	apt "imuslab.com/wdos/mod/apt"
-	auth "imuslab.com/wdos/mod/auth"
-	db "imuslab.com/wdos/mod/database"
-	"imuslab.com/wdos/mod/info/logger"
-	permission "imuslab.com/wdos/mod/permission"
-	user "imuslab.com/wdos/mod/user"
-	"imuslab.com/wdos/mod/www"
+	apt "imuslab.com/arozos/mod/apt"
+	auth "imuslab.com/arozos/mod/auth"
+	db "imuslab.com/arozos/mod/database"
+	"imuslab.com/arozos/mod/info/logger"
+	permission "imuslab.com/arozos/mod/permission"
+	user "imuslab.com/arozos/mod/user"
+	"imuslab.com/arozos/mod/www"
 )
 
 /*

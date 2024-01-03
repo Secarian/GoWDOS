@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/utils"
 )
 
 // Handle console command from the console module

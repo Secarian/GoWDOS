@@ -7,13 +7,13 @@ import (
 	"runtime"
 	"time"
 
-	fs "imuslab.com/wdos/mod/filesystem"
-	info "imuslab.com/wdos/mod/info/hardwareinfo"
-	"imuslab.com/wdos/mod/info/logviewer"
-	usage "imuslab.com/wdos/mod/info/usageinfo"
-	prout "imuslab.com/wdos/mod/prouter"
-	"imuslab.com/wdos/mod/updates"
-	"imuslab.com/wdos/mod/utils"
+	fs "imuslab.com/arozos/mod/filesystem"
+	info "imuslab.com/arozos/mod/info/hardwareinfo"
+	"imuslab.com/arozos/mod/info/logviewer"
+	usage "imuslab.com/arozos/mod/info/usageinfo"
+	prout "imuslab.com/arozos/mod/prouter"
+	"imuslab.com/arozos/mod/updates"
+	"imuslab.com/arozos/mod/utils"
 )
 
 // InitShowSysInformation xxx

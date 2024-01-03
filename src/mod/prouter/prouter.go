@@ -15,8 +15,8 @@ import (
 	"log"
 	"net/http"
 
-	"imuslab.com/wdos/mod/security/csrf"
-	user "imuslab.com/wdos/mod/user"
+	"imuslab.com/arozos/mod/security/csrf"
+	user "imuslab.com/arozos/mod/user"
 )
 
 type RouterOption struct {

@@ -6,13 +6,13 @@ import (
 	"strconv"
 	"time"
 
-	"imuslab.com/wdos/mod/database"
-	"imuslab.com/wdos/mod/fileservers"
-	"imuslab.com/wdos/mod/info/logger"
-	"imuslab.com/wdos/mod/network/upnp"
-	"imuslab.com/wdos/mod/storage/sftpserver"
-	user "imuslab.com/wdos/mod/user"
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/database"
+	"imuslab.com/arozos/mod/fileservers"
+	"imuslab.com/arozos/mod/info/logger"
+	"imuslab.com/arozos/mod/network/upnp"
+	"imuslab.com/arozos/mod/storage/sftpserver"
+	user "imuslab.com/arozos/mod/user"
+	"imuslab.com/arozos/mod/utils"
 )
 
 type ManagerOption struct {

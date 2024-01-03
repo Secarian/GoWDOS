@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"net/http"
 
-	auth "imuslab.com/wdos/mod/auth"
-	prout "imuslab.com/wdos/mod/prouter"
-	"imuslab.com/wdos/mod/utils"
+	auth "imuslab.com/arozos/mod/auth"
+	prout "imuslab.com/arozos/mod/prouter"
+	"imuslab.com/arozos/mod/utils"
 )
 
 func AuthInit() {

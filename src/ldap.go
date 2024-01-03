@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"path/filepath"
 
-	ldap "imuslab.com/wdos/mod/auth/ldap"
-	fs "imuslab.com/wdos/mod/filesystem"
-	prout "imuslab.com/wdos/mod/prouter"
+	ldap "imuslab.com/arozos/mod/auth/ldap"
+	fs "imuslab.com/arozos/mod/filesystem"
+	prout "imuslab.com/arozos/mod/prouter"
 )
 
 func ldapInit() {

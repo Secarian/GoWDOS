@@ -15,11 +15,11 @@ import (
 	"strings"
 	"time"
 
-	"imuslab.com/wdos/mod/info/logger"
-	modules "imuslab.com/wdos/mod/modules"
-	"imuslab.com/wdos/mod/network/reverseproxy"
-	"imuslab.com/wdos/mod/network/websocketproxy"
-	user "imuslab.com/wdos/mod/user"
+	"imuslab.com/arozos/mod/info/logger"
+	modules "imuslab.com/arozos/mod/modules"
+	"imuslab.com/arozos/mod/network/reverseproxy"
+	"imuslab.com/arozos/mod/network/websocketproxy"
+	user "imuslab.com/arozos/mod/user"
 )
 
 /*

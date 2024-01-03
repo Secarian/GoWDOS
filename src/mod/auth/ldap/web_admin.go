@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"strings"
 
-	"imuslab.com/wdos/mod/auth/ldap/ldapreader"
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/auth/ldap/ldapreader"
+	"imuslab.com/arozos/mod/utils"
 )
 
 func (ldap *ldapHandler) ReadConfig(w http.ResponseWriter, r *http.Request) {

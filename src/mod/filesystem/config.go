@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 
-	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
+	wdosfs "imuslab.com/arozos/mod/filesystem/arozfs"
 )
 
 // FileSystem configuration. Append more lines if required.

@@ -6,10 +6,10 @@ import (
 	"strings"
 
 	"github.com/robertkrimen/otto"
-	"imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/filesystem/wdosfs"
-	user "imuslab.com/wdos/mod/user"
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/filesystem"
+	"imuslab.com/arozos/mod/filesystem/wdosfs"
+	user "imuslab.com/arozos/mod/user"
+	"imuslab.com/arozos/mod/utils"
 )
 
 // Get the full vpath if the passing value is a relative path

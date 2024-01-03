@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/url"
 
-	"imuslab.com/wdos/mod/network/reverseproxy"
+	"imuslab.com/arozos/mod/network/reverseproxy"
 )
 
 /*

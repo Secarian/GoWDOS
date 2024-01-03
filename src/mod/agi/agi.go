@@ -14,14 +14,14 @@ import (
 	"github.com/robertkrimen/otto"
 	uuid "github.com/satori/go.uuid"
 
-	apt "imuslab.com/wdos/mod/apt"
-	"imuslab.com/wdos/mod/filesystem"
-	metadata "imuslab.com/wdos/mod/filesystem/metadata"
-	"imuslab.com/wdos/mod/iot"
-	"imuslab.com/wdos/mod/share"
-	"imuslab.com/wdos/mod/time/nightly"
-	user "imuslab.com/wdos/mod/user"
-	"imuslab.com/wdos/mod/utils"
+	apt "imuslab.com/arozos/mod/apt"
+	"imuslab.com/arozos/mod/filesystem"
+	metadata "imuslab.com/arozos/mod/filesystem/metadata"
+	"imuslab.com/arozos/mod/iot"
+	"imuslab.com/arozos/mod/share"
+	"imuslab.com/arozos/mod/time/nightly"
+	user "imuslab.com/arozos/mod/user"
+	"imuslab.com/arozos/mod/utils"
 )
 
 /*

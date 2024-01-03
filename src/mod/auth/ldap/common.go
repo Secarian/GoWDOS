@@ -1,6 +1,6 @@
 package ldap
 
-import db "imuslab.com/wdos/mod/database"
+import db "imuslab.com/arozos/mod/database"
 
 func readSingleConfig(key string, coredb *db.Database) string {
 	var value string

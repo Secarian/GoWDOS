@@ -19,12 +19,12 @@ import (
 	"sync"
 	"time"
 
-	"imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/filesystem/hidden"
-	"imuslab.com/wdos/mod/filesystem/metadata"
-	"imuslab.com/wdos/mod/network/webdav"
-	"imuslab.com/wdos/mod/user"
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/filesystem"
+	"imuslab.com/arozos/mod/filesystem/hidden"
+	"imuslab.com/arozos/mod/filesystem/metadata"
+	"imuslab.com/arozos/mod/network/webdav"
+	"imuslab.com/arozos/mod/user"
+	"imuslab.com/arozos/mod/utils"
 )
 
 type Server struct {

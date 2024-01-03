@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/robertkrimen/otto"
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/utils"
 )
 
 // Inject wdos online custom functions into the virtual machine

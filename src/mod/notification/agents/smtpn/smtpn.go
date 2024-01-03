@@ -18,7 +18,7 @@ import (
 	"time"
 
 	"github.com/valyala/fasttemplate"
-	notification "imuslab.com/wdos/mod/notification"
+	notification "imuslab.com/arozos/mod/notification"
 )
 
 type Agent struct {

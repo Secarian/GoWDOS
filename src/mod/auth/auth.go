@@ -16,7 +16,7 @@ package auth
 
 	auth/users/usercount => Number of users in the system
 
-	Pre-requirement: imuslab.com/wdos/mod/database
+	Pre-requirement: imuslab.com/arozos/mod/database
 */
 
 import (
@@ -33,13 +33,13 @@ import (
 
 	"github.com/gorilla/sessions"
 
-	"imuslab.com/wdos/mod/auth/accesscontrol/blacklist"
-	"imuslab.com/wdos/mod/auth/accesscontrol/whitelist"
-	"imuslab.com/wdos/mod/auth/authlogger"
-	"imuslab.com/wdos/mod/auth/explogin"
-	db "imuslab.com/wdos/mod/database"
-	"imuslab.com/wdos/mod/network"
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/auth/accesscontrol/blacklist"
+	"imuslab.com/arozos/mod/auth/accesscontrol/whitelist"
+	"imuslab.com/arozos/mod/auth/authlogger"
+	"imuslab.com/arozos/mod/auth/explogin"
+	db "imuslab.com/arozos/mod/database"
+	"imuslab.com/arozos/mod/network"
+	"imuslab.com/arozos/mod/utils"
 )
 
 type AuthAgent struct {

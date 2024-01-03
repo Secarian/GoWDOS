@@ -5,8 +5,8 @@ import (
 	"log"
 	"strings"
 
-	"imuslab.com/wdos/mod/auth/accesscontrol"
-	"imuslab.com/wdos/mod/database"
+	"imuslab.com/arozos/mod/auth/accesscontrol"
+	"imuslab.com/arozos/mod/database"
 )
 
 /*

@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"github.com/hirochachacha/go-smb2"
-	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
+	wdosfs "imuslab.com/arozos/mod/filesystem/arozfs"
 )
 
 /*

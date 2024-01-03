@@ -13,9 +13,9 @@ import (
 	"os"
 	"strings"
 
-	"imuslab.com/wdos/mod/filesystem"
-	fs "imuslab.com/wdos/mod/filesystem"
-	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/arozos/mod/filesystem"
+	fs "imuslab.com/arozos/mod/filesystem"
+	wdosfs "imuslab.com/arozos/mod/filesystem/arozfs"
 )
 
 type StoragePool struct {

@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"path/filepath"
 
-	reg "imuslab.com/wdos/mod/auth/register"
-	fs "imuslab.com/wdos/mod/filesystem"
-	prout "imuslab.com/wdos/mod/prouter"
-	"imuslab.com/wdos/mod/utils"
+	reg "imuslab.com/arozos/mod/auth/register"
+	fs "imuslab.com/arozos/mod/filesystem"
+	prout "imuslab.com/arozos/mod/prouter"
+	"imuslab.com/arozos/mod/utils"
 )
 
 var (

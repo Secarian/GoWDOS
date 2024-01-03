@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/utils"
 )
 
 /*

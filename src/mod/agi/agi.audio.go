@@ -4,8 +4,8 @@ import (
 	"log"
 
 	"github.com/robertkrimen/otto"
-	"imuslab.com/wdos/mod/filesystem"
-	user "imuslab.com/wdos/mod/user"
+	"imuslab.com/arozos/mod/filesystem"
+	user "imuslab.com/arozos/mod/user"
 )
 
 /*

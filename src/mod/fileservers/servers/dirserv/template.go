@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"imuslab.com/wdos/mod/filesystem/hidden"
-	"imuslab.com/wdos/mod/filesystem/wdosfs"
+	"imuslab.com/arozos/mod/filesystem/hidden"
+	"imuslab.com/arozos/mod/filesystem/wdosfs"
 )
 
 func getPageHeader(pathname string) string {

@@ -10,11 +10,11 @@ import (
 	"time"
 
 	"golang.org/x/oauth2"
-	auth "imuslab.com/wdos/mod/auth"
-	syncdb "imuslab.com/wdos/mod/auth/oauth2/syncdb"
-	reg "imuslab.com/wdos/mod/auth/register"
-	db "imuslab.com/wdos/mod/database"
-	"imuslab.com/wdos/mod/utils"
+	auth "imuslab.com/arozos/mod/auth"
+	syncdb "imuslab.com/arozos/mod/auth/oauth2/syncdb"
+	reg "imuslab.com/arozos/mod/auth/register"
+	db "imuslab.com/arozos/mod/database"
+	"imuslab.com/arozos/mod/utils"
 )
 
 type OauthHandler struct {
@@ -35,7 +35,7 @@ type Config struct {
 	ClientSecret string `json:"client_secret"`
 }
 
-//NewOauthHandler xxx
+// NewOauthHandler xxx
 func NewOauthHandler(authAgent *auth.AuthAgent, register *reg.RegisterHandler, coreDb *db.Database) *OauthHandler {
 	err := coreDb.NewTable("oauth")
 	if err != nil {
@@ -60,7 +60,7 @@ func NewOauthHandler(authAgent *auth.AuthAgent, register *reg.RegisterHandler, c
 	return &NewlyCreatedOauthHandler
 }
 
-//HandleOauthLogin xxx
+// HandleOauthLogin xxx
 func (oh *OauthHandler) HandleLogin(w http.ResponseWriter, r *http.Request) {
 	enabled := oh.readSingleConfig("enabled")
 	if enabled == "" || enabled == "false" {
@@ -83,7 +83,7 @@ func (oh *OauthHandler) HandleLogin(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, url, http.StatusTemporaryRedirect)
 }
 
-//OauthAuthorize xxx
+// OauthAuthorize xxx
 func (oh *OauthHandler) HandleAuthorize(w http.ResponseWriter, r *http.Request) {
 	enabled := oh.readSingleConfig("enabled")
 	if enabled == "" || enabled == "false" {
@@ -163,7 +163,7 @@ func (oh *OauthHandler) HandleAuthorize(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
-//CheckOAuth check if oauth is enabled
+// CheckOAuth check if oauth is enabled
 func (oh *OauthHandler) CheckOAuth(w http.ResponseWriter, r *http.Request) {
 	enabledB := false
 	enabled := oh.readSingleConfig("enabled")
@@ -188,7 +188,7 @@ func (oh *OauthHandler) CheckOAuth(w http.ResponseWriter, r *http.Request) {
 	utils.SendJSONResponse(w, string(json))
 }
 
-//https://golangcode.com/add-a-http-cookie/
+// https://golangcode.com/add-a-http-cookie/
 func (oh *OauthHandler) addCookie(w http.ResponseWriter, name, value string, ttl time.Duration) {
 	expire := time.Now().Add(ttl)
 	cookie := http.Cookie{

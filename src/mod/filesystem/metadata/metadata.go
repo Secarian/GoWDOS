@@ -14,10 +14,10 @@ import (
 
 	"github.com/gorilla/websocket"
 
-	"imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/filesystem/fssort"
-	hidden "imuslab.com/wdos/mod/filesystem/hidden"
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/filesystem"
+	"imuslab.com/arozos/mod/filesystem/fssort"
+	hidden "imuslab.com/arozos/mod/filesystem/hidden"
+	"imuslab.com/arozos/mod/utils"
 )
 
 /*
@@ -31,7 +31,7 @@ type RenderHandler struct {
 	renderingFolder sync.Map
 }
 
-//Create a new RenderHandler
+// Create a new RenderHandler
 func NewRenderHandler() *RenderHandler {
 	return &RenderHandler{
 		renderingFiles:  sync.Map{},
@@ -39,7 +39,7 @@ func NewRenderHandler() *RenderHandler {
 	}
 }
 
-//Build cache for all files (non recursive) for the given filepath
+// Build cache for all files (non recursive) for the given filepath
 func (rh *RenderHandler) BuildCacheForFolder(fsh *filesystem.FileSystemHandler, vpath string, username string) error {
 	fshAbs := fsh.FileSystemAbstraction
 	rpath, _ := fshAbs.VirtualPathToRealPath(vpath, username)
@@ -74,7 +74,7 @@ func (rh *RenderHandler) LoadCacheAsBytes(fsh *filesystem.FileSystemHandler, vpa
 	return resultingBytes, nil
 }
 
-//Try to load a cache from file. If not exists, generate it now
+// Try to load a cache from file. If not exists, generate it now
 func (rh *RenderHandler) LoadCache(fsh *filesystem.FileSystemHandler, rpath string, generateOnly bool) (string, error) {
 	//Create a cache folder
 	fshAbs := fsh.FileSystemAbstraction
@@ -211,7 +211,7 @@ func getImageAsBase64(fsh *filesystem.FileSystemHandler, rpath string) (string, 
 	return string(encoded), nil
 }
 
-//Load a list of folder cache from websocket, pass in "" (empty string) for default sorting method
+// Load a list of folder cache from websocket, pass in "" (empty string) for default sorting method
 func (rh *RenderHandler) HandleLoadCache(w http.ResponseWriter, r *http.Request, fsh *filesystem.FileSystemHandler, rpath string, sortmode string) {
 	//Get a list of files pending to be cached and sent
 	targetPath := filepath.ToSlash(filepath.Clean(rpath))
@@ -339,13 +339,13 @@ func (rh *RenderHandler) HandleLoadCache(w http.ResponseWriter, r *http.Request,
 
 }
 
-//Check if the cache for a file exists
+// Check if the cache for a file exists
 func CacheExists(fsh *filesystem.FileSystemHandler, file string) bool {
 	cacheFolder := filepath.ToSlash(filepath.Join(filepath.Clean(filepath.Dir(file)), "/.metadata/.cache/") + "/")
 	return fsh.FileSystemAbstraction.FileExists(cacheFolder+filepath.Base(file)+".jpg") || fsh.FileSystemAbstraction.FileExists(cacheFolder+filepath.Base(file)+".png")
 }
 
-//Get cache path for this file, given realpath
+// Get cache path for this file, given realpath
 func GetCacheFilePath(fsh *filesystem.FileSystemHandler, file string) (string, error) {
 	if CacheExists(fsh, file) {
 		fshAbs := fsh.FileSystemAbstraction
@@ -362,7 +362,7 @@ func GetCacheFilePath(fsh *filesystem.FileSystemHandler, file string) (string, e
 	}
 }
 
-//Remove cache if exists, given realpath
+// Remove cache if exists, given realpath
 func RemoveCache(fsh *filesystem.FileSystemHandler, file string) error {
 	if CacheExists(fsh, file) {
 		cachePath, err := GetCacheFilePath(fsh, file)

@@ -3,8 +3,8 @@ package main
 import (
 	"net/http"
 
-	"imuslab.com/wdos/mod/network/neighbour"
-	prout "imuslab.com/wdos/mod/prouter"
+	"imuslab.com/arozos/mod/network/neighbour"
+	prout "imuslab.com/arozos/mod/prouter"
 )
 
 /*

@@ -7,7 +7,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/utils"
 )
 
 /*

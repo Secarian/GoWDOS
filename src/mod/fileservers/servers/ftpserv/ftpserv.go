@@ -3,12 +3,12 @@ package ftpserv
 import (
 	"errors"
 
-	"imuslab.com/wdos/mod/database"
-	"imuslab.com/wdos/mod/fileservers"
-	"imuslab.com/wdos/mod/info/logger"
-	upnp "imuslab.com/wdos/mod/network/upnp"
-	"imuslab.com/wdos/mod/storage/ftp"
-	user "imuslab.com/wdos/mod/user"
+	"imuslab.com/arozos/mod/database"
+	"imuslab.com/arozos/mod/fileservers"
+	"imuslab.com/arozos/mod/info/logger"
+	upnp "imuslab.com/arozos/mod/network/upnp"
+	"imuslab.com/arozos/mod/storage/ftp"
+	user "imuslab.com/arozos/mod/user"
 )
 
 type ServerStatus struct {

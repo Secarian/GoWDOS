@@ -8,10 +8,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"imuslab.com/wdos/mod/database"
-	"imuslab.com/wdos/mod/fileservers"
-	"imuslab.com/wdos/mod/filesystem/wdosfs"
-	"imuslab.com/wdos/mod/user"
+	"imuslab.com/arozos/mod/database"
+	"imuslab.com/arozos/mod/fileservers"
+	"imuslab.com/arozos/mod/filesystem/wdosfs"
+	"imuslab.com/arozos/mod/user"
 )
 
 /*

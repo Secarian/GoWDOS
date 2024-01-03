@@ -13,8 +13,8 @@ import (
 	"time"
 
 	"github.com/pkg/sftp"
-	"imuslab.com/wdos/mod/filesystem"
-	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
+	"imuslab.com/arozos/mod/filesystem"
+	wdosfs "imuslab.com/arozos/mod/filesystem/arozfs"
 )
 
 // Root of the serving tree

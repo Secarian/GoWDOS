@@ -13,7 +13,7 @@ import (
 
 	"github.com/pkg/sftp"
 	"golang.org/x/crypto/ssh"
-	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
+	wdosfs "imuslab.com/arozos/mod/filesystem/arozfs"
 )
 
 /*

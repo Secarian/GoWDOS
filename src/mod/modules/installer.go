@@ -12,9 +12,9 @@ import (
 
 	"github.com/go-git/go-git/v5"
 	uuid "github.com/satori/go.uuid"
-	agi "imuslab.com/wdos/mod/agi"
-	fs "imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/utils"
+	agi "imuslab.com/arozos/mod/agi"
+	fs "imuslab.com/arozos/mod/filesystem"
+	"imuslab.com/arozos/mod/utils"
 )
 
 /*

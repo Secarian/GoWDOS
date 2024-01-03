@@ -8,7 +8,7 @@ import (
 	"sort"
 	"time"
 
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/utils"
 )
 
 type summaryDate []string
@@ -32,7 +32,7 @@ func (s summaryDate) Less(i, j int) bool {
 	return timei.Unix() > timej.Unix()
 }
 
-//Handle of listing of the logger index (months)
+// Handle of listing of the logger index (months)
 func (l *Logger) HandleIndexListing(w http.ResponseWriter, r *http.Request) {
 	indexes := l.ListSummary()
 	sort.Sort(summaryDate(indexes))
@@ -45,7 +45,7 @@ func (l *Logger) HandleIndexListing(w http.ResponseWriter, r *http.Request) {
 	utils.SendJSONResponse(w, string(js))
 }
 
-//Handle of the listing of a given index (month)
+// Handle of the listing of a given index (month)
 func (l *Logger) HandleTableListing(w http.ResponseWriter, r *http.Request) {
 	//Get the record name request for listing
 	month, err := utils.PostPara(r, "record")

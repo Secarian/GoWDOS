@@ -5,12 +5,13 @@ package hardwareinfo
 
 import (
 	"encoding/json"
-	"imuslab.com/wdos/mod/utils"
 	"log"
 	"net/http"
 	"os/exec"
 	"strconv"
 	"strings"
+
+	"imuslab.com/arozos/mod/utils"
 )
 
 /*

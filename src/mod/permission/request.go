@@ -16,10 +16,10 @@ import (
 	"net/http"
 	"strconv"
 
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/utils"
 )
 
-//Handle group editing operations
+// Handle group editing operations
 func (h *PermissionHandler) HandleListGroup(w http.ResponseWriter, r *http.Request) {
 	listPermission, _ := utils.GetPara(r, "showper")
 	if listPermission == "" {
@@ -45,7 +45,7 @@ func (h *PermissionHandler) HandleListGroup(w http.ResponseWriter, r *http.Reque
 	}
 }
 
-//Listing a group's detail for editing or updating the group content
+// Listing a group's detail for editing or updating the group content
 func (h *PermissionHandler) HandleGroupEdit(w http.ResponseWriter, r *http.Request) {
 	groupname, err := utils.PostPara(r, "groupname")
 	if err != nil {

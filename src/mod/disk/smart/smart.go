@@ -22,7 +22,7 @@ import (
 	"errors"
 	"runtime"
 
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/utils"
 	//"time"
 )
 

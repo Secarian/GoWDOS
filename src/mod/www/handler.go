@@ -5,7 +5,7 @@ import (
 	"errors"
 	"net/http"
 
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/utils"
 )
 
 func (h *Handler) CheckUserHomePageEnabled(username string) bool {

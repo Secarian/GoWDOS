@@ -10,7 +10,7 @@ import (
 
 	"github.com/nfnt/resize"
 	"github.com/oliamb/cutter"
-	"imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/arozos/mod/filesystem"
 )
 
 // Generate thumbnail for image. Require real filepath

@@ -9,13 +9,13 @@ package main
 import (
 	"net/http"
 
-	"imuslab.com/wdos/mod/disk/diskcapacity"
-	"imuslab.com/wdos/mod/disk/diskmg"
-	diskspace "imuslab.com/wdos/mod/disk/diskspace"
-	smart "imuslab.com/wdos/mod/disk/smart"
-	sortfile "imuslab.com/wdos/mod/disk/sortfile"
-	prout "imuslab.com/wdos/mod/prouter"
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/disk/diskcapacity"
+	"imuslab.com/arozos/mod/disk/diskmg"
+	diskspace "imuslab.com/arozos/mod/disk/diskspace"
+	smart "imuslab.com/arozos/mod/disk/smart"
+	sortfile "imuslab.com/arozos/mod/disk/sortfile"
+	prout "imuslab.com/arozos/mod/prouter"
+	"imuslab.com/arozos/mod/utils"
 )
 
 func DiskServiceInit() {

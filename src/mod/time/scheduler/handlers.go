@@ -6,10 +6,10 @@ import (
 	"strconv"
 	"time"
 
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/utils"
 )
 
-//List all the jobs related to the given user
+// List all the jobs related to the given user
 func (a *Scheduler) HandleListJobs(w http.ResponseWriter, r *http.Request) {
 	userinfo, err := a.options.UserHandler.GetUserInfoFromRequest(w, r)
 	if err != nil {

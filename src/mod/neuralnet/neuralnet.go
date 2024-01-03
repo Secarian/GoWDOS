@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"imuslab.com/wdos/mod/filesystem"
+	"imuslab.com/arozos/mod/filesystem"
 )
 
 /*
@@ -40,7 +40,7 @@ func getDarknetBinary() (string, error) {
 	return absPath, nil
 }
 
-//Analysis and get what is inside the image using Darknet19, fast but only support 1 main object
+// Analysis and get what is inside the image using Darknet19, fast but only support 1 main object
 func AnalysisPhotoDarknet19(filename string) ([]*ImageClass, error) {
 	results := []*ImageClass{}
 
@@ -85,7 +85,7 @@ func AnalysisPhotoDarknet19(filename string) ([]*ImageClass, error) {
 	return results, nil
 }
 
-//Analysis what is in the image using YOLO3, very slow but support multiple objects
+// Analysis what is in the image using YOLO3, very slow but support multiple objects
 func AnalysisPhotoYOLO3(filename string) ([]*ImageClass, error) {
 	results := []*ImageClass{}
 

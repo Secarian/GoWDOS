@@ -5,12 +5,13 @@ package hardwareinfo
 
 import (
 	"encoding/json"
-	"imuslab.com/wdos/mod/utils"
 	"log"
 	"net/http"
 	"os/exec"
 	"strconv"
 	"strings"
+
+	"imuslab.com/arozos/mod/utils"
 )
 
 /*
@@ -31,7 +32,7 @@ import (
 	CPUFreq: Refers to the CPU frequency in terms of gigahertz, e.g. 0.8GHz
 */
 
-//usbinfo from https://apple.stackexchange.com/questions/170105/list-usb-devices-on-osx-command-line
+// usbinfo from https://apple.stackexchange.com/questions/170105/list-usb-devices-on-osx-command-line
 const unknown_string = "??? "
 const query_frequency_command = "sysctl machdep.cpu.brand_string | awk '{print $NF}'"
 const query_cpumodel_command = "sysctl machdep.cpu.brand_string | awk '{for(i=1;++i<=NF-3;) printf $i\" \"; print $(NF-2)}'"

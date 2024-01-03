@@ -10,8 +10,8 @@ import (
 	"strconv"
 	"strings"
 
-	"imuslab.com/wdos/mod/iot"
-	"imuslab.com/wdos/mod/network/mdns"
+	"imuslab.com/arozos/mod/iot"
+	"imuslab.com/arozos/mod/network/mdns"
 )
 
 /*

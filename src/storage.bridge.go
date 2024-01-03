@@ -3,15 +3,15 @@ package main
 import (
 	"errors"
 
-	fs "imuslab.com/wdos/mod/filesystem"
-	storage "imuslab.com/wdos/mod/storage"
+	fs "imuslab.com/arozos/mod/filesystem"
+	storage "imuslab.com/arozos/mod/storage"
 )
 
 /*
 	Storage functions related to bridged FSH
 */
 
-//Initiate bridged storage pool configs
+// Initiate bridged storage pool configs
 func BridgeStoragePoolInit() {
 	bridgeRecords, err := bridgeManager.ReadConfig()
 	if err != nil {
@@ -70,7 +70,7 @@ func BridgeStoragePoolForGroup(group string) {
 	}
 }
 
-//Debridge all bridged FSH from this group, origin (i.e. not bridged) fsh will be skipped
+// Debridge all bridged FSH from this group, origin (i.e. not bridged) fsh will be skipped
 func DebridgeAllFSHandlerFromGroup(group string) error {
 	targetSp, err := GetStoragePoolByOwner(group)
 	if err != nil {
@@ -106,7 +106,7 @@ func DebridgeAllFSHandlerFromGroup(group string) error {
 	return nil
 }
 
-//Bridge a FSH to a given Storage Pool
+// Bridge a FSH to a given Storage Pool
 func BridgeFSHandlerToGroup(fsh *fs.FileSystemHandler, sp *storage.StoragePool) error {
 	//Check if the fsh already exists in the basepool
 	for _, thisFSH := range sp.Storages {
@@ -118,7 +118,7 @@ func BridgeFSHandlerToGroup(fsh *fs.FileSystemHandler, sp *storage.StoragePool) 
 	return nil
 }
 
-//Debridge a fsh from a given group by fsh ID
+// Debridge a fsh from a given group by fsh ID
 func DebridgeFSHandlerFromGroup(fshUUID string, sp *storage.StoragePool) error {
 	isBridged, err := bridgeManager.IsBridgedFSH(fshUUID, sp.Owner)
 	if err != nil || !isBridged {

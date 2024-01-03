@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/utils"
 )
 
 // LOGIN related function

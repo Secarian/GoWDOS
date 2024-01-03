@@ -9,8 +9,8 @@ import (
 	"github.com/nfnt/resize"
 	"github.com/oliamb/cutter"
 	_ "github.com/oov/psd"
-	"imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/filesystem"
+	"imuslab.com/arozos/mod/utils"
 )
 
 func generateThumbnailForPSD(fsh *filesystem.FileSystemHandler, cacheFolder string, file string, generateOnly bool) (string, error) {

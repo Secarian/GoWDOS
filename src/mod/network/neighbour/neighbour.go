@@ -5,9 +5,9 @@ import (
 	"log"
 	"time"
 
-	"imuslab.com/wdos/mod/cluster/wakeonlan"
-	"imuslab.com/wdos/mod/database"
-	"imuslab.com/wdos/mod/network/mdns"
+	"imuslab.com/arozos/mod/cluster/wakeonlan"
+	"imuslab.com/arozos/mod/database"
+	"imuslab.com/arozos/mod/network/mdns"
 )
 
 /*

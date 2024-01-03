@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/studio-b12/gowebdav"
-	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
+	wdosfs "imuslab.com/arozos/mod/filesystem/arozfs"
 )
 
 /*

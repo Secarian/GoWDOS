@@ -1,6 +1,6 @@
 package storage
 
-import du "imuslab.com/wdos/mod/storage/du"
+import du "imuslab.com/arozos/mod/storage/du"
 
 /*
 	File for putting return structs

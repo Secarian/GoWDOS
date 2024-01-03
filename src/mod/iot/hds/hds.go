@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"imuslab.com/wdos/mod/iot"
+	"imuslab.com/arozos/mod/iot"
 )
 
 /*

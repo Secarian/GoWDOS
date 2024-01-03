@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/utils"
 )
 
 func GetCPUInfo(w http.ResponseWriter, r *http.Request) {

@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"imuslab.com/wdos/mod/disk/diskspace"
+	"imuslab.com/arozos/mod/disk/diskspace"
 )
 
 type Capacity struct {

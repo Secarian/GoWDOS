@@ -12,7 +12,7 @@ import (
 	"syscall"
 	"time"
 
-	console "imuslab.com/wdos/mod/console"
+	console "imuslab.com/arozos/mod/console"
 )
 
 /*

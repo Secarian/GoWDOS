@@ -6,10 +6,10 @@ import (
 	"log"
 	"strings"
 
-	db "imuslab.com/wdos/mod/database"
-	fs "imuslab.com/wdos/mod/filesystem"
-	storage "imuslab.com/wdos/mod/storage"
-	"imuslab.com/wdos/mod/utils"
+	db "imuslab.com/arozos/mod/database"
+	fs "imuslab.com/arozos/mod/filesystem"
+	storage "imuslab.com/arozos/mod/storage"
+	"imuslab.com/arozos/mod/utils"
 )
 
 type PermissionGroup struct {
@@ -101,7 +101,7 @@ func (h *PermissionHandler) LoadPermissionGroupsFromDatabase() error {
 	return nil
 }
 
-//Get the user permission groups
+// Get the user permission groups
 func (h *PermissionHandler) GetUsersPermissionGroup(username string) ([]*PermissionGroup, error) {
 	//Get user permission group name from database
 	targetUserGroup := []string{}

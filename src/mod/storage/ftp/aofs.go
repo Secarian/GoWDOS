@@ -11,8 +11,8 @@ import (
 	"time"
 
 	"github.com/spf13/afero"
-	"imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/user"
+	"imuslab.com/arozos/mod/filesystem"
+	"imuslab.com/arozos/mod/user"
 )
 
 var (

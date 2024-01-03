@@ -3,9 +3,9 @@ package main
 import (
 	"net/http"
 
-	agi "imuslab.com/wdos/mod/agi"
-	prout "imuslab.com/wdos/mod/prouter"
-	"imuslab.com/wdos/mod/utils"
+	agi "imuslab.com/arozos/mod/agi"
+	prout "imuslab.com/arozos/mod/prouter"
+	"imuslab.com/arozos/mod/utils"
 )
 
 var (

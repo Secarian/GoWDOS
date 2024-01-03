@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"imuslab.com/wdos/mod/disk/diskcapacity/dftool"
-	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
-	"imuslab.com/wdos/mod/user"
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/disk/diskcapacity/dftool"
+	wdosfs "imuslab.com/arozos/mod/filesystem/arozfs"
+	"imuslab.com/arozos/mod/user"
+	"imuslab.com/arozos/mod/utils"
 )
 
 /*

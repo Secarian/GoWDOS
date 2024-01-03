@@ -4,10 +4,10 @@ import (
 	"errors"
 
 	"golang.org/x/oauth2"
-	db "imuslab.com/wdos/mod/database"
+	db "imuslab.com/arozos/mod/database"
 )
 
-//getScope use to select the correct scope
+// getScope use to select the correct scope
 func getScope(coredb *db.Database) []string {
 	idp := readSingleConfig("idp", coredb)
 	if idp == "Google" {
@@ -22,7 +22,7 @@ func getScope(coredb *db.Database) []string {
 	return []string{}
 }
 
-//getEndpoint use to select the correct endpoint
+// getEndpoint use to select the correct endpoint
 func getEndpoint(coredb *db.Database) oauth2.Endpoint {
 	idp := readSingleConfig("idp", coredb)
 	if idp == "Google" {
@@ -37,7 +37,7 @@ func getEndpoint(coredb *db.Database) oauth2.Endpoint {
 	return oauth2.Endpoint{}
 }
 
-//getUserinfo use to select the correct way to retrieve userinfo
+// getUserinfo use to select the correct way to retrieve userinfo
 func getUserInfo(accessToken string, coredb *db.Database) (string, error) {
 	idp := readSingleConfig("idp", coredb)
 	if idp == "Google" {

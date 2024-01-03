@@ -8,9 +8,9 @@ import (
 	"log"
 	"os"
 
-	"imuslab.com/wdos/mod/filesystem"
-	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
-	"imuslab.com/wdos/mod/network/webdav"
+	"imuslab.com/arozos/mod/filesystem"
+	wdosfs "imuslab.com/arozos/mod/filesystem/arozfs"
+	"imuslab.com/arozos/mod/network/webdav"
 )
 
 type FshWebDAVAdapter struct {

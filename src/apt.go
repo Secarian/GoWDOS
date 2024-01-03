@@ -3,9 +3,9 @@ package main
 import (
 	"net/http"
 
-	apt "imuslab.com/wdos/mod/apt"
-	prout "imuslab.com/wdos/mod/prouter"
-	"imuslab.com/wdos/mod/utils"
+	apt "imuslab.com/arozos/mod/apt"
+	prout "imuslab.com/arozos/mod/prouter"
+	"imuslab.com/arozos/mod/utils"
 )
 
 func PackagManagerInit() {

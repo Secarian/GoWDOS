@@ -9,9 +9,9 @@ import (
 	"strconv"
 	"strings"
 
-	fs "imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/utils"
-	//user "imuslab.com/wdos/mod/user"
+	fs "imuslab.com/arozos/mod/filesystem"
+	"imuslab.com/arozos/mod/utils"
+	//user "imuslab.com/arozos/mod/user"
 )
 
 func DiskQuotaInit() {
@@ -33,7 +33,7 @@ func DiskQuotaInit() {
 	nightlyManager.RegisterNightlyTask(system_disk_quota_updateAllUserQuotaEstimation)
 }
 
-//Register the handler for automatically updating all user storage quota
+// Register the handler for automatically updating all user storage quota
 func system_disk_quota_updateAllUserQuotaEstimation() {
 	registeredUsers := authAgent.ListUsers()
 	for _, username := range registeredUsers {
@@ -43,7 +43,7 @@ func system_disk_quota_updateAllUserQuotaEstimation() {
 	}
 }
 
-//Set the storage quota of the particular user
+// Set the storage quota of the particular user
 func system_disk_quota_setQuota(w http.ResponseWriter, r *http.Request) {
 	userinfo, err := userHandler.GetUserInfoFromRequest(w, r)
 	if err != nil {
@@ -110,7 +110,7 @@ func system_disk_quota_handleQuotaInfo(w http.ResponseWriter, r *http.Request) {
 	}()
 }
 
-//Get all the users file and see how
+// Get all the users file and see how
 func system_disk_quota_handleFileDistributionView(w http.ResponseWriter, r *http.Request) {
 	userinfo, err := userHandler.GetUserInfoFromRequest(w, r)
 	if err != nil {

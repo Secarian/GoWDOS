@@ -13,8 +13,8 @@ import (
 	"os"
 	"path/filepath"
 
-	db "imuslab.com/wdos/mod/database"
-	fs "imuslab.com/wdos/mod/filesystem"
+	db "imuslab.com/arozos/mod/database"
+	fs "imuslab.com/arozos/mod/filesystem"
 )
 
 // QuotaHandler Object

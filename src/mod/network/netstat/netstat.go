@@ -11,7 +11,7 @@ import (
 	"strconv"
 	"strings"
 
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/utils"
 )
 
 func HandleGetNetworkInterfaceStats(w http.ResponseWriter, r *http.Request) {

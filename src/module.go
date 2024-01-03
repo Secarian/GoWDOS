@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"os"
 
-	module "imuslab.com/wdos/mod/modules"
-	prout "imuslab.com/wdos/mod/prouter"
-	"imuslab.com/wdos/mod/utils"
+	module "imuslab.com/arozos/mod/modules"
+	prout "imuslab.com/arozos/mod/prouter"
+	"imuslab.com/arozos/mod/utils"
 )
 
 var (
@@ -121,8 +121,7 @@ func ModuleServiceInit() {
 }
 
 /*
-	Handle endpoint registry for Module installer
-
+Handle endpoint registry for Module installer
 */
 func ModuleInstallerInit() {
 	//Register module installation setting
@@ -149,7 +148,7 @@ func ModuleInstallerInit() {
 
 }
 
-//Handle module installation request
+// Handle module installation request
 func HandleModuleInstall(w http.ResponseWriter, r *http.Request) {
 	opr, _ := utils.PostPara(r, "opr")
 

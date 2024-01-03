@@ -10,10 +10,10 @@ import (
 	"log"
 	"os"
 
-	db "imuslab.com/wdos/mod/database"
-	"imuslab.com/wdos/mod/filesystem"
-	fs "imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/info/logger"
+	db "imuslab.com/arozos/mod/database"
+	"imuslab.com/arozos/mod/filesystem"
+	fs "imuslab.com/arozos/mod/filesystem"
+	"imuslab.com/arozos/mod/info/logger"
 )
 
 func RunStartup() {

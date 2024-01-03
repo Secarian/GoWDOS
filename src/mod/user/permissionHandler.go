@@ -6,10 +6,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
-	permission "imuslab.com/wdos/mod/permission"
-	storage "imuslab.com/wdos/mod/storage"
-	"imuslab.com/wdos/mod/utils"
+	wdosfs "imuslab.com/arozos/mod/filesystem/arozfs"
+	permission "imuslab.com/arozos/mod/permission"
+	storage "imuslab.com/arozos/mod/storage"
+	"imuslab.com/arozos/mod/utils"
 )
 
 // Permissions related to modules

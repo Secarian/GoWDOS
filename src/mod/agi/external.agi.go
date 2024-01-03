@@ -9,7 +9,7 @@ import (
 	"time"
 
 	uuid "github.com/satori/go.uuid"
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/utils"
 )
 
 type endpointFormat struct {

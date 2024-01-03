@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"path/filepath"
 
-	auth "imuslab.com/wdos/mod/auth"
-	fs "imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/utils"
+	auth "imuslab.com/arozos/mod/auth"
+	fs "imuslab.com/arozos/mod/filesystem"
+	"imuslab.com/arozos/mod/utils"
 )
 
 /*

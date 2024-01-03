@@ -24,13 +24,13 @@ import (
 	"strings"
 	"time"
 
-	db "imuslab.com/wdos/mod/database"
-	"imuslab.com/wdos/mod/filesystem/abstractions/ftpfs"
-	"imuslab.com/wdos/mod/filesystem/abstractions/localfs"
-	sftpfs "imuslab.com/wdos/mod/filesystem/abstractions/sftpfs"
-	"imuslab.com/wdos/mod/filesystem/abstractions/smbfs"
-	"imuslab.com/wdos/mod/filesystem/abstractions/webdavfs"
-	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
+	db "imuslab.com/arozos/mod/database"
+	"imuslab.com/arozos/mod/filesystem/abstractions/ftpfs"
+	"imuslab.com/arozos/mod/filesystem/abstractions/localfs"
+	sftpfs "imuslab.com/arozos/mod/filesystem/abstractions/sftpfs"
+	"imuslab.com/arozos/mod/filesystem/abstractions/smbfs"
+	"imuslab.com/arozos/mod/filesystem/abstractions/webdavfs"
+	wdosfs "imuslab.com/arozos/mod/filesystem/arozfs"
 )
 
 //Options for creating new file system handler

@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	uuid "github.com/satori/go.uuid"
-	fs "imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/utils"
+	fs "imuslab.com/arozos/mod/filesystem"
+	"imuslab.com/arozos/mod/utils"
 )
 
 /*

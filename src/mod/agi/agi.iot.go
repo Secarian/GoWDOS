@@ -5,9 +5,9 @@ import (
 	"log"
 
 	"github.com/robertkrimen/otto"
-	"imuslab.com/wdos/mod/filesystem"
-	"imuslab.com/wdos/mod/iot"
-	user "imuslab.com/wdos/mod/user"
+	"imuslab.com/arozos/mod/filesystem"
+	"imuslab.com/arozos/mod/iot"
+	user "imuslab.com/arozos/mod/user"
 )
 
 /*

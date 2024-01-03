@@ -9,8 +9,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	wdosfs "imuslab.com/wdos/mod/filesystem/arozfs"
-	"imuslab.com/wdos/mod/utils"
+	wdosfs "imuslab.com/arozos/mod/filesystem/arozfs"
+	"imuslab.com/arozos/mod/utils"
 )
 
 type ViewerOption struct {

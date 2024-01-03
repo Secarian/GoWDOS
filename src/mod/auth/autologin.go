@@ -12,7 +12,7 @@ import (
 
 	"github.com/gorilla/sessions"
 	uuid "github.com/satori/go.uuid"
-	"imuslab.com/wdos/mod/utils"
+	"imuslab.com/arozos/mod/utils"
 )
 
 // Autologin token. This token will not expire until admin removal

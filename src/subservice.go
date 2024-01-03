@@ -5,10 +5,10 @@ import (
 	"os"
 	"path/filepath"
 
-	fs "imuslab.com/wdos/mod/filesystem"
-	prout "imuslab.com/wdos/mod/prouter"
-	subservice "imuslab.com/wdos/mod/subservice"
-	"imuslab.com/wdos/mod/utils"
+	fs "imuslab.com/arozos/mod/filesystem"
+	prout "imuslab.com/arozos/mod/prouter"
+	subservice "imuslab.com/arozos/mod/subservice"
+	"imuslab.com/arozos/mod/utils"
 )
 
 /*

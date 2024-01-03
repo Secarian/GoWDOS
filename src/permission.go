@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
-	permission "imuslab.com/wdos/mod/permission"
-	prout "imuslab.com/wdos/mod/prouter"
-	"imuslab.com/wdos/mod/utils"
+	permission "imuslab.com/arozos/mod/permission"
+	prout "imuslab.com/arozos/mod/prouter"
+	"imuslab.com/arozos/mod/utils"
 )
 
 func permissionNewHandler() {
